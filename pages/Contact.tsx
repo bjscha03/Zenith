@@ -1,0 +1,153 @@
+
+import React from 'react';
+
+const Contact: React.FC = () => {
+  return (
+    <div className="w-full">
+      {/* Hero Section */}
+      <section className="bg-slate-50 py-24 border-b border-slate-200 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/4 h-full opacity-[0.03] pointer-events-none">
+          <svg viewBox="0 0 100 100" className="w-full h-full fill-zenith-blue">
+            <path d="M50 0 L54 35 L90 25 L65 46 L100 50 L65 54 L90 75 L54 65 L50 100 L46 65 L10 75 L35 54 L0 50 L35 46 L10 25 L46 35 Z" />
+          </svg>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-3xl">
+            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-6 block">Engagement</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-zenith-navy leading-tight tracking-tight mb-8">
+              Start a Conversation. <br/>
+              <span className="text-blue-600 italic">Precision</span> starts here.
+            </h1>
+            <p className="text-xl text-slate-600 leading-relaxed font-light">
+              Connect with our underwriting and clinical teams to discuss your risk profile or partnership opportunities.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Contact Section */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-20">
+            {/* Form Section */}
+            <div className="bg-white p-10 md:p-12 rounded-3xl border border-slate-100 shadow-2xl relative">
+              <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-10">Inquiry Form</h2>
+              <form className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">First Name</label>
+                    <input type="text" className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none focus:bg-white transition-all" placeholder="Jane" />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Last Name</label>
+                    <input type="text" className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none focus:bg-white transition-all" placeholder="Doe" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Work Email</label>
+                  <input type="email" className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none focus:bg-white transition-all" placeholder="jane.doe@company.com" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Role / Identify As</label>
+                  <select className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none focus:bg-white transition-all appearance-none cursor-pointer">
+                    <option value="" disabled selected>Select your role</option>
+                    <option>Employer</option>
+                    <option>Broker</option>
+                    <option>Captive</option>
+                    <option>Strategic Partner</option>
+                    <option>Investor</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-2">Message</label>
+                  <textarea rows={4} className="w-full px-5 py-4 bg-slate-50 border border-slate-100 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none focus:bg-white transition-all" placeholder="How can we help optimize your risk strategy?"></textarea>
+                </div>
+                <button className="w-full py-5 bg-zenith-blue text-white font-black text-[11px] uppercase tracking-[0.3em] rounded-lg hover:bg-blue-700 transition-all shadow-xl">
+                  Send Inquiry
+                </button>
+              </form>
+            </div>
+
+            {/* Side Content / Info */}
+            <div className="flex flex-col justify-center">
+              <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10">Direct Contact</h2>
+              <div className="space-y-12">
+                <div>
+                  <h3 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">Submissions</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-2 font-light">New RFP data and renewal info:</p>
+                  <a href="mailto:submissions@zenithrisk.com" className="text-blue-600 font-bold hover:underline decoration-2">submissions@zenithrisk.com</a>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">Office</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed font-light">
+                    Zenith Risk Strategies<br />
+                    1200 Professional Plaza<br />
+                    Dallas, TX 75201
+                  </p>
+                </div>
+                <div className="pt-8 border-t border-slate-100">
+                  <div className="flex items-center space-x-6">
+                    <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <div>
+                      <p className="text-[10px] font-black text-zenith-navy uppercase tracking-widest">SLA Commitment</p>
+                      <p className="text-slate-500 text-xs font-light">Initial response within 24 business hours.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tier-2 Engagement Section */}
+      <section className="py-24 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Live Calendar (Calendly Mockup) */}
+            <div className="bg-white p-10 rounded-2xl border border-slate-200 shadow-sm flex flex-col items-center text-center">
+              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-8">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+              </div>
+              <h3 className="text-2xl font-bold text-zenith-navy mb-4">Schedule a Strategy Call</h3>
+              <p className="text-slate-500 text-sm leading-relaxed mb-10 font-light">
+                Book a direct discovery session with our team to explore technical alignment and program feasibility.
+              </p>
+              {/* Calendly Link Button */}
+              <button 
+                onClick={() => window.open('https://calendly.com/gwen-zenith', '_blank')}
+                className="inline-flex items-center px-8 py-4 border-2 border-blue-600 text-blue-600 font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-600 hover:text-white transition-all group"
+              >
+                Schedule with Gwen
+                <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+              </button>
+            </div>
+
+            {/* Overview Deck Download */}
+            <div className="bg-zenith-navy p-10 rounded-2xl border border-slate-800 shadow-xl flex flex-col items-center text-center text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-5">
+                <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" /></svg>
+              </div>
+              <div className="w-16 h-16 bg-white/10 text-white rounded-full flex items-center justify-center mb-8 border border-white/20">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Zenith Overview Deck</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-10 font-light">
+                A comprehensive look at our underwriting methodology, clinical stewardship roadmap, and proprietary health platforms.
+              </p>
+              <button className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-600 transition-all shadow-2xl group">
+                Download Overview Deck
+                <svg className="ml-3 w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Contact;
