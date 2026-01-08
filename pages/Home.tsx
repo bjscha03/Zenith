@@ -169,21 +169,21 @@ const Home: React.FC = () => {
                 {/* Single thin circular path */}
                 <circle cx="260" cy="260" r="240" stroke="#E2E8F0" strokeWidth="1.5" fill="none" />
                 
-                {/* Clockwise arrowheads placed on the circle path */}
-                {/* Arrow 1: Between Step 1 and Step 2 (top-right arc) - pointing clockwise */}
-                <polygon points="420,120 432,135 418,140" fill="#94A3B8" />
+                {/* Clockwise chevron arrows on the circle - properly rotated to follow path tangent */}
+                {/* Arrow 1: Top-right (between 1→2) at ~60° */}
+                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(380, 68) rotate(60)" />
                 
-                {/* Arrow 2: Between Step 2 and Step 3 (right side) - pointing clockwise/down */}
-                <polygon points="495,320 500,340 480,335" fill="#94A3B8" />
+                {/* Arrow 2: Right side (between 2→3) at ~135° */}
+                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(498, 290) rotate(135)" />
                 
-                {/* Arrow 3: Between Step 3 and Step 4 (bottom arc) - pointing clockwise/left */}
-                <polygon points="180,485 165,500 160,480" fill="#94A3B8" />
+                {/* Arrow 3: Bottom-right (between 3→4) at ~200° */}
+                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(350, 488) rotate(200)" />
                 
-                {/* Arrow 4: Between Step 4 and Step 5 (left side) - pointing clockwise/up */}
-                <polygon points="25,200 20,180 40,185" fill="#94A3B8" />
+                {/* Arrow 4: Left side (between 4→5) at ~315° */}
+                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(22, 230) rotate(315)" />
                 
-                {/* Arrow 5: Between Step 5 and Step 1 (top-left arc) - pointing clockwise/right */}
-                <polygon points="100,100 115,85 120,105" fill="#94A3B8" />
+                {/* Arrow 5: Top-left (between 5→1) at ~20° */}
+                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(140, 32) rotate(20)" />
               </svg>
               
               {/* Flow Container */}
