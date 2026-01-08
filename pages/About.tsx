@@ -54,7 +54,7 @@ const About: React.FC = () => {
       <div className="bg-white border-b border-slate-100 sticky top-[80px] z-40 hidden md:block">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center space-x-12 py-6">
-            {['Mission', 'Leadership', 'Values', 'Careers'].map((item) => (
+            {['Mission', 'Leadership', 'Values'].map((item) => (
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`}
@@ -63,6 +63,12 @@ const About: React.FC = () => {
                 {item}
               </a>
             ))}
+            <Link 
+              to="/careers"
+              className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
+            >
+              Careers
+            </Link>
           </div>
         </div>
       </div>
