@@ -74,32 +74,34 @@ const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-sm font-black text-blue-600 uppercase tracking-[0.3em] mb-6">The Lifecycle</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-zenith-navy mb-8 tracking-tight">Full-Circle Risk Optimization</h3>
-            <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">Every component feeds into better outcomes—from premium capture through renewal.</p>
+            <h3 className="text-4xl md:text-5xl font-bold text-zenith-navy mb-8 tracking-tight">Aligned for Optimal Renewal</h3>
+            <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">Every step is structured to guide your plan toward predictable, performance-driven renewal outcomes.</p>
           </div>
           
           {/* Circular Flow Diagram */}
           <div className="relative max-w-5xl mx-auto">
-            {/* Central Hub */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 bg-zenith-navy rounded-full flex items-center justify-center z-20 shadow-2xl">
+            {/* Central Hub - Visually Dominant */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-44 h-44 md:w-60 md:h-60 bg-gradient-to-br from-zenith-navy to-blue-900 rounded-full flex items-center justify-center z-20 shadow-2xl ring-4 ring-blue-400/20 ring-offset-4 ring-offset-slate-50">
               <div className="text-center text-white p-4">
-                <div className="text-2xl md:text-3xl font-bold mb-1">Renewal</div>
-                <div className="text-[10px] uppercase tracking-widest text-blue-300">Optimized Outcomes</div>
+                <div className="text-3xl md:text-4xl font-bold mb-2">Renewal</div>
+                <div className="w-8 h-0.5 bg-blue-400 mx-auto mb-2"></div>
+                <div className="text-[10px] uppercase tracking-widest text-blue-300">Predictable, Performance-Driven</div>
               </div>
             </div>
             
-            {/* Animated Ring */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 border-4 border-dashed border-blue-200 rounded-full animate-spin" style={{ animationDuration: '30s' }}></div>
+            {/* Subtle Flow Ring */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-[420px] md:h-[420px] border-2 border-blue-100 rounded-full"></div>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 md:w-[460px] md:h-[460px] border border-dashed border-blue-100/50 rounded-full" style={{ animation: 'spin 60s linear infinite' }}></div>
             
             {/* Flow Container */}
             <div className="relative h-[600px] md:h-[700px]">
               
-              {/* Step 1: Premium Capture - Top */}
+              {/* Step 1: Strategic Pricing - Top */}
               <div className="absolute left-1/2 -translate-x-1/2 top-0 group">
                 <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
                   <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Premium Capture</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Strategic pricing for long-term sustainability</p>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Strategic Pricing</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">Data-driven pricing designed for long-term sustainability and predictable renewals</p>
                 </div>
                 {/* Arrow Down */}
                 <div className="absolute left-1/2 -translate-x-1/2 -bottom-8 text-blue-400 animate-bounce">
@@ -112,7 +114,7 @@ const Home: React.FC = () => {
                 <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
                   <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
                   <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Smart Underwriting</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Data-driven risk assessment & optimal terms</p>
+                  <p className="text-slate-500 text-xs leading-relaxed">Advanced risk assessment using clinical data and analytics to establish optimal terms</p>
                 </div>
                 {/* Arrow diagonal */}
                 <div className="absolute -left-8 top-1/2 -translate-y-1/2 text-blue-400">
@@ -120,12 +122,12 @@ const Home: React.FC = () => {
                 </div>
               </div>
               
-              {/* Step 3: Clinical Review - Bottom Right */}
+              {/* Step 3: Doctor-Led Clinical Review - Bottom Right */}
               <div className="absolute right-0 md:right-8 bottom-24 md:bottom-28 group">
                 <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
                   <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Clinical Review</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Proactive high-cost claim management</p>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Doctor-Led Clinical Review</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">Independent clinical oversight and high-cost claim evaluation to support appropriate, cost-aware care decisions</p>
                 </div>
                 {/* Arrow */}
                 <div className="absolute -left-8 top-1/2 -translate-y-1/2 text-blue-400">
@@ -138,7 +140,7 @@ const Home: React.FC = () => {
                 <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
                   <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
                   <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Cost Containment</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Targeted interventions, quality care preserved</p>
+                  <p className="text-slate-500 text-xs leading-relaxed">Recommended strategies to reduce plan costs while preserving quality care and member experience</p>
                 </div>
                 {/* Arrow */}
                 <div className="absolute -right-8 top-1/2 -translate-y-1/2 text-blue-400">
@@ -151,7 +153,7 @@ const Home: React.FC = () => {
                 <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
                   <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
                   <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Surplus Retention</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Maximized returns through disciplined management</p>
+                  <p className="text-slate-500 text-xs leading-relaxed">Disciplined surplus guidance that rewards performance and supports long-term plan stability</p>
                 </div>
                 {/* Arrow */}
                 <div className="absolute -right-8 top-1/2 -translate-y-1/2 text-blue-400">
@@ -180,19 +182,25 @@ const Home: React.FC = () => {
               </svg>
             </div>
             
-            {/* Impact Metrics */}
-            <div className="grid grid-cols-3 gap-8 mt-8 max-w-3xl mx-auto">
+            {/* Impact Metrics - Guidance & Alignment Focus */}
+            <div className="grid grid-cols-3 gap-6 mt-8 max-w-3xl mx-auto">
               <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-                <div className="text-3xl font-bold text-zenith-blue mb-2">↑</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Premium Capture</div>
+                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-5 h-5 text-zenith-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+                </div>
+                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Structured Guidance</div>
               </div>
               <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-                <div className="text-3xl font-bold text-zenith-blue mb-2">⚡</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Performance</div>
+                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-5 h-5 text-zenith-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                </div>
+                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Peak Performance</div>
               </div>
               <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-                <div className="text-3xl font-bold text-zenith-blue mb-2">⟳</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Renewal Outcomes</div>
+                <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-5 h-5 text-zenith-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                </div>
+                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Aligned Renewal</div>
               </div>
             </div>
           </div>
