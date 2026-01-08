@@ -56,7 +56,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <div className="flex justify-between items-center h-16 md:h-20">
             {/* Logo */}
             <div className="flex-shrink-0 flex items-center">
-              <Link to="/" className="flex items-center">
+              <Link to="/" className="flex items-center"><span className="w-3 h-3 bg-red-600 rounded-full animate-pulse mr-2"></span>
                 <img 
                   src={LOGO_URL} 
                   alt="Zenith Risk Strategies" 
