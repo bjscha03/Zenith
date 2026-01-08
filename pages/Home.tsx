@@ -68,29 +68,51 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 3. Risk Flow Explanation */}
-      <section className="py-24 bg-slate-50 border-y border-slate-100">
+            {/* 3. Risk Flow Explanation */}
+      <section className="py-32 bg-gradient-to-b from-slate-50 to-white border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-[11px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4">The Lifecycle</h2>
-            <h3 className="text-3xl font-bold text-zenith-navy mb-6">Optimized Risk Flow</h3>
-            <p className="text-slate-600 text-sm font-medium">How we engineer alignment through the lifecycle of a stop-loss contract.</p>
+          <div className="max-w-3xl mx-auto text-center mb-20">
+            <h2 className="text-sm font-black text-blue-600 uppercase tracking-[0.3em] mb-6">The Lifecycle</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-zenith-navy mb-8 tracking-tight">Optimized Risk Flow</h3>
+            <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">How we engineer alignment through the lifecycle of a stop-loss contract.</p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
             {[
-              'Premium Capture',
-              'Smart Underwriting',
-              'Active Clinical Review',
-              'Cost Containment',
-              'Surplus Retention'
+              { title: 'Premium Capture', desc: 'Strategic pricing that balances competitiveness with long-term sustainability.', icon: '💰' },
+              { title: 'Smart Underwriting', desc: 'Data-driven analysis for accurate risk assessment and optimal terms.', icon: '📊' },
+              { title: 'Active Clinical Review', desc: 'Proactive oversight to identify and manage high-cost claims early.', icon: '🏥' },
+              { title: 'Cost Containment', desc: 'Targeted interventions that reduce spend without compromising care.', icon: '🎯' },
+              { title: 'Surplus Retention', desc: 'Maximizing returns through disciplined program management.', icon: '📈' }
             ].map((step, idx) => (
-              <div key={step} className="bg-white border border-slate-100 shadow-sm p-8 rounded text-center flex flex-col items-center justify-center">
-                <span className="text-[10px] font-black text-blue-500 mb-3">0{idx + 1}</span>
-                <span className="font-bold text-zenith-blue uppercase tracking-widest text-[10px]">
-                  {step}
-                </span>
+              <div key={step.title} className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
+                {/* Step Number Badge */}
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-lg group-hover:scale-110 transition-transform">
+                  {idx + 1}
+                </div>
+                
+                {/* Icon */}
+                <span className="text-4xl mb-5">{step.icon}</span>
+                
+                {/* Title */}
+                <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">
+                  {step.title}
+                </h4>
+                
+                {/* Description */}
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  {step.desc}
+                </p>
               </div>
             ))}
+          </div>
+          
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <Link to="/services" className="inline-flex items-center gap-3 px-10 py-5 bg-zenith-navy hover:bg-blue-900 text-white font-bold rounded-lg shadow-xl transition-all uppercase tracking-widest text-sm">
+              Explore Our Services
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
           </div>
         </div>
       </section>
