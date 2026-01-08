@@ -169,18 +169,18 @@ const Home: React.FC = () => {
                 {/* Primary circular path - visible and intentional */}
                 <circle cx="260" cy="260" r="240" stroke="#CBD5E1" strokeWidth="2.5" fill="none" />
                 
-                {/* 4 Large clockwise arrowheads evenly spaced on the circle path */}
-                {/* Arrow 1: Top-right quadrant (between Step 1 → Step 2) */}
-                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(428, 88) rotate(55)" />
+                {/* 4 arrows precisely positioned ON the circle, 90° apart, tangent to path */}
+                {/* Arrow 1: Upper-right at 315° (between Step 1 → Step 2) */}
+                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(430, 90) rotate(405)" />
                 
-                {/* Arrow 2: Bottom-right quadrant (between Step 2 → Step 3) */}
-                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(496, 340) rotate(145)" />
+                {/* Arrow 2: Lower-right at 45° (between Step 2 → Step 3) */}
+                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(430, 430) rotate(135)" />
                 
-                {/* Arrow 3: Bottom-left quadrant (between Step 3 → Step 4) */}
-                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(92, 432) rotate(235)" />
+                {/* Arrow 3: Lower-left at 135° (between Step 3 → Step 4) */}
+                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(90, 430) rotate(225)" />
                 
-                {/* Arrow 4: Top-left quadrant (between Step 5 → Step 1) */}
-                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(88, 88) rotate(325)" />
+                {/* Arrow 4: Upper-left at 225° (between Step 5 → Step 1) */}
+                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(90, 90) rotate(315)" />
               </svg>
               
               {/* Flow Container */}
