@@ -6,7 +6,15 @@ const Home: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. Hero */}
-      <section className="relative bg-zenith-navy text-white py-24 md:py-44 overflow-hidden">
+      <section className="relative text-white py-24 md:py-44 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://res.cloudinary.com/dtrxl120u/image/upload/v1767912842/download_zcreqi.webp')" }}
+        ></div>
+        {/* Blue Overlay */}
+        <div className="absolute inset-0 bg-zenith-navy/85"></div>
+        
         {/* Subtle Brand Motif Background - Compass from Logo */}
         <div className="absolute right-[-5%] top-[-10%] w-[60%] h-[120%] opacity-[0.03] pointer-events-none transform rotate-12">
           <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
