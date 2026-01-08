@@ -15,13 +15,6 @@ const Home: React.FC = () => {
         {/* Blue Overlay */}
         <div className="absolute inset-0 bg-zenith-navy/85"></div>
         
-        {/* Subtle Brand Motif Background - Compass from Logo */}
-        <div className="absolute right-[-5%] top-[-10%] w-[60%] h-[120%] opacity-[0.03] pointer-events-none transform rotate-12">
-          <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
-             <path d="M50 0 L54 35 L90 25 L65 46 L100 50 L65 54 L90 75 L54 65 L50 100 L46 65 L10 75 L35 54 L0 50 L35 46 L10 25 L46 35 Z" />
-          </svg>
-        </div>
-        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-[84px] font-bold leading-[1.05] tracking-tight mb-8">

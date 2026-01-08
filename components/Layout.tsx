@@ -207,12 +207,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* Footer */}
       <footer className="bg-zenith-navy text-white py-20 relative overflow-hidden">
-        {/* Decorative element */}
-        <div className="absolute right-0 bottom-0 w-64 h-64 opacity-[0.02] pointer-events-none">
-          <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
-            <path d="M50 0 L54 35 L90 25 L65 46 L100 50 L65 54 L90 75 L54 65 L50 100 L46 65 L10 75 L35 54 L0 50 L35 46 L10 25 L46 35 Z" />
-          </svg>
-        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">

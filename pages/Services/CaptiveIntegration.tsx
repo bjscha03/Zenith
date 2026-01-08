@@ -7,11 +7,6 @@ const CaptiveIntegration: React.FC = () => {
     <div className="w-full">
       {/* Hero Section */}
       <section className="bg-slate-50 py-24 md:py-32 border-b border-slate-200 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/4 h-full opacity-[0.03] pointer-events-none">
-          <svg viewBox="0 0 100 100" className="w-full h-full fill-zenith-blue">
-            <path d="M50 0 L54 35 L90 25 L65 46 L100 50 L65 54 L90 75 L54 65 L50 100 L46 65 L10 75 L35 54 L0 50 L35 46 L10 25 L46 35 Z" />
-          </svg>
-        </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
