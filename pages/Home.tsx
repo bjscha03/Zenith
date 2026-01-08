@@ -164,35 +164,30 @@ const Home: React.FC = () => {
                 </div>
               </div>
               
-              {/* Single thin solid circular path */}
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] border border-slate-200 rounded-full"></div>
+              {/* Circular Flow Path with Clockwise Arrowheads */}
+              <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] pointer-events-none" viewBox="0 0 520 520" fill="none">
+                {/* Single thin circular path */}
+                <circle cx="260" cy="260" r="240" stroke="#E2E8F0" strokeWidth="1.5" fill="none" />
+                
+                {/* Clockwise arrowheads placed on the circle path */}
+                {/* Arrow 1: Between Step 1 and Step 2 (top-right arc) - pointing clockwise */}
+                <polygon points="420,120 432,135 418,140" fill="#94A3B8" />
+                
+                {/* Arrow 2: Between Step 2 and Step 3 (right side) - pointing clockwise/down */}
+                <polygon points="495,320 500,340 480,335" fill="#94A3B8" />
+                
+                {/* Arrow 3: Between Step 3 and Step 4 (bottom arc) - pointing clockwise/left */}
+                <polygon points="180,485 165,500 160,480" fill="#94A3B8" />
+                
+                {/* Arrow 4: Between Step 4 and Step 5 (left side) - pointing clockwise/up */}
+                <polygon points="25,200 20,180 40,185" fill="#94A3B8" />
+                
+                {/* Arrow 5: Between Step 5 and Step 1 (top-left arc) - pointing clockwise/right */}
+                <polygon points="100,100 115,85 120,105" fill="#94A3B8" />
+              </svg>
               
               {/* Flow Container */}
               <div className="relative h-[700px]">
-                
-                {/* Clockwise Flow Arrows - SVG overlay */}
-                <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 800 700" fill="none">
-                  {/* Arrow 1→2: Top to Top-Right */}
-                  <path d="M480 95 L560 140" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" markerEnd="url(#arrowhead)"/>
-                  
-                  {/* Arrow 2→3: Top-Right to Bottom-Right */}
-                  <path d="M700 260 L700 420" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" markerEnd="url(#arrowhead)"/>
-                  
-                  {/* Arrow 3→4: Bottom-Right to Bottom-Left */}
-                  <path d="M560 580 L240 580" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" markerEnd="url(#arrowhead)"/>
-                  
-                  {/* Arrow 4→5: Bottom-Left to Top-Left */}
-                  <path d="M100 420 L100 260" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" markerEnd="url(#arrowhead)"/>
-                  
-                  {/* Arrow 5→1: Top-Left to Top (completing the loop) */}
-                  <path d="M240 120 L320 95" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" markerEnd="url(#arrowhead)"/>
-                  
-                  <defs>
-                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                      <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" />
-                    </marker>
-                  </defs>
-                </svg>
                 
                 {/* Step 1: Strategic Pricing - Top Center */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-0">
