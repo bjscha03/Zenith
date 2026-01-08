@@ -164,26 +164,23 @@ const Home: React.FC = () => {
                 </div>
               </div>
               
-              {/* Circular Flow Path with Clockwise Arrowheads */}
+              {/* Circular Flow Path - Active System Loop */}
               <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] pointer-events-none" viewBox="0 0 520 520" fill="none">
-                {/* Single thin circular path */}
-                <circle cx="260" cy="260" r="240" stroke="#E2E8F0" strokeWidth="1.5" fill="none" />
+                {/* Primary circular path - visible and intentional */}
+                <circle cx="260" cy="260" r="240" stroke="#CBD5E1" strokeWidth="2.5" fill="none" />
                 
-                {/* Clockwise chevron arrows on the circle - properly rotated to follow path tangent */}
-                {/* Arrow 1: Top-right (between 1→2) at ~60° */}
-                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(380, 68) rotate(60)" />
+                {/* 4 Large clockwise arrowheads evenly spaced on the circle path */}
+                {/* Arrow 1: Top-right quadrant (between Step 1 → Step 2) */}
+                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(428, 88) rotate(55)" />
                 
-                {/* Arrow 2: Right side (between 2→3) at ~135° */}
-                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(498, 290) rotate(135)" />
+                {/* Arrow 2: Bottom-right quadrant (between Step 2 → Step 3) */}
+                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(496, 340) rotate(145)" />
                 
-                {/* Arrow 3: Bottom-right (between 3→4) at ~200° */}
-                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(350, 488) rotate(200)" />
+                {/* Arrow 3: Bottom-left quadrant (between Step 3 → Step 4) */}
+                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(92, 432) rotate(235)" />
                 
-                {/* Arrow 4: Left side (between 4→5) at ~315° */}
-                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(22, 230) rotate(315)" />
-                
-                {/* Arrow 5: Top-left (between 5→1) at ~20° */}
-                <path d="M-5,-4 L0,0 L-5,4" stroke="#94A3B8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" transform="translate(140, 32) rotate(20)" />
+                {/* Arrow 4: Top-left quadrant (between Step 5 → Step 1) */}
+                <polygon points="0,-8 12,0 0,8" fill="#64748B" transform="translate(88, 88) rotate(325)" />
               </svg>
               
               {/* Flow Container */}
