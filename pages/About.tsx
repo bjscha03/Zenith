@@ -55,13 +55,18 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center space-x-12 py-6">
             {['Mission', 'Leadership', 'Values'].map((item) => (
-              <a 
+              <button 
                 key={item} 
-                href={`#${item.toLowerCase()}`}
-                className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
+                onClick={() => {
+                  const element = document.getElementById(item.toLowerCase());
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+                className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors cursor-pointer bg-transparent border-none"
               >
                 {item}
-              </a>
+              </button>
             ))}
             <Link 
               to="/careers"
