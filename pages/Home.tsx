@@ -79,68 +79,31 @@ const Home: React.FC = () => {
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
             {/* Premium Capture */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-lg group-hover:scale-110 transition-transform">1</div>
-              <div className="w-12 h-12 mb-5 text-blue-600">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 6v12M9 9c0-1.5 1.5-2.5 3-2.5s3 1 3 2.5c0 2-3 1.75-3 4M12 17h.01"/>
-                </svg>
-              </div>
+            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
               <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Premium Capture</h4>
               <p className="text-slate-500 text-sm leading-relaxed">Strategic pricing that balances competitiveness with long-term sustainability.</p>
             </div>
 
             {/* Smart Underwriting */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-lg group-hover:scale-110 transition-transform">2</div>
-              <div className="w-12 h-12 mb-5 text-blue-600">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 3v18h18"/>
-                  <path d="M7 16l4-4 4 4 5-6"/>
-                </svg>
-              </div>
+            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
               <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Smart Underwriting</h4>
               <p className="text-slate-500 text-sm leading-relaxed">Data-driven analysis for accurate risk assessment and optimal terms.</p>
             </div>
 
             {/* Active Clinical Review */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-lg group-hover:scale-110 transition-transform">3</div>
-              <div className="w-12 h-12 mb-5 text-blue-600">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-                  <rect x="9" y="3" width="6" height="4" rx="1"/>
-                  <path d="M9 12h6M9 16h4"/>
-                </svg>
-              </div>
+            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
               <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Active Clinical Review</h4>
               <p className="text-slate-500 text-sm leading-relaxed">Proactive oversight to identify and manage high-cost claims early.</p>
             </div>
 
             {/* Cost Containment */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-lg group-hover:scale-110 transition-transform">4</div>
-              <div className="w-12 h-12 mb-5 text-blue-600">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <circle cx="12" cy="12" r="6"/>
-                  <circle cx="12" cy="12" r="2"/>
-                </svg>
-              </div>
+            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
               <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Cost Containment</h4>
               <p className="text-slate-500 text-sm leading-relaxed">Targeted interventions that reduce spend without compromising care.</p>
             </div>
 
             {/* Surplus Retention */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-6 shadow-lg group-hover:scale-110 transition-transform">5</div>
-              <div className="w-12 h-12 mb-5 text-blue-600">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 17l6-6 4 4 8-8"/>
-                  <path d="M17 7h4v4"/>
-                </svg>
-              </div>
+            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
               <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Surplus Retention</h4>
               <p className="text-slate-500 text-sm leading-relaxed">Maximizing returns through disciplined program management.</p>
             </div>
