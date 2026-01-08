@@ -69,44 +69,131 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-            {/* 3. Risk Flow Explanation */}
-      <section className="py-32 bg-gradient-to-b from-slate-50 to-white border-y border-slate-100">
+            {/* 3. Risk Flow Explanation - Circular Flow Diagram */}
+      <section className="py-32 bg-gradient-to-b from-slate-50 to-white border-y border-slate-100 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-20">
+          <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className="text-sm font-black text-blue-600 uppercase tracking-[0.3em] mb-6">The Lifecycle</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-zenith-navy mb-8 tracking-tight">Optimized Risk Flow</h3>
-            <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">How we engineer alignment through the lifecycle of a stop-loss contract.</p>
+            <h3 className="text-4xl md:text-5xl font-bold text-zenith-navy mb-8 tracking-tight">Full-Circle Risk Optimization</h3>
+            <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">Every component feeds into better outcomes—from premium capture through renewal.</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-4">
-            {/* Premium Capture */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Premium Capture</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Strategic pricing that balances competitiveness with long-term sustainability.</p>
+          {/* Circular Flow Diagram */}
+          <div className="relative max-w-5xl mx-auto">
+            {/* Central Hub */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 md:w-52 md:h-52 bg-zenith-navy rounded-full flex items-center justify-center z-20 shadow-2xl">
+              <div className="text-center text-white p-4">
+                <div className="text-2xl md:text-3xl font-bold mb-1">Renewal</div>
+                <div className="text-[10px] uppercase tracking-widest text-blue-300">Optimized Outcomes</div>
+              </div>
             </div>
-
-            {/* Smart Underwriting */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Smart Underwriting</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Data-driven analysis for accurate risk assessment and optimal terms.</p>
+            
+            {/* Animated Ring */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 md:w-96 md:h-96 border-4 border-dashed border-blue-200 rounded-full animate-spin" style={{ animationDuration: '30s' }}></div>
+            
+            {/* Flow Container */}
+            <div className="relative h-[600px] md:h-[700px]">
+              
+              {/* Step 1: Premium Capture - Top */}
+              <div className="absolute left-1/2 -translate-x-1/2 top-0 group">
+                <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
+                  <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Premium Capture</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">Strategic pricing for long-term sustainability</p>
+                </div>
+                {/* Arrow Down */}
+                <div className="absolute left-1/2 -translate-x-1/2 -bottom-8 text-blue-400 animate-bounce">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                </div>
+              </div>
+              
+              {/* Step 2: Smart Underwriting - Top Right */}
+              <div className="absolute right-0 md:right-8 top-24 md:top-28 group">
+                <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
+                  <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Smart Underwriting</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">Data-driven risk assessment & optimal terms</p>
+                </div>
+                {/* Arrow diagonal */}
+                <div className="absolute -left-8 top-1/2 -translate-y-1/2 text-blue-400">
+                  <svg className="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" /></svg>
+                </div>
+              </div>
+              
+              {/* Step 3: Clinical Review - Bottom Right */}
+              <div className="absolute right-0 md:right-8 bottom-24 md:bottom-28 group">
+                <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
+                  <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Clinical Review</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">Proactive high-cost claim management</p>
+                </div>
+                {/* Arrow */}
+                <div className="absolute -left-8 top-1/2 -translate-y-1/2 text-blue-400">
+                  <svg className="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" /></svg>
+                </div>
+              </div>
+              
+              {/* Step 4: Cost Containment - Bottom Left */}
+              <div className="absolute left-0 md:left-8 bottom-24 md:bottom-28 group">
+                <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
+                  <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Cost Containment</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">Targeted interventions, quality care preserved</p>
+                </div>
+                {/* Arrow */}
+                <div className="absolute -right-8 top-1/2 -translate-y-1/2 text-blue-400">
+                  <svg className="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+                </div>
+              </div>
+              
+              {/* Step 5: Surplus Retention - Top Left */}
+              <div className="absolute left-0 md:left-8 top-24 md:top-28 group">
+                <div className="bg-white border-2 border-slate-200 hover:border-zenith-blue shadow-lg hover:shadow-2xl p-6 rounded-2xl text-center w-56 md:w-64 transition-all duration-300 hover:-translate-y-2">
+                  <div className="w-12 h-12 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">5</div>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Surplus Retention</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">Maximized returns through disciplined management</p>
+                </div>
+                {/* Arrow */}
+                <div className="absolute -right-8 top-1/2 -translate-y-1/2 text-blue-400">
+                  <svg className="w-6 h-6 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 5l7 7-7 7M5 5l7 7-7 7" /></svg>
+                </div>
+              </div>
+              
+              {/* Connecting curved arrows - decorative SVG */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 800 700">
+                {/* Curved path connecting all nodes */}
+                <path 
+                  d="M400 120 Q600 120 650 280 Q700 450 650 550 Q550 650 400 650 Q250 650 150 550 Q100 450 150 280 Q200 120 400 120" 
+                  fill="none" 
+                  stroke="url(#flowGradient)" 
+                  strokeWidth="3" 
+                  strokeDasharray="10 5"
+                  className="animate-pulse"
+                  opacity="0.5"
+                />
+                <defs>
+                  <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#3B82F6" />
+                    <stop offset="100%" stopColor="#1E3A5F" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
-
-            {/* Active Clinical Review */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Active Clinical Review</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Proactive oversight to identify and manage high-cost claims early.</p>
-            </div>
-
-            {/* Cost Containment */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Cost Containment</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Targeted interventions that reduce spend without compromising care.</p>
-            </div>
-
-            {/* Surplus Retention */}
-            <div className="group bg-white border border-slate-200 shadow-lg hover:shadow-2xl p-8 lg:p-10 rounded-xl text-center flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-2 hover:border-blue-200">
-              <h4 className="font-bold text-zenith-navy text-base md:text-lg uppercase tracking-wider mb-4 leading-tight">Surplus Retention</h4>
-              <p className="text-slate-500 text-sm leading-relaxed">Maximizing returns through disciplined program management.</p>
+            
+            {/* Impact Metrics */}
+            <div className="grid grid-cols-3 gap-8 mt-8 max-w-3xl mx-auto">
+              <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+                <div className="text-3xl font-bold text-zenith-blue mb-2">↑</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Premium Capture</div>
+              </div>
+              <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+                <div className="text-3xl font-bold text-zenith-blue mb-2">⚡</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Performance</div>
+              </div>
+              <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+                <div className="text-3xl font-bold text-zenith-blue mb-2">⟳</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Renewal Outcomes</div>
+              </div>
             </div>
           </div>
           
