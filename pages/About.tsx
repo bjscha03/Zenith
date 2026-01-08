@@ -14,18 +14,6 @@ const About: React.FC = () => {
       title: "Chief Underwriting Officer",
       image: "https://res.cloudinary.com/dtrxl120u/image/upload/v1766605533/1749008849819_uasuiw_lx9vup.jpg",
       bio: "John Owens has nearly 20 years of industry experience. Most recently, he served for 5+ years as the Chief Underwriting Officer at Stonewater Underwriters Inc., an MGU specializing in government contractors and stop-loss underwriting. Prior roles include VP of Underwriting at FCE Benefit Administration, Director of Underwriting at Erisa Underwriters, and multiple management and line-level underwriting positions throughout his career. John earned his Associate Degree in Arts from Rio Salado College and his Bachelor's Degree in Business Administration, Management, and Operations from the University of Phoenix."
-    },
-    {
-      name: "Dr. Andi Toufexis, DO",
-      title: "Chief Medical Officer",
-      image: "https://res.cloudinary.com/dtrxl120u/image/upload/v1766605582/Andi-Toufexis_xvpffn_o1mest.jpg",
-      bio: "Dr. Andi Toufexis is a board-certified family medicine physician, U.S. Army veteran, and founder of SonaWell, a telehealth weight-management company. She has over 15 years of industry experience and previously served as an operations NCO for a deployable Army medical unit, where she led Ebola testing operations during Operation United Assistance and oversaw bio-surveillance laboratory programs in South Korea. She was recognized by the American Osteopathic Association as one of its Most Inspirational Women in Medicine. Dr. Toufexis earned her Bachelor's Degree in Cellular and Molecular Biology from UCLA, her Medical Laboratory Technician certification from The George Washington University, and was one of seven U.S. Army service members selected for the Enlisted to Medical Degree Preparatory Program (EMDP2) at Uniformed Services University in partnership with George Mason University, where she maintained a 4.0 GPA."
-    },
-    {
-      name: "Yves Zouzouambe",
-      title: "Chief Information Officer",
-      image: "https://res.cloudinary.com/dtrxl120u/image/upload/v1766605610/1516355690997_m0n8uf_xgnbeb.jpg",
-      bio: "Yves Zouzouambe brings more than 25 years of experience designing and delivering enterprise-grade software systems. As founder of Asm Logic, LLC and co-founder of ASM ACTIVE Quotes LLC, he developed the ASM Activator ERP platform, which now powers mission-critical applications across industries. His leadership has shaped Asm Logic's reputation for rapid deployment, robust architecture, and highly scalable digital transformation tools. Yves previously served as CTO at CieloStar, Founder and CEO of Arys Technology, President at Sodext, and held multiple executive software engineering roles. He holds a Bachelor's Degree in Mathematics and Physics from the University of Yaoundé I in Cameroon and an Associate Degree in Software Architecture & Programming from KRS Computer & Business School in Bloomington, MN."
     }
   ];
 
