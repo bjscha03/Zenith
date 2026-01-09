@@ -130,17 +130,30 @@ const UnderwritingClaims: React.FC = () => {
             <div>
               <h2 className="text-2xl font-bold text-zenith-navy mb-6">Transparent Economics</h2>
               <p className="text-slate-600 leading-relaxed mb-8">
-                Alignment only exists when incentives are shared. Our economic model is designed for transparency, ensuring that when a plan performs well, the surplus returns to the sponsor, not the carrier.
+                Alignment only exists when incentives are shared. Our economic model is designed for transparency, ensuring that when a plan performs well, the benefits flow back to the sponsor—not the carrier.
               </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-6 border border-blue-50 bg-blue-50/20 rounded text-center">
-                  <span className="block text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">Aligned</span>
-                  <p className="text-sm font-bold text-zenith-navy">Margins</p>
-                </div>
-                <div className="p-6 border border-blue-50 bg-blue-50/20 rounded text-center">
-                  <span className="block text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">Surplus</span>
-                  <p className="text-sm font-bold text-zenith-navy">Return</p>
-                </div>
+              <div className="p-8 border border-slate-100 bg-slate-50 rounded-lg">
+                <h4 className="font-bold uppercase tracking-widest text-[10px] mb-4 text-blue-600">Our Commitment</h4>
+                <ul className="space-y-4">
+                  <li className="flex items-start text-sm">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-slate-600">Incentives tied to plan performance</span>
+                  </li>
+                  <li className="flex items-start text-sm">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-slate-600">Full visibility into spend and outcomes</span>
+                  </li>
+                  <li className="flex items-start text-sm">
+                    <svg className="w-5 h-5 text-blue-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span className="text-slate-600">Better outcomes benefit both parties</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
