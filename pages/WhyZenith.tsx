@@ -4,17 +4,24 @@ import { Link } from 'react-router-dom';
 const WhyZenith: React.FC = () => {
   return (
     <div className="w-full">
-      {/* 1. Impactful Headline Section */}
-      <section className="bg-slate-50 py-24 md:py-36 border-b border-slate-200 overflow-hidden relative">
+      {/* 1. Impactful Headline Section - Blue with Image Underlay */}
+      <section className="relative text-white py-24 md:py-36 overflow-hidden">
+        {/* Background Image - Direction/navigation theme */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')" }}
+        ></div>
+        {/* Blue Overlay */}
+        <div className="absolute inset-0 bg-zenith-navy/90"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-6 block">The Differentiator</span>
-            <h1 className="text-4xl md:text-7xl font-bold text-zenith-navy leading-[1.1] tracking-tight mb-10">
+            <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">The Differentiator</span>
+            <h1 className="text-4xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-10">
               The Stop-Loss Model is outdated. <br/>
-              We have <span className="text-zenith-blue italic decoration-blue-500/30 underline underline-offset-[12px] decoration-4">Designed</span> a Better One.
+              We have <span className="text-blue-400 italic underline underline-offset-[12px] decoration-4 decoration-blue-500/50">Designed</span> a Better One.
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 leading-relaxed font-light italic max-w-3xl">
+            <p className="text-xl md:text-2xl text-slate-300 leading-relaxed font-light italic max-w-3xl">
               Traditional models are fundamentally misaligned. We've rebuilt the process to prioritize clinical oversight, financial transparency, and predictable outcomes.
             </p>
           </div>

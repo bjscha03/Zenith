@@ -5,16 +5,23 @@ import { Link } from 'react-router-dom';
 const ApolloHealthPlan: React.FC = () => {
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="bg-slate-50 py-24 md:py-32 border-b border-slate-200 relative overflow-hidden">
+      {/* Hero Section - Blue with Image Underlay */}
+      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+        {/* Background Image - Healthcare/technology theme */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop')" }}
+        ></div>
+        {/* Blue Overlay */}
+        <div className="absolute inset-0 bg-zenith-navy/90"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-6 block">Proprietary Platform</span>
-            <h1 className="text-4xl md:text-6xl font-bold text-zenith-navy leading-tight tracking-tight mb-8">
+            <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Proprietary Platform</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               A Transparent, Level-Funded Health Platform Built for Employer Control & Risk Alignment
             </h1>
-            <div className="w-20 h-1.5 bg-blue-600 mb-8"></div>
+            <div className="w-20 h-1.5 bg-blue-400 mb-8"></div>
           </div>
         </div>
       </section>

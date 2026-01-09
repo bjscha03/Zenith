@@ -19,15 +19,22 @@ const About: React.FC = () => {
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="bg-slate-50 py-24 border-b border-slate-200 relative overflow-hidden">
+      {/* Hero Section - Blue with Image Underlay */}
+      <section className="relative text-white py-24 md:py-36 overflow-hidden">
+        {/* Background Image - Compass/Navigation theme */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=2074&auto=format&fit=crop')" }}
+        ></div>
+        {/* Blue Overlay */}
+        <div className="absolute inset-0 bg-zenith-navy/90"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-8 block">Credibility & Discipline</span>
-          <h1 className="text-4xl md:text-6xl font-bold text-zenith-navy leading-tight tracking-tight mb-8 max-w-5xl mx-auto">
+          <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-8 block">Credibility & Discipline</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8 max-w-5xl mx-auto">
             We exist to realign incentives in healthcare and empower employers to control their risk.
           </h1>
-          <p className="text-2xl text-slate-500 font-light italic">
+          <p className="text-2xl text-slate-300 font-light italic">
             Together we can create a better path forward.
           </p>
         </div>
@@ -61,7 +68,7 @@ const About: React.FC = () => {
         </div>
       </div>
 
-      {/* Leadership Section */}
+      {/* Leadership Section - White */}
       <section id="leadership" className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
@@ -92,22 +99,23 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Mission & Values Section */}
-      <section id="mission" className="py-24 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Mission & Values Section - Blue */}
+      <section id="mission" className="py-24 bg-zenith-navy relative overflow-hidden">
+        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20">
             <div id="values">
-              <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-10">Our Core Values</h2>
+              <h2 className="text-[12px] font-black text-blue-400 uppercase tracking-[0.3em] mb-10">Our Core Values</h2>
               <div className="space-y-12">
                 <div>
-                  <h4 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">Radical Transparency</h4>
-                  <p className="text-slate-600 leading-relaxed font-light">
+                  <h4 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">Radical Transparency</h4>
+                  <p className="text-slate-300 leading-relaxed font-light">
                     We believe the self-funded market thrives on data openness. We provide the visibility required for employers to see exactly where their premium goes and how their claims are managed.
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">Clinical Integrity</h4>
-                  <p className="text-slate-600 leading-relaxed font-light">
+                  <h4 className="text-xl font-bold text-white mb-4 uppercase tracking-wider">Clinical Integrity</h4>
+                  <p className="text-slate-300 leading-relaxed font-light">
                     Risk management isn't just about math; it's about medicine. Our clinical leadership ensures that cost containment never comes at the expense of member care quality.
                   </p>
                 </div>
@@ -115,23 +123,22 @@ const About: React.FC = () => {
             </div>
 
             <div>
-              <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-10">Our Philosophy</h2>
-              <div className="p-10 bg-white rounded-2xl border border-slate-200 shadow-sm">
-                <p className="text-lg text-slate-700 leading-relaxed font-light italic mb-8">
-                  "Traditional stop-loss models are fundamentally misaligned. At Zenith, we’ve rebuilt the process to prioritize clinical oversight, financial transparency, and predictable outcomes."
+              <h2 className="text-[12px] font-black text-blue-400 uppercase tracking-[0.3em] mb-10">Our Philosophy</h2>
+              <div className="p-10 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+                <p className="text-lg text-slate-200 leading-relaxed font-light italic mb-8">
+                  "Traditional stop-loss models are fundamentally misaligned. At Zenith, we've rebuilt the process to prioritize clinical oversight, financial transparency, and predictable outcomes."
                 </p>
-                <div className="w-12 h-1 bg-blue-500"></div>
+                <div className="w-12 h-1 bg-blue-400"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 bg-zenith-navy relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+      {/* Final CTA - White */}
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">Ready to learn more?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy mb-12 tracking-tight">Ready to learn more?</h2>
           
           <div className="flex justify-center">
             <Link 

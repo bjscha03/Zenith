@@ -4,17 +4,24 @@ import { Link } from 'react-router-dom';
 const CaptiveIntegration: React.FC = () => {
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="bg-slate-50 py-24 md:py-32 border-b border-slate-200 relative overflow-hidden">
+      {/* Hero Section - Blue with Image Underlay */}
+      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+        {/* Background Image - Blueprint/architectural theme */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop')" }}
+        ></div>
+        {/* Blue Overlay */}
+        <div className="absolute inset-0 bg-zenith-navy/90"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-6 block">Strategic Alignment</span>
-            <h1 className="text-4xl md:text-6xl font-bold text-zenith-navy leading-tight tracking-tight mb-8">
+            <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Strategic Alignment</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               When Stop-Loss and Captives Work Together — <br/>
-              <span className="text-zenith-blue italic decoration-blue-500/30 underline underline-offset-8 decoration-4">Everyone</span> Wins.
+              <span className="text-blue-400 italic underline underline-offset-8 decoration-4 decoration-blue-500/50">Everyone</span> Wins.
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed font-light max-w-2xl">
+            <p className="text-xl text-slate-300 leading-relaxed font-light max-w-2xl">
               We bridge the structural gap between risk transfer and risk retention to ensure your captive performs as engineered.
             </p>
           </div>
@@ -112,8 +119,8 @@ const CaptiveIntegration: React.FC = () => {
         </div>
       </section>
 
-      {/* Premium & Capital Flow Diagram Section */}
-      <section className="py-20 md:py-24 bg-slate-50 border-y border-slate-200">
+      {/* Premium & Capital Flow Diagram Section - White */}
+      <section className="py-20 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
             <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-6 block">Capital Architecture</span>
@@ -315,8 +322,8 @@ const CaptiveIntegration: React.FC = () => {
         </div>
       </section>
 
-      {/* Our Dual Role Section */}
-      <section className="py-24 bg-white">
+      {/* Our Dual Role Section - Blue */}
+      <section className="py-24 bg-zenith-navy relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-12">

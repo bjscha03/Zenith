@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -26,24 +25,31 @@ const ForBrokers: React.FC = () => {
 
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="bg-slate-50 py-24 md:py-32 border-b border-slate-200 relative overflow-hidden">
+      {/* Hero Section - Blue with Image Underlay */}
+      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+        {/* Background Image - Navigation/direction theme */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop')" }}
+        ></div>
+        {/* Blue Overlay */}
+        <div className="absolute inset-0 bg-zenith-navy/90"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
-            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-6 block">Broker Partnership</span>
-            <h1 className="text-4xl md:text-6xl font-bold text-zenith-navy leading-tight tracking-tight mb-8">
+            <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Broker Partnership</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               Built for Brokers Who Want to <br/>
-              <span className="text-zenith-blue italic decoration-blue-500/30 underline underline-offset-8 decoration-4">Win Renewals</span> Not Defend Them.
+              <span className="text-blue-400 italic underline underline-offset-8 decoration-4 decoration-blue-500/50">Win Renewals</span> Not Defend Them.
             </h1>
-            <p className="text-xl text-slate-600 leading-relaxed font-light max-w-2xl">
+            <p className="text-xl text-slate-300 leading-relaxed font-light max-w-2xl">
               We provide the technical scaffolding and clinical oversight that turns stop-loss from a commodity into a strategic advantage.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Submission Requirements Section */}
+      {/* Submission Requirements Section - White */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
@@ -110,38 +116,39 @@ const ForBrokers: React.FC = () => {
         </div>
       </section>
 
-      {/* Benefits & Support Grid */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Benefits & Support Grid - Blue */}
+      <section className="py-24 bg-zenith-navy relative overflow-hidden">
+        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="p-10 bg-white rounded-2xl border border-slate-100 shadow-sm">
-              <h3 className="text-xl font-bold text-zenith-navy mb-6 flex items-center">
-                <span className="w-10 h-10 bg-blue-50 text-blue-600 rounded flex items-center justify-center mr-4">
+            <div className="p-10 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+              <h3 className="text-xl font-bold text-white mb-6 flex items-center">
+                <span className="w-10 h-10 bg-white/10 text-blue-400 rounded flex items-center justify-center mr-4 border border-white/20">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </span>
                 What brokers receive
               </h3>
-              <ul className="space-y-4 text-slate-600 text-sm leading-relaxed">
+              <ul className="space-y-4 text-slate-300 text-sm leading-relaxed">
                 <li className="flex items-start">
-                  <span className="text-blue-500 font-bold mr-3">✓</span>
+                  <span className="text-blue-400 font-bold mr-3">✓</span>
                   Direct access to our decision-making underwriting team (no gatekeepers).
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-500 font-bold mr-3">✓</span>
+                  <span className="text-blue-400 font-bold mr-3">✓</span>
                   Predictive underwriting insights based on clinical modeling, not just lag data.
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-500 font-bold mr-3">✓</span>
+                  <span className="text-blue-400 font-bold mr-3">✓</span>
                   Real-time high-claimant reporting and intervention summaries.
                 </li>
                 <li className="flex items-start">
-                  <span className="text-blue-500 font-bold mr-3">✓</span>
+                  <span className="text-blue-400 font-bold mr-3">✓</span>
                   Full transparency into surplus generation and renewal repricing logic.
                 </li>
               </ul>
             </div>
 
-            <div className="p-10 bg-white rounded-2xl border border-slate-100 shadow-sm">
+            <div className="p-10 bg-white rounded-2xl shadow-xl">
               <h3 className="text-xl font-bold text-zenith-navy mb-6 flex items-center">
                 <span className="w-10 h-10 bg-blue-50 text-blue-600 rounded flex items-center justify-center mr-4">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
@@ -162,7 +169,7 @@ const ForBrokers: React.FC = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - White */}
       <section className="py-24 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -193,7 +200,7 @@ const ForBrokers: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
+      {/* Final CTA Section - Blue */}
       <section className="py-24 bg-zenith-navy relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">

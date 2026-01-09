@@ -4,15 +4,22 @@ import { Link } from 'react-router-dom';
 const Careers: React.FC = () => {
   return (
     <div className="w-full">
-      {/* Hero Section */}
-      <section className="bg-slate-50 py-24 border-b border-slate-200 relative overflow-hidden">
+      {/* Hero Section - Blue with Image Underlay */}
+      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+        {/* Background Image - Team/collaboration theme */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop')" }}
+        ></div>
+        {/* Blue Overlay */}
+        <div className="absolute inset-0 bg-zenith-navy/90"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-8 block">Join Our Team</span>
-          <h1 className="text-4xl md:text-6xl font-bold text-zenith-navy leading-tight tracking-tight mb-8 max-w-5xl mx-auto">
+          <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-8 block">Join Our Team</span>
+          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8 max-w-5xl mx-auto">
             Build the Future of Healthcare Risk Management
           </h1>
-          <p className="text-xl text-slate-500 font-light max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 font-light max-w-3xl mx-auto">
             At Zenith, we're assembling a team of innovative professionals committed to transforming the self-funded healthcare landscape.
           </p>
         </div>
