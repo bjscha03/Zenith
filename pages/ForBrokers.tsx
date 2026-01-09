@@ -74,7 +74,8 @@ const ForBrokers: React.FC = () => {
               </div>
 
               <a 
-                href="#" 
+                href="/brochures/zenith-rfp-template.xlsx"
+                download
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-zenith-navy font-black text-[10px] uppercase tracking-widest rounded group hover:bg-blue-50 transition-all w-full sm:w-auto"
               >
                 <svg className="w-4 h-4 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
