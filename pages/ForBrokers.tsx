@@ -50,33 +50,32 @@ const ForBrokers: React.FC = () => {
       </section>
 
       {/* Submission Requirements Section - White */}
-      <section className="py-24 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div className="bg-zenith-navy p-12 rounded-3xl text-white relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
+          <div className="grid lg:grid-cols-2 gap-12 items-stretch">
+            {/* Left Column - Submission Requirements */}
+            <div className="bg-zenith-navy p-10 lg:p-12 rounded-2xl text-white relative overflow-hidden flex flex-col">
+              <div className="absolute top-0 right-0 p-6 opacity-10">
+                <svg className="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V7h2v9zm4 0h-2V7h2v9z" />
                 </svg>
               </div>
-              <h2 className="text-[12px] font-black text-blue-400 uppercase tracking-[0.3em] mb-10">Submission Pipeline</h2>
-              <h3 className="text-2xl font-bold mb-8">Submission Requirements</h3>
+              <h2 className="text-[11px] font-black text-blue-400 uppercase tracking-[0.3em] mb-6">Submission Pipeline</h2>
+              <h3 className="text-2xl font-bold mb-6">Submission Requirements</h3>
               
-              <div className="space-y-8 mb-12">
-                <div>
-                  <h4 className="text-blue-400 text-xs font-black uppercase tracking-widest mb-4">Required Documents</h4>
-                  <ul className="space-y-3 text-slate-300 text-sm font-light">
-                    <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Current Census (Excel format)</li>
-                    <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Current Pricing and Renewal</li>
-                    <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Large Claim Reports (over 50% of spec)</li>
-                    <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Summary of Benefits (SBCs)</li>
-                  </ul>
-                </div>
+              <div className="flex-grow">
+                <h4 className="text-blue-400 text-xs font-black uppercase tracking-widest mb-4">Required Documents</h4>
+                <ul className="space-y-3 text-slate-300 text-sm font-light mb-10">
+                  <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Current Census (Excel format)</li>
+                  <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Current pricing and renewal</li>
+                  <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Large Claim Reports (over 50% of spec)</li>
+                  <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Summary of Benefits (SBCs)</li>
+                </ul>
               </div>
 
               <a 
                 href="#" 
-                className="inline-flex items-center px-8 py-4 bg-white text-zenith-navy font-black text-[10px] uppercase tracking-widest rounded group hover:bg-blue-50 transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white text-zenith-navy font-black text-[10px] uppercase tracking-widest rounded group hover:bg-blue-50 transition-all w-full sm:w-auto"
               >
                 <svg className="w-4 h-4 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" />
@@ -85,25 +84,26 @@ const ForBrokers: React.FC = () => {
               </a>
             </div>
 
-            <div className="py-8">
-              <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10 text-center">Strategic Alignment</h2>
-              <h3 className="text-3xl font-bold text-zenith-navy mb-8 text-center">Who Is a Good Fit</h3>
-              <p className="text-slate-600 leading-relaxed mb-10 text-center max-w-lg mx-auto">
-                We partner with advisors focused on proactive planning, long-term optimization, and strategic alignment with client goals.
+            {/* Right Column - What We Look For */}
+            <div className="flex flex-col">
+              <h2 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Strategic Alignment</h2>
+              <h3 className="text-2xl font-bold text-zenith-navy mb-4">What we look for in a group</h3>
+              <p className="text-slate-600 leading-relaxed mb-8 text-sm">
+                Zenith is built for advisors who move beyond the annual spreadsheet war. We deliver the best results for employers who are ready to embrace clinical oversight and financial transparency.
               </p>
               
-              <div className="flex flex-col gap-6 max-w-md mx-auto">
-                <div className="p-6 border-l-4 border-blue-500 bg-slate-50">
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Funding Status</h4>
-                  <p className="text-slate-500 text-sm">Self-funded, level-funded, or fully insured groups ready to transition into the right structure.</p>
+              <div className="flex flex-col gap-4 flex-grow">
+                <div className="p-5 border-l-4 border-blue-500 bg-slate-50 rounded-r-lg">
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-1">Funding Status</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">Self-funded, level-funded, or fully insured groups positioned to transition into the right structure.</p>
                 </div>
-                <div className="p-6 border-l-4 border-blue-500 bg-slate-50">
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Strategic Outlook</h4>
-                  <p className="text-slate-500 text-sm">Employers seeking multi-year stability, captive readiness, and proactive risk management.</p>
+                <div className="p-5 border-l-4 border-blue-500 bg-slate-50 rounded-r-lg">
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-1">Strategic Outlook</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">Employers aligned with a multi-year strategy focused on stability, captive readiness, and proactive risk management.</p>
                 </div>
-                <div className="p-6 border-l-4 border-blue-500 bg-slate-50">
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Group Size</h4>
-                  <p className="text-slate-500 text-sm">10 to 500+ employee lives across various industries.</p>
+                <div className="p-5 border-l-4 border-blue-500 bg-slate-50 rounded-r-lg">
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-1">Group Size</h4>
+                  <p className="text-slate-500 text-sm leading-relaxed">10 to 500+ employee lives across various industries.</p>
                 </div>
               </div>
             </div>
