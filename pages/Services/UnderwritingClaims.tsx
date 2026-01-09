@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -16,7 +15,7 @@ const UnderwritingClaims: React.FC = () => {
               <span className="text-zenith-blue italic decoration-blue-500/30 underline underline-offset-8 decoration-4">Before</span> It Hits the Claims File.
             </h1>
             <p className="text-xl text-slate-600 leading-relaxed font-light max-w-2xl">
-              We bridge the gap between reactive insurance and proactive risk management through disciplined methodology and clinical stewardship.
+              We bridge the gap between reactive insurance and proactive risk management through disciplined methodology and clinical oversight.
             </p>
           </div>
         </div>
@@ -32,7 +31,7 @@ const UnderwritingClaims: React.FC = () => {
                 Approach & Methodology
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                Our underwriting isn't just a spreadsheet exercise. It’s a multi-dimensional assessment that looks beyond historical claims to identify the underlying clinical and financial drivers of risk. By applying a rigorous, engineering-led methodology, we provide stability in an otherwise volatile market.
+                Our underwriting isn't just a spreadsheet exercise. It's a multi-dimensional assessment that looks beyond historical claims to identify the underlying clinical and financial drivers of risk. By applying a rigorous, engineering-led methodology, we provide stability in an otherwise volatile market.
               </p>
               
               <div className="space-y-6">
@@ -89,10 +88,10 @@ const UnderwritingClaims: React.FC = () => {
 
           <div className="grid md:grid-cols-4 gap-4">
             {[
-              { step: '01', title: 'Data Ingestion', desc: 'Real-time claims data monitoring.' },
+              { step: '01', title: 'Data Analysis', desc: 'Real-time claims data monitoring and review.' },
               { step: '02', title: 'Clinical Trigger', desc: 'Auto-identification of high-risk cases.' },
-              { step: '03', title: 'Medical Review', desc: 'Director-led clinical pathway audit.' },
-              { step: '04', title: 'Containment', desc: 'Immediate intervention at the point of care.' }
+              { step: '03', title: 'Medical Review', desc: 'Doctor-led clinical oversight ensures claims are reviewed with the appropriate clinical expertise.' },
+              { step: '04', title: 'Cost Containment', desc: 'Consultation and recommended strategies to reduce costs while preserving quality care.' }
             ].map((item, idx) => (
               <div key={idx} className="bg-white p-8 rounded border border-slate-100 shadow-sm relative group hover:shadow-md transition-shadow">
                 <span className="absolute top-4 right-4 text-3xl font-black text-slate-50 group-hover:text-blue-50 transition-colors">{item.step}</span>
@@ -111,14 +110,14 @@ const UnderwritingClaims: React.FC = () => {
             <div>
               <h2 className="text-2xl font-bold text-zenith-navy mb-6">Renewal Logic & Repricing</h2>
               <p className="text-slate-600 leading-relaxed mb-8">
-                We reject the reactive renewal model. Our repricing framework is built on a "no-surprises" philosophy, using clinical stewardship data from throughout the plan year to inform the next cycle. This allows for renewals that are based on performance and outcome, not market volatility.
+                We reject the reactive renewal model. Zenith supports renewal outcomes using clinical data and AI-driven insights to guide proactive intervention and smarter long-term planning. This allows for renewals that are based on performance and outcome, not market volatility.
               </p>
               <div className="p-8 border border-slate-100 bg-slate-50 rounded-lg">
                 <h4 className="font-bold text-slate-900 uppercase tracking-widest text-[10px] mb-4 text-blue-600">Performance Metrics</h4>
                 <ul className="space-y-4">
                   <li className="flex justify-between items-center text-sm border-b border-slate-200 pb-2">
-                    <span className="text-slate-600">Loss Ratio Stability</span>
-                    <span className="font-bold text-zenith-navy">92% Average</span>
+                    <span className="text-slate-600">Underwriters Loss Ratio Average</span>
+                    <span className="font-bold text-zenith-navy">86%</span>
                   </li>
                   <li className="flex justify-between items-center text-sm border-b border-slate-200 pb-2">
                     <span className="text-slate-600">Intervention Success</span>
@@ -152,7 +151,7 @@ const UnderwritingClaims: React.FC = () => {
       <section className="py-24 bg-zenith-navy relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">Ready to optimize your portfolio?</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">Ready to optimize your plan?</h2>
           
           <div className="flex justify-center">
             <Link 
