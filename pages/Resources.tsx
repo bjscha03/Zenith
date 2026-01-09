@@ -102,14 +102,13 @@ const Resources: React.FC = () => {
       </section>
 
       {/* Subscription Section */}
-      <section className="py-24 bg-zenith-navy text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+      <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto bg-white/5 backdrop-blur-md border border-white/10 p-10 md:p-16 rounded-3xl">
+          <div className="max-w-5xl mx-auto bg-zenith-navy p-10 md:p-16 rounded-3xl">
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">Stay ahead of the <br/><span className="text-blue-400">risk curve.</span></h2>
-                <p className="text-slate-400 leading-relaxed font-light">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-white">Stay ahead of the <br/><span className="text-blue-400">risk curve.</span></h2>
+                <p className="text-slate-300 leading-relaxed font-light">
                   Receive monthly clinical insights, market volatility reports, and proprietary underwriting updates delivered directly to your inbox. No fluff, just discipline.
                 </p>
               </div>
@@ -124,7 +123,7 @@ const Resources: React.FC = () => {
                     Subscribe for Updates
                   </button>
                 </div>
-                <p className="text-[9px] text-slate-500 uppercase tracking-widest text-center sm:text-left">
+                <p className="text-[9px] text-slate-400 uppercase tracking-widest text-center sm:text-left">
                   We respect your inbox. Unsubscribe at any time.
                 </p>
               </div>
