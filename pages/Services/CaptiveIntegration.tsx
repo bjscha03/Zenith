@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -113,44 +112,131 @@ const CaptiveIntegration: React.FC = () => {
         </div>
       </section>
 
-      {/* Visual Flow & Roles */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
+      {/* Premium & Capital Flow Diagram Section */}
+      <section className="py-20 md:py-24 bg-slate-50 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.4em] mb-6 block">Capital Architecture</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy tracking-tight mb-6">Premium & Capital Flow</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto font-light">
+              A simplified view of how premium, claims, and risk capital flow through the captive structure.
+            </p>
+          </div>
+
+          {/* SVG Diagram */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 md:p-12">
+              <svg viewBox="0 0 600 500" className="w-full h-auto" aria-label="Premium and capital flow diagram">
+                {/* Definitions for gradients and shadows */}
+                <defs>
+                  <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#1e40af"/>
+                    <stop offset="100%" stopColor="#3b82f6"/>
+                  </linearGradient>
+                  <linearGradient id="navyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#0f172a"/>
+                    <stop offset="100%" stopColor="#1e293b"/>
+                  </linearGradient>
+                  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="8" floodOpacity="0.15"/>
+                  </filter>
+                </defs>
+
+                {/* Connection Lines */}
+                {/* Employer to Captive */}
+                <path d="M300 110 L300 190" stroke="url(#blueGradient)" strokeWidth="3" fill="none"/>
+                <text x="315" y="155" fill="#3b82f6" fontWeight="600" fontSize="11">Premium</text>
+                
+                {/* Reinsurer Admin to Captive */}
+                <path d="M150 280 L210 280" stroke="url(#blueGradient)" strokeWidth="3" fill="none"/>
+                <text x="130" y="265" fill="#64748b" fontWeight="500" fontSize="10">Underwriting</text>
+                
+                {/* Captive to Reinsurer Excess */}
+                <path d="M300 370 L300 420" stroke="url(#navyGradient)" strokeWidth="3" fill="none"/>
+                <text x="315" y="400" fill="#64748b" fontWeight="500" fontSize="10">Excess Risk</text>
+
+                {/* Claims arrow into Captive */}
+                <path d="M390 200 L350 240" stroke="#64748b" strokeWidth="2" strokeDasharray="5,3" fill="none"/>
+                <text x="395" y="215" fill="#64748b" fontWeight="500" fontSize="10">Claims</text>
+
+                {/* Employer Circle - Top */}
+                <g filter="url(#shadow)">
+                  <circle cx="300" cy="60" r="50" fill="white" stroke="url(#blueGradient)" strokeWidth="4"/>
+                  <text x="300" y="52" textAnchor="middle" fill="#0f172a" fontWeight="700" fontSize="14">Employer</text>
+                  <text x="300" y="70" textAnchor="middle" fill="#3b82f6" fontWeight="500" fontSize="10">Self-Funded Plan</text>
+                </g>
+
+                {/* Reinsurer Admin Circle - Left */}
+                <g filter="url(#shadow)">
+                  <circle cx="100" cy="280" r="50" fill="white" stroke="url(#blueGradient)" strokeWidth="4"/>
+                  <text x="100" y="272" textAnchor="middle" fill="#0f172a" fontWeight="700" fontSize="12">Reinsurer</text>
+                  <text x="100" y="288" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="9">Underwriting</text>
+                  <text x="100" y="300" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="9">Administration</text>
+                </g>
+
+                {/* Captive Insurer Circle - Center (larger, emphasized) */}
+                <g filter="url(#shadow)">
+                  <circle cx="300" cy="280" r="80" fill="white" stroke="url(#navyGradient)" strokeWidth="5"/>
+                  <circle cx="300" cy="280" r="70" fill="white" stroke="url(#blueGradient)" strokeWidth="2"/>
+                  <text x="300" y="265" textAnchor="middle" fill="#0f172a" fontWeight="800" fontSize="18">Captive</text>
+                  <text x="300" y="285" textAnchor="middle" fill="#0f172a" fontWeight="600" fontSize="13">Insurer</text>
+                  <text x="300" y="305" textAnchor="middle" fill="#3b82f6" fontWeight="500" fontSize="11">Primary Stop Loss</text>
+                </g>
+
+                {/* Reinsurer Excess Circle - Bottom */}
+                <g filter="url(#shadow)">
+                  <circle cx="300" cy="460" r="40" fill="white" stroke="url(#blueGradient)" strokeWidth="4"/>
+                  <text x="300" y="455" textAnchor="middle" fill="#0f172a" fontWeight="700" fontSize="11">Reinsurer</text>
+                  <text x="300" y="470" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="9">Excess Stop Loss</text>
+                </g>
+
+                {/* Flow indicators - small decorative arrows */}
+                <polygon points="300,180 295,170 305,170" fill="#3b82f6"/>
+                <polygon points="200,280 190,275 190,285" fill="#3b82f6"/>
+                <polygon points="300,410 295,400 305,400" fill="#1e293b"/>
+              </svg>
+            </div>
+          </div>
+
+          {/* Clarifier Bullets */}
+          <div className="max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="flex items-start space-x-3 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-blue-600 font-bold text-sm">1</span>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  <span className="font-semibold text-zenith-navy">Employer</span> funds premium into the plan and captive structure
+                </p>
+              </div>
+              <div className="flex items-start space-x-3 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-blue-600 font-bold text-sm">2</span>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  <span className="font-semibold text-zenith-navy">Captive Insurer</span> provides primary stop loss coverage and manages claim flow
+                </p>
+              </div>
+              <div className="flex items-start space-x-3 p-4 bg-white rounded-xl border border-slate-100 shadow-sm">
+                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <span className="text-blue-600 font-bold text-sm">3</span>
+                </div>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  <span className="font-semibold text-zenith-navy">Reinsurers</span> support underwriting and excess stop loss risk transfer
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Dual Role Section */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-10">Optimized Capital Architecture</h2>
-              <div className="relative p-10 bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
-                {/* Visual Representation of Flow */}
-                <div className="flex flex-col space-y-8 relative z-10">
-                  <div className="flex items-center justify-between p-4 border border-blue-100 bg-blue-50/50 rounded-xl">
-                    <span className="text-[10px] font-black uppercase text-blue-600 tracking-widest">Employer Premium</span>
-                    <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                    <span className="text-[10px] font-black uppercase text-slate-900 tracking-widest font-bold">Zenith MGU Admin</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-center py-2">
-                    <div className="w-px h-12 bg-gradient-to-b from-blue-200 to-slate-200"></div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-6 border border-slate-200 rounded-xl text-center bg-white shadow-sm">
-                      <span className="block text-[9px] font-black text-slate-400 uppercase mb-2">Primary Layer</span>
-                      <p className="text-xs font-bold text-zenith-navy uppercase tracking-wider">Stop-Loss Reinsurance</p>
-                    </div>
-                    <div className="p-6 border border-blue-200 rounded-xl text-center bg-blue-50/30">
-                      <span className="block text-[9px] font-black text-blue-500 uppercase mb-2">Surplus Layer</span>
-                      <p className="text-xs font-bold text-zenith-blue uppercase tracking-wider">Captive Retained Capital</p>
-                    </div>
-                  </div>
-                </div>
-                {/* Background decorative text */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] text-[180px] font-black pointer-events-none select-none">FLOW</div>
-              </div>
-              <p className="mt-8 text-sm text-slate-500 italic text-center">Visual: Disciplined flow of premium & capital preservation.</p>
-            </div>
-
             <div className="space-y-12">
               <div>
+                <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-6">The Zenith Advantage</h2>
                 <h3 className="text-2xl font-bold text-zenith-navy mb-4">Our Dual Role</h3>
                 <p className="text-slate-600 leading-relaxed mb-6">
                   Zenith operates at the intersection of underwriting and administration. We serve as both the <span className="font-bold text-zenith-navy">MGU</span> (Underwriting Manager) and the <span className="font-bold text-zenith-navy">Program Manager</span>, ensuring that the stop-loss contract perfectly aligns with the captive's bylaws and risk appetite.
@@ -160,8 +246,23 @@ const CaptiveIntegration: React.FC = () => {
               <div>
                 <h3 className="text-2xl font-bold text-zenith-navy mb-4">Strategic Partnership</h3>
                 <p className="text-slate-600 leading-relaxed">
-                  Advisors bring us into <span className="text-blue-600 font-bold uppercase tracking-wider text-xs">early-stage strategy</span> because captive success isn't determined at renewal—it’s determined during the program design phase. We provide the actuarial grounding and clinical oversight needed to support a multi-year transition to self-funding.
+                  Advisors bring us into <span className="text-blue-600 font-bold uppercase tracking-wider text-xs">early-stage strategy</span> because captive success isn't determined at renewal—it's determined during the program design phase. We provide the actuarial grounding and clinical oversight needed to support a multi-year transition to self-funding.
                 </p>
+              </div>
+            </div>
+
+            <div className="relative p-10 bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden">
+              <div className="flex flex-col space-y-6 relative z-10">
+                <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+                  <span className="block text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">Role 1</span>
+                  <p className="text-lg font-bold text-zenith-navy">Managing General Underwriter</p>
+                  <p className="text-sm text-slate-500 mt-2">Underwriting authority and risk selection</p>
+                </div>
+                <div className="p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
+                  <span className="block text-[10px] font-black text-blue-600 uppercase tracking-widest mb-2">Role 2</span>
+                  <p className="text-lg font-bold text-zenith-navy">Program Manager</p>
+                  <p className="text-sm text-slate-500 mt-2">Captive alignment and administration</p>
+                </div>
               </div>
             </div>
           </div>
