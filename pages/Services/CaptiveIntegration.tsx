@@ -119,7 +119,7 @@ const CaptiveIntegration: React.FC = () => {
         </div>
       </section>
 
-      {/* Premium & Capital Flow Diagram Section - White */}
+      {/* Premium & Capital Flow Diagram Section */}
       <section className="py-20 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 md:mb-16">
@@ -130,147 +130,179 @@ const CaptiveIntegration: React.FC = () => {
             </p>
           </div>
 
-          {/* Premium & Capital Flow Diagram - Pure CSS/React */}
-          <div className="max-w-4xl mx-auto mb-12">
-            <div className="bg-gradient-to-br from-slate-50 to-white rounded-3xl shadow-2xl border border-slate-100 p-8 md:p-12 lg:p-16">
-              
-              {/* Desktop Layout */}
-              <div className="hidden md:block relative">
-                {/* Grid Container */}
-                <div className="relative" style={{ minHeight: '580px' }}>
+          {/* Premium & Capital Flow Diagram */}
+          <div className="max-w-5xl mx-auto mb-12">
+            
+            {/* === MOBILE LAYOUT (base to md) - Vertical Stacked Flow === */}
+            <div className="md:hidden">
+              <div className="flex flex-col items-center space-y-4 px-4">
+                
+                {/* Employer Node */}
+                <div className="bg-white border-2 border-slate-200 shadow-lg p-6 rounded-2xl text-center w-full max-w-xs">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full border-[3px] border-blue-500 bg-white flex items-center justify-center shadow-md">
+                    <span className="font-bold text-zenith-navy text-lg">Employer</span>
+                  </div>
+                  <p className="text-blue-500 text-sm font-medium">Self-Funded Plan</p>
+                </div>
+                
+                {/* Arrow: Premium */}
+                <div className="flex flex-col items-center py-2">
+                  <span className="text-blue-600 font-bold text-sm uppercase tracking-wider mb-2">Premium</span>
+                  <div className="w-0.5 h-6 bg-blue-500"></div>
+                  <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 16l-6-6h12l-6 6z"/>
+                  </svg>
+                </div>
+                
+                {/* Captive Node - Primary/Largest */}
+                <div className="bg-white border-2 border-zenith-navy shadow-xl p-6 rounded-2xl text-center w-full max-w-xs relative">
+                  <div className="w-28 h-28 mx-auto mb-4 rounded-full border-4 border-zenith-navy bg-white flex flex-col items-center justify-center shadow-lg relative">
+                    <div className="absolute inset-1 rounded-full border-2 border-blue-500"></div>
+                    <span className="font-extrabold text-zenith-navy text-xl">Captive</span>
+                    <span className="font-medium text-slate-600 text-sm">Insurer</span>
+                  </div>
+                  <p className="text-blue-500 text-sm font-semibold">Primary Stop Loss</p>
                   
-                  {/* Connection Lines - Using absolute positioned divs */}
-                  {/* Vertical line: Employer to Captive */}
-                  <div className="absolute left-1/2 top-[100px] w-0.5 h-20 bg-gradient-to-b from-blue-400 to-blue-500 -translate-x-1/2"></div>
-                  <div className="absolute left-1/2 top-[175px] -translate-x-1/2 text-blue-500 font-semibold text-sm tracking-wide">Premium</div>
-                  {/* Arrow head */}
-                  <div className="absolute left-1/2 top-[195px] -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-blue-500"></div>
+                  {/* Claims Badge - Mobile alternative to curved arrow */}
+                  <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-slate-100 rounded-full text-slate-600 text-xs font-medium">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="4,2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+                    </svg>
+                    Claims paid back to Employer
+                  </div>
+                </div>
+                
+                {/* Reinsurer Underwriting - Inline callout */}
+                <div className="flex items-center gap-3 w-full max-w-xs bg-slate-50 border border-slate-200 rounded-xl p-4">
+                  <div className="w-14 h-14 rounded-full border-2 border-blue-500 bg-white flex items-center justify-center flex-shrink-0">
+                    <span className="font-semibold text-zenith-navy text-xs">Reinsurer</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 12l6-6v12l-6-6z"/>
+                    </svg>
+                    <div>
+                      <p className="text-slate-600 text-xs font-medium">Underwriting &</p>
+                      <p className="text-slate-600 text-xs font-medium">Administration</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Arrow: Excess Stop Loss */}
+                <div className="flex flex-col items-center py-2">
+                  <div className="w-0.5 h-4 bg-blue-500"></div>
+                  <span className="text-slate-600 font-medium text-sm my-2">Excess Stop Loss</span>
+                  <div className="w-0.5 h-4 bg-blue-500"></div>
+                  <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 16l-6-6h12l-6 6z"/>
+                  </svg>
+                </div>
+                
+                {/* Reinsurer Excess Stop Loss Node */}
+                <div className="bg-white border-2 border-slate-200 shadow-lg p-6 rounded-2xl text-center w-full max-w-xs">
+                  <div className="w-20 h-20 mx-auto mb-4 rounded-full border-[3px] border-blue-500 bg-white flex items-center justify-center shadow-md">
+                    <span className="font-bold text-zenith-navy text-sm">Reinsurer</span>
+                  </div>
+                  <p className="text-slate-500 text-sm font-medium">Excess Stop Loss</p>
+                </div>
+                
+              </div>
+            </div>
+            
+            {/* === DESKTOP LAYOUT (md and up) - Centered Composition with SVG Arrows === */}
+            <div className="hidden md:block">
+              <div className="bg-gradient-to-br from-slate-50 to-white rounded-3xl shadow-2xl border border-slate-100 p-12 lg:p-16">
+                
+                {/* Diagram Container with SVG Overlay */}
+                <div className="relative" style={{ height: '520px' }}>
                   
-                  {/* Vertical line: Captive to Bottom Reinsurer */}
-                  <div className="absolute left-1/2 top-[390px] w-0.5 h-16 bg-gradient-to-b from-blue-400 to-blue-500 -translate-x-1/2"></div>
-                  <div className="absolute left-1/2 top-[420px] -translate-x-1/2 text-slate-500 font-medium text-sm">Excess Stop Loss</div>
-                  {/* Arrow head */}
-                  <div className="absolute left-1/2 top-[450px] -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-blue-500"></div>
+                  {/* SVG Arrow Overlay - All connections in one cohesive layer */}
+                  <svg 
+                    className="absolute inset-0 w-full h-full pointer-events-none" 
+                    viewBox="0 0 800 520"
+                    preserveAspectRatio="xMidYMid meet"
+                  >
+                    <defs>
+                      {/* Blue arrow marker */}
+                      <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+                        <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#3b82f6"/>
+                      </marker>
+                      {/* Gray arrow marker for claims */}
+                      <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+                        <path d="M0,0 L10,5 L0,10 L2,5 Z" fill="#94a3b8"/>
+                      </marker>
+                    </defs>
+                    
+                    {/* Arrow 1: Employer → Captive (Premium - vertical down) */}
+                    <line x1="400" y1="85" x2="400" y2="175" stroke="#3b82f6" strokeWidth="2.5" markerEnd="url(#arrowBlue)"/>
+                    <text x="400" y="140" textAnchor="middle" fill="#3b82f6" fontSize="14" fontWeight="600" fontFamily="system-ui">Premium</text>
+                    
+                    {/* Arrow 2: Left Reinsurer → Captive (Underwriting - horizontal right) */}
+                    <line x1="235" y1="280" x2="315" y2="280" stroke="#3b82f6" strokeWidth="2.5" markerEnd="url(#arrowBlue)"/>
+                    
+                    {/* Arrow 3: Captive → Bottom Reinsurer (Excess Stop Loss - vertical down) */}
+                    <line x1="400" y1="385" x2="400" y2="440" stroke="#3b82f6" strokeWidth="2.5" markerEnd="url(#arrowBlue)"/>
+                    <text x="400" y="420" textAnchor="middle" fill="#64748b" fontSize="13" fontWeight="500" fontFamily="system-ui">Excess Stop Loss</text>
+                    
+                    {/* Arrow 4: Claims - Curved dashed from Captive to Employer (properly connected) */}
+                    <path 
+                      d="M 485 220 Q 560 180, 560 120 Q 560 80, 480 70" 
+                      stroke="#94a3b8" 
+                      strokeWidth="2" 
+                      strokeDasharray="6,4" 
+                      fill="none" 
+                      markerEnd="url(#arrowGray)"
+                    />
+                    <text x="575" y="150" textAnchor="start" fill="#94a3b8" fontSize="13" fontWeight="500" fontFamily="system-ui">Claims</text>
+                  </svg>
                   
-                  {/* Horizontal line: Left Reinsurer to Captive */}
-                  <div className="absolute left-[180px] top-[305px] w-24 h-0.5 bg-gradient-to-r from-blue-400 to-blue-500"></div>
-                  {/* Arrow head */}
-                  <div className="absolute left-[275px] top-[305px] -translate-y-1/2 w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[8px] border-l-blue-500"></div>
-                  
-                  {/* Curved Claims Arrow - positioned on right */}
-                  <div className="absolute right-[120px] top-[110px] text-slate-400 font-medium text-sm">Claims</div>
-                  <div className="absolute right-[100px] top-[85px] w-16 h-32 border-r-2 border-t-2 border-dashed border-slate-300 rounded-tr-3xl"></div>
-                  {/* Arrow head for claims */}
-                  <div className="absolute right-[155px] top-[85px] w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-b-[7px] border-b-slate-400"></div>
-                  
-                  {/* === NODES === */}
-                  
-                  {/* Employer Node - Top Center */}
+                  {/* Node: Employer - Top Center */}
                   <div className="absolute left-1/2 top-0 -translate-x-1/2">
-                    <div className="w-32 h-32 rounded-full bg-white border-[3px] border-blue-500 shadow-lg shadow-blue-500/10 flex flex-col items-center justify-center transition-all hover:shadow-xl hover:shadow-blue-500/20 hover:scale-105">
-                      <span className="font-bold text-slate-800 text-lg">Employer</span>
-                      <span className="text-blue-500 text-xs font-medium mt-1">Self-Funded Plan</span>
+                    <div className="bg-white border border-slate-200 hover:border-blue-300 shadow-md hover:shadow-lg p-5 rounded-2xl text-center w-40 transition-all duration-300">
+                      <div className="w-16 h-16 mx-auto mb-3 rounded-full border-[3px] border-blue-500 bg-white flex items-center justify-center">
+                        <span className="font-bold text-zenith-navy text-sm">Employer</span>
+                      </div>
+                      <p className="text-blue-500 text-xs font-medium">Self-Funded Plan</p>
                     </div>
                   </div>
                   
-                  {/* Left Reinsurer Node */}
-                  <div className="absolute left-[30px] top-[250px]">
-                    <div className="text-center mb-3">
-                      <span className="text-slate-400 text-xs font-medium leading-tight block">Underwriting</span>
-                      <span className="text-slate-400 text-xs font-medium leading-tight block">Administration</span>
+                  {/* Node: Left Reinsurer - Underwriting Administration */}
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2">
+                    <div className="text-center mb-2">
+                      <span className="text-slate-500 text-xs font-medium block">Underwriting</span>
+                      <span className="text-slate-500 text-xs font-medium block">Administration</span>
                     </div>
-                    <div className="w-28 h-28 rounded-full bg-white border-[3px] border-blue-500 shadow-lg shadow-blue-500/10 flex flex-col items-center justify-center transition-all hover:shadow-xl hover:shadow-blue-500/20 hover:scale-105">
-                      <span className="font-bold text-slate-800">Reinsurer</span>
-                    </div>
-                  </div>
-                  
-                  {/* Captive Node - Center (Largest, Emphasized) */}
-                  <div className="absolute left-1/2 top-[210px] -translate-x-1/2">
-                    <div className="w-44 h-44 rounded-full bg-white border-4 border-slate-800 shadow-2xl shadow-slate-900/20 flex flex-col items-center justify-center relative transition-all hover:shadow-3xl hover:scale-[1.02]">
-                      {/* Inner blue ring */}
-                      <div className="absolute inset-2 rounded-full border-2 border-blue-500"></div>
-                      <span className="font-extrabold text-slate-800 text-2xl">Captive</span>
-                      <span className="font-semibold text-slate-700 text-base mt-1">Insurer</span>
-                      <span className="text-blue-500 text-sm font-medium mt-2">Primary Stop Loss</span>
+                    <div className="bg-white border border-slate-200 hover:border-blue-300 shadow-md hover:shadow-lg p-5 rounded-2xl text-center w-36 transition-all duration-300">
+                      <div className="w-14 h-14 mx-auto mb-2 rounded-full border-[3px] border-blue-500 bg-white flex items-center justify-center">
+                        <span className="font-bold text-zenith-navy text-xs">Reinsurer</span>
+                      </div>
                     </div>
                   </div>
                   
-                  {/* Bottom Reinsurer Node */}
+                  {/* Node: Captive - Center (Largest, Dominant) */}
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="bg-white border-2 border-zenith-navy shadow-2xl p-6 rounded-2xl text-center w-48 transition-all duration-300 hover:shadow-3xl">
+                      <div className="w-24 h-24 mx-auto mb-3 rounded-full border-4 border-zenith-navy bg-white flex flex-col items-center justify-center relative">
+                        <div className="absolute inset-1 rounded-full border-2 border-blue-500"></div>
+                        <span className="font-extrabold text-zenith-navy text-xl">Captive</span>
+                        <span className="font-medium text-slate-600 text-sm">Insurer</span>
+                      </div>
+                      <p className="text-blue-500 text-sm font-semibold">Primary Stop Loss</p>
+                    </div>
+                  </div>
+                  
+                  {/* Node: Bottom Reinsurer - Excess Stop Loss */}
                   <div className="absolute left-1/2 bottom-0 -translate-x-1/2">
-                    <div className="w-32 h-32 rounded-full bg-white border-[3px] border-blue-500 shadow-lg shadow-blue-500/10 flex flex-col items-center justify-center transition-all hover:shadow-xl hover:shadow-blue-500/20 hover:scale-105">
-                      <span className="font-bold text-slate-800">Reinsurer</span>
-                      <span className="text-slate-500 text-xs font-medium mt-1">Excess Stop Loss</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Mobile Layout - Vertical Flow */}
-              <div className="md:hidden">
-                <div className="flex flex-col items-center space-y-6">
-                  
-                  {/* Employer */}
-                  <div className="w-36 h-36 rounded-full bg-white border-[3px] border-blue-500 shadow-lg flex flex-col items-center justify-center">
-                    <span className="font-bold text-slate-800 text-lg">Employer</span>
-                    <span className="text-blue-500 text-xs font-medium mt-1">Self-Funded Plan</span>
-                  </div>
-                  
-                  {/* Arrow down with label */}
-                  <div className="flex flex-col items-center">
-                    <span className="text-blue-500 font-semibold text-sm mb-2">Premium</span>
-                    <div className="w-0.5 h-8 bg-blue-500"></div>
-                    <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-blue-500"></div>
-                  </div>
-                  
-                  {/* Captive - Center with side elements */}
-                  <div className="relative">
-                    {/* Claims indicator */}
-                    <div className="absolute -right-16 top-0 text-slate-400 text-xs font-medium flex items-center gap-1">
-                      <svg className="w-4 h-4 rotate-[-45deg]" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="3,2" viewBox="0 0 24 24">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </svg>
-                      Claims
-                    </div>
-                    
-                    <div className="w-44 h-44 rounded-full bg-white border-4 border-slate-800 shadow-2xl flex flex-col items-center justify-center relative">
-                      <div className="absolute inset-2 rounded-full border-2 border-blue-500"></div>
-                      <span className="font-extrabold text-slate-800 text-2xl">Captive</span>
-                      <span className="font-semibold text-slate-700">Insurer</span>
-                      <span className="text-blue-500 text-sm font-medium mt-1">Primary Stop Loss</span>
-                    </div>
-                    
-                    {/* Left Reinsurer indicator */}
-                    <div className="absolute -left-20 top-1/2 -translate-y-1/2 text-center">
-                      <div className="text-slate-400 text-[10px] font-medium leading-tight mb-1">
-                        <div>Underwriting</div>
-                        <div>Admin</div>
+                    <div className="bg-white border border-slate-200 hover:border-blue-300 shadow-md hover:shadow-lg p-5 rounded-2xl text-center w-40 transition-all duration-300">
+                      <div className="w-16 h-16 mx-auto mb-3 rounded-full border-[3px] border-blue-500 bg-white flex items-center justify-center">
+                        <span className="font-bold text-zenith-navy text-xs">Reinsurer</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <div className="w-12 h-12 rounded-full bg-white border-2 border-blue-500 shadow flex items-center justify-center">
-                          <span className="font-semibold text-slate-800 text-[10px]">Reinsurer</span>
-                        </div>
-                        <div className="w-0 h-0 border-t-[4px] border-t-transparent border-b-[4px] border-b-transparent border-l-[6px] border-l-blue-500"></div>
-                      </div>
+                      <p className="text-slate-500 text-xs font-medium">Excess Stop Loss</p>
                     </div>
-                  </div>
-                  
-                  {/* Arrow down with label */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-0.5 h-4 bg-blue-500"></div>
-                    <span className="text-slate-500 text-xs font-medium my-2">Excess Stop Loss</span>
-                    <div className="w-0.5 h-4 bg-blue-500"></div>
-                    <div className="w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-blue-500"></div>
-                  </div>
-                  
-                  {/* Bottom Reinsurer */}
-                  <div className="w-32 h-32 rounded-full bg-white border-[3px] border-blue-500 shadow-lg flex flex-col items-center justify-center">
-                    <span className="font-bold text-slate-800 text-sm">Reinsurer</span>
-                    <span className="text-slate-500 text-[10px] font-medium mt-1">Excess Stop Loss</span>
                   </div>
                   
                 </div>
               </div>
-              
             </div>
           </div>
 
