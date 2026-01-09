@@ -70,12 +70,12 @@ const Home: React.FC = () => {
       </section>
 
             {/* 3. Risk Flow Explanation - Circular Flow Diagram */}
-      <section className="py-32 bg-gradient-to-b from-slate-50 to-white border-y border-slate-100 overflow-hidden">
+      <section className="py-32 bg-zenith-navy overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-sm font-black text-blue-600 uppercase tracking-[0.3em] mb-6">The Lifecycle</h2>
-            <h3 className="text-4xl md:text-5xl font-bold text-zenith-navy mb-8 tracking-tight">Aligned for Optimal Renewal</h3>
-            <p className="text-slate-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">Every step is structured to guide your plan toward predictable, performance-driven renewal outcomes.</p>
+            <h2 className="text-sm font-black text-blue-400 uppercase tracking-[0.3em] mb-6">The Lifecycle</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-8 tracking-tight">Aligned for Optimal Renewal</h3>
+            <p className="text-slate-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">Every step is structured to guide your plan toward predictable, performance-driven renewal outcomes.</p>
           </div>
           
           {/* Circular Flow Diagram - Desktop: Circle, Mobile: Vertical */}
@@ -87,54 +87,54 @@ const Home: React.FC = () => {
               <div className="flex flex-col items-center space-y-4">
                 
                 {/* Step 1 */}
-                <div className="bg-white border-2 border-slate-200 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
-                  <div className="w-10 h-10 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">1</div>
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Strategic Pricing</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Data-driven pricing designed for long-term sustainability and predictable renewals</p>
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
+                  <div className="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">1</div>
+                  <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Strategic Pricing</h4>
+                  <p className="text-slate-300 text-xs leading-relaxed">Data-driven pricing designed for long-term sustainability and predictable renewals</p>
                 </div>
                 
                 {/* Arrow */}
-                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 
                 {/* Step 2 */}
-                <div className="bg-white border-2 border-slate-200 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
-                  <div className="w-10 h-10 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">2</div>
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Smart Underwriting</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Advanced risk assessment using clinical data and analytics to establish optimal terms</p>
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
+                  <div className="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">2</div>
+                  <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Smart Underwriting</h4>
+                  <p className="text-slate-300 text-xs leading-relaxed">Advanced risk assessment using clinical data and analytics to establish optimal terms</p>
                 </div>
                 
                 {/* Arrow */}
-                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 
                 {/* Step 3 */}
-                <div className="bg-white border-2 border-slate-200 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
-                  <div className="w-10 h-10 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">3</div>
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Doctor-Led Clinical Review</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Independent clinical oversight and high-cost claim evaluation to support appropriate, cost-aware care decisions</p>
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
+                  <div className="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">3</div>
+                  <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Doctor-Led Clinical Review</h4>
+                  <p className="text-slate-300 text-xs leading-relaxed">Independent clinical oversight and high-cost claim evaluation to support appropriate, cost-aware care decisions</p>
                 </div>
                 
                 {/* Arrow */}
-                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 
                 {/* Step 4 */}
-                <div className="bg-white border-2 border-slate-200 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
-                  <div className="w-10 h-10 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">4</div>
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Cost Containment</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Recommended strategies to reduce plan costs while preserving quality care and member experience</p>
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
+                  <div className="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">4</div>
+                  <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Cost Containment</h4>
+                  <p className="text-slate-300 text-xs leading-relaxed">Recommended strategies to reduce plan costs while preserving quality care and member experience</p>
                 </div>
                 
                 {/* Arrow */}
-                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 
                 {/* Step 5 */}
-                <div className="bg-white border-2 border-slate-200 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
-                  <div className="w-10 h-10 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">5</div>
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Surplus Retention</h4>
-                  <p className="text-slate-500 text-xs leading-relaxed">Disciplined surplus guidance that rewards performance and supports long-term plan stability</p>
+                <div className="bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg p-5 rounded-2xl text-center w-full max-w-sm">
+                  <div className="w-10 h-10 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-lg font-bold">5</div>
+                  <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Surplus Retention</h4>
+                  <p className="text-slate-300 text-xs leading-relaxed">Disciplined surplus guidance that rewards performance and supports long-term plan stability</p>
                 </div>
                 
                 {/* Arrow to Renewal */}
-                <svg className="w-6 h-6 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+                <svg className="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 
                 {/* Renewal - Mobile */}
                 <div className="w-40 h-40 bg-gradient-to-br from-zenith-navy to-blue-900 rounded-full flex items-center justify-center shadow-2xl ring-4 ring-blue-400/20">
@@ -146,7 +146,7 @@ const Home: React.FC = () => {
                 </div>
                 
                 {/* Loop back indicator */}
-                <div className="flex items-center gap-2 text-slate-400 text-xs">
+                <div className="flex items-center gap-2 text-blue-300 text-xs">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
                   <span className="uppercase tracking-wider">Continuous Cycle</span>
                 </div>
@@ -167,20 +167,20 @@ const Home: React.FC = () => {
               {/* Circular Flow Path - Active System Loop */}
               <svg className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] pointer-events-none" viewBox="0 0 520 520" fill="none">
                 {/* Primary circular path - visible and intentional */}
-                <circle cx="260" cy="260" r="240" stroke="#CBD5E1" strokeWidth="2.5" fill="none" />
+                <circle cx="260" cy="260" r="240" stroke="#60A5FA" strokeWidth="2.5" fill="none" opacity="0.4" />
                 
                 {/* 4 arrows precisely positioned ON the circle, 90° apart, tangent to path */}
                 {/* Arrow 1: Upper-right at 315° (between Step 1 → Step 2) */}
-                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(430, 90) rotate(405)" />
+                <polygon points="-6,-7 8,0 -6,7" fill="#60A5FA" transform="translate(430, 90) rotate(405)" />
                 
                 {/* Arrow 2: Lower-right at 45° (between Step 2 → Step 3) */}
-                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(430, 430) rotate(135)" />
+                <polygon points="-6,-7 8,0 -6,7" fill="#60A5FA" transform="translate(430, 430) rotate(135)" />
                 
                 {/* Arrow 3: Lower-left at 135° (between Step 3 → Step 4) */}
-                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(90, 430) rotate(225)" />
+                <polygon points="-6,-7 8,0 -6,7" fill="#60A5FA" transform="translate(90, 430) rotate(225)" />
                 
                 {/* Arrow 4: Upper-left at 225° (between Step 5 → Step 1) */}
-                <polygon points="-6,-7 8,0 -6,7" fill="#64748B" transform="translate(90, 90) rotate(315)" />
+                <polygon points="-6,-7 8,0 -6,7" fill="#60A5FA" transform="translate(90, 90) rotate(315)" />
               </svg>
               
               {/* Flow Container */}
@@ -188,46 +188,46 @@ const Home: React.FC = () => {
                 
                 {/* Step 1: Strategic Pricing - Top Center */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-0">
-                  <div className="bg-white border border-slate-200 hover:border-zenith-blue/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
-                    <div className="w-11 h-11 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">1</div>
-                    <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Strategic Pricing</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">Data-driven pricing designed for long-term sustainability and predictable renewals</p>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-blue-400/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
+                    <div className="w-11 h-11 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">1</div>
+                    <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Strategic Pricing</h4>
+                    <p className="text-slate-300 text-xs leading-relaxed">Data-driven pricing designed for long-term sustainability and predictable renewals</p>
                   </div>
                 </div>
                 
                 {/* Step 2: Smart Underwriting - Right Upper */}
                 <div className="absolute right-0 top-28">
-                  <div className="bg-white border border-slate-200 hover:border-zenith-blue/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
-                    <div className="w-11 h-11 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">2</div>
-                    <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Smart Underwriting</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">Advanced risk assessment using clinical data and analytics to establish optimal terms</p>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-blue-400/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
+                    <div className="w-11 h-11 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">2</div>
+                    <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Smart Underwriting</h4>
+                    <p className="text-slate-300 text-xs leading-relaxed">Advanced risk assessment using clinical data and analytics to establish optimal terms</p>
                   </div>
                 </div>
                 
                 {/* Step 3: Doctor-Led Clinical Review - Right Lower */}
                 <div className="absolute right-0 bottom-28">
-                  <div className="bg-white border border-slate-200 hover:border-zenith-blue/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
-                    <div className="w-11 h-11 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">3</div>
-                    <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Doctor-Led Clinical Review</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">Independent clinical oversight and high-cost claim evaluation to support appropriate, cost-aware care decisions</p>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-blue-400/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
+                    <div className="w-11 h-11 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">3</div>
+                    <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Doctor-Led Clinical Review</h4>
+                    <p className="text-slate-300 text-xs leading-relaxed">Independent clinical oversight and high-cost claim evaluation to support appropriate, cost-aware care decisions</p>
                   </div>
                 </div>
                 
                 {/* Step 4: Cost Containment - Left Lower */}
                 <div className="absolute left-0 bottom-28">
-                  <div className="bg-white border border-slate-200 hover:border-zenith-blue/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
-                    <div className="w-11 h-11 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">4</div>
-                    <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Cost Containment</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">Recommended strategies to reduce plan costs while preserving quality care and member experience</p>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-blue-400/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
+                    <div className="w-11 h-11 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">4</div>
+                    <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Cost Containment</h4>
+                    <p className="text-slate-300 text-xs leading-relaxed">Recommended strategies to reduce plan costs while preserving quality care and member experience</p>
                   </div>
                 </div>
                 
                 {/* Step 5: Surplus Retention - Left Upper */}
                 <div className="absolute left-0 top-28">
-                  <div className="bg-white border border-slate-200 hover:border-zenith-blue/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
-                    <div className="w-11 h-11 bg-zenith-blue text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">5</div>
-                    <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Surplus Retention</h4>
-                    <p className="text-slate-500 text-xs leading-relaxed">Disciplined surplus guidance that rewards performance and supports long-term plan stability</p>
+                  <div className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-blue-400/50 shadow-md hover:shadow-lg p-6 rounded-2xl text-center w-64 transition-all duration-300">
+                    <div className="w-11 h-11 bg-blue-500 text-white rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">5</div>
+                    <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-2">Surplus Retention</h4>
+                    <p className="text-slate-300 text-xs leading-relaxed">Disciplined surplus guidance that rewards performance and supports long-term plan stability</p>
                   </div>
                 </div>
                 
@@ -237,29 +237,29 @@ const Home: React.FC = () => {
           
           {/* Impact Metrics - Guidance & Alignment Focus */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-3xl mx-auto">
-            <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-5 h-5 text-zenith-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-sm">
+              <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
               </div>
-              <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Structured Guidance</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-white">Structured Guidance</div>
             </div>
-            <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-5 h-5 text-zenith-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-sm">
+              <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
               </div>
-              <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Peak Performance</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-white">Peak Performance</div>
             </div>
-            <div className="text-center p-6 bg-white rounded-xl border border-slate-200 shadow-sm">
-              <div className="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                <svg className="w-5 h-5 text-zenith-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+            <div className="text-center p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-sm">
+              <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-3">
+                <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
               </div>
-              <div className="text-xs font-bold uppercase tracking-wider text-zenith-navy">Aligned Renewal</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-white">Aligned Renewal</div>
             </div>
           </div>
           
           {/* Bottom CTA */}
           <div className="text-center mt-16">
-            <Link to="/services" className="inline-flex items-center gap-3 px-10 py-5 bg-zenith-navy hover:bg-blue-900 text-white font-bold rounded-lg shadow-xl transition-all uppercase tracking-widest text-sm">
+            <Link to="/services" className="inline-flex items-center gap-3 px-10 py-5 bg-white hover:bg-slate-100 text-zenith-navy font-bold rounded-lg shadow-xl transition-all uppercase tracking-widest text-sm">
               Explore Our Services
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </Link>
