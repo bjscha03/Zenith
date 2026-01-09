@@ -2,11 +2,6 @@
 import React from 'react';
 
 const Resources: React.FC = () => {
-  const resourceCategories = [
-    { name: 'Educational PDFs', count: 8 },
-    { name: 'Submission Checklists', count: 4 },
-  ];
-
   const leadMagnets = [
     {
       type: 'Checklist',
@@ -65,24 +60,6 @@ const Resources: React.FC = () => {
             <p className="text-xl text-slate-300 leading-relaxed font-light max-w-2xl">
               Equipping advisors and plan sponsors with the clinical data and strategic frameworks needed to master healthcare risk.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Category Navigation */}
-      <section className="bg-white border-b border-slate-100 sticky top-[80px] z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8 md:space-x-16 py-6 overflow-x-auto no-scrollbar">
-            {resourceCategories.map((cat) => (
-              <button key={cat.name} className="flex items-center space-x-3 group whitespace-nowrap">
-                <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 group-hover:text-blue-600 transition-colors">
-                  {cat.name}
-                </span>
-                <span className="bg-slate-50 text-slate-400 text-[9px] font-black px-2 py-0.5 rounded border border-slate-100 group-hover:bg-blue-50 group-hover:text-blue-600 group-hover:border-blue-100 transition-all">
-                  {cat.count}
-                </span>
-              </button>
-            ))}
           </div>
         </div>
       </section>
