@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Calendar scheduling link - easily swappable
+const CALENDAR_LINK = 'https://calendly.com/chad-zenith';
+
 const Contact: React.FC = () => {
   return (
     <div className="w-full">
@@ -17,11 +20,10 @@ const Contact: React.FC = () => {
           <div className="max-w-3xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Engagement</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
-              Start a Conversation. <br/>
-              <span className="text-blue-400 italic">Precision</span> starts here.
+              Let's Talk <span className="text-blue-400 italic">Strategy</span>.
             </h1>
             <p className="text-xl text-slate-300 leading-relaxed font-light">
-              Connect with our underwriting and clinical teams to discuss your risk profile or partnership opportunities.
+              Schedule a conversation with our team to discuss your risk profile, program structure, or partnership opportunities.
             </p>
           </div>
         </div>
@@ -80,12 +82,9 @@ const Contact: React.FC = () => {
                   <a href="mailto:submissions@zenithrisk.com" className="text-blue-600 font-bold hover:underline decoration-2">submissions@zenithrisk.com</a>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">Office</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed font-light">
-                    Zenith Risk Strategies<br />
-                    1200 Professional Plaza<br />
-                    Dallas, TX 75201
-                  </p>
+                  <h3 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">General Inquiries</h3>
+                  <p className="text-slate-500 text-sm leading-relaxed mb-2 font-light">Questions or partnership discussions:</p>
+                  <a href="mailto:info@zenithrisk.com" className="text-blue-600 font-bold hover:underline decoration-2">info@zenithrisk.com</a>
                 </div>
                 <div className="pt-8 border-t border-slate-100">
                   <div className="flex items-center space-x-6">
@@ -116,14 +115,14 @@ const Contact: React.FC = () => {
               </div>
               <h3 className="text-2xl font-bold text-white mb-4">Schedule a Strategy Call</h3>
               <p className="text-slate-300 text-sm leading-relaxed mb-10 font-light">
-                Book a direct discovery session with our team to explore technical alignment and program feasibility.
+                Book a focused discussion to review your risk profile, explore program structure, and evaluate strategic alignment.
               </p>
-              {/* Calendly Link Button */}
+              {/* Calendar Link Button - name used only here for personalization */}
               <button 
-                onClick={() => window.open('https://calendly.com/gwen-zenith', '_blank')}
+                onClick={() => window.open(CALENDAR_LINK, '_blank')}
                 className="inline-flex items-center px-8 py-4 border-2 border-blue-400 text-blue-400 font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-400 hover:text-zenith-navy transition-all group"
               >
-                Schedule with Gwen
+                Schedule with Chad
                 <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </button>
             </div>
