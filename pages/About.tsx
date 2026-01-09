@@ -2,6 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const About: React.FC = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 140;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({
+        top: elementPosition - offset,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const leadership = [
     {
       name: "Thomas Wagner, CEBS",
@@ -44,24 +56,24 @@ const About: React.FC = () => {
       <div className="bg-white border-b border-slate-100 sticky top-[80px] z-40">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex justify-center space-x-8 md:space-x-12 py-6">
-            <a 
-              href="#mission-statement"
+            <button 
+              onClick={() => scrollToSection('mission-statement')}
               className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
             >
               Mission
-            </a>
-            <a 
-              href="#leadership"
+            </button>
+            <button 
+              onClick={() => scrollToSection('leadership')}
               className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
             >
               Leadership
-            </a>
-            <a 
-              href="#values"
+            </button>
+            <button 
+              onClick={() => scrollToSection('values')}
               className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
             >
               Values
-            </a>
+            </button>
             <Link 
               to="/careers"
               className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
