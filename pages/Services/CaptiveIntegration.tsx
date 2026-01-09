@@ -130,165 +130,167 @@ const CaptiveIntegration: React.FC = () => {
             </p>
           </div>
 
-          {/* Desktop SVG Diagram */}
-          <div className="hidden md:block max-w-4xl mx-auto mb-12">
-            <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-8 lg:p-12">
-              <svg viewBox="0 0 700 580" className="w-full h-auto" aria-label="Premium and capital flow diagram">
-                {/* Definitions */}
+          {/* Unified SVG Diagram - Desktop & Tablet */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-8 lg:p-12">
+              <svg 
+                viewBox="0 0 600 520" 
+                className="w-full h-auto" 
+                aria-label="Premium and capital flow diagram"
+                style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
+              >
+                {/* ===== DEFINITIONS ===== */}
                 <defs>
-                  {/* Arrow markers */}
-                  <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-                    <path d="M0,0 L0,6 L9,3 z" fill="#3b82f6"/>
-                  </marker>
-                  <marker id="arrowNavy" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-                    <path d="M0,0 L0,6 L9,3 z" fill="#0f172a"/>
-                  </marker>
-                  <marker id="arrowGray" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
-                    <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+                  {/* Unified arrow marker - brand blue */}
+                  <marker 
+                    id="arrow" 
+                    markerWidth="12" 
+                    markerHeight="12" 
+                    refX="10" 
+                    refY="6" 
+                    orient="auto" 
+                    markerUnits="userSpaceOnUse"
+                  >
+                    <path d="M0,2 L0,10 L10,6 Z" fill="#2563eb"/>
                   </marker>
                   
-                  {/* Gradients */}
-                  <linearGradient id="blueRing" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#2563eb"/>
-                    <stop offset="100%" stopColor="#3b82f6"/>
-                  </linearGradient>
-                  <linearGradient id="navyRing" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#0f172a"/>
-                    <stop offset="100%" stopColor="#1e293b"/>
-                  </linearGradient>
+                  {/* Dashed arrow marker - same style, slate color */}
+                  <marker 
+                    id="arrowDashed" 
+                    markerWidth="12" 
+                    markerHeight="12" 
+                    refX="10" 
+                    refY="6" 
+                    orient="auto" 
+                    markerUnits="userSpaceOnUse"
+                  >
+                    <path d="M0,2 L0,10 L10,6 Z" fill="#64748b"/>
+                  </marker>
                   
-                  {/* Shadow filter */}
-                  <filter id="nodeShadow" x="-50%" y="-50%" width="200%" height="200%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="8" floodColor="#000" floodOpacity="0.1"/>
+                  {/* Shadow filter for nodes */}
+                  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#0f172a" floodOpacity="0.08"/>
                   </filter>
                 </defs>
 
-                {/* ===== CONNECTION LINES WITH ARROWS ===== */}
+                {/* ===== ARROWS (drawn first, behind nodes) ===== */}
                 
-                {/* 1. Employer → Captive (Premium - downward) */}
-                <line x1="350" y1="115" x2="350" y2="195" stroke="#3b82f6" strokeWidth="3" markerEnd="url(#arrowBlue)"/>
-                <rect x="310" y="145" width="80" height="20" fill="white" rx="4"/>
-                <text x="350" y="159" textAnchor="middle" fill="#3b82f6" fontWeight="600" fontSize="13">Premium</text>
+                {/* Arrow 1: Employer → Captive (straight down) */}
+                <line 
+                  x1="300" y1="95" 
+                  x2="300" y2="175" 
+                  stroke="#2563eb" 
+                  strokeWidth="2.5" 
+                  markerEnd="url(#arrow)"
+                />
+                {/* Label: Premium */}
+                <text 
+                  x="300" y="140" 
+                  textAnchor="middle" 
+                  fill="#2563eb" 
+                  fontSize="13" 
+                  fontWeight="600"
+                >
+                  Premium
+                </text>
 
-                {/* 2. Captive → Employer (Claims - dashed, going up-right) */}
-                <path d="M410 230 Q 450 180 410 115" stroke="#64748b" strokeWidth="2" strokeDasharray="6,4" fill="none" markerEnd="url(#arrowGray)"/>
-                <rect x="448" y="155" width="55" height="20" fill="white" rx="4"/>
-                <text x="475" y="169" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="12">Claims</text>
+                {/* Arrow 2: Left Reinsurer → Captive (straight right) */}
+                <line 
+                  x1="155" y1="260" 
+                  x2="205" y2="260" 
+                  stroke="#2563eb" 
+                  strokeWidth="2.5" 
+                  markerEnd="url(#arrow)"
+                />
+                {/* Label: Underwriting Administration (above line) */}
+                <text 
+                  x="110" y="222" 
+                  textAnchor="middle" 
+                  fill="#64748b" 
+                  fontSize="11" 
+                  fontWeight="500"
+                >
+                  <tspan x="110" dy="0">Underwriting</tspan>
+                  <tspan x="110" dy="13">Administration</tspan>
+                </text>
 
-                {/* 3. Reinsurer (Underwriting) → Captive (left to right) */}
-                <line x1="200" y1="300" x2="260" y2="300" stroke="#3b82f6" strokeWidth="3" markerEnd="url(#arrowBlue)"/>
-                <rect x="115" y="248" width="120" height="36" fill="white" rx="4"/>
-                <text x="175" y="264" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="11">Underwriting</text>
-                <text x="175" y="278" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="11">Administration</text>
+                {/* Arrow 3: Captive → Bottom Reinsurer (straight down) */}
+                <line 
+                  x1="300" y1="345" 
+                  x2="300" y2="415" 
+                  stroke="#2563eb" 
+                  strokeWidth="2.5" 
+                  markerEnd="url(#arrow)"
+                />
+                {/* Label: Excess Stop Loss */}
+                <text 
+                  x="300" y="385" 
+                  textAnchor="middle" 
+                  fill="#64748b" 
+                  fontSize="11" 
+                  fontWeight="500"
+                >
+                  Excess Stop Loss
+                </text>
 
-                {/* 4. Captive → Reinsurer Excess (downward) */}
-                <line x1="350" y1="390" x2="350" y2="460" stroke="#0f172a" strokeWidth="3" markerEnd="url(#arrowNavy)"/>
-                <rect x="290" y="410" width="120" height="20" fill="white" rx="4"/>
-                <text x="350" y="424" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="12">Excess Stop Loss</text>
+                {/* Arrow 4: Claims - curved dashed from Captive to Employer */}
+                <path 
+                  d="M380 210 Q 440 160, 380 95" 
+                  stroke="#64748b" 
+                  strokeWidth="2" 
+                  strokeDasharray="6,4" 
+                  fill="none" 
+                  markerEnd="url(#arrowDashed)"
+                />
+                {/* Label: Claims (along curve) */}
+                <text 
+                  x="435" y="155" 
+                  textAnchor="middle" 
+                  fill="#64748b" 
+                  fontSize="11" 
+                  fontWeight="500"
+                >
+                  Claims
+                </text>
 
                 {/* ===== NODES ===== */}
 
-                {/* Employer Node - Top Center */}
-                <g filter="url(#nodeShadow)">
-                  <circle cx="350" cy="65" r="52" fill="white"/>
-                  <circle cx="350" cy="65" r="52" fill="none" stroke="url(#blueRing)" strokeWidth="4"/>
-                  <text x="350" y="58" textAnchor="middle" fill="#0f172a" fontWeight="700" fontSize="16">Employer</text>
-                  <text x="350" y="78" textAnchor="middle" fill="#3b82f6" fontWeight="500" fontSize="11">Self-Funded Plan</text>
+                {/* Node 1: Employer - Top Center */}
+                <g filter="url(#shadow)">
+                  <circle cx="300" cy="55" r="45" fill="white"/>
+                  <circle cx="300" cy="55" r="45" fill="none" stroke="#2563eb" strokeWidth="3"/>
+                  <text x="300" y="50" textAnchor="middle" fill="#0f172a" fontSize="15" fontWeight="700">Employer</text>
+                  <text x="300" y="68" textAnchor="middle" fill="#2563eb" fontSize="10" fontWeight="500">Self-Funded Plan</text>
                 </g>
 
-                {/* Reinsurer Underwriting Node - Left */}
-                <g filter="url(#nodeShadow)">
-                  <circle cx="105" cy="300" r="52" fill="white"/>
-                  <circle cx="105" cy="300" r="52" fill="none" stroke="url(#blueRing)" strokeWidth="4"/>
-                  <text x="105" y="290" textAnchor="middle" fill="#0f172a" fontWeight="700" fontSize="14">Reinsurer</text>
-                  <text x="105" y="306" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="10">Underwriting</text>
-                  <text x="105" y="318" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="10">Administration</text>
+                {/* Node 2: Left Reinsurer - Left Center */}
+                <g filter="url(#shadow)">
+                  <circle cx="110" cy="260" r="45" fill="white"/>
+                  <circle cx="110" cy="260" r="45" fill="none" stroke="#2563eb" strokeWidth="3"/>
+                  <text x="110" y="265" textAnchor="middle" fill="#0f172a" fontSize="13" fontWeight="700">Reinsurer</text>
                 </g>
 
-                {/* Captive Insurer Node - Center (Largest, emphasized) */}
-                <g filter="url(#nodeShadow)">
-                  <circle cx="350" cy="300" r="90" fill="white"/>
-                  <circle cx="350" cy="300" r="90" fill="none" stroke="url(#navyRing)" strokeWidth="5"/>
-                  <circle cx="350" cy="300" r="80" fill="none" stroke="url(#blueRing)" strokeWidth="2"/>
-                  <text x="350" y="280" textAnchor="middle" fill="#0f172a" fontWeight="800" fontSize="22">Captive</text>
-                  <text x="350" y="305" textAnchor="middle" fill="#0f172a" fontWeight="600" fontSize="15">Insurer</text>
-                  <text x="350" y="328" textAnchor="middle" fill="#3b82f6" fontWeight="500" fontSize="12">Primary Stop Loss</text>
+                {/* Node 3: Captive - Center (largest, emphasized) */}
+                <g filter="url(#shadow)">
+                  <circle cx="300" cy="260" r="85" fill="white"/>
+                  <circle cx="300" cy="260" r="85" fill="none" stroke="#0f172a" strokeWidth="4"/>
+                  <circle cx="300" cy="260" r="75" fill="none" stroke="#2563eb" strokeWidth="2"/>
+                  <text x="300" y="245" textAnchor="middle" fill="#0f172a" fontSize="22" fontWeight="800">Captive</text>
+                  <text x="300" y="270" textAnchor="middle" fill="#0f172a" fontSize="14" fontWeight="600">Insurer</text>
+                  <text x="300" y="292" textAnchor="middle" fill="#2563eb" fontSize="11" fontWeight="500">Primary Stop Loss</text>
                 </g>
 
-                {/* Reinsurer Excess Node - Bottom Center */}
-                <g filter="url(#nodeShadow)">
-                  <circle cx="350" cy="520" r="48" fill="white"/>
-                  <circle cx="350" cy="520" r="48" fill="none" stroke="url(#blueRing)" strokeWidth="4"/>
-                  <text x="350" y="513" textAnchor="middle" fill="#0f172a" fontWeight="700" fontSize="13">Reinsurer</text>
-                  <text x="350" y="530" textAnchor="middle" fill="#64748b" fontWeight="500" fontSize="10">Excess Stop Loss</text>
+                {/* Node 4: Bottom Reinsurer - Bottom Center */}
+                <g filter="url(#shadow)">
+                  <circle cx="300" cy="460" r="45" fill="white"/>
+                  <circle cx="300" cy="460" r="45" fill="none" stroke="#2563eb" strokeWidth="3"/>
+                  <text x="300" y="455" textAnchor="middle" fill="#0f172a" fontSize="13" fontWeight="700">Reinsurer</text>
+                  <text x="300" y="472" textAnchor="middle" fill="#64748b" fontSize="10" fontWeight="500">Excess Stop Loss</text>
                 </g>
               </svg>
             </div>
           </div>
 
-          {/* Mobile Diagram - Stacked Vertical Layout */}
-          <div className="md:hidden max-w-sm mx-auto mb-12">
-            <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6">
-              <div className="flex flex-col items-center space-y-4">
-                {/* Employer */}
-                <div className="w-32 h-32 rounded-full border-4 border-blue-500 bg-white shadow-lg flex flex-col items-center justify-center">
-                  <span className="font-bold text-slate-900 text-sm">Employer</span>
-                  <span className="text-blue-500 text-xs">Self-Funded Plan</span>
-                </div>
-                
-                {/* Arrow down + Premium label */}
-                <div className="flex flex-col items-center">
-                  <span className="text-blue-500 font-semibold text-sm mb-1">Premium</span>
-                  <svg className="w-6 h-8" viewBox="0 0 24 32">
-                    <path d="M12 0 L12 24 M6 18 L12 24 L18 18" stroke="#3b82f6" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-
-                {/* Captive Insurer */}
-                <div className="w-40 h-40 rounded-full border-[5px] border-slate-900 bg-white shadow-xl flex flex-col items-center justify-center relative">
-                  <div className="absolute inset-2 rounded-full border-2 border-blue-500"></div>
-                  <span className="font-extrabold text-slate-900 text-lg">Captive</span>
-                  <span className="font-semibold text-slate-900 text-sm">Insurer</span>
-                  <span className="text-blue-500 text-xs mt-1">Primary Stop Loss</span>
-                </div>
-
-                {/* Claims indicator */}
-                <div className="self-end mr-4 -mt-20 mb-16">
-                  <div className="flex items-center space-x-1 text-slate-500">
-                    <svg className="w-4 h-4" viewBox="0 0 16 16">
-                      <path d="M8 12 L8 4 M4 8 L8 4 L12 8" stroke="#64748b" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="3,2"/>
-                    </svg>
-                    <span className="text-xs font-medium">Claims</span>
-                  </div>
-                </div>
-
-                {/* Underwriting Reinsurer - Left aligned */}
-                <div className="flex items-center space-x-3 self-start">
-                  <div className="w-24 h-24 rounded-full border-4 border-blue-500 bg-white shadow-lg flex flex-col items-center justify-center">
-                    <span className="font-bold text-slate-900 text-xs">Reinsurer</span>
-                    <span className="text-slate-500 text-[10px] text-center leading-tight">Underwriting<br/>Administration</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-slate-500 text-xs mr-2">→</span>
-                  </div>
-                </div>
-
-                {/* Arrow down + Excess label */}
-                <div className="flex flex-col items-center">
-                  <span className="text-slate-600 font-medium text-sm mb-1">Excess Stop Loss</span>
-                  <svg className="w-6 h-8" viewBox="0 0 24 32">
-                    <path d="M12 0 L12 24 M6 18 L12 24 L18 18" stroke="#0f172a" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-
-                {/* Excess Reinsurer */}
-                <div className="w-28 h-28 rounded-full border-4 border-blue-500 bg-white shadow-lg flex flex-col items-center justify-center">
-                  <span className="font-bold text-slate-900 text-xs">Reinsurer</span>
-                  <span className="text-slate-500 text-[10px]">Excess Stop Loss</span>
-                </div>
-              </div>
-            </div>
-          </div>
 
           {/* Clarifier Bullets */}
           <div className="max-w-3xl mx-auto">
