@@ -67,8 +67,7 @@ const ForBrokers: React.FC = () => {
                   <h4 className="text-blue-400 text-xs font-black uppercase tracking-widest mb-4">Required Documents</h4>
                   <ul className="space-y-3 text-slate-300 text-sm font-light">
                     <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Current Census (Excel format)</li>
-                    <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> 24 Months of Monthly Claims & Enrollment</li>
-                    <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Current & Renewal Stop-Loss Terms</li>
+                    <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Current Pricing and Renewal</li>
                     <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Large Claim Reports (over 50% of spec)</li>
                     <li className="flex items-center"><span className="w-1 h-1 bg-blue-500 rounded-full mr-3"></span> Summary of Benefits (SBCs)</li>
                   </ul>
@@ -82,33 +81,29 @@ const ForBrokers: React.FC = () => {
                 <svg className="w-4 h-4 mr-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" />
                 </svg>
-                Download Checklist (.PDF)
+                Download RFP Template
               </a>
             </div>
 
             <div className="py-8">
-              <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10">Strategic Alignment</h2>
-              <h3 className="text-3xl font-bold text-zenith-navy mb-8">What we look for in a group</h3>
-              <p className="text-slate-600 leading-relaxed mb-10">
-                Zenith is built for advisors who move beyond the annual spreadsheet war. We deliver the best results for employers who are ready to embrace clinical oversight and financial transparency.
+              <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-10 text-center">Strategic Alignment</h2>
+              <h3 className="text-3xl font-bold text-zenith-navy mb-8 text-center">Who Is a Good Fit</h3>
+              <p className="text-slate-600 leading-relaxed mb-10 text-center max-w-lg mx-auto">
+                We partner with advisors focused on proactive planning, long-term optimization, and strategic alignment with client goals.
               </p>
               
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="p-6 border-l-4 border-blue-500 bg-slate-50">
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Ideal Group Size</h4>
-                  <p className="text-slate-500 text-xs">10 to 500+ employee lives across various industries.</p>
-                </div>
+              <div className="flex flex-col gap-6 max-w-md mx-auto">
                 <div className="p-6 border-l-4 border-blue-500 bg-slate-50">
                   <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Funding Status</h4>
-                  <p className="text-slate-500 text-xs">Level-funded or fully self-funded transition opportunities.</p>
+                  <p className="text-slate-500 text-sm">Self-funded, level-funded, or fully insured groups ready to transition into the right structure.</p>
                 </div>
                 <div className="p-6 border-l-4 border-blue-500 bg-slate-50">
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Strategy Fit</h4>
-                  <p className="text-slate-500 text-xs">Captive-ready employers or those seeking multi-year stability.</p>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Strategic Outlook</h4>
+                  <p className="text-slate-500 text-sm">Employers seeking multi-year stability, captive readiness, and proactive risk management.</p>
                 </div>
                 <div className="p-6 border-l-4 border-blue-500 bg-slate-50">
-                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Data Openness</h4>
-                  <p className="text-slate-500 text-xs">Groups willing to share clinical data for proactive management.</p>
+                  <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-2">Group Size</h4>
+                  <p className="text-slate-500 text-sm">10 to 500+ employee lives across various industries.</p>
                 </div>
               </div>
             </div>
