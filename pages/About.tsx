@@ -123,11 +123,11 @@ const About: React.FC = () => {
       </section>
 
       {/* Mission & Values Section - Blue */}
-      <section id="mission" className="py-24 bg-zenith-navy relative overflow-hidden">
+      <section id="values" className="py-24 bg-zenith-navy relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20">
-            <div id="values">
+            <div>
               <h2 className="text-[12px] font-black text-blue-400 uppercase tracking-[0.3em] mb-10">Our Core Values</h2>
               <div className="space-y-12">
                 <div>
