@@ -207,14 +207,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
       {/* Footer */}
       <footer className="bg-zenith-navy text-white py-20 relative overflow-hidden">
-        {/* Decorative Image - Right Side */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 opacity-10 pointer-events-none">
-          <img 
-            src="https://res.cloudinary.com/dtrxl120u/image/upload/v1767916645/Gemini_Generated_Image_bgvi12bgvi12bgvi_oz9b78.png" 
-            alt="" 
-            className="h-[400px] w-auto"
-          />
-        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
