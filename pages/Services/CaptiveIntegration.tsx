@@ -130,162 +130,131 @@ const CaptiveIntegration: React.FC = () => {
             </p>
           </div>
 
-          {/* Unified SVG Diagram - Desktop & Tablet */}
+          {/* Unified SVG Diagram - Matches Home Page Styling */}
           <div className="max-w-4xl mx-auto mb-12">
-            <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-4 sm:p-8 lg:p-12">
+            <div className="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 sm:p-10 lg:p-14">
               <svg 
-                viewBox="0 0 600 520" 
+                viewBox="0 0 560 540" 
                 className="w-full h-auto" 
                 aria-label="Premium and capital flow diagram"
-                style={{ fontFamily: 'Inter, system-ui, sans-serif' }}
               >
                 {/* ===== DEFINITIONS ===== */}
                 <defs>
-                  {/* Unified arrow marker - brand blue */}
+                  {/* Arrow marker - blue, matching home style */}
                   <marker 
-                    id="arrow" 
-                    markerWidth="12" 
-                    markerHeight="12" 
-                    refX="10" 
-                    refY="6" 
+                    id="arrowBlue" 
+                    markerWidth="8" 
+                    markerHeight="8" 
+                    refX="7" 
+                    refY="4" 
                     orient="auto" 
                     markerUnits="userSpaceOnUse"
                   >
-                    <path d="M0,2 L0,10 L10,6 Z" fill="#2563eb"/>
+                    <path d="M0,1 L0,7 L7,4 Z" fill="#3b82f6"/>
                   </marker>
                   
-                  {/* Dashed arrow marker - same style, slate color */}
+                  {/* Arrow marker - gray for dashed */}
                   <marker 
-                    id="arrowDashed" 
-                    markerWidth="12" 
-                    markerHeight="12" 
-                    refX="10" 
-                    refY="6" 
+                    id="arrowGray" 
+                    markerWidth="8" 
+                    markerHeight="8" 
+                    refX="7" 
+                    refY="4" 
                     orient="auto" 
                     markerUnits="userSpaceOnUse"
                   >
-                    <path d="M0,2 L0,10 L10,6 Z" fill="#64748b"/>
+                    <path d="M0,1 L0,7 L7,4 Z" fill="#9ca3af"/>
                   </marker>
                   
-                  {/* Shadow filter for nodes */}
-                  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
-                    <feDropShadow dx="0" dy="4" stdDeviation="6" floodColor="#0f172a" floodOpacity="0.08"/>
+                  {/* Subtle shadow filter */}
+                  <filter id="nodeShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#0f172a" floodOpacity="0.06"/>
                   </filter>
                 </defs>
 
-                {/* ===== ARROWS (drawn first, behind nodes) ===== */}
+                {/* ===== ARROWS (behind nodes) ===== */}
                 
-                {/* Arrow 1: Employer → Captive (straight down) */}
+                {/* Arrow: Employer → Captive (Premium) */}
                 <line 
-                  x1="300" y1="95" 
-                  x2="300" y2="175" 
-                  stroke="#2563eb" 
-                  strokeWidth="2.5" 
-                  markerEnd="url(#arrow)"
+                  x1="280" y1="100" 
+                  x2="280" y2="185" 
+                  stroke="#3b82f6" 
+                  strokeWidth="2" 
+                  markerEnd="url(#arrowBlue)"
                 />
                 {/* Label: Premium */}
-                <text 
-                  x="300" y="140" 
-                  textAnchor="middle" 
-                  fill="#2563eb" 
-                  fontSize="13" 
-                  fontWeight="600"
-                >
-                  Premium
-                </text>
+                <text x="280" y="150" textAnchor="middle" fill="#3b82f6" fontSize="14" fontWeight="600" fontFamily="system-ui, -apple-system, sans-serif">Premium</text>
 
-                {/* Arrow 2: Left Reinsurer → Captive (straight right) */}
+                {/* Arrow: Left Reinsurer → Captive */}
                 <line 
-                  x1="155" y1="260" 
-                  x2="205" y2="260" 
-                  stroke="#2563eb" 
-                  strokeWidth="2.5" 
-                  markerEnd="url(#arrow)"
+                  x1="145" y1="290" 
+                  x2="195" y2="290" 
+                  stroke="#3b82f6" 
+                  strokeWidth="2" 
+                  markerEnd="url(#arrowBlue)"
                 />
-                {/* Label: Underwriting Administration (above line) */}
-                <text 
-                  x="110" y="222" 
-                  textAnchor="middle" 
-                  fill="#64748b" 
-                  fontSize="11" 
-                  fontWeight="500"
-                >
-                  <tspan x="110" dy="0">Underwriting</tspan>
-                  <tspan x="110" dy="13">Administration</tspan>
-                </text>
 
-                {/* Arrow 3: Captive → Bottom Reinsurer (straight down) */}
+                {/* Arrow: Captive → Bottom Reinsurer (Excess Stop Loss) */}
                 <line 
-                  x1="300" y1="345" 
-                  x2="300" y2="415" 
-                  stroke="#2563eb" 
-                  strokeWidth="2.5" 
-                  markerEnd="url(#arrow)"
+                  x1="280" y1="375" 
+                  x2="280" y2="435" 
+                  stroke="#3b82f6" 
+                  strokeWidth="2" 
+                  markerEnd="url(#arrowBlue)"
                 />
                 {/* Label: Excess Stop Loss */}
-                <text 
-                  x="300" y="385" 
-                  textAnchor="middle" 
-                  fill="#64748b" 
-                  fontSize="11" 
-                  fontWeight="500"
-                >
-                  Excess Stop Loss
-                </text>
+                <text x="280" y="412" textAnchor="middle" fill="#6b7280" fontSize="12" fontWeight="500" fontFamily="system-ui, -apple-system, sans-serif">Excess Stop Loss</text>
 
-                {/* Arrow 4: Claims - curved dashed from Captive to Employer */}
+                {/* Arrow: Claims - curved dashed from Captive to Employer */}
                 <path 
-                  d="M380 210 Q 440 160, 380 95" 
-                  stroke="#64748b" 
-                  strokeWidth="2" 
-                  strokeDasharray="6,4" 
+                  d="M365 230 Q 420 165, 355 95" 
+                  stroke="#9ca3af" 
+                  strokeWidth="1.5" 
+                  strokeDasharray="5,4" 
                   fill="none" 
-                  markerEnd="url(#arrowDashed)"
+                  markerEnd="url(#arrowGray)"
                 />
-                {/* Label: Claims (along curve) */}
-                <text 
-                  x="435" y="155" 
-                  textAnchor="middle" 
-                  fill="#64748b" 
-                  fontSize="11" 
-                  fontWeight="500"
-                >
-                  Claims
-                </text>
+                {/* Label: Claims */}
+                <text x="420" y="175" textAnchor="start" fill="#6b7280" fontSize="13" fontWeight="500" fontFamily="system-ui, -apple-system, sans-serif">Claims</text>
 
                 {/* ===== NODES ===== */}
 
-                {/* Node 1: Employer - Top Center */}
-                <g filter="url(#shadow)">
-                  <circle cx="300" cy="55" r="45" fill="white"/>
-                  <circle cx="300" cy="55" r="45" fill="none" stroke="#2563eb" strokeWidth="3"/>
-                  <text x="300" y="50" textAnchor="middle" fill="#0f172a" fontSize="15" fontWeight="700">Employer</text>
-                  <text x="300" y="68" textAnchor="middle" fill="#2563eb" fontSize="10" fontWeight="500">Self-Funded Plan</text>
+                {/* Node: Employer - Top Center */}
+                <g filter="url(#nodeShadow)">
+                  <circle cx="280" cy="55" r="48" fill="white"/>
+                  <circle cx="280" cy="55" r="48" fill="none" stroke="#3b82f6" strokeWidth="2.5"/>
+                  <text x="280" y="50" textAnchor="middle" fill="#1e293b" fontSize="16" fontWeight="700" fontFamily="system-ui, -apple-system, sans-serif">Employer</text>
+                  <text x="280" y="70" textAnchor="middle" fill="#3b82f6" fontSize="11" fontWeight="500" fontFamily="system-ui, -apple-system, sans-serif">Self-Funded Plan</text>
                 </g>
 
-                {/* Node 2: Left Reinsurer - Left Center */}
-                <g filter="url(#shadow)">
-                  <circle cx="110" cy="260" r="45" fill="white"/>
-                  <circle cx="110" cy="260" r="45" fill="none" stroke="#2563eb" strokeWidth="3"/>
-                  <text x="110" y="265" textAnchor="middle" fill="#0f172a" fontSize="13" fontWeight="700">Reinsurer</text>
+                {/* Node: Left Reinsurer */}
+                <g filter="url(#nodeShadow)">
+                  <circle cx="100" cy="290" r="48" fill="white"/>
+                  <circle cx="100" cy="290" r="48" fill="none" stroke="#3b82f6" strokeWidth="2.5"/>
+                  <text x="100" y="295" textAnchor="middle" fill="#1e293b" fontSize="14" fontWeight="700" fontFamily="system-ui, -apple-system, sans-serif">Reinsurer</text>
+                </g>
+                {/* Label above left reinsurer */}
+                <text x="100" y="222" textAnchor="middle" fill="#6b7280" fontSize="11" fontWeight="400" fontFamily="system-ui, -apple-system, sans-serif">
+                  <tspan x="100" dy="0">Underwriting</tspan>
+                  <tspan x="100" dy="14">Administration</tspan>
+                </text>
+
+                {/* Node: Captive Insurer - Center (emphasized) */}
+                <g filter="url(#nodeShadow)">
+                  <circle cx="280" cy="290" r="85" fill="white"/>
+                  <circle cx="280" cy="290" r="85" fill="none" stroke="#1e293b" strokeWidth="3"/>
+                  <circle cx="280" cy="290" r="75" fill="none" stroke="#3b82f6" strokeWidth="2"/>
+                  <text x="280" y="275" textAnchor="middle" fill="#1e293b" fontSize="26" fontWeight="700" fontFamily="system-ui, -apple-system, sans-serif">Captive</text>
+                  <text x="280" y="302" textAnchor="middle" fill="#1e293b" fontSize="16" fontWeight="500" fontFamily="system-ui, -apple-system, sans-serif">Insurer</text>
+                  <text x="280" y="328" textAnchor="middle" fill="#3b82f6" fontSize="12" fontWeight="500" fontFamily="system-ui, -apple-system, sans-serif">Primary Stop Loss</text>
                 </g>
 
-                {/* Node 3: Captive - Center (largest, emphasized) */}
-                <g filter="url(#shadow)">
-                  <circle cx="300" cy="260" r="85" fill="white"/>
-                  <circle cx="300" cy="260" r="85" fill="none" stroke="#0f172a" strokeWidth="4"/>
-                  <circle cx="300" cy="260" r="75" fill="none" stroke="#2563eb" strokeWidth="2"/>
-                  <text x="300" y="245" textAnchor="middle" fill="#0f172a" fontSize="22" fontWeight="800">Captive</text>
-                  <text x="300" y="270" textAnchor="middle" fill="#0f172a" fontSize="14" fontWeight="600">Insurer</text>
-                  <text x="300" y="292" textAnchor="middle" fill="#2563eb" fontSize="11" fontWeight="500">Primary Stop Loss</text>
-                </g>
-
-                {/* Node 4: Bottom Reinsurer - Bottom Center */}
-                <g filter="url(#shadow)">
-                  <circle cx="300" cy="460" r="45" fill="white"/>
-                  <circle cx="300" cy="460" r="45" fill="none" stroke="#2563eb" strokeWidth="3"/>
-                  <text x="300" y="455" textAnchor="middle" fill="#0f172a" fontSize="13" fontWeight="700">Reinsurer</text>
-                  <text x="300" y="472" textAnchor="middle" fill="#64748b" fontSize="10" fontWeight="500">Excess Stop Loss</text>
+                {/* Node: Bottom Reinsurer */}
+                <g filter="url(#nodeShadow)">
+                  <circle cx="280" cy="485" r="48" fill="white"/>
+                  <circle cx="280" cy="485" r="48" fill="none" stroke="#3b82f6" strokeWidth="2.5"/>
+                  <text x="280" y="480" textAnchor="middle" fill="#1e293b" fontSize="14" fontWeight="700" fontFamily="system-ui, -apple-system, sans-serif">Reinsurer</text>
+                  <text x="280" y="498" textAnchor="middle" fill="#6b7280" fontSize="10" fontWeight="500" fontFamily="system-ui, -apple-system, sans-serif">Excess Stop Loss</text>
                 </g>
               </svg>
             </div>
