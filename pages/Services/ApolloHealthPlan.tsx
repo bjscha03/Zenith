@@ -1,10 +1,143 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+// Apollo external URL - TODO: Update with actual Apollo website URL if different
+const APOLLO_URL = "https://apollohealthplan.com";
+
 const ApolloHealthPlan: React.FC = () => {
+  const [showBrochureModal, setShowBrochureModal] = useState(false);
+  const [formData, setFormData] = useState({ firstName: '', lastName: '', email: '', company: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  const handleBrochureSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('/.netlify/functions/brochure-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          brochureType: 'apollo',
+          timestamp: new Date().toISOString()
+        })
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+      
+      setSubmitSuccess(true);
+      setFormData({ firstName: '', lastName: '', email: '', company: '' });
+    } catch (err) {
+      setSubmitError('Something went wrong. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="w-full">
+      {/* Brochure Request Modal */}
+      {showBrochureModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+            <button 
+              onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); setSubmitError(''); }}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {submitSuccess ? (
+              <div className="text-center py-8">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-zenith-navy mb-4">Thanks!</h3>
+                <p className="text-slate-600">The brochure link has been sent to your email.</p>
+                <button 
+                  onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); }}
+                  className="mt-6 px-6 py-3 bg-zenith-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            ) : (
+              <>
+                <h3 className="text-2xl font-bold text-zenith-navy mb-2">Request Apollo Brochure</h3>
+                <p className="text-slate-500 text-sm mb-6">Enter your details and we'll send the brochure directly to your inbox.</p>
+                
+                {submitError && (
+                  <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                    {submitError}
+                  </div>
+                )}
+
+                <form onSubmit={handleBrochureSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">First Name</label>
+                      <input 
+                        type="text" 
+                        required
+                        value={formData.firstName}
+                        onChange={(e) => setFormData({...formData, firstName: e.target.value})}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Last Name</label>
+                      <input 
+                        type="text" 
+                        required
+                        value={formData.lastName}
+                        onChange={(e) => setFormData({...formData, lastName: e.target.value})}
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Work Email</label>
+                    <input 
+                      type="email" 
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({...formData, email: e.target.value})}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Company</label>
+                    <input 
+                      type="text" 
+                      required
+                      value={formData.company}
+                      onChange={(e) => setFormData({...formData, company: e.target.value})}
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    />
+                  </div>
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-4 bg-zenith-blue text-white font-bold text-sm uppercase tracking-widest rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Me the Brochure'}
+                  </button>
+                </form>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Hero Section - Blue with Image Underlay */}
       <section className="relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Healthcare/technology theme */}
@@ -26,8 +159,8 @@ const ApolloHealthPlan: React.FC = () => {
         </div>
       </section>
 
-      {/* The Problem Section */}
-      <section className="py-24 bg-white">
+      {/* The Problem Section - Alternating: Light */}
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -73,16 +206,15 @@ const ApolloHealthPlan: React.FC = () => {
         </div>
       </section>
 
-      {/* Core Components Section */}
-      <section className="py-24 bg-zenith-navy text-white overflow-hidden relative">
-
+      {/* Core Components Section - Alternating: Dark */}
+      <section className="py-20 bg-zenith-navy text-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-20">
+          <div className="text-center mb-16">
             <h2 className="text-[11px] font-black text-blue-400 uppercase tracking-[0.5em] mb-6">Structural Integrity</h2>
             <h3 className="text-3xl md:text-5xl font-bold">Apollo Health Plan Core Components</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Level-Funded Structure", desc: "Real-time data access for ultimate financial transparency." },
               { title: "Embedded Cost-Containment", desc: "Built directly into the care pathway to mitigate waste." },
@@ -90,17 +222,20 @@ const ApolloHealthPlan: React.FC = () => {
               { title: "Turnkey Implementation", desc: "High value partners + pre-built plan designs (plug and play)." },
               { title: "Optimized Scale", desc: "Expertly designed for 10 – 250 employee life groups." }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-10 rounded-2xl hover:bg-white/10 transition-all group">
-                <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center mb-6 text-white font-bold text-xs group-hover:scale-110 transition-transform">✓</div>
-                <h4 className="text-xl font-bold mb-4 uppercase tracking-wider">{item.title}</h4>
-                <p className="text-slate-400 leading-relaxed font-light">{item.desc}</p>
+              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all group h-full">
+                <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mb-5 text-white font-bold text-sm group-hover:scale-110 transition-transform">✓</div>
+                <h4 className="text-lg font-bold mb-3 uppercase tracking-wider">{item.title}</h4>
+                <p className="text-slate-400 leading-relaxed font-light text-sm">{item.desc}</p>
               </div>
             ))}
             
-            {/* Market Segment Box */}
-            <div className="bg-blue-600 p-10 rounded-2xl flex flex-col justify-center items-center text-center">
-              <h4 className="text-2xl font-bold mb-4">Market Segment</h4>
-              <p className="text-blue-100 text-lg">Optimized for groups of 10-250 lives seeking higher performance.</p>
+            {/* Market Segment Box - Enhanced */}
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl flex flex-col justify-center h-full border border-blue-500/30">
+              <div className="text-center">
+                <span className="text-[10px] font-black text-blue-200 uppercase tracking-[0.3em] mb-3 block">Target Market</span>
+                <h4 className="text-2xl font-bold mb-4">Market Segment</h4>
+                <p className="text-blue-100 text-base leading-relaxed">Optimized for groups of <span className="font-bold text-white">10-250 lives</span> seeking higher performance.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -154,23 +289,58 @@ const ApolloHealthPlan: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="py-24 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
+      {/* Final CTA Section - Alternating: Light */}
+      <section className="py-20 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-12">See how Apollo re-engineers the <br/>health plan experience.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-10">See how Apollo re-engineers the <br/>health plan experience.</h2>
           
-          <div className="flex justify-center">
-            <Link 
-              to="/contact" 
-              className="group relative inline-flex items-center justify-center px-12 py-6 font-black text-[11px] uppercase tracking-[0.3em] text-white transition-all duration-300"
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            {/* Primary CTA - Request it */}
+            <button 
+              onClick={() => setShowBrochureModal(true)}
+              className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-white transition-all duration-300"
             >
               <span className="absolute inset-0 bg-zenith-blue transform skew-x-[-12deg] group-hover:bg-blue-600 group-hover:scale-105 transition-all"></span>
-              <span className="relative z-10">Request the Apollo Overview Deck</span>
-              <svg className="relative z-10 ml-4 w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <span className="relative z-10">Request it</span>
+              <svg className="relative z-10 ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-            </Link>
+            </button>
+
+            {/* Secondary CTA - Explore */}
+            <a 
+              href={APOLLO_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-zenith-blue border-2 border-zenith-blue hover:bg-zenith-blue hover:text-white transition-all duration-300 rounded-sm"
+            >
+              <span>Explore</span>
+              <svg className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
           </div>
+        </div>
+      </section>
+
+      {/* Explore Apollo Section - Bottom of page */}
+      <section className="py-16 bg-zenith-navy">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Explore Apollo</h3>
+          <p className="text-slate-300 text-lg mb-8 max-w-xl mx-auto">
+            Learn more about Apollo Health Plan and explore additional details.
+          </p>
+          <a 
+            href={APOLLO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-zenith-navy font-bold text-sm uppercase tracking-widest rounded hover:bg-blue-50 transition-colors group"
+          >
+            <span>Explore Apollo</span>
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
         </div>
       </section>
     </div>
