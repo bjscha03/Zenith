@@ -41,23 +41,27 @@ const About: React.FC = () => {
       </section>
 
       {/* Internal Nav */}
-      <div className="bg-white border-b border-slate-100 sticky top-[80px] z-40 hidden md:block">
+      <div className="bg-white border-b border-slate-100 sticky top-[80px] z-40">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex justify-center space-x-12 py-6">
-            {['Mission', 'Leadership', 'Values'].map((item) => (
-              <button 
-                key={item} 
-                onClick={() => {
-                  const element = document.getElementById(item.toLowerCase());
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-                className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors cursor-pointer bg-transparent border-none"
-              >
-                {item}
-              </button>
-            ))}
+          <div className="flex justify-center space-x-8 md:space-x-12 py-6">
+            <a 
+              href="#mission-statement"
+              className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
+            >
+              Mission
+            </a>
+            <a 
+              href="#leadership"
+              className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
+            >
+              Leadership
+            </a>
+            <a 
+              href="#values"
+              className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
+            >
+              Values
+            </a>
             <Link 
               to="/careers"
               className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-blue-600 transition-colors"
