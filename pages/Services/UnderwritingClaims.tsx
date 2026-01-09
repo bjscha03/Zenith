@@ -94,7 +94,7 @@ const UnderwritingClaims: React.FC = () => {
               { step: '04', title: 'Cost Containment', desc: 'Consultation and recommended strategies to reduce costs while preserving quality care.' }
             ].map((item, idx) => (
               <div key={idx} className="bg-white p-8 rounded border border-slate-100 shadow-sm relative group hover:shadow-md transition-shadow">
-                <span className="absolute top-4 right-4 text-3xl font-black text-slate-50 group-hover:text-blue-50 transition-colors">{item.step}</span>
+                <span className="absolute top-4 right-4 text-3xl font-black text-slate-200 group-hover:text-blue-200 transition-colors">{item.step}</span>
                 <h4 className="text-zenith-blue font-bold uppercase tracking-widest text-xs mb-3 relative z-10">{item.title}</h4>
                 <p className="text-slate-600 text-sm leading-relaxed relative z-10">{item.desc}</p>
               </div>
@@ -106,7 +106,7 @@ const UnderwritingClaims: React.FC = () => {
       {/* 3. Economics & Renewal */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <h2 className="text-2xl font-bold text-zenith-navy mb-6">Renewal Logic & Repricing</h2>
               <p className="text-slate-600 leading-relaxed mb-8">
@@ -127,7 +127,7 @@ const UnderwritingClaims: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex flex-col justify-center">
+            <div>
               <h2 className="text-2xl font-bold text-zenith-navy mb-6">Transparent Economics</h2>
               <p className="text-slate-600 leading-relaxed mb-8">
                 Alignment only exists when incentives are shared. Our economic model is designed for transparency, ensuring that when a plan performs well, the surplus returns to the sponsor, not the carrier.
