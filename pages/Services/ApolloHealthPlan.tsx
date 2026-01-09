@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 // Apollo external URL - TODO: Update with actual Apollo website URL if different
-const APOLLO_URL = "https://apollohealthplan.com";
+const APOLLO_URL = "https://apollonewapp.netlify.app/";
 
 const ApolloHealthPlan: React.FC = () => {
   const [showBrochureModal, setShowBrochureModal] = useState(false);
