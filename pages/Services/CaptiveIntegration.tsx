@@ -29,35 +29,89 @@ const CaptiveIntegration: React.FC = () => {
       </section>
 
       {/* Comparison Section */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-[12px] font-black text-slate-900 uppercase tracking-[0.3em] mb-8 flex items-center">
-              <span className="w-8 h-px bg-slate-900 mr-4"></span>
+          <div className="mb-12">
+            <h2 className="text-[12px] font-black text-zenith-navy uppercase tracking-[0.3em] mb-4 flex items-center">
+              <span className="w-8 h-px bg-zenith-navy mr-4"></span>
               The Integrated Difference
             </h2>
           </div>
           
-          <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-xl">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-white">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-200 text-left">
-                  <th className="py-8 px-10 text-xl font-bold text-slate-400 uppercase tracking-widest w-1/2">Traditional Model</th>
-                  <th className="py-8 px-10 text-xl font-bold text-zenith-blue uppercase tracking-widest w-1/2 bg-blue-50/30">Integrated Stop-Loss + Captive</th>
+                <tr className="bg-slate-100 border-b-2 border-slate-200 text-left">
+                  <th className="py-6 px-8 text-sm font-bold text-slate-400 uppercase tracking-widest w-1/2">Traditional Model</th>
+                  <th className="py-6 px-8 text-sm font-bold text-zenith-navy uppercase tracking-widest w-1/2 bg-zenith-navy/5">Integrated Stop-Loss + Captive</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                <tr className="group">
-                  <td className="py-10 px-10 text-lg text-slate-500 italic">Passive underwriting</td>
-                  <td className="py-10 px-10 text-lg font-bold text-zenith-navy bg-blue-50/10">Aligned incentives</td>
+                <tr className="group hover:bg-slate-50 transition-colors">
+                  <td className="py-8 px-8">
+                    <div className="flex items-center gap-3">
+                      <span className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                        </svg>
+                      </span>
+                      <span className="text-lg text-slate-500 italic">Passive underwriting</span>
+                    </div>
+                  </td>
+                  <td className="py-8 px-8 bg-zenith-navy/5">
+                    <div className="flex items-center gap-3">
+                      <span className="w-5 h-5 rounded-full bg-zenith-blue flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </span>
+                      <span className="text-lg font-semibold text-zenith-navy">Aligned incentives</span>
+                    </div>
+                  </td>
                 </tr>
-                <tr className="group">
-                  <td className="py-10 px-10 text-lg text-slate-500 italic">Employers absorb volatility</td>
-                  <td className="py-10 px-10 text-lg font-bold text-zenith-navy bg-blue-50/10">Employer retains control & surplus</td>
+                <tr className="group hover:bg-slate-50 transition-colors">
+                  <td className="py-8 px-8">
+                    <div className="flex items-center gap-3">
+                      <span className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                        </svg>
+                      </span>
+                      <span className="text-lg text-slate-500 italic">Employers absorb volatility</span>
+                    </div>
+                  </td>
+                  <td className="py-8 px-8 bg-zenith-navy/5">
+                    <div className="flex items-center gap-3">
+                      <span className="w-5 h-5 rounded-full bg-zenith-blue flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </span>
+                      <span className="text-lg font-semibold text-zenith-navy">Employer retains control & surplus</span>
+                    </div>
+                  </td>
                 </tr>
-                <tr className="group">
-                  <td className="py-10 px-10 text-lg text-slate-500 italic">One-year decisions</td>
-                  <td className="py-10 px-10 text-lg font-bold text-zenith-navy bg-blue-50/10">Multi-year strategy</td>
+                <tr className="group hover:bg-slate-50 transition-colors">
+                  <td className="py-8 px-8">
+                    <div className="flex items-center gap-3">
+                      <span className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 12H4" />
+                        </svg>
+                      </span>
+                      <span className="text-lg text-slate-500 italic">One-year decisions</span>
+                    </div>
+                  </td>
+                  <td className="py-8 px-8 bg-zenith-navy/5">
+                    <div className="flex items-center gap-3">
+                      <span className="w-5 h-5 rounded-full bg-zenith-blue flex items-center justify-center flex-shrink-0">
+                        <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </span>
+                      <span className="text-lg font-semibold text-zenith-navy">Multi-year strategy</span>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>
