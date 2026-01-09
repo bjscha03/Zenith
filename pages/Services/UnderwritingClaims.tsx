@@ -85,12 +85,12 @@ const UnderwritingClaims: React.FC = () => {
       </section>
 
       {/* 2. Clinical Review Workflow */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
+      <section className="py-24 bg-zenith-navy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-4">Intervention Workflow</h2>
-            <h3 className="text-3xl md:text-4xl font-bold text-zenith-navy">Claims Intervention → Clinical Review</h3>
-            <div className="w-12 h-1 bg-zenith-blue mx-auto mt-6"></div>
+            <h2 className="text-[12px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Intervention Workflow</h2>
+            <h3 className="text-3xl md:text-4xl font-bold text-white">Claims Intervention → Clinical Review</h3>
+            <div className="w-12 h-1 bg-blue-400 mx-auto mt-6"></div>
           </div>
 
           <div className="grid md:grid-cols-4 gap-4">
@@ -100,10 +100,10 @@ const UnderwritingClaims: React.FC = () => {
               { step: '03', title: 'Medical Review', desc: 'Doctor-led clinical oversight ensures claims are reviewed with the appropriate clinical expertise.' },
               { step: '04', title: 'Cost Containment', desc: 'Consultation and recommended strategies to reduce costs while preserving quality care.' }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white p-8 rounded border border-slate-100 shadow-sm relative group hover:shadow-md transition-shadow">
-                <span className="absolute top-4 right-4 text-3xl font-black text-slate-200 group-hover:text-blue-200 transition-colors">{item.step}</span>
-                <h4 className="text-zenith-blue font-bold uppercase tracking-widest text-xs mb-3 relative z-10">{item.title}</h4>
-                <p className="text-slate-600 text-sm leading-relaxed relative z-10">{item.desc}</p>
+              <div key={idx} className="bg-white/10 backdrop-blur-sm p-8 rounded border border-white/20 shadow-sm relative group hover:border-blue-400/50 transition-all">
+                <span className="absolute top-4 right-4 text-3xl font-black text-white/30 group-hover:text-blue-400 transition-colors">{item.step}</span>
+                <h4 className="text-blue-400 font-bold uppercase tracking-widest text-xs mb-3 relative z-10">{item.title}</h4>
+                <p className="text-slate-300 text-sm leading-relaxed relative z-10">{item.desc}</p>
               </div>
             ))}
           </div>
