@@ -214,29 +214,33 @@ const ApolloHealthPlan: React.FC = () => {
             <h3 className="text-3xl md:text-5xl font-bold">Apollo Health Plan Core Components</h3>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Top row - 3 cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
             {[
               { title: "Level-Funded Structure", desc: "Real-time data access for ultimate financial transparency." },
               { title: "Embedded Cost-Containment", desc: "Built directly into the care pathway to mitigate waste." },
-              { title: "100% Surplus Return", desc: "Clients keep 100% of their unused claim dollars + captive surplus sharing." },
-              { title: "Turnkey Implementation", desc: "High value partners + pre-built plan designs (plug and play)." },
-              { title: "Optimized Scale", desc: "Expertly designed for 10 – 250 employee life groups." }
+              { title: "100% Surplus Return", desc: "Clients keep 100% of their unused claim dollars + captive surplus sharing." }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all group h-full">
+              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all group">
                 <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mb-5 text-white font-bold text-sm group-hover:scale-110 transition-transform">✓</div>
                 <h4 className="text-lg font-bold mb-3 uppercase tracking-wider">{item.title}</h4>
                 <p className="text-slate-400 leading-relaxed font-light text-sm">{item.desc}</p>
               </div>
             ))}
-            
-            {/* Market Segment Box - Enhanced */}
-            <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl flex flex-col justify-center h-full border border-blue-500/30">
-              <div className="text-center">
-                <span className="text-[10px] font-black text-blue-200 uppercase tracking-[0.3em] mb-3 block">Target Market</span>
-                <h4 className="text-2xl font-bold mb-4">Market Segment</h4>
-                <p className="text-blue-100 text-base leading-relaxed">Optimized for groups of <span className="font-bold text-white">10-250 lives</span> seeking higher performance.</p>
+          </div>
+
+          {/* Bottom row - 2 cards centered */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            {[
+              { title: "Turnkey Implementation", desc: "High value partners + pre-built plan designs (plug and play)." },
+              { title: "Optimized Scale", desc: "Expertly designed for 10 – 250 employee life groups." }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all group">
+                <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mb-5 text-white font-bold text-sm group-hover:scale-110 transition-transform">✓</div>
+                <h4 className="text-lg font-bold mb-3 uppercase tracking-wider">{item.title}</h4>
+                <p className="text-slate-400 leading-relaxed font-light text-sm">{item.desc}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -323,26 +327,6 @@ const ApolloHealthPlan: React.FC = () => {
         </div>
       </section>
 
-      {/* Explore Apollo Section - Bottom of page */}
-      <section className="py-16 bg-zenith-navy">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Explore Apollo</h3>
-          <p className="text-slate-300 text-lg mb-8 max-w-xl mx-auto">
-            Learn more about Apollo Health Plan and explore additional details.
-          </p>
-          <a 
-            href={APOLLO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-zenith-navy font-bold text-sm uppercase tracking-widest rounded hover:bg-blue-50 transition-colors group"
-          >
-            <span>Explore Apollo</span>
-            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </div>
-      </section>
     </div>
   );
 };
