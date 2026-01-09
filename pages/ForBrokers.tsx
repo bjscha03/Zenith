@@ -196,57 +196,56 @@ const ForBrokers: React.FC = () => {
         </div>
       </section>
 
-      {/* Industries Section - Light */}
-      <section className="py-20 bg-slate-50">
+      {/* Industries Section - Dark Navy */}
+      <section className="py-20 bg-zenith-navy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Industry Experience</h2>
-            <h3 className="text-3xl font-bold text-zenith-navy mb-4">What industries are the best fit for Zenith?</h3>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <h2 className="text-[11px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Industry Experience</h2>
+            <h3 className="text-3xl font-bold text-white mb-4">What industries are the best fit for Zenith?</h3>
+            <p className="text-slate-300 max-w-2xl mx-auto">
               Our deepest experience lies in industries where we've built lasting partnerships and understand the unique risk profiles involved.
             </p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 text-center">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:border-blue-400/50 transition-all">
+              <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
                 </svg>
               </div>
-              <h4 className="font-bold text-zenith-navy text-lg mb-2">Manufacturing</h4>
-              <p className="text-slate-500 text-sm">Complex workforce dynamics and occupational health considerations.</p>
+              <h4 className="font-bold text-white text-lg mb-2">Manufacturing</h4>
+              <p className="text-slate-300 text-sm">Complex workforce dynamics and occupational health considerations.</p>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 text-center">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:border-blue-400/50 transition-all">
+              <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
                 </svg>
               </div>
-              <h4 className="font-bold text-zenith-navy text-lg mb-2">Transportation</h4>
-              <p className="text-slate-500 text-sm">Distributed teams with regulatory and compliance-driven benefit needs.</p>
+              <h4 className="font-bold text-white text-lg mb-2">Transportation</h4>
+              <p className="text-slate-300 text-sm">Distributed teams with regulatory and compliance-driven benefit needs.</p>
             </div>
             
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-slate-100 text-center">
-              <div className="w-14 h-14 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-7 h-7 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:border-blue-400/50 transition-all">
+              <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                 </svg>
               </div>
-              <h4 className="font-bold text-zenith-navy text-lg mb-2">Healthcare</h4>
-              <p className="text-slate-500 text-sm">Clinical-focused employers who value transparency and outcome-based strategies.</p>
+              <h4 className="font-bold text-white text-lg mb-2">Healthcare</h4>
+              <p className="text-slate-300 text-sm">Clinical-focused employers who value transparency and outcome-based strategies.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA Section - Blue */}
-      <section className="py-24 bg-zenith-navy relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
-        <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Ready to become a risk strategist?</h2>
-          <p className="text-slate-300 text-lg mb-12 max-w-2xl mx-auto">
+      {/* Final CTA Section - White */}
+      <section className="py-24 bg-white border-t border-slate-100">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy mb-6 tracking-tight">Ready to become a risk strategist?</h2>
+          <p className="text-slate-600 text-lg mb-12 max-w-2xl mx-auto">
             Partner with Zenith to move beyond transactional renewals and deliver lasting value to your clients.
           </p>
           
@@ -255,7 +254,7 @@ const ForBrokers: React.FC = () => {
               to="/contact" 
               className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-white transition-all duration-300"
             >
-              <span className="absolute inset-0 bg-zenith-blue transform skew-x-[-12deg] group-hover:bg-blue-600 group-hover:scale-105 transition-all"></span>
+              <span className="absolute inset-0 bg-zenith-navy transform skew-x-[-12deg] group-hover:bg-blue-600 group-hover:scale-105 transition-all"></span>
               <span className="relative z-10">Schedule a Call</span>
               <svg className="relative z-10 ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
