@@ -13,7 +13,7 @@ const About: React.FC = () => {
       name: "John Owens",
       title: "Chief Underwriting Officer",
       image: "https://res.cloudinary.com/dtrxl120u/image/upload/v1766605533/1749008849819_uasuiw_lx9vup.jpg",
-      bio: "John Owens has nearly 20 years of industry experience. Most recently, he served for 5+ years as the Chief Underwriting Officer at Stonewater Underwriters Inc., an MGU specializing in government contractors and stop-loss underwriting. Prior roles include VP of Underwriting at FCE Benefit Administration, Director of Underwriting at Erisa Underwriters, and multiple management and line-level underwriting positions throughout his career. John earned his Associate Degree in Arts from Rio Salado College and his Bachelor's Degree in Business Administration, Management, and Operations from the University of Phoenix."
+      bio: "John Owens brings over 15 years of experience in the Third-Party Administrator (TPA) and Managed General Underwriting (MGU) marketplace. His career has been defined by a deep understanding that every TPA and block of business is unique—a perspective he honed while leading the underwriting and marketing division of a national TPA for five years. Applying this philosophy to the stop-loss marketplace, John has achieved notable success in helping TPAs build and expand their businesses, playing a pivotal role in launching a successful MGU in partnership with a TPA and guiding it through five consecutive years of profitability and growth. Throughout his career, John has held positions ranging from Junior Underwriter to Chief Underwriting Officer, giving him a comprehensive perspective on the underwriting process. His leadership style emphasizes building strong teams and implementing best-in-class policies and procedures. John's operational expertise spans claims processing, policy administration, premium administration, and underwriting oversight. He has successfully managed blocks of business ranging from $15–$20 million in annual written premium, demonstrating his ability to balance strategic growth with operational excellence."
     }
   ];
 
@@ -68,8 +68,27 @@ const About: React.FC = () => {
         </div>
       </div>
 
+      {/* Mission Statement Section */}
+      <section id="mission-statement" className="py-20 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Our Mission</h2>
+            <div className="relative">
+              <div className="absolute -left-4 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full hidden md:block"></div>
+              <p className="text-2xl md:text-3xl text-zenith-navy leading-relaxed font-light">
+                We empower brokers and businesses to achieve success through innovative captive insurance solutions. With deep expertise in risk management, we help our partners{' '}
+                <span className="font-semibold text-blue-600">reduce costs</span>,{' '}
+                <span className="font-semibold text-blue-600">mitigate risk</span>, and{' '}
+                <span className="font-semibold text-blue-600">build long-term stability</span>{' '}
+                by challenging traditional insurance models and delivering transparent, strategically aligned solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Leadership Section - White */}
-      <section id="leadership" className="py-24 bg-white">
+      <section id="leadership" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-bold text-zenith-navy mb-6">Leadership Team</h2>
