@@ -135,14 +135,18 @@ const Contact: React.FC = () => {
               <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-8">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
               </div>
-              <h3 className="text-2xl font-bold text-zenith-navy mb-4">Zenith Overview Deck</h3>
+              <h3 className="text-2xl font-bold text-zenith-navy mb-4">Zenith Overview Brochure</h3>
               <p className="text-slate-500 text-sm leading-relaxed mb-10 font-light">
                 A comprehensive look at our underwriting methodology, clinical stewardship roadmap, and proprietary health platforms.
               </p>
-              <button className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-600 transition-all shadow-xl group">
-                Download Overview Deck
+              <a 
+                href="/brochures/strategy-brochure.pdf" 
+                download
+                className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-600 transition-all shadow-xl group"
+              >
+                Download Overview Brochure
                 <svg className="ml-3 w-4 h-4 group-hover:translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" /></svg>
-              </button>
+              </a>
             </div>
           </div>
         </div>

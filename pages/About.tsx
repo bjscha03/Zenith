@@ -73,7 +73,7 @@ const About: React.FC = () => {
       </div>
 
       {/* Mission Statement Section */}
-      <section id="mission-statement" className="py-20 bg-white">
+      <section id="mission-statement" className="py-20 bg-white scroll-mt-36">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h2 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em] mb-6">Our Mission</h2>
@@ -92,7 +92,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Leadership Section - White */}
-      <section id="leadership" className="py-24 bg-slate-50">
+      <section id="leadership" className="py-24 bg-slate-50 scroll-mt-36">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl font-bold text-zenith-navy mb-6">Leadership Team</h2>
@@ -123,7 +123,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Mission & Values Section - Blue */}
-      <section id="values" className="py-24 bg-zenith-navy relative overflow-hidden">
+      <section id="values" className="py-24 bg-zenith-navy relative overflow-hidden scroll-mt-36">
         <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-20">
