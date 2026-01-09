@@ -1,10 +1,8 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Resources: React.FC = () => {
   const resourceCategories = [
-    { name: 'Blog', count: 12 },
     { name: 'Educational PDFs', count: 8 },
     { name: 'Submission Checklists', count: 4 },
   ];
@@ -14,6 +12,7 @@ const Resources: React.FC = () => {
       type: 'Checklist',
       title: 'RFP Submission Checklist',
       desc: 'The definitive list of data points and documents required to secure the most competitive firm terms in the current market.',
+      downloadUrl: '/brochures/submission-checklist.pdf',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
@@ -24,6 +23,7 @@ const Resources: React.FC = () => {
       type: 'Guide',
       title: 'Captive vs Traditional Stop Loss Employer Guide',
       desc: 'A structural comparison designed for CFOs and HR Directors evaluating the transition to a captive risk-sharing model.',
+      downloadUrl: '/brochures/captive-vs-traditional-stoploss.pptx',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -34,6 +34,7 @@ const Resources: React.FC = () => {
       type: 'Report',
       title: '2025 Risk Trend Report',
       desc: 'Our annual analysis of emerging clinical cost drivers, pharmacy trends, and stop-loss market volatility projections.',
+      downloadUrl: '/brochures/2025-risk-trend-report.pdf',
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
@@ -106,12 +107,16 @@ const Resources: React.FC = () => {
                   {item.desc}
                 </p>
                 <div className="pt-6 border-t border-slate-200/50">
-                  <button className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy hover:text-blue-600 transition-colors">
+                  <a 
+                    href={item.downloadUrl} 
+                    download 
+                    className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy hover:text-blue-600 transition-colors"
+                  >
                     Download Resource
                     <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -151,47 +156,6 @@ const Resources: React.FC = () => {
         </div>
       </section>
 
-      {/* Blog Teaser Section */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-end mb-16">
-            <div>
-              <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Latest Insights</h2>
-              <h3 className="text-3xl font-bold text-zenith-navy">From the Zenith Blog</h3>
-            </div>
-            <Link to="#" className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] border-b-2 border-blue-100 pb-1 hover:border-blue-600 transition-all hidden md:block">
-              View All Posts
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-12">
-            {[
-              {
-                date: 'Oct 24, 2024',
-                title: 'The Impact of GLP-1s on Stop-Loss Renewals',
-                excerpt: 'How proprietary clinical oversight helps plan sponsors manage the exploding costs of weight-loss medications.'
-              },
-              {
-                date: 'Sep 12, 2024',
-                title: 'Moving Beyond the Annual Spreadsheet War',
-                excerpt: 'Why transactional brokerage models fail in a volatile healthcare market and how to transition to strategic risk ownership.'
-              }
-            ].map((post, idx) => (
-              <div key={idx} className="flex flex-col group cursor-pointer">
-                <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">{post.date}</span>
-                <h4 className="text-2xl font-bold text-zenith-navy mb-4 group-hover:text-blue-600 transition-colors leading-tight">{post.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6 font-light">
-                  {post.excerpt}
-                </p>
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] flex items-center group-hover:translate-x-2 transition-transform">
-                  Read Article
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
