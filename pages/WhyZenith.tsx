@@ -109,7 +109,7 @@ const WhyZenith: React.FC = () => {
                     <svg className="w-6 h-6 text-blue-400 mr-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
-                    <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Transparent financial performance</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-white uppercase tracking-wider group-hover:text-blue-400 transition-colors">Transparent Economics</h3>
                   </div>
                 </div>
 
@@ -134,7 +134,7 @@ const WhyZenith: React.FC = () => {
               Why Choose Zenith?
             </h2>
             <p className="text-lg md:text-xl text-slate-300 leading-relaxed max-w-4xl mx-auto font-light">
-              At Zenith Risk Strategies, we bring industry-leading expertise to help businesses take control of their insurance and risk management. Our tailored solutions are designed to meet each client's unique needs, delivering cost savings, greater transparency, and better risk control. With a focus on compliance and long-term strategy, we ensure businesses not only reduce expenses but also build a sustainable, secure financial future.
+              Zenith is built for advisors and employers who want more than passive underwriting and rising renewals. We combine predictive underwriting, integrated clinical oversight, and transparent economics to deliver better control, clearer performance, and more predictable outcomes.
             </p>
           </div>
 
