@@ -28,7 +28,7 @@ const Home: React.FC = () => {
                 Start a Conversation
               </Link>
               <Link to="/for-brokers" className="px-10 py-5 bg-transparent border border-slate-500 hover:border-white text-white font-bold rounded transition-all text-center uppercase tracking-widest text-[11px]">
-                Submission Checklist
+                Submission Requirements
               </Link>
             </div>
           </div>
@@ -55,7 +55,7 @@ const Home: React.FC = () => {
               <div className="w-12 h-12 bg-zenith-blue text-white flex items-center justify-center rounded mb-8">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21.48V22" /></svg>
               </div>
-              <h3 className="text-lg font-bold text-zenith-navy mb-4 uppercase tracking-wider">Claims Stewardship</h3>
+              <h3 className="text-lg font-bold text-zenith-navy mb-4 uppercase tracking-wider">Claims Oversight</h3>
               <p className="text-slate-600 leading-relaxed text-sm">Proactive clinical oversight and claims intervention that mitigates escalation before it impacts your bottom line.</p>
             </div>
             <div className="p-10 bg-slate-50 border border-slate-100 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all group">
