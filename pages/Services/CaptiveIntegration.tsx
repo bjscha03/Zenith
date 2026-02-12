@@ -199,31 +199,31 @@ const CaptiveIntegration: React.FC = () => {
               <div className="text-xs text-blue-600 font-semibold uppercase tracking-wide">Premium →</div>
             </div>
 
-            {/* Card 2: Captive Insurer */}
-            <div className="bg-zenith-navy rounded-xl p-6">
-              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
+            {/* Card 2: Fronting Carrier */}
+            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+              <div className="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">Captive Insurer</h3>
-              <p className="text-sm text-slate-300 mb-3">Primary stop loss coverage</p>
-              <div className="text-xs text-blue-300 font-semibold uppercase tracking-wide">Claims Management</div>
+              <h3 className="text-lg font-bold text-zenith-navy mb-2">Fronting Carrier</h3>
+              <p className="text-sm text-slate-600 mb-3">Issues policies and provides regulatory compliance</p>
+              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Policy Issuance →</div>
             </div>
 
-            {/* Card 3: Reinsurer - Underwriting */}
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-              <div className="w-12 h-12 bg-slate-700 rounded-lg flex items-center justify-center mb-4">
+            {/* Card 3: Captive Insurer */}
+            <div className="bg-zenith-navy rounded-xl p-6">
+              <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-zenith-navy mb-2">Reinsurer</h3>
-              <p className="text-sm text-slate-600 mb-3">Underwriting administration</p>
-              <div className="text-xs text-slate-500 font-semibold uppercase tracking-wide">Risk Analysis</div>
+              <h3 className="text-lg font-bold text-white mb-2">Captive Insurer</h3>
+              <p className="text-sm text-slate-300 mb-3">Retains risk and manages claims</p>
+              <div className="text-xs text-blue-300 font-semibold uppercase tracking-wide">Risk Retention →</div>
             </div>
 
-            {/* Card 4: Reinsurer - Excess */}
+            {/* Card 4: Reinsurer */}
             <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
               <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mb-4">
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -231,7 +231,7 @@ const CaptiveIntegration: React.FC = () => {
                 </svg>
               </div>
               <h3 className="text-lg font-bold text-zenith-navy mb-2">Reinsurer</h3>
-              <p className="text-sm text-slate-600 mb-3">Excess stop loss coverage</p>
+              <p className="text-sm text-slate-600 mb-3">Absorbs excess stop-loss risk</p>
               <div className="text-xs text-blue-600 font-semibold uppercase tracking-wide">Risk Transfer</div>
             </div>
           </div>
@@ -243,19 +243,19 @@ const CaptiveIntegration: React.FC = () => {
               <div className="flex gap-4">
                 <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</span>
                 <p className="text-slate-700 leading-relaxed pt-1">
-                  <span className="font-semibold text-zenith-navy">Employer funds premium</span> into the Captive Insurer as part of their self-funded health plan.
+                  <span className="font-semibold text-zenith-navy">Employer funds premium</span> through the Fronting Carrier, which issues the policy as part of the self-funded health plan.
                 </p>
               </div>
               <div className="flex gap-4">
                 <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">2</span>
                 <p className="text-slate-700 leading-relaxed pt-1">
-                  <span className="font-semibold text-zenith-navy">The Captive Insurer provides primary stop-loss coverage</span> and manages claims, protecting employers from large individual or aggregate losses.
+                  <span className="font-semibold text-zenith-navy">The Fronting Carrier issues the policy and cedes risk</span> to the Captive Insurer, which retains the primary layer and manages claims.
                 </p>
               </div>
               <div className="flex gap-4">
                 <span className="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm">3</span>
                 <p className="text-slate-700 leading-relaxed pt-1">
-                  <span className="font-semibold text-zenith-navy">Reinsurers support underwriting administration</span> and absorb excess stop-loss risk above the captive layer, ensuring catastrophic claims are covered.
+                  <span className="font-semibold text-zenith-navy">The Captive Insurer purchases reinsurance</span> for excess risk above the retained layer, ensuring catastrophic claims are covered.
                 </p>
               </div>
             </div>

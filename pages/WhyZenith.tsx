@@ -114,7 +114,7 @@ const WhyZenith: React.FC = () => {
                 </div>
 
                 <div className="mt-16 pt-12 border-t border-slate-800">
-                  <p className="text-slate-400 text-sm leading-relaxed font-light italic">
+                  <p className="text-slate-300 text-base leading-relaxed font-normal italic">
                     By managing claims at the point of care and providing proactive clinical oversight, we help preserve surplus and return control to the employer.
                   </p>
                 </div>

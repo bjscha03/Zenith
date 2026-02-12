@@ -251,7 +251,7 @@ const ApolloHealthPlan: React.FC = () => {
           <div className="max-w-5xl mx-auto mb-20">
             <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.4em] mb-12 block">Strategic Positioning</span>
             <blockquote className="text-3xl md:text-5xl font-bold text-zenith-navy leading-tight tracking-tight italic">
-              “Apollo isn’t a health plan. It’s a <span className="text-blue-600 underline underline-offset-8 decoration-blue-100">platform</span>, built to control claims at the moment they’re created, <span className="text-slate-400">not when they’re already paid.</span>”
+              "It's a <span className="text-blue-600 underline underline-offset-8 decoration-blue-100">platform</span> built to control claims proactively, before they're created/incurred &mdash; <span className="text-slate-400">not once they've already occurred.</span>"
             </blockquote>
           </div>
 

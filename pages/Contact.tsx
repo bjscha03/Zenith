@@ -1,7 +1,5 @@
 import React from 'react';
 
-// Calendar scheduling link - easily swappable
-const CALENDAR_LINK = 'https://calendly.com/chad-zenith';
 
 const Contact: React.FC = () => {
   return (
@@ -108,23 +106,54 @@ const Contact: React.FC = () => {
         <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Live Calendar (Calendly Mockup) */}
-            <div className="bg-white/10 backdrop-blur-sm p-10 rounded-2xl border border-white/20 flex flex-col items-center text-center">
-              <div className="w-16 h-16 bg-white/10 text-white rounded-full flex items-center justify-center mb-8 border border-white/20">
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+            {/* Schedule a Call - Email Form */}
+            <div className="bg-white/10 backdrop-blur-sm p-10 rounded-2xl border border-white/20">
+              <div className="w-16 h-16 bg-white/10 text-white rounded-full flex items-center justify-center mb-8 border border-white/20 mx-auto">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Schedule a Strategy Call</h3>
-              <p className="text-slate-300 text-sm leading-relaxed mb-10 font-light">
-                Book a focused discussion to review your risk profile, explore program structure, and evaluate strategic alignment.
+              <h3 className="text-2xl font-bold text-white mb-4 text-center">Schedule a Call</h3>
+              <p className="text-slate-300 text-sm leading-relaxed mb-8 font-light text-center">
+                Fill out the form below and our team will reach out to schedule a focused strategy discussion.
               </p>
-              {/* Calendar Link Button - name used only here for personalization */}
-              <button 
-                onClick={() => window.open(CALENDAR_LINK, '_blank')}
-                className="inline-flex items-center px-8 py-4 border-2 border-blue-400 text-blue-400 font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-400 hover:text-zenith-navy transition-all group"
-              >
-                Schedule with Chad
-                <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-              </button>
+              <form className="space-y-4">
+                <div>
+                  <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Name</label>
+                  <input type="text" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all" placeholder="Your name" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Company Name</label>
+                  <input type="text" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all" placeholder="Your company" />
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Who You Are</label>
+                  <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all appearance-none cursor-pointer">
+                    <option value="" disabled selected>Select your role</option>
+                    <option>Advisor</option>
+                    <option>Health Plan</option>
+                    <option>TPA</option>
+                    <option>Insurer</option>
+                    <option>Employer Group</option>
+                  </select>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Phone Number</label>
+                    <input type="tel" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all" placeholder="(555) 123-4567" />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Email</label>
+                    <input type="email" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all" placeholder="you@company.com" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Company Size</label>
+                  <input type="text" className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-slate-400 focus:ring-2 focus:ring-blue-400 focus:outline-none transition-all" placeholder="Number of employees" />
+                </div>
+                <button type="submit" className="w-full mt-4 inline-flex items-center justify-center px-8 py-4 border-2 border-blue-400 text-blue-400 font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-400 hover:text-zenith-navy transition-all group">
+                  Schedule a Call
+                  <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                </button>
+              </form>
             </div>
 
             {/* Overview Deck Download */}

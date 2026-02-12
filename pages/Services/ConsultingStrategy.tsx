@@ -11,20 +11,20 @@ const ConsultingStrategy: React.FC = () => {
       desc: 'Deep actuarial and financial analysis to determine if a captive or self-funded structure is the optimal fit for your organization\'s risk profile.'
     },
     {
-      title: 'Captive Program Launches',
-      desc: 'Comprehensive management of the formation lifecycle, including domicile selection, structural design, and regulatory compliance.'
+      title: 'TPA / MGU / Partner Coordination',
+      desc: 'Expert orchestration of all stakeholders within the self-funded ecosystem to eliminate fragmentation and drive technical alignment.'
     },
     {
-      title: 'Ongoing Captive Management',
-      desc: 'Continuous strategic and administrative oversight to ensure your program remains solvent, efficient, and aligned with corporate goals.'
+      title: 'Captive Program Launches',
+      desc: 'Comprehensive management of the formation lifecycle, including domicile selection, structural design, and regulatory compliance.'
     },
     {
       title: 'Renewal Strategy & Cost-Containment Blueprints',
       desc: 'Customized risk roadmaps that move beyond reactive year-over-year pricing to build long-term plan stability and surplus retention.'
     },
     {
-      title: 'TPA / MGU / Partner Coordination',
-      desc: 'Expert orchestration of all stakeholders within the self-funded ecosystem to eliminate fragmentation and drive technical alignment.'
+      title: 'Ongoing Captive Management',
+      desc: 'Continuous strategic and administrative oversight to ensure your program remains solvent, efficient, and aligned with corporate goals.'
     }
   ];
 

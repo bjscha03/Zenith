@@ -69,6 +69,7 @@ const ForBrokers: React.FC = () => {
                   <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Current Census (Excel format)</li>
                   <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Current pricing and renewal</li>
                   <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Large Claim Reports (over 50% of spec)</li>
+                  <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Aggregate Claim Reports</li>
                   <li className="flex items-center"><span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></span> Summary of Benefits (SBCs)</li>
                 </ul>
               </div>

@@ -30,6 +30,7 @@ const Resources: React.FC = () => {
       title: '2025 Risk Trend Report',
       desc: 'Our annual analysis of emerging clinical cost drivers, pharmacy trends, and stop-loss market volatility projections.',
       downloadUrl: '/brochures/2025-risk-trend-report.pdf',
+      comingSoon: true,
       icon: (
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
@@ -84,16 +85,22 @@ const Resources: React.FC = () => {
                   {item.desc}
                 </p>
                 <div className="pt-6 border-t border-slate-200/50">
-                  <a 
-                    href={item.downloadUrl} 
-                    download 
-                    className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy hover:text-blue-600 transition-colors"
-                  >
-                    Download Resource
-                    <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" />
-                    </svg>
-                  </a>
+                  {item.comingSoon ? (
+                    <span className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                      Coming Soon
+                    </span>
+                  ) : (
+                    <a 
+                      href={item.downloadUrl} 
+                      download 
+                      className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy hover:text-blue-600 transition-colors"
+                    >
+                      Download Resource
+                      <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
