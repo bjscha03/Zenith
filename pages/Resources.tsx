@@ -1,7 +1,32 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const Resources: React.FC = () => {
+  const [nlEmail, setNlEmail] = useState('');
+  const [nlSubmitting, setNlSubmitting] = useState(false);
+  const [nlSuccess, setNlSuccess] = useState(false);
+  const [nlError, setNlError] = useState('');
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNlSubmitting(true);
+    setNlError('');
+    try {
+      const res = await fetch('/.netlify/functions/newsletter-subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: nlEmail })
+      });
+      if (!res.ok) throw new Error('Failed');
+      setNlSuccess(true);
+      setNlEmail('');
+    } catch {
+      setNlError('Something went wrong. Please try again.');
+    } finally {
+      setNlSubmitting(false);
+    }
+  };
+
   const leadMagnets = [
     {
       type: 'Checklist',
@@ -120,16 +145,29 @@ const Resources: React.FC = () => {
                 </p>
               </div>
               <div className="space-y-4">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <input 
-                    type="email" 
-                    placeholder="Work Email Address"
-                    className="flex-grow px-6 py-4 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-white placeholder-slate-400"
-                  />
-                  <button className="px-10 py-4 bg-zenith-blue hover:bg-blue-600 text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-lg transition-all shadow-xl">
-                    Subscribe for Updates
-                  </button>
-                </div>
+                {nlSuccess ? (
+                  <div className="text-center py-4">
+                    <p className="text-green-400 font-bold mb-3">Successfully subscribed!</p>
+                    <button onClick={() => setNlSuccess(false)} className="text-blue-400 text-sm underline">Subscribe Another</button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit}>
+                    {nlError && <div className="text-red-400 text-sm mb-3">{nlError}</div>}
+                    <div className="flex flex-col sm:flex-row gap-4">
+                      <input 
+                        type="email" 
+                        required
+                        value={nlEmail}
+                        onChange={(e) => setNlEmail(e.target.value)}
+                        placeholder="Work Email Address"
+                        className="flex-grow px-6 py-4 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-white placeholder-slate-400"
+                      />
+                      <button type="submit" disabled={nlSubmitting} className="px-10 py-4 bg-zenith-blue hover:bg-blue-600 text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-lg transition-all shadow-xl disabled:opacity-50 disabled:cursor-not-allowed">
+                        {nlSubmitting ? 'Subscribing...' : 'Subscribe for Updates'}
+                      </button>
+                    </div>
+                  </form>
+                )}
                 <p className="text-[9px] text-slate-400 uppercase tracking-widest text-center sm:text-left">
                   We respect your inbox. Unsubscribe at any time.
                 </p>
