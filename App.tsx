@@ -21,10 +21,25 @@ import Careers from './pages/Careers';
 
 const App: React.FC = () => {
   return (
-                                           ayo                                                                      ayo                        ze                                                                                     ayo    w                                se                                         erwritingClaims />} />
+    <Router>
+      <ScrollToTop />
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/why-zenith" element={<WhyZenith />} />
+          <Route path="/services" element={<ServicesOverview />} />
+          <Route path="/services/underwriting-claims" element={<UnderwritingClaims />} />
           <Route path="/services/captive-integration" element={<CaptiveIntegration />} />
-          <Route          <Route          <Route          <Route          <Route    />          <Route          <Route          <Route          <Route<C          <Route          <Route          <Route          <Route    t=          <Route          <Route          </a          <Route          <Route             <Route          <Route         so          <Route          <Route     co          <Route          <Route          <Route pa          <Route          <Route          <    <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path          <Route path       se                  <Route path="/careers" element={<Careers />} />
+          <Route path="/services/apollo-health-plan" element={<ApolloHealthPlan />} />
+          <Route path="/services/consulting-strategy" element={<ConsultingStrategy />} />
+          <Route path="/for-brokers" element={<ForBrokers />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/careers" element={<Careers />} />
         </Routes>
       </Layout>
     </Router>
