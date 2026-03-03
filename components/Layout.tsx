@@ -38,6 +38,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const secondaryLinks = [
     { name: 'For Brokers', path: '/for-brokers' },
     { name: 'About', path: '/about' },
+    { name: 'Events', path: '/events' },
     { name: 'Resources', path: '/resources' },
     { name: 'Contact', path: '/contact' },
   ];
