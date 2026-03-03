@@ -1,7 +1,7 @@
 const { neon } = require("@neondatabase/serverless");
 const { Resend } = require("resend");
-const sql = neon("postgresql://neondb_owner:npg_PTrh89sHkjzd@ep-late-cake-aikuykk7-pooler.c-4.us-east-1.aws.neon.tech/neondb?sslmode=require");
-const resend = new Resend("re_7cUQavci_4T2XESHNtPAt8ms5pXFqZC8u");
+const sql = neon(process.env.DATABASE_URL);
+const resend = new Resend(process.env.RESEND_API_KEY);
 const NOTIFY = ["brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
 
 const headers = {
@@ -17,15 +17,16 @@ exports.handler = async (event) => {
     const { firstName, lastName, email, company, brochureType } = JSON.parse(event.body);
     if (!firstName || !lastName || !email) return { statusCode: 400, headers, body: JSON.stringify({ error: "Missing required fields" }) };
     await sql`INSERT INTO brochure_requests (first_name, last_name, email, company, brochure_type) VALUES (${firstName}, ${lastName}, ${email}, ${company || null}, ${brochureType || "apollo"})`;
-    await resend.emails.send({
-      from: "Zenith Forms <forms@zenithriskstrategies.com>",
+    const emailResult = await resend.emails.send({
+      from: "Zenith Forms <onboarding@resend.dev>",
       to: NOTIFY,
       subject: "New Brochure Request from " + firstName + " " + lastName,
       html: "<h2>Brochure Request</h2><p><b>Name:</b> " + firstName + " " + lastName + "</p><p><b>Email:</b> " + email + "</p><p><b>Company:</b> " + (company || "N/A") + "</p><p><b>Type:</b> " + (brochureType || "apollo") + "</p>"
     });
+    console.log("Email result:", JSON.stringify(emailResult));
     return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
   } catch (err) {
-    console.error(err);
+    console.error("Function error:", err);
     return { statusCode: 500, headers, body: JSON.stringify({ error: "Server error" }) };
   }
 };
