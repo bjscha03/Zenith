@@ -80,7 +80,7 @@ const Speakers: React.FC = () => {
     {
       name: 'Mark Testa',
       title: 'Executive VP of Regenxx for Business',
-      image: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1772749556/Screenshot_2026-03-05_at_5.25.54_PM_bd5dx.png'
+      image: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1772749556/Screenshot_2026-03-05_at_5.25.54_PM_bvd5dx.png'
     }
   ];
 
