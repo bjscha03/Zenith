@@ -144,7 +144,7 @@ const Contact: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">General Inquiries</h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-2 font-light">Questions or partnership discussions:</p>
-                  <a href="mailto:info@zenithrisk.com" className="text-blue-600 font-bold hover:underline decoration-2">info@zenithrisk.com</a>
+                  <a href="mailto:info@zenithriskstrategies.com" className="text-blue-600 font-bold hover:underline decoration-2">info@zenithriskstrategies.com</a>
                 </div>
                 <div className="pt-8 border-t border-slate-100">
                   <div className="flex items-center space-x-6">
