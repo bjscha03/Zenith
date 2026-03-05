@@ -161,7 +161,7 @@ const Events: React.FC = () => {
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Share Your Expertise</span>
             <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-6">Interested in Speaking?</h2>
             <p className="text-lg text-slate-600 leading-relaxed mb-10">We welcome thought leaders in risk management, captive strategy, clinical stewardship, and benefit design to apply for speaking opportunities.</p>
-            <a href="mailto:events@zenithriskstrategies.com?subject=Speaker%20Application" className="inline-flex items-center justify-center px-10 py-5 border-2 border-zenith-navy text-zenith-navy font-black text-[11px] uppercase tracking-[0.3em] rounded hover:bg-zenith-navy hover:text-white transition-all">
+            <a href="#/events/speakers" className="inline-flex items-center justify-center px-10 py-5 border-2 border-zenith-navy text-zenith-navy font-black text-[11px] uppercase tracking-[0.3em] rounded hover:bg-zenith-navy hover:text-white transition-all">
               Apply to Speak
               <svg className="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>

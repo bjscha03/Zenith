@@ -19,6 +19,7 @@ import TermsOfUse from './pages/TermsOfUse';
 import Events from './pages/Events';
 import ConferenceSeries from './pages/ConferenceSeries';
 import Careers from './pages/Careers';
+import Speakers from './pages/Speakers';
 
 const App: React.FC = () => {
   return (
@@ -41,6 +42,7 @@ const App: React.FC = () => {
           <Route path="/conference-series" element={<ConferenceSeries />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfUse />} />
+          <Route path="/events/speakers" element={<Speakers />} />
           <Route path="/careers" element={<Careers />} />
         </Routes>
       </Layout>
