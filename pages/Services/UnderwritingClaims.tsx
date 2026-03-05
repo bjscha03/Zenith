@@ -119,19 +119,6 @@ const UnderwritingClaims: React.FC = () => {
               <p className="text-slate-600 leading-relaxed mb-8">
                 We reject the reactive renewal model. Zenith supports renewal outcomes using clinical data and AI-driven insights to guide proactive intervention and smarter long-term planning. This allows for renewals that are based on performance and outcome, not market volatility.
               </p>
-              <div className="p-8 border border-slate-100 bg-slate-50 rounded-lg">
-                <h4 className="font-bold text-slate-900 uppercase tracking-widest text-[10px] mb-4 text-blue-600">Performance Metrics</h4>
-                <ul className="space-y-4">
-                  <li className="flex justify-between items-center text-sm border-b border-slate-200 pb-2">
-                    <span className="text-slate-600">Underwriters Loss Ratio Average</span>
-                    <span className="font-bold text-zenith-navy">86%</span>
-                  </li>
-                  <li className="flex justify-between items-center text-sm border-b border-slate-200 pb-2">
-                    <span className="text-slate-600">Intervention Success</span>
-                    <span className="font-bold text-zenith-navy">High Impact</span>
-                  </li>
-                </ul>
-              </div>
             </div>
 
             <div>

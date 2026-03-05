@@ -2,7 +2,7 @@ const { neon } = require("@neondatabase/serverless");
 const { Resend } = require("resend");
 const sql = neon(process.env.DATABASE_URL);
 const resend = new Resend(process.env.RESEND_API_KEY);
-const NOTIFY = ["brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
+const NOTIFY = ["RFP@zenithriskstrategies.com", "brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
 
 const headers = {
   "Access-Control-Allow-Origin": "*",

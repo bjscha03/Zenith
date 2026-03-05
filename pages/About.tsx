@@ -17,7 +17,7 @@ const About: React.FC = () => {
   const leadership = [
     {
       name: "Thomas Wagner, CEBS",
-      title: "CEO & CUO",
+      title: "Chief Executive Officer",
       image: "https://res.cloudinary.com/dtrxl120u/image/upload/v1766605487/1694980990711_ybcsi1_uzxcxk.jpg",
       bio: "Thomas Wagner has over 20 years of relevant industry experience. He founded Zenith Risk Strategies in September 2024 with a vision of creating an MGU that delivers unique advantages to clients through profit share, cost-containment, and captive programs. Zenith offers pre-built turnkey solutions for small, medium, and large employers. Since July 2018, Thomas has served as Chairman of the Board, VP, and Director of Prestige International Insurance, a Bermuda-based captive with multiple segregated cells and exclusive distribution channels. His previous roles include senior executive positions at Captive Solutions, Echelon Advisors, Underwriting Management Experts (UME), Medxoom, and HealthWallet. Thomas earned his MBA from the Wharton School of the University of Pennsylvania."
     },
