@@ -13,12 +13,6 @@ const Events: React.FC = () => {
     { time: '5:00 PM', title: 'Networking Happy Hour' },
   ];
 
-  const speakers = [
-    { name: 'Speaker Name', title: 'Chief Risk Officer', bio: 'A seasoned executive with over 20 years of experience in healthcare risk management and captive strategy.' },
-    { name: 'Speaker Name', title: 'VP of Clinical Operations', bio: 'Leads clinical stewardship programs that have reduced high-cost claimant exposure across mid-market employers.' },
-    { name: 'Speaker Name', title: 'Benefits Strategist', bio: 'Advises self-funded employers on multi-year benefit strategies focused on transparency and cost containment.' },
-    { name: 'Speaker Name', title: 'Actuarial Consultant', bio: 'Specializes in predictive modeling for stop-loss programs and captive feasibility analysis.' },
-  ];
 
   const locations = [
     { city: 'Dallas', state: 'Texas' },
@@ -87,29 +81,6 @@ const Events: React.FC = () => {
               <div key={i} className="flex items-start gap-6 py-5 border-b border-slate-700/50 last:border-0">
                 <span className="text-blue-400 font-mono text-sm font-bold min-w-[120px] pt-1">{item.time}</span>
                 <span className="text-white font-semibold text-lg">{item.title}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 4: SPEAKERS */}
-      <section id="speakers" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Meet the Experts</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-6">Featured Speakers</h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">Industry leaders sharing actionable insights on captive strategy, clinical stewardship, and benefit design.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {speakers.map((sp, i) => (
-              <div key={i} className="bg-slate-50 rounded-xl p-8 border border-slate-200 text-center hover:shadow-lg transition-all">
-                <div className="w-20 h-20 rounded-full bg-zenith-navy mx-auto mb-5 flex items-center justify-center">
-                  <svg className="w-10 h-10 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                </div>
-                <h3 className="text-lg font-bold text-zenith-navy mb-1">{sp.name}</h3>
-                <p className="text-sm text-blue-500 font-semibold mb-3">{sp.title}</p>
-                <p className="text-slate-600 text-sm leading-relaxed">{sp.bio}</p>
               </div>
             ))}
           </div>
