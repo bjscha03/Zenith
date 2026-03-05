@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 
 const Events: React.FC = () => {
   const agendaItems = [
-    { time: '8:00 AM', title: 'Check-In' },
     { time: '8:30 AM', title: 'Welcome & Framing' },
-    { time: '9:30 – 10:45 AM', title: 'Interactive Session' },
-    { time: '11:00 AM', title: 'Break' },
-    { time: '11:00 AM – 2:30 PM', title: 'Networking Happy Hour' },
-    { time: '2:30 PM', title: 'Closing Reflections' },
-    { time: '2:45 – 4:00 PM', title: 'Break' },
-    { time: '4:15 PM', title: 'Speakers' },
-    { time: '5:00 PM', title: 'Final Networking' },
+    { time: '9:00 AM', title: 'Interactive Session: The State of the Market' },
+    { time: '10:15 AM', title: 'Break' },
+    { time: '10:30 AM', title: 'Interactive Session: The Bluebonnet Solution' },
+    { time: '12:00 PM', title: 'Lunch & Networking' },
+    { time: '1:30 PM', title: 'Interactive Session: Implementation & Strategy' },
+    { time: '3:00 PM', title: 'Break' },
+    { time: '3:15 PM', title: 'Closing Reflections & Next Steps' },
+    { time: '4:00 PM', title: 'Networking Happy Hour' },
   ];
 
   const speakers = [
