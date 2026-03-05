@@ -59,23 +59,28 @@ const Speakers: React.FC = () => {
   const speakers = [
     {
       name: 'Thomas Wagner',
-      title: 'CEO & Founder of Zenith Risk Strategies'
+      title: 'CEO & Founder of Zenith Risk Strategies',
+      image: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1772749637/Screenshot_2026-03-05_at_5.27.13_PM_xcm6b5.png'
     },
     {
       name: 'David Balat',
-      title: 'CEO of The Direct Care Alliance'
+      title: 'CEO of The Direct Care Alliance',
+      image: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1772749541/Screenshot_2026-03-05_at_5.25.38_PM_k6mgmg.png'
     },
     {
       name: 'Tracy Creger',
-      title: 'President & Founder of Connect Benefit'
+      title: 'President & Founder of Connect Benefit',
+      image: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1772749599/Screenshot_2026-03-05_at_5.26.36_PM_cmrnbm.png'
     },
     {
       name: 'Jarred Pierce',
-      title: 'Founder & CEO of Unity Preferred Network'
+      title: 'Founder & CEO of Unity Preferred Network',
+      image: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1772749584/Screenshot_2026-03-05_at_5.26.21_PM_qlapbl.png'
     },
     {
       name: 'Mark Testa',
-      title: 'Executive VP of Regenxx for Business'
+      title: 'Executive VP of Regenxx for Business',
+      image: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1772749556/Screenshot_2026-03-05_at_5.25.54_PM_bd5dx.png'
     }
   ];
 
@@ -84,8 +89,19 @@ const Speakers: React.FC = () => {
 
       {/* SECTION 1: HERO */}
       <div className="w-full max-h-[500px] overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Zenith Conference" className="w-full h-[500px] object-cover" />
+        <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749927/Screenshot_2026-03-05_at_5.32.02_PM_ppusgl.png" alt="Zenith Conference" className="w-full h-[500px] object-cover" />
       </div>
+
+
+      {/* EVENTS SUB-NAVIGATION */}
+      <nav className="bg-white border-b border-slate-200 sticky top-0 z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center gap-8">
+            <a href="#/events" className="py-4 text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-zenith-navy border-b-2 border-transparent hover:border-zenith-navy transition-all">Conferences</a>
+            <span className="py-4 text-[11px] font-black uppercase tracking-[0.3em] text-zenith-navy border-b-2 border-zenith-navy cursor-default">Speakers</span>
+          </div>
+        </div>
+      </nav>
 
       {/* SECTION 2: WHO SHOULD APPLY */}
       <section className="py-24 bg-white">
@@ -132,9 +148,7 @@ const Speakers: React.FC = () => {
             {speakers.map((sp, i) => (
               <div key={i} className="flex items-center gap-6">
                 <div className="w-24 h-24 rounded-lg bg-slate-200 flex-shrink-0 overflow-hidden">
-                  <div className="w-full h-full bg-gradient-to-br from-zenith-navy/20 to-zenith-blue/20 flex items-center justify-center">
-                    <span className="text-2xl font-bold text-zenith-navy/40">{sp.name.split(" ").map(n => n[0]).join("")}</span>
-                  </div>
+                  <img src={sp.image} alt={sp.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-zenith-navy">{sp.name}</h3>
@@ -152,7 +166,7 @@ const Speakers: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* LEFT: Image */}
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src="https://images.unsplash.com/photo-1475721027785-f74eccf2f5a2?q=80&w=2070&auto=format&fit=crop" alt="Speaker presenting" className="w-full h-[500px] object-cover" />
+              <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749571/Screenshot_2026-03-05_at_5.26.08_PM_fmurq6.png" alt="Speaker presenting" className="w-full h-[500px] object-cover" />
             </div>
 
             {/* RIGHT: Form */}

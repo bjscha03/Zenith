@@ -42,6 +42,17 @@ const Events: React.FC = () => {
         </div>
       </section>
 
+      {/* EVENTS SUB-NAVIGATION */}
+      <nav className="bg-white border-b border-slate-200 sticky top-0 z-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center gap-8">
+            <span className="py-4 text-[11px] font-black uppercase tracking-[0.3em] text-zenith-navy border-b-2 border-zenith-navy cursor-default">Conferences</span>
+            <a href="#/events/speakers" className="py-4 text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-zenith-navy border-b-2 border-transparent hover:border-zenith-navy transition-all">Speakers</a>
+          </div>
+        </div>
+      </nav>
+
+
       {/* SECTION 2: BUILT FOR DECISION-MAKERS */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
