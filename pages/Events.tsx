@@ -39,11 +39,11 @@ const Events: React.FC = () => {
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">Zenith Risk Strategies Events</h1>
             <p className="text-xl text-slate-300 leading-relaxed font-light mb-10">Zenith helps brokers and employers replace renewal chaos with structure that holds through captives, disciplined networks, and intentional design.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#register" className="inline-flex items-center justify-center px-10 py-5 bg-zenith-blue text-white font-black text-[11px] uppercase tracking-[0.3em] rounded hover:bg-blue-600 transition-all">
+              <a href="https://www.eventbrite.com/o/zenith-risk-strategies-120923310117" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-10 py-5 bg-zenith-blue text-white font-black text-[11px] uppercase tracking-[0.3em] rounded hover:bg-blue-600 transition-all">
                 Register Now
                 <svg className="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
               </a>
-              <a href="#series" className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-bold text-[10px] uppercase tracking-widest rounded hover:bg-white/10 transition-all">Explore the Series</a>
+              <a href="#/conference-series" className="inline-flex items-center justify-center px-8 py-4 border border-white/30 text-white font-bold text-[10px] uppercase tracking-widest rounded hover:bg-white/10 transition-all">Explore the Conference Series</a>
             </div>
           </div>
         </div>
@@ -146,7 +146,7 @@ const Events: React.FC = () => {
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Reserve Your Seat</span>
             <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">Register for the 2026 Summit</h2>
             <p className="text-lg text-slate-400 leading-relaxed mb-10">Seats are limited to ensure quality interaction. Reserve your place at the table.</p>
-            <a href="mailto:events@zenithriskstrategies.com?subject=Event%20Registration" className="inline-flex items-center justify-center px-10 py-5 bg-zenith-blue text-white font-black text-[11px] uppercase tracking-[0.3em] rounded hover:bg-blue-600 transition-all">
+            <a href="https://www.eventbrite.com/o/zenith-risk-strategies-120923310117" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-10 py-5 bg-zenith-blue text-white font-black text-[11px] uppercase tracking-[0.3em] rounded hover:bg-blue-600 transition-all">
               Register Now
               <svg className="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
             </a>
