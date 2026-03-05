@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Events: React.FC = () => {
+  const [expandedCity, setExpandedCity] = useState<string | null>(null);
   const agendaItems = [
     { time: '', title: 'Check-In / Welcome & Framing' },
     { time: '9:30 - 10:45 AM', title: 'Interactive Session' },
@@ -14,8 +15,28 @@ const Events: React.FC = () => {
   ];
 
 
-  const locations = [
-    { city: 'Dallas', state: 'Texas' },
+  const locations: any[] = [
+    {
+      city: 'Dallas',
+      state: 'Texas',
+      details: {
+        subtitle: 'Bluebonnets VS BUCA: Order Before Growth',
+        date: 'April 23 2026 | Dallas TX',
+        purpose: 'Dallas represents a scale market- faster broker cycles, higher carrier density, and increased exposure to default solutions. This summit examines the difference between governed growth (Bluebonnet) and reactive scale (BUCA), and how structure determines outcomes as plans grow.',
+        attendees: [
+          'Brokers advising growing employers',
+          'TPAs and plan architects',
+          'Employer CFOs and HR leaders (50-500) lives',
+        ],
+        highlights: [
+          'Roundtable working sessions',
+          'Journal-first opening',
+          'Facilitated discussion (no vendor booths)',
+          'Broker Hot Seat panel',
+          'Private networking reception',
+        ],
+      },
+    },
     { city: 'Hilton Head', state: 'South Carolina' },
     { city: 'Denver', state: 'Colorado' },
   ];
@@ -106,16 +127,54 @@ const Events: React.FC = () => {
             <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-6">2026 Summer Series</h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">Three cities. Three opportunities to connect with the minds shaping employer-funded healthcare.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {locations.map((loc, i) => (
-              <div key={i} className="bg-white rounded-xl p-10 border border-slate-200 text-center hover:shadow-lg transition-all">
-                <div className="w-14 h-14 rounded-lg bg-zenith-navy flex items-center justify-center mx-auto mb-6">
-                  <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+          <div className="max-w-4xl mx-auto space-y-4">
+            {locations.map((loc: any, i: number) => {
+              const isExpanded = expandedCity === loc.city;
+              const hasDetails = loc.details;
+              return (
+                <div key={i} className="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all">
+                  <button
+                    onClick={() => hasDetails && setExpandedCity(isExpanded ? null : loc.city)}
+                    className={`w-full flex items-center justify-between p-8 text-left ${hasDetails ? 'cursor-pointer hover:bg-slate-50' : 'cursor-default'} transition-all`}
+                  >
+                    <div>
+                      <h3 className="text-2xl font-bold text-zenith-navy uppercase tracking-wide">{loc.city} {loc.state}</h3>
+                    </div>
+                    {hasDetails && (
+                      <span className="text-zenith-navy text-2xl font-light ml-4">{isExpanded ? '\u2013' : '+'}</span>
+                    )}
+                  </button>
+                  {isExpanded && hasDetails && (
+                    <div className="px-8 pb-10 border-t border-slate-200">
+                      <div className="max-w-3xl mx-auto text-center pt-8">
+                        <p className="text-lg font-bold italic text-zenith-navy mb-2">{loc.details.subtitle}</p>
+                        <p className="text-slate-500 mb-6">{loc.details.date}</p>
+                        <h4 className="text-sm font-black uppercase tracking-[0.2em] text-zenith-navy mb-4">Purpose:</h4>
+                        <p className="text-slate-600 leading-relaxed mb-8">{loc.details.purpose}</p>
+                        <h4 className="text-sm font-black uppercase tracking-[0.2em] text-zenith-navy mb-4">Who Should Attend:</h4>
+                        <ul className="space-y-2 mb-8">
+                          {loc.details.attendees.map((a: string, j: number) => (
+                            <li key={j} className="text-slate-600 flex items-center justify-center gap-2">
+                              <span className="w-1.5 h-1.5 bg-zenith-navy rounded-full flex-shrink-0"></span>
+                              {a}
+                            </li>
+                          ))}
+                        </ul>
+                        <h4 className="text-sm font-black uppercase tracking-[0.2em] text-zenith-navy mb-4">Format Highlights:</h4>
+                        <ul className="space-y-2 mb-6">
+                          {loc.details.highlights.map((h: string, j: number) => (
+                            <li key={j} className="text-slate-600 flex items-center justify-center gap-2">
+                              <span className="w-1.5 h-1.5 bg-zenith-navy rounded-full flex-shrink-0"></span>
+                              {h}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <h3 className="text-2xl font-bold text-zenith-navy mb-2">{loc.city}</h3>
-                <p className="text-slate-500 font-medium">{loc.state}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
