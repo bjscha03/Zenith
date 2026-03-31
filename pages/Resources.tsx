@@ -133,6 +133,63 @@ const Resources: React.FC = () => {
         </div>
       </section>
 
+      {/* White Papers Section */}
+      <section className="py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-16">
+            <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Industry Research</h2>
+            <h3 className="text-3xl font-bold text-zenith-navy">White Papers</h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Reimagining Health Insurance',
+                desc: 'A forward-looking analysis of how innovative risk structures are reshaping the health insurance landscape for self-funded employers.',
+                url: '/brochures/reimagining-health-insurance.pdf',
+              },
+              {
+                title: 'Stop Loss Captives',
+                desc: 'An in-depth exploration of stop loss captive structures, their strategic advantages, and implementation considerations for employers and advisors.',
+                url: '/brochures/stop-loss-captives.pdf',
+              },
+              {
+                title: 'Cost Containment & Stop Loss Pricing Impact',
+                desc: 'Examining the relationship between clinical cost containment strategies and their measurable impact on stop loss pricing outcomes.',
+                url: '/brochures/cost-containment-stop-loss.pdf',
+              },
+            ].map((paper) => (
+              <a
+                key={paper.url}
+                href={paper.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-10 bg-white border border-slate-100 rounded-2xl hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full no-underline"
+              >
+                <div className="w-14 h-14 bg-slate-50 rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 transition-transform duration-300">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4 block">White Paper</span>
+                <h4 className="text-xl font-bold text-zenith-navy mb-4 leading-snug group-hover:text-blue-600 transition-colors">{paper.title}</h4>
+                <p className="text-slate-500 text-sm leading-relaxed font-light mb-10 flex-grow">
+                  {paper.desc}
+                </p>
+                <div className="pt-6 border-t border-slate-200/50">
+                  <span className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy group-hover:text-blue-600 transition-colors">
+                    View White Paper
+                    <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Subscription Section */}
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
