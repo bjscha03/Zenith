@@ -20,6 +20,7 @@ import Events from './pages/Events';
 import ConferenceSeries from './pages/ConferenceSeries';
 import Careers from './pages/Careers';
 import Speakers from './pages/Speakers';
+import ReimaginingHealthInsurance from './pages/WhitePapers/ReimaginingHealthInsurance';
 
 const App: React.FC = () => {
   return (
@@ -37,6 +38,7 @@ const App: React.FC = () => {
           <Route path="/for-brokers" element={<ForBrokers />} />
           <Route path="/about" element={<About />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/reimagining-health-insurance" element={<ReimaginingHealthInsurance />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/events" element={<Events />} />
           <Route path="/conference-series" element={<ConferenceSeries />} />
