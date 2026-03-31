@@ -30,7 +30,7 @@ const sections = [
   { id: 'strategy', label: 'Strategy' },
   { id: 'inefficiencies', label: 'Inefficiencies' },
   { id: 'risk', label: 'Risk' },
-  { id: 'analysis', label: 'Analysis' },
+  { id: 'analysis', label: 'Strategic Impact' },
   { id: 'path-forward', label: 'Path Forward' },
 ];
 
@@ -93,7 +93,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
       if (!element) return;
 
       const opt = {
-        margin: [0.5, 0.6, 0.5, 0.6],
+        margin: [0.6, 0.7, 0.6, 0.7],
         filename: 'Zenith-Reimagining-Health-Insurance.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, logging: false },
@@ -112,7 +112,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
   return (
     <div className="w-full bg-white">
       {/* ───── Hero ───── */}
-      <section className="relative bg-white pt-16 pb-20 md:pt-24 md:pb-28 border-b border-slate-100">
+      <section className="relative bg-white pt-16 pb-16 md:pt-20 md:pb-20 border-b border-slate-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-2 mb-8">
             <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -205,9 +205,9 @@ const ReimaginingHealthInsurance: React.FC = () => {
       {/* ───── Content ───── */}
       <div ref={contentRef} className="print-content">
         {/* SECTION 1 – Strategy */}
-        <section id="strategy" className="py-20 md:py-28">
+        <section id="strategy" className="py-14 md:py-20">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-16">
+            <div className="grid lg:grid-cols-3 gap-12">
               <div className="lg:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-8 leading-tight">
                   1. Introduction: The Shift from Procurement to Financial Strategy
@@ -255,9 +255,9 @@ const ReimaginingHealthInsurance: React.FC = () => {
         </section>
 
         {/* SECTION 2 – Inefficiencies */}
-        <section id="inefficiencies" className="py-20 md:py-28 bg-slate-50">
+        <section id="inefficiencies" className="py-14 md:py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-16">
+            <div className="grid lg:grid-cols-3 gap-12">
               <div className="lg:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-8 leading-tight">
                   2. The Inefficiency of Fully Insured Models
@@ -271,7 +271,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     available.
                   </p>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     The Hidden Costs of Risk Transfer
                   </h3>
                   <p>
@@ -295,7 +295,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     or strategically deployed.
                   </p>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     The Renewal Cycle Trap
                   </h3>
                   <p>
@@ -342,9 +342,9 @@ const ReimaginingHealthInsurance: React.FC = () => {
         </section>
 
         {/* SECTION 3 – Risk */}
-        <section id="risk" className="py-20 md:py-28">
+        <section id="risk" className="py-14 md:py-20 border-t border-slate-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-16">
+            <div className="grid lg:grid-cols-3 gap-12">
               <div className="lg:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-8 leading-tight">
                   3. Understanding Risk Financing Structures
@@ -357,7 +357,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     while transferring catastrophic exposure. The key structures include:
                   </p>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     Level-Funded Plans
                   </h3>
                   <p>
@@ -367,7 +367,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     projected and actual claims—are returned to the employer.
                   </p>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     Self-Funded with Stop Loss
                   </h3>
                   <p>
@@ -377,7 +377,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     access—advantages that are impossible under a fully insured arrangement.
                   </p>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     Captive Stop-Loss Programs
                   </h3>
                   <p>
@@ -395,6 +395,18 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     structures continues to accelerate as employers seek greater control, transparency,
                     and long-term cost stability.
                   </p>
+
+                  {/* Industry Insight — placed inline with content */}
+                  <div className="bg-blue-600 text-white rounded-2xl p-8 my-8 print-takeaway">
+                    <h4 className="text-xs font-black uppercase tracking-[0.2em] text-blue-200 mb-4">Industry Insight</h4>
+                    <p className="text-sm leading-relaxed text-blue-100">
+                      "Employers who transition from fully insured to a self-funded captive model
+                      can realize meaningful cumulative savings depending on structure, execution,
+                      and population profile—while gaining access to granular claims data that
+                      enables proactive risk management."
+                    </p>
+                    <p className="mt-4 text-xs font-bold text-blue-200">— Zenith Risk Strategies</p>
+                  </div>
                 </div>
               </div>
 
@@ -407,28 +419,18 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     'Captives unlock institutional reinsurance and collective underwriting profit.',
                   ]}
                 />
-
-                <div className="mt-10 bg-blue-600 text-white rounded-2xl p-8 print-takeaway">
-                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-blue-200 mb-4">Industry Insight</h4>
-                  <p className="text-sm leading-relaxed text-blue-100">
-                    "Employers who transition from fully insured to a self-funded captive model
-                    often realize meaningful cumulative savings over a multi-year period while
-                    gaining access to granular claims data that enables proactive risk management."
-                  </p>
-                  <p className="mt-4 text-xs font-bold text-blue-200">— Zenith Risk Strategies</p>
-                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* SECTION 4 – Analysis */}
-        <section id="analysis" className="py-20 md:py-28 bg-slate-50">
+        {/* SECTION 4 – Strategic Impact */}
+        <section id="analysis" className="py-14 md:py-20 bg-slate-50 border-t border-slate-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-16">
+            <div className="grid lg:grid-cols-3 gap-12">
               <div className="lg:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-8 leading-tight">
-                  4. Data-Driven Analysis: Quantifying the Strategic Advantage
+                  4. Strategic Impact: Understanding the Financial Advantage
                 </h2>
 
                 <div className="prose-slate max-w-none space-y-6 text-slate-600 leading-relaxed">
@@ -436,7 +438,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     The financial case for alternative risk financing is compelling when examined
                     through rigorous actuarial analysis. When modeling a representative mid-market
                     employer across fully insured, self-funded, and captive structures over a
-                    multi-year horizon, the total cost-of-risk differences can be significant.
+                    multi-year horizon, the total cost-of-risk differences are often significant.
                   </p>
 
                   <p>
@@ -446,7 +448,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     and the employer's risk tolerance.
                   </p>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     Savings Decomposition
                   </h3>
                   <p>
@@ -462,7 +464,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                       },
                       {
                         label: 'Premium Tax Avoidance',
-                        desc: 'Captive structures may avoid certain state premium taxes that apply to fully insured plans.',
+                        desc: 'Captive structures are designed to avoid certain state premium taxes that apply to fully insured plans.',
                       },
                       {
                         label: 'Underwriting Profit Sharing',
@@ -470,7 +472,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                       },
                       {
                         label: 'Clinical Program ROI',
-                        desc: 'Targeted cost containment and care management programs can generate meaningful returns over time.',
+                        desc: 'Targeted cost containment and care management programs are designed to generate meaningful returns over time.',
                       },
                     ].map((item, idx) => (
                       <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6">
@@ -480,14 +482,14 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     ))}
                   </div>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     Pharmacy: The Fastest-Growing Cost Driver
                   </h3>
                   <p>
                     Specialty pharmacy now represents a substantial and growing share of total drug
                     spend for many self-funded plans, driven by GLP-1 therapies, cell and gene
                     therapies, and biosimilar adoption dynamics. Transparent PBM arrangements within
-                    a captive framework can meaningfully reduce pharmacy costs compared to
+                    a captive framework enables employers to meaningfully reduce pharmacy costs compared to
                     traditional spread pricing models.
                   </p>
 
@@ -502,10 +504,10 @@ const ReimaginingHealthInsurance: React.FC = () => {
               <div className="lg:col-span-1">
                 <KeyTakeaways
                   items={[
-                    'Captive programs can significantly reduce long-term costs vs. fully insured.',
+                    'Captive programs are structured to reduce long-term costs vs. fully insured.',
                     'Savings compound across carrier margins, taxes, and underwriting profit.',
                     'Specialty pharmacy is the largest growth driver in self-funded plans.',
-                    'Transparent PBM models can meaningfully reduce costs over traditional spread pricing.',
+                    'Transparent PBM models enable employers to meaningfully reduce costs over traditional spread pricing.',
                   ]}
                 />
 
@@ -528,9 +530,9 @@ const ReimaginingHealthInsurance: React.FC = () => {
         </section>
 
         {/* SECTION 5 – Path Forward */}
-        <section id="path-forward" className="py-20 md:py-28">
+        <section id="path-forward" className="py-14 md:py-20 border-t border-slate-200">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-3 gap-16">
+            <div className="grid lg:grid-cols-3 gap-12">
               <div className="lg:col-span-2">
                 <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-8 leading-tight">
                   5. The Path Forward: Building a Healthcare Risk Strategy
@@ -589,7 +591,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     ))}
                   </div>
 
-                  <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
+                  <h3 className="text-xl font-bold text-zenith-navy mt-8 mb-4">
                     Conclusion
                   </h3>
                   <p>
@@ -603,6 +605,11 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     underwriting, innovative captive structures, and transparent advisory
                     partnerships, we help employers reclaim control of their largest variable cost
                     and transform it into a strategic advantage.
+                  </p>
+                  <p className="italic text-slate-500 border-l-4 border-blue-600 pl-6 mt-8">
+                    For organizations evaluating a transition away from fully insured models, a
+                    structured diagnostic is the first step toward understanding the true financial
+                    opportunity.
                   </p>
                 </div>
               </div>
@@ -659,8 +666,11 @@ const ReimaginingHealthInsurance: React.FC = () => {
 
         @media print {
           .print-content { padding: 0; }
-          .print-takeaway { break-inside: avoid; }
-          section { break-inside: avoid; }
+          .print-content section { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+          .print-takeaway { break-inside: avoid; page-break-inside: avoid; }
+          section { break-inside: avoid; page-break-inside: avoid; }
+          h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+          p { orphans: 3; widows: 3; }
         }
       `}</style>
     </div>
