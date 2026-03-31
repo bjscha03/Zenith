@@ -92,8 +92,12 @@ const ReimaginingHealthInsurance: React.FC = () => {
       const element = contentRef.current;
       if (!element) return;
 
+      // Apply document formatting for PDF export
+      element.classList.add('pdf-mode');
+      await new Promise((r) => setTimeout(r, 150));
+
       const opt = {
-        margin: [0.6, 0.7, 0.6, 0.7],
+        margin: [0.75, 0.75, 0.75, 0.75],
         filename: 'Zenith-Reimagining-Health-Insurance.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, logging: false },
@@ -105,6 +109,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
     } catch (err) {
       console.error('PDF generation failed:', err);
     } finally {
+      contentRef.current?.classList.remove('pdf-mode');
       setDownloading(false);
     }
   };
@@ -548,7 +553,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
               </p>
 
               {/* Roadmap */}
-              <div className="my-10 space-y-0">
+              <div className="my-10 space-y-0 pdf-roadmap">
                 {[
                   {
                     phase: 'Phase 1',
@@ -618,7 +623,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-zenith-navy text-white">
+        <section className="py-20 bg-zenith-navy text-white pdf-hide-cta">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
               Ready to reimagine your <span className="text-blue-400">healthcare strategy</span>?
@@ -653,43 +658,130 @@ const ReimaginingHealthInsurance: React.FC = () => {
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+        /* ========== PDF Document Export Mode ========== */
+
+        /* Base: white background */
+        .pdf-mode {
+          background-color: white !important;
+        }
+
+        /* Show cover page with page break after */
+        .pdf-mode .print-cover {
+          display: block !important;
+          page-break-after: always;
+          break-after: page;
+        }
+
+        /* Hide web-only CTA section */
+        .pdf-mode .pdf-hide-cta {
+          display: none !important;
+        }
+
+        /* Remove ALL backgrounds, shadows, rounded corners, borders */
+        .pdf-mode section,
+        .pdf-mode div {
+          background-color: white !important;
+          background: white !important;
+          box-shadow: none !important;
+          border-radius: 0 !important;
+          border-color: transparent !important;
+        }
+
+        /* Minimal section spacing — natural document flow */
+        .pdf-mode section {
+          padding: 1rem 0 !important;
+        }
+
+        /* Remove container width constraints — full width text */
+        .pdf-mode .max-w-5xl,
+        .pdf-mode .max-w-3xl,
+        .pdf-mode .max-w-2xl {
+          max-width: 100% !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+        }
+
+        /* Fix text colors from dark / colored backgrounds */
+        .pdf-mode .text-white { color: #1e293b !important; }
+        .pdf-mode .text-blue-100 { color: #475569 !important; }
+        .pdf-mode .text-blue-200 { color: #475569 !important; }
+        .pdf-mode .text-blue-400 { color: #475569 !important; }
+        .pdf-mode .text-slate-300 { color: #475569 !important; }
+
+        /* Key Takeaways & callout blocks — plain document style */
+        .pdf-mode .print-takeaway {
+          padding: 0.5rem 0 !important;
+          margin: 0.75rem 0 !important;
+        }
+
+        /* Hide SVG arrow icons in key takeaways */
+        .pdf-mode .print-takeaway svg {
+          display: none !important;
+        }
+
+        /* Convert key takeaway items to plain bullet list */
+        .pdf-mode .print-takeaway li {
+          display: list-item !important;
+          list-style-type: disc !important;
+          margin-left: 1.5rem !important;
+        }
+
+        /* Roadmap phases — hide timeline graphics, simple list */
+        .pdf-mode .pdf-roadmap > div > div:first-child {
+          display: none !important;
+        }
+        .pdf-mode .pdf-roadmap > div {
+          display: block !important;
+        }
+        .pdf-mode .pdf-roadmap .pb-10 {
+          padding-bottom: 0.75rem !important;
+        }
+
+        /* Remove left-border quote styling */
+        .pdf-mode .border-l-4 {
+          border-left-color: transparent !important;
+          padding-left: 0 !important;
+        }
+
+        /* Tighten paragraph spacing */
+        .pdf-mode .space-y-6 > * + * {
+          margin-top: 0.75rem !important;
+        }
+
+        /* Page break control */
+        .pdf-mode .print-takeaway,
+        .pdf-mode .print-no-break {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+        .pdf-mode h2, .pdf-mode h3, .pdf-mode h4 {
+          break-after: avoid;
+          page-break-after: avoid;
+        }
+        .pdf-mode p {
+          orphans: 3;
+          widows: 3;
+        }
+
+        /* ========== Browser Print Styles ========== */
         @media print {
-          /* Hide navigation and download buttons */
           .print-hide { display: none !important; }
-
-          /* Show PDF cover */
           .print-cover { display: block !important; }
-
-          /* Reset all containers */
           .print-content { padding: 0; }
           .print-content section { padding-top: 1.5rem; padding-bottom: 1.5rem; }
-
-          /* Keep blocks together */
           .print-takeaway { break-inside: avoid; page-break-inside: avoid; }
           .print-section { break-inside: auto; }
-
-          /* Keep headings with their content */
           h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
-
-          /* Prevent orphans and widows */
           p { orphans: 3; widows: 3; }
-
-          /* Remove background colors that waste ink */
           .bg-slate-50 { background-color: white !important; }
           .bg-zenith-navy { background-color: #1e293b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
           .bg-blue-600 { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-
-          /* Remove sticky positioning */
           .sticky { position: static !important; }
-
-          /* Ensure single column */
           .grid { display: block !important; }
-
-          /* Remove excessive spacing */
           .py-14 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
           .py-20 { padding-top: 2rem; padding-bottom: 2rem; }
-
-          /* Ensure page breaks don't orphan headings */
           .print-no-break { break-inside: avoid; page-break-inside: avoid; }
         }
       `}</style>
