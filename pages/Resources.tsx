@@ -225,13 +225,13 @@ const Resources: React.FC = () => {
                 name: 'Direct Care Alliance',
                 desc: 'Network advancing direct primary care models nationwide',
                 url: 'https://directcarealliance.com/',
-                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/dca_n4qbct.png',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982900/Screenshot_2026-03-31_at_2.47.38_PM_racatz.png',
               },
               {
                 name: 'Connect Benefit',
                 desc: 'Healthcare cost containment and member advocacy solutions',
                 url: 'https://www.connectbenefit.com/',
-                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/ConnectBENEFIT_white_r8kjsa.webp',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982898/Screenshot_2026-03-31_at_2.47.54_PM_ud46ao.png',
               },
               {
                 name: 'Kerix',
