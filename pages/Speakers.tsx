@@ -89,7 +89,7 @@ const Speakers: React.FC = () => {
 
       {/* SECTION 1: HERO */}
       <div className="w-full max-h-[500px] overflow-hidden">
-        <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749927/Screenshot_2026-03-05_at_5.32.02_PM_ppusgl.png" alt="Zenith Conference" className="w-full h-[500px] object-cover" />
+        <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749927/Screenshot_2026-03-05_at_5.32.02_PM_ppusgl.png" alt="Zenith Conference" className="w-full h-[500px] object-cover object-[center_20%]" />
       </div>
 
 
