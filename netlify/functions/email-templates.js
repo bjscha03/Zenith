@@ -133,7 +133,7 @@ ${rows}
  * Renders the customer-facing confirmation email.
  *
  * @param {{ firstName?: string, name?: string }} data – Must contain at
- *   least one name field so the greeting can be personalised.
+ *   least one name field so the greeting can be personalized.
  * @returns {string} Complete HTML document string.
  */
 function renderZenithCustomerEmail(data) {
