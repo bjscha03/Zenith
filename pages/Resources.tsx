@@ -207,31 +207,37 @@ const Resources: React.FC = () => {
                 name: 'TrueScripts',
                 desc: 'Pharmacy benefit optimization and transparent PBM solutions',
                 url: 'https://www.truescripts.com/',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/truescripts_gfnsm1.png',
               },
               {
                 name: 'PriceMDs',
                 desc: 'Transparent healthcare pricing and cost navigation platform',
                 url: 'https://pricemds.com/',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/pricemds_ygnlpr.png',
               },
               {
                 name: 'Veracity Benefits',
                 desc: 'Benefits consulting focused on cost control and plan optimization',
                 url: 'https://www.veracity-benefits.com/',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/Veracity_ktevzt.webp',
               },
               {
                 name: 'Direct Care Alliance',
                 desc: 'Network advancing direct primary care models nationwide',
                 url: 'https://directcarealliance.com/',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/dca_n4qbct.png',
               },
               {
                 name: 'Connect Benefit',
                 desc: 'Healthcare cost containment and member advocacy solutions',
                 url: 'https://www.connectbenefit.com/',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/ConnectBENEFIT_white_r8kjsa.webp',
               },
               {
                 name: 'Kerix',
                 desc: 'Healthcare navigation and savings optimization platform',
                 url: 'https://www.kerix.com/',
+                logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/Ketrix_pukzec.png',
               },
             ].map((partner) => (
               <a
@@ -242,10 +248,12 @@ const Resources: React.FC = () => {
                 aria-label={`Visit ${partner.name} website`}
                 className="group p-10 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full no-underline"
               >
-                <div className="w-14 h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                  </svg>
+                <div className="w-full h-16 flex items-center justify-start mb-8 group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={partner.logo}
+                    alt={`${partner.name} logo`}
+                    className="max-h-16 max-w-[180px] w-auto h-auto object-contain"
+                  />
                 </div>
                 <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4 block">Partner</span>
                 <h4 className="text-xl font-bold text-zenith-navy mb-4 leading-snug group-hover:text-blue-600 transition-colors">{partner.name}</h4>
