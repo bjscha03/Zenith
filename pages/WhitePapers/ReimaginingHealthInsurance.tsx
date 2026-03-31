@@ -3,102 +3,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 /* ────────────────────────────────────────────────────────────
-   Chart Components – lightweight SVG, no external library
-   ──────────────────────────────────────────────────────────── */
-
-const BarChart: React.FC<{
-  data: { label: string; value: number; color?: string }[];
-  title: string;
-  unit?: string;
-}> = ({ data, title, unit = '%' }) => {
-  const max = Math.max(...data.map((d) => d.value));
-  return (
-    <div className="my-10">
-      <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">{title}</h4>
-      <div className="space-y-4">
-        {data.map((d, i) => (
-          <div key={i}>
-            <div className="flex justify-between mb-1.5">
-              <span className="text-sm font-semibold text-slate-700">{d.label}</span>
-              <span className="text-sm font-bold text-slate-900">
-                {d.value}{unit}
-              </span>
-            </div>
-            <div className="h-3 bg-slate-100 rounded-full overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-1000"
-                style={{
-                  width: `${(d.value / max) * 100}%`,
-                  backgroundColor: d.color || '#16365d',
-                }}
-              />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const DonutChart: React.FC<{
-  segments: { label: string; value: number; color: string }[];
-  title: string;
-  centerLabel?: string;
-}> = ({ segments, title, centerLabel }) => {
-  const total = segments.reduce((s, d) => s + d.value, 0);
-  const radius = 60;
-  const stroke = 20;
-  const circumference = 2 * Math.PI * radius;
-  let offset = 0;
-
-  return (
-    <div className="my-10">
-      <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">{title}</h4>
-      <div className="flex flex-col sm:flex-row items-center gap-8">
-        <svg width="160" height="160" viewBox="0 0 160 160" className="flex-shrink-0">
-          {segments.map((seg, i) => {
-            const pct = seg.value / total;
-            const dash = pct * circumference;
-            const gap = circumference - dash;
-            const currentOffset = offset;
-            offset += dash;
-            return (
-              <circle
-                key={i}
-                cx="80"
-                cy="80"
-                r={radius}
-                fill="none"
-                stroke={seg.color}
-                strokeWidth={stroke}
-                strokeDasharray={`${dash} ${gap}`}
-                strokeDashoffset={-currentOffset}
-                strokeLinecap="butt"
-                transform="rotate(-90 80 80)"
-              />
-            );
-          })}
-          {centerLabel && (
-            <text x="80" y="84" textAnchor="middle" className="fill-slate-800 text-lg font-bold">
-              {centerLabel}
-            </text>
-          )}
-        </svg>
-        <div className="space-y-2">
-          {segments.map((seg, i) => (
-            <div key={i} className="flex items-center gap-3 text-sm">
-              <span className="w-3 h-3 rounded-full flex-shrink-0" style={{ backgroundColor: seg.color }} />
-              <span className="text-slate-600">{seg.label}</span>
-              <span className="font-bold text-slate-800 ml-auto">{seg.value}%</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-};
-
-/* ────────────────────────────────────────────────────────────
    Key Takeaways Sidebar
    ──────────────────────────────────────────────────────────── */
 
@@ -319,9 +223,9 @@ const ReimaginingHealthInsurance: React.FC = () => {
                   <p>
                     This paradigm is fundamentally flawed. Healthcare is not a commodity to be
                     purchased; it is the <strong>single largest variable financial risk</strong> on
-                    most employers' balance sheets. When a mid-market company spends $8–15 million
+                    most employers' balance sheets. When a mid-market company spends millions
                     annually on healthcare yet applies less analytical rigor to it than it does to a
-                    $500,000 equipment lease, the misalignment of oversight is staggering.
+                    routine equipment lease, the misalignment of oversight is staggering.
                   </p>
                   <p>
                     The question for executive leadership is no longer <em>"How do we buy better
@@ -372,26 +276,23 @@ const ReimaginingHealthInsurance: React.FC = () => {
                   </h3>
                   <p>
                     Insurance carriers embed substantial margins into fully insured premiums to
-                    compensate for the risk they assume. These margins typically include 12–18% in
+                    compensate for the risk they assume. These margins typically include significant
                     administrative charges, profit loading, and reserve contributions that never
                     return to the employer, even in years of favorable claims experience.
                   </p>
 
-                  <BarChart
-                    title="Premium Allocation — Fully Insured Model"
-                    data={[
-                      { label: 'Actual Claims Paid', value: 68, color: '#16365d' },
-                      { label: 'Carrier Profit & Reserves', value: 14, color: '#3b82f6' },
-                      { label: 'Administrative Fees', value: 12, color: '#94a3b8' },
-                      { label: 'Premium Tax & Assessments', value: 6, color: '#cbd5e1' },
-                    ]}
-                  />
+                  <p>
+                    In a fully insured arrangement, premium dollars are allocated across actual
+                    claims payments, carrier profit and reserves, administrative fees, and premium
+                    taxes. Only a portion of each premium dollar is used to pay claims directly—the
+                    remainder flows to non-claims expenses that the employer can never recoup.
+                  </p>
 
                   <p>
-                    For a company paying $10 million in annual premium, approximately $3.2 million
-                    flows to non-claims expenses. Over a five-year period, this translates to $16
-                    million in value leakage that could otherwise be retained, invested, or
-                    strategically deployed.
+                    For many employers, this results in a meaningful share of total premium flowing
+                    to non-claims costs each year. Over a multi-year period, the cumulative value
+                    leakage can be substantial—dollars that could otherwise be retained, invested,
+                    or strategically deployed.
                   </p>
 
                   <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
@@ -399,10 +300,10 @@ const ReimaginingHealthInsurance: React.FC = () => {
                   </h3>
                   <p>
                     The annual renewal process reinforces a reactive posture. Employers receive a
-                    renewal increase—often 8–14%—and are forced into a frantic market exercise
-                    comparing nearly identical products. This cycle rewards short-term shopping
-                    behavior while penalizing long-term strategic investment in population health and
-                    risk management.
+                    renewal increase—often well above general inflation—and are forced into a frantic
+                    market exercise comparing nearly identical products. This cycle rewards short-term
+                    shopping behavior while penalizing long-term strategic investment in population
+                    health and risk management.
                   </p>
                 </div>
               </div>
@@ -410,7 +311,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
               <div className="lg:col-span-1">
                 <KeyTakeaways
                   items={[
-                    'Fully insured premiums embed 12–18% in non-claims costs.',
+                    'Fully insured premiums embed significant non-claims costs.',
                     'Employers surrender favorable claims experience to carriers.',
                     'The annual renewal cycle incentivizes short-term thinking.',
                     'Risk avoidance is not risk management—it is cost escalation.',
@@ -418,19 +319,20 @@ const ReimaginingHealthInsurance: React.FC = () => {
                 />
 
                 <div className="mt-10 bg-white border border-slate-200 rounded-2xl p-8 print-takeaway">
-                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4">By The Numbers</h4>
-                  <div className="space-y-6">
-                    <div>
-                      <div className="text-4xl font-extrabold text-zenith-navy">$3.2M</div>
-                      <div className="text-sm text-slate-500 mt-1">Annual non-claims leakage on a $10M premium</div>
+                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-4">The Core Issue</h4>
+                  <div className="space-y-6 text-sm text-slate-600 leading-relaxed">
+                    <p>
+                      A significant share of every fully insured premium dollar goes to non-claims expenses—carrier profit, administrative overhead, reserves, and taxes—that the employer can never recoup.
+                    </p>
+                    <div className="border-t border-slate-100 pt-6">
+                      <p>
+                        Annual renewal increases often outpace general inflation, compounding over time and eroding the employer's ability to invest in population health.
+                      </p>
                     </div>
                     <div className="border-t border-slate-100 pt-6">
-                      <div className="text-4xl font-extrabold text-blue-600">8–14%</div>
-                      <div className="text-sm text-slate-500 mt-1">Typical annual renewal increase</div>
-                    </div>
-                    <div className="border-t border-slate-100 pt-6">
-                      <div className="text-4xl font-extrabold text-zenith-navy">5yr</div>
-                      <div className="text-sm text-slate-500 mt-1">$16M cumulative value leakage</div>
+                      <p>
+                        Over a multi-year horizon, cumulative value leakage from embedded carrier margins can represent a material financial opportunity cost.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -486,16 +388,13 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     transparency into the full insurance value chain.
                   </p>
 
-                  <DonutChart
-                    title="Risk Financing Spectrum — Employer Adoption (2025)"
-                    segments={[
-                      { label: 'Fully Insured', value: 40, color: '#cbd5e1' },
-                      { label: 'Level-Funded', value: 18, color: '#94a3b8' },
-                      { label: 'Self-Funded (Traditional)', value: 28, color: '#3b82f6' },
-                      { label: 'Captive / Group Captive', value: 14, color: '#16365d' },
-                    ]}
-                    centerLabel="100%"
-                  />
+                  <p>
+                    Today, a growing number of employers are moving along the risk financing
+                    spectrum—from fully insured to level-funded, self-funded, and captive
+                    arrangements. While fully insured plans remain common, adoption of alternative
+                    structures continues to accelerate as employers seek greater control, transparency,
+                    and long-term cost stability.
+                  </p>
                 </div>
               </div>
 
@@ -513,7 +412,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                   <h4 className="text-xs font-black uppercase tracking-[0.2em] text-blue-200 mb-4">Industry Insight</h4>
                   <p className="text-sm leading-relaxed text-blue-100">
                     "Employers who transition from fully insured to a self-funded captive model
-                    typically realize 15–30% cumulative savings over a three-year period while
+                    often realize meaningful cumulative savings over a multi-year period while
                     gaining access to granular claims data that enables proactive risk management."
                   </p>
                   <p className="mt-4 text-xs font-bold text-blue-200">— Zenith Risk Strategies</p>
@@ -535,20 +434,17 @@ const ReimaginingHealthInsurance: React.FC = () => {
                 <div className="prose-slate max-w-none space-y-6 text-slate-600 leading-relaxed">
                   <p>
                     The financial case for alternative risk financing is compelling when examined
-                    through rigorous actuarial analysis. Below, we model a representative mid-market
-                    employer (500 employees, $12M annual healthcare spend) across three financing
-                    structures over a five-year horizon.
+                    through rigorous actuarial analysis. When modeling a representative mid-market
+                    employer across fully insured, self-funded, and captive structures over a
+                    multi-year horizon, the total cost-of-risk differences can be significant.
                   </p>
 
-                  <BarChart
-                    title="5-Year Total Cost of Risk — $12M Annual Spend"
-                    unit="M"
-                    data={[
-                      { label: 'Fully Insured', value: 78.2, color: '#cbd5e1' },
-                      { label: 'Self-Funded + Stop Loss', value: 67.8, color: '#3b82f6' },
-                      { label: 'Captive Program', value: 61.5, color: '#16365d' },
-                    ]}
-                  />
+                  <p>
+                    In many cases, captive and self-funded structures demonstrate materially lower
+                    total costs compared to fully insured arrangements over a five-year period. The
+                    magnitude of the difference depends on plan design, population health profile,
+                    and the employer's risk tolerance.
+                  </p>
 
                   <h3 className="text-xl font-bold text-zenith-navy mt-10 mb-4">
                     Savings Decomposition
@@ -562,27 +458,22 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     {[
                       {
                         label: 'Carrier Margin Elimination',
-                        value: '8–12%',
-                        desc: 'Removing embedded profit & reserve charges',
+                        desc: 'Removing embedded profit and reserve charges that are built into fully insured premiums.',
                       },
                       {
                         label: 'Premium Tax Avoidance',
-                        value: '2–3%',
-                        desc: 'Captive structures avoid state premium taxes',
+                        desc: 'Captive structures may avoid certain state premium taxes that apply to fully insured plans.',
                       },
                       {
                         label: 'Underwriting Profit Sharing',
-                        value: '5–15%',
-                        desc: 'Favorable experience returns to the captive members',
+                        desc: 'Favorable claims experience returns to captive members rather than being retained by the carrier.',
                       },
                       {
                         label: 'Clinical Program ROI',
-                        value: '3–8%',
-                        desc: 'Cost containment and care management savings',
+                        desc: 'Targeted cost containment and care management programs can generate meaningful returns over time.',
                       },
                     ].map((item, idx) => (
                       <div key={idx} className="bg-white border border-slate-200 rounded-xl p-6">
-                        <div className="text-2xl font-extrabold text-blue-600 mb-1">{item.value}</div>
                         <div className="text-sm font-bold text-zenith-navy mb-2">{item.label}</div>
                         <div className="text-xs text-slate-500">{item.desc}</div>
                       </div>
@@ -593,56 +484,41 @@ const ReimaginingHealthInsurance: React.FC = () => {
                     Pharmacy: The Fastest-Growing Cost Driver
                   </h3>
                   <p>
-                    Specialty pharmacy now represents over 50% of total drug spend for many
-                    self-funded plans, driven by GLP-1 therapies, cell and gene therapies, and
-                    biosimilar adoption dynamics. Transparent PBM arrangements within a captive
-                    framework can reduce pharmacy costs by 18–25% compared to traditional spread
-                    pricing models.
+                    Specialty pharmacy now represents a substantial and growing share of total drug
+                    spend for many self-funded plans, driven by GLP-1 therapies, cell and gene
+                    therapies, and biosimilar adoption dynamics. Transparent PBM arrangements within
+                    a captive framework can meaningfully reduce pharmacy costs compared to
+                    traditional spread pricing models.
                   </p>
 
-                  <BarChart
-                    title="Pharmacy Cost Distribution — Self-Funded Plans"
-                    data={[
-                      { label: 'Specialty Pharmacy', value: 52, color: '#16365d' },
-                      { label: 'Brand Name Drugs', value: 22, color: '#3b82f6' },
-                      { label: 'Generic Drugs', value: 18, color: '#94a3b8' },
-                      { label: 'Compounding & Other', value: 8, color: '#cbd5e1' },
-                    ]}
-                  />
+                  <p>
+                    Beyond specialty drugs, plan costs are typically distributed across brand name
+                    drugs, generics, and compounding or other categories. Understanding this
+                    distribution is essential to designing effective pharmacy management strategies.
+                  </p>
                 </div>
               </div>
 
               <div className="lg:col-span-1">
                 <KeyTakeaways
                   items={[
-                    'Captive programs can reduce 5-year costs by 21% vs. fully insured.',
+                    'Captive programs can significantly reduce long-term costs vs. fully insured.',
                     'Savings compound across carrier margins, taxes, and underwriting profit.',
                     'Specialty pharmacy is the largest growth driver in self-funded plans.',
-                    'Transparent PBM models save 18–25% over traditional spread pricing.',
+                    'Transparent PBM models can meaningfully reduce costs over traditional spread pricing.',
                   ]}
                 />
 
                 <div className="mt-10 bg-white border border-slate-200 rounded-2xl p-8 print-takeaway">
-                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Model Assumptions</h4>
-                  <div className="space-y-4 text-sm text-slate-600">
-                    <div className="flex justify-between">
-                      <span>Employer Size</span>
-                      <span className="font-bold text-slate-800">500 EEs</span>
-                    </div>
-                    <div className="border-t border-slate-100" />
-                    <div className="flex justify-between">
-                      <span>Annual Spend</span>
-                      <span className="font-bold text-slate-800">$12M</span>
-                    </div>
-                    <div className="border-t border-slate-100" />
-                    <div className="flex justify-between">
-                      <span>Trend Factor</span>
-                      <span className="font-bold text-slate-800">7.5% / yr</span>
-                    </div>
-                    <div className="border-t border-slate-100" />
-                    <div className="flex justify-between">
-                      <span>Projection Period</span>
-                      <span className="font-bold text-slate-800">5 Years</span>
+                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Strategic Considerations</h4>
+                  <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
+                    <p>
+                      The magnitude of savings depends on employer size, population health profile, plan design, and risk tolerance. A thorough actuarial analysis tailored to each employer's specific circumstances is essential before transitioning structures.
+                    </p>
+                    <div className="border-t border-slate-100 pt-4">
+                      <p>
+                        Multi-year modeling across fully insured, self-funded, and captive scenarios provides the clearest picture of total cost-of-risk differences and informs the optimal financing strategy.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -679,7 +555,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                       {
                         phase: 'Phase 2',
                         title: 'Structure Design',
-                        desc: 'Evaluate level-funded, self-funded, and captive options. Model projected total cost of risk over 3- and 5-year horizons under each structure.',
+                        desc: 'Evaluate level-funded, self-funded, and captive options. Model projected total cost of risk over multi-year horizons under each structure.',
                         time: 'Month 2–3',
                       },
                       {
@@ -735,7 +611,7 @@ const ReimaginingHealthInsurance: React.FC = () => {
                 <KeyTakeaways
                   items={[
                     'A diagnostic assessment establishes the risk baseline.',
-                    'Structure design should model 3- and 5-year total cost projections.',
+                    'Structure design should model multi-year total cost projections across scenarios.',
                     'Implementation requires best-in-class vendor partnerships.',
                     'Ongoing stewardship ensures continuous optimization.',
                   ]}
