@@ -1,6 +1,5 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const Resources: React.FC = () => {
   const [nlEmail, setNlEmail] = useState('');
@@ -143,33 +142,12 @@ const Resources: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Reimagining Health Insurance - links to dedicated page */}
-            <Link
-              to="/resources/reimagining-health-insurance"
-              className="group p-10 bg-white border border-slate-100 rounded-2xl hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full no-underline"
-            >
-              <div className="w-14 h-14 bg-slate-50 rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4 block">White Paper</span>
-              <h4 className="text-xl font-bold text-zenith-navy mb-4 leading-snug group-hover:text-blue-600 transition-colors">Reimagining Health Insurance</h4>
-              <p className="text-slate-500 text-sm leading-relaxed font-light mb-10 flex-grow">
-                A forward-looking analysis of how innovative risk structures are reshaping the health insurance landscape for self-funded employers.
-              </p>
-              <div className="pt-6 border-t border-slate-200/50">
-                <span className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy group-hover:text-blue-600 transition-colors">
-                  Read White Paper
-                  <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
-              </div>
-            </Link>
-
-            {/* Remaining white papers - external PDF links */}
             {[
+              {
+                title: 'Reimagining Health Insurance',
+                desc: 'A forward-looking analysis of how innovative risk structures are reshaping the health insurance landscape for self-funded employers.',
+                url: '/brochures/reimagining-health-insurance.pdf',
+              },
               {
                 title: 'Stop Loss Captives',
                 desc: 'An in-depth exploration of stop loss captive structures, their strategic advantages, and implementation considerations for employers and advisors.',
