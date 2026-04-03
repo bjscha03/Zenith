@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Apollo external URL - TODO: Update with actual Apollo website URL if different
+// Apollo external URL
 const APOLLO_URL = "https://www.apollohealthplan.com";
 
 const ApolloHealthPlan: React.FC = () => {
