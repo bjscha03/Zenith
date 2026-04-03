@@ -2,7 +2,7 @@ const { neon } = require("@neondatabase/serverless");
 const { Resend } = require("resend");
 const sql = neon(process.env.DATABASE_URL);
 const resend = new Resend(process.env.RESEND_API_KEY);
-const NOTIFY = ["brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
+const NOTIFY = ["info@zenithriskstrategies.com", "brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -24,7 +24,7 @@ exports.handler = async (event) => {
     }
     await sql`INSERT INTO speaker_applications (first_name, last_name, company, title, email, phone, expertise, perspective, linkedin) VALUES (${firstName}, ${lastName}, ${company}, ${title}, ${email}, ${phone}, ${expertise}, ${perspective}, ${linkedin})`;
     const emailResult = await resend.emails.send({
-      from: "Zenith Forms <onboarding@resend.dev>",
+      from: "Zenith Forms <forms@zenithriskstrategies.com>",
       to: NOTIFY,
       subject: "New Speaker Application from " + firstName + " " + lastName,
       html: "<h2>New Speaker Application</h2>" +
