@@ -2,7 +2,7 @@ const { neon } = require("@neondatabase/serverless");
 const { Resend } = require("resend");
 const sql = neon(process.env.DATABASE_URL);
 const resend = new Resend(process.env.RESEND_API_KEY);
-const NOTIFY = ["brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
+const NOTIFY = ["info@zenithriskstrategies.com", "brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -18,7 +18,7 @@ exports.handler = async (event) => {
     if (!name || !email) return { statusCode: 400, headers, body: JSON.stringify({ error: "Missing required fields" }) };
     await sql`INSERT INTO schedule_calls (name, company_name, who_you_are, phone, email, company_size) VALUES (${name}, ${companyName || null}, ${whoYouAre || null}, ${phone || null}, ${email}, ${companySize || null})`;
     const emailResult = await resend.emails.send({
-      from: "Zenith Forms <onboarding@resend.dev>",
+      from: "Zenith Forms <forms@zenithriskstrategies.com>",
       to: NOTIFY,
       subject: "New Schedule Call Request from " + name,
       html: "<h2>Schedule a Call</h2><p><b>Name:</b> " + name + "</p><p><b>Company:</b> " + (companyName || "N/A") + "</p><p><b>Role:</b> " + (whoYouAre || "N/A") + "</p><p><b>Phone:</b> " + (phone || "N/A") + "</p><p><b>Email:</b> " + email + "</p><p><b>Size:</b> " + (companySize || "N/A") + "</p>"
