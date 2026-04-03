@@ -158,6 +158,11 @@ const Resources: React.FC = () => {
                 desc: 'Examining the relationship between clinical cost containment strategies and their measurable impact on stop loss pricing outcomes.',
                 url: '/brochures/cost-containment-stop-loss.pdf',
               },
+              {
+                title: 'Mechanics of Apollo LF Captive Program',
+                desc: 'A comprehensive overview of the Apollo LF Captive Program, outlining how the structure works, including key mechanics, risk strategy, and implementation approach.',
+                url: '/brochures/mechanics-of-apollo-lf-captive-program.pptx',
+              },
             ].map((paper) => (
               <a
                 key={paper.url}
