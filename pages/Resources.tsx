@@ -244,6 +244,12 @@ const Resources: React.FC = () => {
                 url: 'https://www.kerix.com/',
                 logo: 'https://res.cloudinary.com/dtrxl120u/image/upload/v1774982082/Ketrix_pukzec.png',
               },
+              {
+                name: 'Samaritan Fund Program',
+                desc: 'Supplemental health funding solutions supporting employees with unexpected medical expenses',
+                url: 'https://samaritanfundprogram.com/',
+                logo: 'https://github.com/user-attachments/assets/8e11bae0-c1b4-4bde-bb80-fc3eac1f8782',
+              },
             ].map((partner) => (
               <a
                 key={partner.name}
