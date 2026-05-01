@@ -2,7 +2,9 @@ const { neon } = require("@neondatabase/serverless");
 const { Resend } = require("resend");
 const sql = neon(process.env.DATABASE_URL);
 const resend = new Resend(process.env.RESEND_API_KEY);
-const NOTIFY = ["info@zenithriskstrategies.com", "Quotes@zenithriskstrategies.com", "brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
+// General contact inquiries → info@ (which already forwards internally).
+// If a dedicated RFP/quote form is added later, route that one to quotes@.
+const NOTIFY = ["info@zenithriskstrategies.com"];
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -23,7 +25,11 @@ exports.handler = async (event) => {
       subject: "New Contact Inquiry from " + firstName + " " + lastName,
       html: "<h2>New Contact Inquiry</h2><p><b>Name:</b> " + firstName + " " + lastName + "</p><p><b>Email:</b> " + email + "</p><p><b>Role:</b> " + (role || "N/A") + "</p><p><b>Message:</b> " + (message || "N/A") + "</p>"
     });
-    console.log("Email result:", JSON.stringify(emailResult));
+    if (emailResult && emailResult.error) {
+      console.error("Resend error:", JSON.stringify(emailResult.error));
+      return { statusCode: 502, headers, body: JSON.stringify({ error: "Email send failed", detail: emailResult.error }) };
+    }
+    console.log("Email sent:", JSON.stringify(emailResult && emailResult.data));
     return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
   } catch (err) {
     console.error("Function error:", err);

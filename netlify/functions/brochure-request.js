@@ -2,7 +2,7 @@ const { neon } = require("@neondatabase/serverless");
 const { Resend } = require("resend");
 const sql = neon(process.env.DATABASE_URL);
 const resend = new Resend(process.env.RESEND_API_KEY);
-const NOTIFY = ["info@zenithriskstrategies.com", "brandon.schaefer@hotmail.com", "twagner@zenithriskstrategies.com"];
+const NOTIFY = ["info@zenithriskstrategies.com"];
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -23,7 +23,11 @@ exports.handler = async (event) => {
       subject: "New Brochure Request from " + firstName + " " + lastName,
       html: "<h2>Brochure Request</h2><p><b>Name:</b> " + firstName + " " + lastName + "</p><p><b>Email:</b> " + email + "</p><p><b>Company:</b> " + (company || "N/A") + "</p><p><b>Type:</b> " + (brochureType || "apollo") + "</p>"
     });
-    console.log("Email result:", JSON.stringify(emailResult));
+    if (emailResult && emailResult.error) {
+      console.error("Resend error:", JSON.stringify(emailResult.error));
+      return { statusCode: 502, headers, body: JSON.stringify({ error: "Email send failed", detail: emailResult.error }) };
+    }
+    console.log("Email sent:", JSON.stringify(emailResult && emailResult.data));
     return { statusCode: 200, headers, body: JSON.stringify({ success: true }) };
   } catch (err) {
     console.error("Function error:", err);
