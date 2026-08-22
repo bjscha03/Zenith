@@ -16,10 +16,10 @@ const ContentCard: React.FC<{ entry: ContentEntry; compact?: boolean }> = ({ ent
   const isResource = entry.section === 'resource';
 
   return (
-    <article className={`group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-blue-200 transition-all duration-300 flex flex-col h-full ${isResource ? 'hover:-translate-y-1 shadow-sm' : ''}`}>
+    <article className={`group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-blue-200 transition-all duration-300 h-full ${compact ? 'sm:grid sm:grid-cols-[minmax(260px,0.95fr)_minmax(0,1.05fr)] min-h-[280px]' : 'flex flex-col'} ${isResource ? 'hover:-translate-y-1 shadow-sm' : ''}`}>
       {isResource && <div aria-hidden="true" className="absolute z-20 top-0 inset-x-0 h-1 bg-gradient-to-r from-zenith-blue via-blue-400 to-transparent opacity-80" />}
       {cover && (
-        <Link to={href} className={`block overflow-hidden bg-slate-100 ${compact ? 'aspect-[16/10]' : 'aspect-video'}`}>
+        <Link to={href} className={`block overflow-hidden bg-slate-100 ${compact ? 'aspect-[16/10] sm:aspect-auto sm:h-full' : 'aspect-video'}`}>
           <img
             src={imageUrl(cover.url, 900, compact ? 560 : 506, 'cover')}
             alt={cover.alt || entry.title}

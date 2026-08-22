@@ -9,7 +9,8 @@ const ContentGrid: React.FC<{
   emptyText?: string;
   showFilters?: boolean;
   excludeIds?: string[];
-}> = ({ section, limit, emptyText = 'New content is coming soon.', showFilters = false, excludeIds = [] }) => {
+  variant?: 'grid' | 'archive';
+}> = ({ section, limit, emptyText = 'New content is coming soon.', showFilters = false, excludeIds = [], variant = 'grid' }) => {
   const [entries, setEntries] = useState<ContentEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState('All');
@@ -25,7 +26,9 @@ const ContentGrid: React.FC<{
     .filter((entry) => !excludeIds.includes(entry.id) && (category === 'All' || entry.category === category))
     .slice(0, limit || entries.length);
 
-  if (loading) return <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" aria-label="Loading content"><div className="h-80 bg-slate-100 rounded-2xl animate-pulse" /><div className="h-80 bg-slate-100 rounded-2xl animate-pulse" /><div className="h-80 bg-slate-100 rounded-2xl animate-pulse" /></div>;
+  if (loading) return variant === 'archive'
+    ? <div className="h-72 bg-white/70 rounded-3xl animate-pulse" aria-label="Loading content" />
+    : <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" aria-label="Loading content"><div className="h-80 bg-slate-100 rounded-2xl animate-pulse" /><div className="h-80 bg-slate-100 rounded-2xl animate-pulse" /><div className="h-80 bg-slate-100 rounded-2xl animate-pulse" /></div>;
 
   return (
     <div>
@@ -37,7 +40,7 @@ const ContentGrid: React.FC<{
         </div>
       )}
       {visible.length ? (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">{visible.map((entry) => <ContentCard key={entry.id} entry={entry} />)}</div>
+        <div className={variant === 'archive' ? 'space-y-6' : 'grid md:grid-cols-2 lg:grid-cols-3 gap-8'}>{visible.map((entry) => <ContentCard key={entry.id} entry={entry} compact={variant === 'archive'} />)}</div>
       ) : (
         <div className="py-16 px-8 text-center bg-slate-50 border border-slate-200 rounded-2xl text-slate-500">{emptyText}</div>
       )}

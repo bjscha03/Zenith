@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import ContentGrid from '../components/content/ContentGrid';
+import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Events: React.FC = () => {
   const [expandedCity, setExpandedCity] = useState<string | null>(null);
@@ -47,7 +47,13 @@ const Events: React.FC = () => {
       {/* SECTION 1: HERO */}
       <section className="relative text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop')" }}></div>
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover object-center opacity-[0.2] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/95 via-zenith-navy/90 to-zenith-navy/[0.58]"></div>
+        <div aria-hidden="true" className="absolute -right-20 -top-28 w-[430px] h-[430px] rounded-full border border-blue-300/15">
+          <div className="absolute inset-14 rounded-full border border-blue-300/15" />
+          <div className="absolute inset-28 rounded-full border border-blue-300/15" />
+          <div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.08]"><img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" /></div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Zenith Events</span>
@@ -74,54 +80,57 @@ const Events: React.FC = () => {
         </div>
       </nav>
 
-      {/* MANAGED EVENT ARCHIVE */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.35em] mb-4 block">Event Archive</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy tracking-tight mb-4">Recaps, galleries, and event conversations</h2>
-            <p className="text-lg text-slate-600 max-w-3xl leading-relaxed">Revisit past gatherings through curated photography, video, and practical takeaways.</p>
-          </div>
-          <ContentGrid section="event" />
-        </div>
-      </section>
-
-
-      {/* SECTION 2: BUILT FOR DECISION-MAKERS */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Who This Is For</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-6">Built for Decision-Makers</h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">Our conferences are designed for those shaping the future of employer-funded healthcare.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4', title: 'Employers & CFOs', desc: 'Gain clarity on self-funded economics and long-term cost strategy.' },
-              { icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z', title: 'Brokers & Advisors', desc: 'Differentiate your practice with tools, insights, and partnership models.' },
-              { icon: 'M13 10V3L4 14h7v7l9-11h-7z', title: 'TPAs & Partners', desc: 'Connect with forward-thinking employers and brokers building next-gen programs.' },
-            ].map((item, i) => (
-              <div key={i} className="bg-slate-50 rounded-xl p-10 border border-slate-200 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
-                <div className="w-14 h-14 rounded-lg bg-zenith-navy flex items-center justify-center mb-6">
-                  <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={item.icon} /></svg>
-                </div>
-                <h3 className="text-xl font-bold text-zenith-navy mb-3">{item.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+      {/* FEATURED RECAP + AUDIENCE */}
+      <section className="relative overflow-hidden py-20 bg-gradient-to-b from-slate-50 via-white to-blue-50/50">
+        <div aria-hidden="true" className="absolute -right-52 top-12 w-[520px] h-[520px] rounded-full border border-blue-200/[0.35]"><div className="absolute inset-20 rounded-full border border-blue-200/[0.35]" /><div className="absolute inset-40 rounded-full border border-blue-200/[0.35]" /></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-[1.18fr_0.82fr] gap-8 items-stretch">
+            <div>
+              <div className="mb-9">
+                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.35em] mb-4 block">Featured Event Story</span>
+                <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy tracking-tight mb-4">Recaps, galleries, and conversations</h2>
+                <p className="text-lg text-slate-600 max-w-2xl leading-relaxed">Revisit the ideas and connections that continue beyond the room.</p>
               </div>
-            ))}
+              <ContentGrid section="event" variant="archive" />
+            </div>
+
+            <aside className="relative overflow-hidden rounded-[2rem] bg-zenith-navy p-8 md:p-10 text-white shadow-[0_28px_70px_-42px_rgba(15,35,68,0.75)]">
+              <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center opacity-30" />
+              <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/72 via-zenith-navy/88 to-zenith-navy/98" />
+              <div aria-hidden="true" className="absolute -right-20 -bottom-24 w-64 h-64 rounded-full border border-blue-300/20"><div className="absolute inset-10 rounded-full border border-blue-300/20" /><div className="absolute inset-20 rounded-full border border-blue-300/20" /></div>
+              <div className="relative z-10">
+                <span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-4 block">Who Is In The Room</span>
+                <h2 className="text-3xl font-bold tracking-tight mb-3">Built for decision-makers</h2>
+                <p className="text-slate-300 leading-relaxed mb-8">Conferences for the people actively shaping employer-funded healthcare.</p>
+                <div className="space-y-3">
+                  {[
+                    { number: '01', title: 'Employers & CFOs', desc: 'Clarity on self-funded economics and long-term cost strategy.' },
+                    { number: '02', title: 'Brokers & Advisors', desc: 'Tools, insight, and partnership models that differentiate.' },
+                    { number: '03', title: 'TPAs & Partners', desc: 'Connections with teams building next-generation programs.' },
+                  ].map((item) => (
+                    <div key={item.title} className="group flex gap-4 rounded-2xl border border-white/[0.12] bg-white/[0.07] p-4 backdrop-blur-sm hover:bg-white/[0.11] hover:border-blue-300/[0.35] transition-all">
+                      <span className="text-[10px] font-black text-blue-300 pt-1">{item.number}</span>
+                      <div><h3 className="font-bold text-white mb-1">{item.title}</h3><p className="text-sm leading-relaxed text-slate-300">{item.desc}</p></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
 
       {/* SECTION 3: CONFERENCE AGENDA */}
-      <section id="agenda" className="py-24 bg-zenith-navy">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="agenda" className="relative overflow-hidden py-24 bg-zenith-navy">
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[48%] h-full object-cover opacity-[0.14]" />
+        <div aria-hidden="true" className="absolute -right-32 -top-32 w-96 h-96 rounded-full border border-blue-300/10"><div className="absolute inset-16 rounded-full border border-blue-300/10" /><div className="absolute inset-32 rounded-full border border-blue-300/10" /></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">The Schedule</span>
             <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">Conference Agenda</h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">A full day designed for depth, not breadth. Every session is built around real-world application.</p>
           </div>
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto rounded-[2rem] border border-white/10 bg-white/[0.045] px-6 sm:px-10 py-4 backdrop-blur-sm">
             {agendaItems.map((item, i) => (
               <div key={i} className="flex items-start gap-6 py-5 border-b border-slate-700/50 last:border-0">
                 <span className="text-blue-400 font-mono text-sm font-bold min-w-[120px] pt-1">{item.time}</span>
