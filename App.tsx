@@ -3,6 +3,7 @@ import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import AuthBootstrap from './components/AuthBootstrap';
+import GoogleAnalytics from './components/GoogleAnalytics';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import WhyZenith from './pages/WhyZenith';
@@ -30,6 +31,7 @@ const App: React.FC = () => {
     <>
       <AuthBootstrap />
       <Router>
+        <GoogleAnalytics />
         <ScrollToTop />
         <Layout>
           <Routes>
