@@ -15,6 +15,10 @@ const Speakers: React.FC = () => {
     setOpenAccordion(openAccordion === index ? null : index);
   };
 
+  const scrollToApplication = () => {
+    document.getElementById('speaker-application')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -99,7 +103,7 @@ const Speakers: React.FC = () => {
             <span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.4em] mb-6 block">Zenith Conference Voices</span>
             <h1 className="text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight mb-7">Insight earned in the field. Shared from the stage.</h1>
             <p className="text-xl text-slate-300 leading-relaxed font-light max-w-2xl mb-9">Zenith brings together operators, advisors, and healthcare leaders ready to move the conversation beyond theory.</p>
-            <a href="#speaker-application" className="inline-flex items-center px-8 py-4 bg-blue-500 text-white font-black text-[10px] uppercase tracking-[0.25em] rounded shadow-xl shadow-blue-950/30 hover:bg-blue-400 transition-colors">Apply to speak <span className="ml-3 text-base">→</span></a>
+            <button type="button" onClick={scrollToApplication} className="inline-flex items-center px-8 py-4 bg-blue-500 text-white font-black text-[10px] uppercase tracking-[0.25em] rounded shadow-xl shadow-blue-950/30 hover:bg-blue-400 transition-colors">Apply to speak <span className="ml-3 text-base">→</span></button>
           </div>
         </div>
       </section>
