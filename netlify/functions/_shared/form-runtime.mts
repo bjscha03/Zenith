@@ -154,8 +154,8 @@ const deliverWithResend = async (
 const successBody = (delivery: DeliveryResult, duplicate = false) => ({
   success: true,
   duplicate,
-  notificationSent: duplicate || delivery.acceptedKinds.includes('internal'),
-  confirmationSent: duplicate || delivery.acceptedKinds.includes('confirmation'),
+  notificationSent: delivery.acceptedKinds.includes('internal'),
+  confirmationSent: delivery.acceptedKinds.includes('confirmation'),
   emailStatus: duplicate
     ? 'duplicate'
     : delivery.failedKinds.length === 0

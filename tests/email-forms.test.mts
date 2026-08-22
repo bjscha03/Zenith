@@ -203,6 +203,8 @@ test('a repeated submission ID is acknowledged without a second save or email', 
   const body = await response.json();
   assert.equal(response.status, 200);
   assert.equal(body.duplicate, true);
+  assert.equal(body.notificationSent, false);
+  assert.equal(body.confirmationSent, false);
   assert.equal(emailAttempted, false);
 });
 
