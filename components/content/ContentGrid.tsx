@@ -30,9 +30,9 @@ const ContentGrid: React.FC<{
   return (
     <div>
       {showFilters && categories.length > 2 && (
-        <div className="flex gap-2 flex-wrap mb-10" aria-label="Filter content by category">
+        <div className={`flex gap-2 flex-wrap mb-10 ${section === 'resource' ? 'w-fit max-w-full p-2 bg-white/90 backdrop-blur border border-slate-200 rounded-2xl shadow-sm' : ''}`} aria-label="Filter content by category">
           {categories.map((item) => (
-            <button key={item} type="button" onClick={() => setCategory(item)} className={`px-5 py-2.5 rounded-full text-[10px] font-black uppercase tracking-widest transition-colors ${category === item ? 'bg-zenith-navy text-white' : 'bg-white border border-slate-200 text-slate-500 hover:border-blue-300'}`}>{item}</button>
+            <button key={item} type="button" onClick={() => setCategory(item)} className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${category === item ? 'bg-zenith-navy text-white shadow-md' : section === 'resource' ? 'text-slate-500 hover:text-zenith-navy hover:bg-blue-50' : 'bg-white border border-slate-200 text-slate-500 hover:border-blue-300'}`}>{item}</button>
           ))}
         </div>
       )}
@@ -46,4 +46,3 @@ const ContentGrid: React.FC<{
 };
 
 export default ContentGrid;
-

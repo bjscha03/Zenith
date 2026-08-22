@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import ContentGrid from '../components/content/ContentGrid';
+import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Resources: React.FC = () => {
   const [nlEmail, setNlEmail] = useState('');
@@ -37,8 +38,17 @@ const Resources: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2090&auto=format&fit=crop')" }}
         ></div>
-        {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[56%] h-full object-cover object-center opacity-[0.24] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/95 via-zenith-navy/90 to-zenith-navy/58"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_45%,rgba(96,165,250,0.15),transparent_35%)]" />
+        <div aria-hidden="true" className="absolute -right-24 -top-24 w-[430px] h-[430px] rounded-full border border-blue-300/15">
+          <div className="absolute inset-14 rounded-full border border-blue-300/15" />
+          <div className="absolute inset-28 rounded-full border border-blue-300/15" />
+          <div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.09]">
+            <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
+          </div>
+        </div>
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl">
@@ -55,12 +65,28 @@ const Resources: React.FC = () => {
       </section>
 
       {/* Managed Resource Library */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Resource Library</h2>
-            <h3 className="text-3xl font-bold text-zenith-navy mb-4">Guides, research, and downloads</h3>
-            <p className="text-slate-500 text-lg leading-relaxed font-light max-w-2xl">Browse practical resources for brokers, employers, and healthcare risk professionals.</p>
+      <section className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-50 via-white to-blue-50/50">
+        <div aria-hidden="true" className="absolute -right-52 top-40 w-[520px] h-[520px] rounded-full border border-blue-200/35">
+          <div className="absolute inset-20 rounded-full border border-blue-200/35" />
+          <div className="absolute inset-40 rounded-full border border-blue-200/35" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative overflow-hidden rounded-[2rem] bg-zenith-navy px-8 py-10 sm:px-10 md:px-14 md:py-14 mb-12 shadow-[0_30px_80px_-45px_rgba(15,35,68,0.7)]">
+            <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[62%] h-full object-cover object-center opacity-35" />
+            <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy via-zenith-navy/92 to-zenith-navy/42" />
+            <div aria-hidden="true" className="absolute -right-16 -bottom-36 w-80 h-80 rounded-full border border-blue-300/20">
+              <div className="absolute inset-10 rounded-full border border-blue-300/20" />
+              <div className="absolute inset-20 rounded-full border border-blue-300/20" />
+            </div>
+            <div aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-300 via-blue-500 to-transparent" />
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-2 h-2 rounded-full bg-blue-300 shadow-[0_0_0_5px_rgba(147,197,253,0.12)]" />
+                <h2 className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em]">Resource Library</h2>
+              </div>
+              <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">Guides, research, and strategic intelligence</h3>
+              <p className="text-slate-300 text-lg leading-relaxed font-light max-w-2xl">Practical knowledge for brokers, employers, and healthcare risk professionals—organized to help you move from insight to action.</p>
+            </div>
           </div>
           <ContentGrid section="resource" showFilters />
         </div>

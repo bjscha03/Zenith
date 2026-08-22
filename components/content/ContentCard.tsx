@@ -13,9 +13,11 @@ const ContentCard: React.FC<{ entry: ContentEntry; compact?: boolean }> = ({ ent
   const cover = entry.featuredImage || entry.videoPoster || entry.gallery[0];
   const href = contentPath(entry.section, entry.slug);
   const isMedia = entry.section === 'media';
+  const isResource = entry.section === 'resource';
 
   return (
-    <article className="group bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-blue-200 transition-all duration-300 flex flex-col h-full">
+    <article className={`group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-xl hover:border-blue-200 transition-all duration-300 flex flex-col h-full ${isResource ? 'hover:-translate-y-1 shadow-sm' : ''}`}>
+      {isResource && <div aria-hidden="true" className="absolute z-20 top-0 inset-x-0 h-1 bg-gradient-to-r from-zenith-blue via-blue-400 to-transparent opacity-80" />}
       {cover && (
         <Link to={href} className={`block overflow-hidden bg-slate-100 ${compact ? 'aspect-[16/10]' : 'aspect-video'}`}>
           <img
@@ -26,13 +28,24 @@ const ContentCard: React.FC<{ entry: ContentEntry; compact?: boolean }> = ({ ent
           />
         </Link>
       )}
-      <div className={`relative overflow-hidden p-7 flex flex-col flex-grow ${isMedia ? 'bg-gradient-to-br from-white via-white to-blue-50/60' : ''}`}>
+      <div className={`relative overflow-hidden p-7 flex flex-col flex-grow ${isMedia || isResource ? 'bg-gradient-to-br from-white via-white to-blue-50/60' : ''}`}>
         {isMedia && (
           <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
             <img src={ZENITH_PEAK_IMAGE} alt="" className="absolute -right-12 bottom-0 w-60 max-w-none opacity-[0.035] grayscale" />
             <div className="absolute -right-12 -bottom-16 w-36 h-36 rounded-full border border-blue-200/55">
               <div className="absolute inset-7 rounded-full border border-blue-200/55" />
               <div className="absolute inset-[2.15rem] overflow-hidden rounded-full opacity-[0.055]">
+                <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
+              </div>
+            </div>
+          </div>
+        )}
+        {isResource && (
+          <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
+            <img src={ZENITH_PEAK_IMAGE} alt="" className="absolute -right-10 bottom-0 w-64 max-w-none opacity-[0.055] grayscale" />
+            <div className="absolute -right-14 -bottom-16 w-40 h-40 rounded-full border border-blue-200/65">
+              <div className="absolute inset-8 rounded-full border border-blue-200/65" />
+              <div className="absolute inset-[2.4rem] overflow-hidden rounded-full opacity-[0.07]">
                 <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
               </div>
             </div>
