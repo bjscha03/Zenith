@@ -3,7 +3,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import ContentGrid from '../components/content/ContentGrid';
 import Gallery from '../components/content/Gallery';
 import VideoPlayer from '../components/content/VideoPlayer';
-import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 import { getContentEntry, imageUrl } from '../lib/contentApi';
 import type { ContentEntry, ContentSection } from '../types/content';
 import { sectionPath } from '../types/content';
@@ -99,15 +99,59 @@ const ContentDetail: React.FC<{ section: ContentSection }> = ({ section }) => {
         </div>
       </header>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        {entry.video || (entry.contentType === 'video' && entry.externalUrl) ? <div className="mb-14"><VideoPlayer video={entry.video} poster={entry.videoPoster} externalUrl={entry.externalUrl} title={entry.title} /></div> : null}
-        <div className="max-w-3xl">
-          <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">{entry.description}</p>
-          {entry.body && entry.body.split(/\n{2,}/).map((paragraph, index) => <p key={index} className="text-slate-600 leading-8 mb-6">{paragraph}</p>)}
-          {(entry.author || entry.source) && <p className="text-sm text-slate-500 border-l-2 border-blue-300 pl-4 my-8">{entry.author && <>By {entry.author}</>}{entry.author && entry.source && <span> · </span>}{entry.source}</p>}
-          {download && <a href={download.url} target="_blank" rel="noopener noreferrer" download className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-4">{entry.ctaLabel || 'Download resource'}</a>}
-          {!download && entry.externalUrl && entry.contentType !== 'video' && <a href={entry.externalUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-4">{entry.ctaLabel || 'Visit source'}</a>}
-        </div>
+      <div className={`${isEventHero ? 'max-w-6xl' : 'max-w-5xl'} mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24`}>
+        {isEventHero ? (
+          <section className="relative overflow-hidden rounded-[2rem] bg-white border border-slate-200 shadow-[0_28px_80px_-42px_rgba(15,35,68,0.48)]">
+            <div className="grid md:grid-cols-[210px_1fr] min-h-[390px]">
+              <div className="relative overflow-hidden bg-zenith-navy px-8 py-10 md:px-9 md:py-12 text-white flex flex-col justify-between">
+                <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center opacity-55" />
+                <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/55 via-zenith-navy/72 to-zenith-navy/95" />
+                <div className="relative z-10">
+                  <span className="text-[9px] font-black uppercase tracking-[0.32em] text-blue-200 block mb-5">Zenith Event Series</span>
+                  <div className="w-12 h-px bg-blue-300/80 mb-5" />
+                  <p className="text-2xl font-bold leading-tight">Event<br />Perspective</p>
+                </div>
+                <div className="relative z-10 pt-12">
+                  <span className="block text-[9px] font-black uppercase tracking-[0.25em] text-blue-200 mb-2">Gathered</span>
+                  <time dateTime={entry.eventDate || entry.date} className="text-sm text-white/90">{formatDate(entry.eventDate || entry.date)}</time>
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden bg-gradient-to-br from-white via-white to-blue-50/80 px-8 py-10 sm:px-10 md:px-14 md:py-14 lg:px-16 lg:py-16">
+                <div aria-hidden="true" className="absolute -right-24 -bottom-28 w-80 h-80 rounded-full border border-blue-200/50">
+                  <div className="absolute inset-10 rounded-full border border-blue-200/60" />
+                  <div className="absolute inset-20 rounded-full border border-blue-200/70" />
+                  <div className="absolute inset-5 overflow-hidden rounded-full opacity-[0.055]">
+                    <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
+                  </div>
+                </div>
+                <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-zenith-blue via-blue-400 to-transparent" />
+
+                <div className="relative z-10 max-w-3xl">
+                  <div className="flex items-center gap-3 mb-7">
+                    <span className="w-2.5 h-2.5 rounded-full bg-zenith-blue shadow-[0_0_0_5px_rgba(37,99,235,0.10)]" />
+                    <span className="text-[9px] font-black uppercase tracking-[0.3em] text-blue-700">The Story Behind the Summit</span>
+                  </div>
+                  <p className="text-2xl md:text-[1.75rem] text-zenith-navy leading-[1.5] font-light tracking-[-0.015em]">{entry.description}</p>
+                  {entry.body && <div className="mt-9 pt-8 border-t border-slate-200/90">{entry.body.split(/\n{2,}/).map((paragraph, index) => <p key={index} className="text-[1.05rem] text-slate-600 leading-8 mb-5 last:mb-0">{paragraph}</p>)}</div>}
+                  {download && <a href={download.url} target="_blank" rel="noopener noreferrer" download className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-8">{entry.ctaLabel || 'Download resource'}</a>}
+                  {!download && entry.externalUrl && <a href={entry.externalUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-8">{entry.ctaLabel || 'Visit source'}</a>}
+                </div>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <>
+            {entry.video || (entry.contentType === 'video' && entry.externalUrl) ? <div className="mb-14"><VideoPlayer video={entry.video} poster={entry.videoPoster} externalUrl={entry.externalUrl} title={entry.title} /></div> : null}
+            <div className="max-w-3xl">
+              <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">{entry.description}</p>
+              {entry.body && entry.body.split(/\n{2,}/).map((paragraph, index) => <p key={index} className="text-slate-600 leading-8 mb-6">{paragraph}</p>)}
+              {(entry.author || entry.source) && <p className="text-sm text-slate-500 border-l-2 border-blue-300 pl-4 my-8">{entry.author && <>By {entry.author}</>}{entry.author && entry.source && <span> · </span>}{entry.source}</p>}
+              {download && <a href={download.url} target="_blank" rel="noopener noreferrer" download className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-4">{entry.ctaLabel || 'Download resource'}</a>}
+              {!download && entry.externalUrl && entry.contentType !== 'video' && <a href={entry.externalUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-4">{entry.ctaLabel || 'Visit source'}</a>}
+            </div>
+          </>
+        )}
       </div>
 
       {entry.gallery.length > 0 && <section className="py-20 bg-slate-50"><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div className="mb-12"><span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em] block mb-4">Photo Gallery</span><h2 className="text-3xl font-bold text-zenith-navy">Inside {entry.title}</h2></div><Gallery assets={entry.gallery} /></div></section>}
