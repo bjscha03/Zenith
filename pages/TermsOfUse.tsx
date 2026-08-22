@@ -1,17 +1,19 @@
 
 import React from 'react';
+import CompassMark from '../components/brand/CompassMark';
 
 const TermsOfUse: React.FC = () => {
   return (
     <div className="w-full">
-      <section className="bg-slate-50 py-24 border-b border-slate-200">
+      <section className="premium-dark-section relative overflow-hidden py-24 border-b border-slate-800 text-white">
+        <CompassMark className="absolute -right-10 -top-16 w-72 h-72 opacity-[0.05]" imageClassName="brightness-0 invert" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-zenith-navy mb-4">Terms of Use</h1>
-          <p className="text-slate-500 font-light uppercase tracking-[0.2em] text-xs">Last Updated: October 2024</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">Terms of Use</h1>
+          <p className="text-slate-400 font-light uppercase tracking-[0.2em] text-xs">Last Updated: October 2024</p>
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-slate max-w-none space-y-12">
             <div>

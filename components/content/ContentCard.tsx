@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
+import CompassMark from '../brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
 import { imageUrl } from '../../lib/contentApi';
 import type { ContentEntry } from '../../types/content';
 import { contentPath } from '../../types/content';
@@ -32,23 +33,13 @@ const ContentCard: React.FC<{ entry: ContentEntry; compact?: boolean }> = ({ ent
         {isMedia && (
           <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
             <img src={ZENITH_PEAK_IMAGE} alt="" className="absolute -right-12 bottom-0 w-60 max-w-none opacity-[0.035] grayscale" />
-            <div className="absolute -right-12 -bottom-16 w-36 h-36 rounded-full border border-blue-200/55">
-              <div className="absolute inset-7 rounded-full border border-blue-200/55" />
-              <div className="absolute inset-[2.15rem] overflow-hidden rounded-full opacity-[0.055]">
-                <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
-              </div>
-            </div>
+            <CompassMark className="absolute -right-7 -bottom-8 w-28 h-28 opacity-[0.055]" />
           </div>
         )}
         {isResource && (
           <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
             <img src={ZENITH_PEAK_IMAGE} alt="" className="absolute -right-10 bottom-0 w-64 max-w-none opacity-[0.055] grayscale" />
-            <div className="absolute -right-14 -bottom-16 w-40 h-40 rounded-full border border-blue-200/65">
-              <div className="absolute inset-8 rounded-full border border-blue-200/65" />
-              <div className="absolute inset-[2.4rem] overflow-hidden rounded-full opacity-[0.07]">
-                <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
-              </div>
-            </div>
+            <CompassMark className="absolute -right-8 -bottom-9 w-32 h-32 opacity-[0.07]" />
           </div>
         )}
         <div className="relative z-10 flex flex-col flex-grow">

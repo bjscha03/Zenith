@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import CompassMark from '../components/brand/CompassMark';
 import ContentGrid from '../components/content/ContentGrid';
-import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Events: React.FC = () => {
   const [expandedCity, setExpandedCity] = useState<string | null>(null);
@@ -45,17 +46,13 @@ const Events: React.FC = () => {
   return (
     <div className="w-full">
       {/* SECTION 1: HERO */}
-      <section className="relative text-white py-24 md:py-36 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop')" }}></div>
         <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover object-center opacity-[0.2] mix-blend-screen" />
         <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/95 via-zenith-navy/90 to-zenith-navy/[0.58]"></div>
-        <div aria-hidden="true" className="absolute -right-20 -top-28 w-[430px] h-[430px] rounded-full border border-blue-300/[0.15]">
-          <div className="absolute inset-14 rounded-full border border-blue-300/[0.15]" />
-          <div className="absolute inset-28 rounded-full border border-blue-300/[0.15]" />
-          <div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.08]"><img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" /></div>
-        </div>
+        <CompassMark className="absolute -right-8 -top-10 w-80 h-80 opacity-[0.08]" imageClassName="brightness-0 invert" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="premium-hero-copy text-center max-w-3xl mx-auto">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Zenith Events</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">Zenith Risk Strategies Events</h1>
             <p className="text-xl text-slate-300 leading-relaxed font-light mb-10">Zenith helps brokers and employers replace renewal chaos with structure that holds through captives, disciplined networks, and intentional design.</p>
@@ -81,8 +78,8 @@ const Events: React.FC = () => {
       </nav>
 
       {/* FEATURED RECAP + AUDIENCE */}
-      <section className="relative overflow-hidden py-20 bg-gradient-to-b from-slate-50 via-white to-blue-50/[0.50]">
-        <div aria-hidden="true" className="absolute -right-52 top-12 w-[520px] h-[520px] rounded-full border border-blue-200/[0.35]"><div className="absolute inset-20 rounded-full border border-blue-200/[0.35]" /><div className="absolute inset-40 rounded-full border border-blue-200/[0.35]" /></div>
+      <section className="premium-light-section relative overflow-hidden py-20">
+        <CompassMark className="absolute -right-24 top-12 w-96 h-96 opacity-[0.035]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1.18fr_0.82fr] gap-8 items-stretch">
             <div>
@@ -97,7 +94,7 @@ const Events: React.FC = () => {
             <aside className="relative overflow-hidden rounded-[2rem] bg-zenith-navy p-8 md:p-10 text-white shadow-[0_28px_70px_-42px_rgba(15,35,68,0.75)]">
               <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center opacity-30" />
               <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/[0.72] via-zenith-navy/[0.88] to-zenith-navy/[0.98]" />
-              <div aria-hidden="true" className="absolute -right-20 -bottom-24 w-64 h-64 rounded-full border border-blue-300/20"><div className="absolute inset-10 rounded-full border border-blue-300/20" /><div className="absolute inset-20 rounded-full border border-blue-300/20" /></div>
+              <CompassMark className="absolute -right-10 -bottom-14 w-56 h-56 opacity-[0.07]" imageClassName="brightness-0 invert" />
               <div className="relative z-10">
                 <span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-4 block">Who Is In The Room</span>
                 <h2 className="text-3xl font-bold tracking-tight mb-3">Built for decision-makers</h2>
@@ -121,9 +118,9 @@ const Events: React.FC = () => {
       </section>
 
       {/* SECTION 3: CONFERENCE AGENDA */}
-      <section id="agenda" className="relative overflow-hidden py-24 bg-zenith-navy">
+      <section id="agenda" className="premium-dark-section relative overflow-hidden py-24">
         <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[48%] h-full object-cover opacity-[0.14]" />
-        <div aria-hidden="true" className="absolute -right-32 -top-32 w-96 h-96 rounded-full border border-blue-300/10"><div className="absolute inset-16 rounded-full border border-blue-300/10" /><div className="absolute inset-32 rounded-full border border-blue-300/10" /></div>
+        <CompassMark className="absolute -right-10 -top-16 w-80 h-80 opacity-[0.06]" imageClassName="brightness-0 invert" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">The Schedule</span>
@@ -142,7 +139,7 @@ const Events: React.FC = () => {
       </section>
 
       {/* SECTION 5: 2026 SUMMER SERIES */}
-      <section id="series" className="py-24 bg-slate-50">
+      <section id="series" className="premium-light-section py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Coming Soon</span>
@@ -154,7 +151,7 @@ const Events: React.FC = () => {
               const isExpanded = expandedCity === loc.city;
               const hasDetails = loc.details;
               return (
-                <div key={i} className="bg-white rounded-xl border border-slate-200 overflow-hidden transition-all">
+                <div key={i} className="premium-card rounded-2xl overflow-hidden transition-all">
                   <button
                     onClick={() => hasDetails && setExpandedCity(isExpanded ? null : loc.city)}
                     className={`w-full flex items-center justify-between p-8 text-left ${hasDetails ? 'cursor-pointer hover:bg-slate-50' : 'cursor-default'} transition-all`}
@@ -202,7 +199,7 @@ const Events: React.FC = () => {
       </section>
 
       {/* SECTION 6: REGISTER */}
-      <section id="register" className="py-24 bg-zenith-navy">
+      <section id="register" className="premium-cta py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Reserve Your Seat</span>
@@ -217,7 +214,7 @@ const Events: React.FC = () => {
       </section>
 
       {/* SPEAKER APPLICATION */}
-      <section id="speaker" className="py-24 bg-white">
+      <section id="speaker" className="premium-light-section py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Share Your Expertise</span>

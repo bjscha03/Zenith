@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import CompassMark from './brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -56,8 +58,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       {/* Top Navigation */}
       <header 
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'
-        } border-b border-slate-100`}
+          isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-[0_18px_45px_-35px_rgba(15,23,42,0.65)] py-2' : 'bg-white/95 backdrop-blur-lg py-4'
+        } border-b border-slate-200/80`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 md:h-20">
@@ -107,7 +109,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </button>
                 
                 {/* Dropdown Menu */}
-                <div className={`absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white shadow-2xl border border-slate-100 py-4 rounded-b-xl transition-all duration-200 origin-top ${
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 w-64 bg-white/95 backdrop-blur-xl shadow-[0_28px_70px_-32px_rgba(15,23,42,0.65)] border border-slate-200/80 py-4 rounded-b-2xl transition-all duration-200 origin-top ${
                   isServicesOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'
                 }`}>
                   {servicesLinks.map((subLink) => (
@@ -139,7 +141,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   Media
                   <svg className={`ml-1 w-3 h-3 transition-transform duration-200 ${isInsightsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
                 </button>
-                <div className={`absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white shadow-2xl border border-slate-100 py-4 rounded-b-xl transition-all duration-200 origin-top ${isInsightsOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white/95 backdrop-blur-xl shadow-[0_28px_70px_-32px_rgba(15,23,42,0.65)] border border-slate-200/80 py-4 rounded-b-2xl transition-all duration-200 origin-top ${isInsightsOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
                   {insightsLinks.map((link) => <Link key={link.path} to={link.path} className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:bg-slate-50 hover:text-zenith-blue transition-colors">{link.name}</Link>)}
                 </div>
               </div>
@@ -242,7 +244,9 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </main>
 
       {/* Footer */}
-      <footer className="bg-zenith-navy text-white py-20 relative overflow-hidden">
+      <footer className="premium-dark-section text-white py-20 relative overflow-hidden">
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute left-0 bottom-0 w-[46%] h-full object-cover object-center opacity-[0.07] mix-blend-screen" />
+        <CompassMark className="absolute -right-10 -bottom-16 w-80 h-80 opacity-[0.05]" imageClassName="brightness-0 invert" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
@@ -257,6 +261,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
               <p className="text-slate-400 max-w-sm leading-relaxed text-sm font-light">
                 Engineering alignment in healthcare risk. A modern Medical Stop-Loss MGU built on underwriting discipline, clinical stewardship, and transparent performance.
               </p>
+              <address className="mt-6 text-slate-400 text-sm leading-relaxed font-light not-italic">
+                5004 Bee Creek Rd, Suite 620<br />
+                Spicewood, TX 78669
+              </address>
               <div className="mt-6">
                 <a
                   href="https://www.linkedin.com/company/zenith-risk-strategies-llc/posts/?feedView=all"

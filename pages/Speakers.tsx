@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import CompassMark from '../components/brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Speakers: React.FC = () => {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
@@ -93,13 +94,13 @@ const Speakers: React.FC = () => {
     <div className="w-full">
 
       {/* SECTION 1: HERO */}
-      <section className="relative min-h-[520px] flex items-center overflow-hidden bg-zenith-navy text-white">
+      <section className="premium-hero relative min-h-[520px] flex items-center overflow-hidden bg-zenith-navy text-white">
         <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749927/Screenshot_2026-03-05_at_5.32.02_PM_ppusgl.png" alt="Zenith Conference speakers on stage" className="absolute inset-0 w-full h-full object-cover object-[center_20%] opacity-70" />
         <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute left-0 inset-y-0 w-[58%] h-full object-cover object-center opacity-25 mix-blend-screen" />
         <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.96] via-zenith-navy/[0.83] to-zenith-navy/[0.35]" />
-        <div aria-hidden="true" className="absolute -right-20 -top-24 w-[430px] h-[430px] rounded-full border border-blue-300/[0.18]"><div className="absolute inset-14 rounded-full border border-blue-300/[0.18]" /><div className="absolute inset-28 rounded-full border border-blue-300/[0.18]" /><div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.1]"><img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" /></div></div>
+        <CompassMark className="absolute -right-8 -top-10 w-80 h-80 opacity-[0.09]" imageClassName="brightness-0 invert" />
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-24 relative z-10">
-          <div className="max-w-3xl">
+          <div className="premium-hero-copy max-w-3xl">
             <span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.4em] mb-6 block">Zenith Conference Voices</span>
             <h1 className="text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight mb-7">Insight earned in the field. Shared from the stage.</h1>
             <p className="text-xl text-slate-300 leading-relaxed font-light max-w-2xl mb-9">Zenith brings together operators, advisors, and healthcare leaders ready to move the conversation beyond theory.</p>
@@ -120,8 +121,8 @@ const Speakers: React.FC = () => {
       </nav>
 
       {/* SECTION 2: WHO SHOULD APPLY */}
-      <section className="relative overflow-hidden py-20 bg-gradient-to-b from-slate-50 via-white to-blue-50/[0.50]">
-        <div aria-hidden="true" className="absolute -left-48 -bottom-64 w-[520px] h-[520px] rounded-full border border-blue-200/[0.35]"><div className="absolute inset-20 rounded-full border border-blue-200/[0.35]" /><div className="absolute inset-40 rounded-full border border-blue-200/[0.35]" /></div>
+      <section className="premium-light-section relative overflow-hidden py-20">
+        <CompassMark className="absolute -left-20 -bottom-24 w-96 h-96 opacity-[0.035]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] rounded-[2rem] overflow-hidden border border-slate-200 bg-white shadow-[0_30px_80px_-48px_rgba(15,35,68,0.55)]">
             <div className="relative overflow-hidden bg-zenith-navy p-9 md:p-12 text-white">
@@ -140,7 +141,7 @@ const Speakers: React.FC = () => {
               ].map((item) => (
                 <div key={item.number} className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-blue-50/60 p-5 md:p-6 hover:border-blue-300 hover:shadow-lg transition-all">
                   <div className="relative z-10 flex gap-5"><span className="text-[10px] font-black text-blue-600 pt-1">{item.number}</span><div><h3 className="text-lg font-bold text-zenith-navy mb-1.5">{item.title}</h3><p className="text-sm leading-relaxed text-slate-600">{item.text}</p></div></div>
-                  <div aria-hidden="true" className="absolute -right-10 -bottom-12 w-28 h-28 rounded-full border border-blue-200/50"><div className="absolute inset-6 rounded-full border border-blue-200/50" /></div>
+                  <CompassMark className="absolute -right-6 -bottom-7 w-24 h-24 opacity-[0.055]" />
                 </div>
               ))}
             </div>
@@ -149,9 +150,9 @@ const Speakers: React.FC = () => {
       </section>
 
       {/* SECTION 3: SPEAKER EXPECTATIONS */}
-      <section className="relative overflow-hidden py-24 bg-zenith-navy">
+      <section className="premium-dark-section relative overflow-hidden py-24">
         <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[55%] h-full object-cover opacity-[0.16]" />
-        <div aria-hidden="true" className="absolute -right-32 -top-40 w-[440px] h-[440px] rounded-full border border-blue-300/[0.12]"><div className="absolute inset-16 rounded-full border border-blue-300/[0.12]" /><div className="absolute inset-32 rounded-full border border-blue-300/[0.12]" /></div>
+        <CompassMark className="absolute -right-8 -top-14 w-80 h-80 opacity-[0.055]" imageClassName="brightness-0 invert" />
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12"><span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-4 block">What The Room Expects</span><h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Speaker expectations</h2></div>
           <div className="space-y-4">
@@ -176,8 +177,8 @@ const Speakers: React.FC = () => {
       </section>
 
       {/* SECTION 4: OUR SPEAKERS */}
-      <section className="relative overflow-hidden py-24 bg-gradient-to-b from-white via-slate-50 to-blue-50/40">
-        <div aria-hidden="true" className="absolute -right-48 top-20 w-[520px] h-[520px] rounded-full border border-blue-200/[0.35]"><div className="absolute inset-20 rounded-full border border-blue-200/[0.35]" /><div className="absolute inset-40 rounded-full border border-blue-200/[0.35]" /></div>
+      <section className="premium-light-section relative overflow-hidden py-24">
+        <CompassMark className="absolute -right-24 top-20 w-96 h-96 opacity-[0.035]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16"><span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.35em] mb-4 block">Voices From The Summit</span><h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-5">Our speakers</h2><p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">Experienced leaders bringing real work, real decisions, and real outcomes to the conversation.</p></div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-7">
@@ -191,7 +192,7 @@ const Speakers: React.FC = () => {
                 <div className="relative overflow-hidden p-6 min-h-[132px] bg-gradient-to-br from-white to-blue-50/[0.55]">
                   <div className="relative z-10"><h3 className="text-xl font-bold text-zenith-navy mb-2">{sp.name}</h3><p className="text-slate-500 text-sm leading-relaxed">{sp.title}</p></div>
                   <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute -right-10 bottom-0 w-52 opacity-[0.045] grayscale" />
-                  <div aria-hidden="true" className="absolute -right-12 -bottom-16 w-36 h-36 rounded-full border border-blue-200/60"><div className="absolute inset-7 rounded-full border border-blue-200/60" /></div>
+                  <CompassMark className="absolute -right-7 -bottom-9 w-28 h-28 opacity-[0.06]" />
                 </div>
               </article>
             ))}
@@ -200,8 +201,8 @@ const Speakers: React.FC = () => {
       </section>
 
       {/* SECTION 5: APPLICATION FORM */}
-      <section id="speaker-application" className="relative overflow-hidden py-24 bg-white scroll-mt-20">
-        <div aria-hidden="true" className="absolute -left-48 top-24 w-[480px] h-[480px] rounded-full border border-blue-200/30"><div className="absolute inset-20 rounded-full border border-blue-200/30" /><div className="absolute inset-40 rounded-full border border-blue-200/30" /></div>
+      <section id="speaker-application" className="premium-light-section relative overflow-hidden py-24 scroll-mt-20">
+        <CompassMark className="absolute -left-20 top-24 w-96 h-96 opacity-[0.03]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch rounded-[2rem] overflow-hidden border border-slate-200 bg-white shadow-[0_35px_90px_-50px_rgba(15,35,68,0.62)]">
             {/* LEFT: Image */}

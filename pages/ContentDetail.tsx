@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
+import CompassMark from '../components/brand/CompassMark';
 import ContentGrid from '../components/content/ContentGrid';
 import Gallery from '../components/content/Gallery';
 import VideoPlayer from '../components/content/VideoPlayer';
-import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 import { getContentEntry, imageUrl } from '../lib/contentApi';
 import type { ContentEntry, ContentSection } from '../types/content';
 import { sectionPath } from '../types/content';
@@ -118,13 +119,7 @@ const ContentDetail: React.FC<{ section: ContentSection }> = ({ section }) => {
               </div>
 
               <div className="relative overflow-hidden bg-gradient-to-br from-white via-white to-blue-50/80 px-8 py-10 sm:px-10 md:px-14 md:py-14 lg:px-16 lg:py-16">
-                <div aria-hidden="true" className="absolute -right-24 -bottom-28 w-80 h-80 rounded-full border border-blue-200/50">
-                  <div className="absolute inset-10 rounded-full border border-blue-200/60" />
-                  <div className="absolute inset-20 rounded-full border border-blue-200/70" />
-                  <div className="absolute inset-5 overflow-hidden rounded-full opacity-[0.055]">
-                    <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
-                  </div>
-                </div>
+                <CompassMark className="absolute -right-14 -bottom-16 w-64 h-64 opacity-[0.055]" />
                 <div aria-hidden="true" className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-zenith-blue via-blue-400 to-transparent" />
 
                 <div className="relative z-10 max-w-3xl">

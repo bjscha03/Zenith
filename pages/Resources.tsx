@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
+import CompassMark from '../components/brand/CompassMark';
 import ContentGrid from '../components/content/ContentGrid';
-import { ZENITH_LOGO_IMAGE, ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Resources: React.FC = () => {
   const [nlEmail, setNlEmail] = useState('');
@@ -32,7 +33,7 @@ const Resources: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Knowledge/library theme */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -41,17 +42,11 @@ const Resources: React.FC = () => {
         <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[56%] h-full object-cover object-center opacity-[0.24] mix-blend-screen" />
         <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/95 via-zenith-navy/90 to-zenith-navy/58"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_45%,rgba(96,165,250,0.15),transparent_35%)]" />
-        <div aria-hidden="true" className="absolute -right-24 -top-24 w-[430px] h-[430px] rounded-full border border-blue-300/15">
-          <div className="absolute inset-14 rounded-full border border-blue-300/15" />
-          <div className="absolute inset-28 rounded-full border border-blue-300/15" />
-          <div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.09]">
-            <img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" />
-          </div>
-        </div>
+        <CompassMark className="absolute -right-8 -top-10 w-80 h-80 opacity-[0.08]" imageClassName="brightness-0 invert" />
         <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Knowledge Base</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               Technical Resources for the <br/>
@@ -65,19 +60,13 @@ const Resources: React.FC = () => {
       </section>
 
       {/* Managed Resource Library */}
-      <section className="relative overflow-hidden py-24 bg-gradient-to-b from-slate-50 via-white to-blue-50/50">
-        <div aria-hidden="true" className="absolute -right-52 top-40 w-[520px] h-[520px] rounded-full border border-blue-200/35">
-          <div className="absolute inset-20 rounded-full border border-blue-200/35" />
-          <div className="absolute inset-40 rounded-full border border-blue-200/35" />
-        </div>
+      <section className="premium-light-section relative overflow-hidden py-24">
+        <CompassMark className="absolute -right-24 top-32 w-96 h-96 opacity-[0.035]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="relative overflow-hidden rounded-[2rem] bg-zenith-navy px-8 py-10 sm:px-10 md:px-14 md:py-14 mb-12 shadow-[0_30px_80px_-45px_rgba(15,35,68,0.7)]">
             <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[62%] h-full object-cover object-center opacity-35" />
             <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy via-zenith-navy/92 to-zenith-navy/42" />
-            <div aria-hidden="true" className="absolute -right-16 -bottom-36 w-80 h-80 rounded-full border border-blue-300/20">
-              <div className="absolute inset-10 rounded-full border border-blue-300/20" />
-              <div className="absolute inset-20 rounded-full border border-blue-300/20" />
-            </div>
+            <CompassMark className="absolute -right-12 -bottom-20 w-72 h-72 opacity-[0.08]" imageClassName="brightness-0 invert" />
             <div aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-300 via-blue-500 to-transparent" />
             <div className="relative z-10 max-w-3xl">
               <div className="flex items-center gap-3 mb-5">
@@ -154,7 +143,7 @@ const Resources: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visit ${partner.name} website`}
-                className="group p-10 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full no-underline"
+                className="premium-card group p-10 rounded-2xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full no-underline"
               >
                 <div className="w-full h-16 flex items-center justify-start mb-8 group-hover:scale-105 transition-transform duration-300">
                   <img
@@ -183,9 +172,10 @@ const Resources: React.FC = () => {
       </section>
 
       {/* Subscription Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="premium-light-section py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto bg-zenith-navy p-10 md:p-16 rounded-3xl">
+          <div className="premium-card-dark max-w-5xl mx-auto bg-zenith-navy p-10 md:p-16 rounded-3xl relative overflow-hidden">
+            <CompassMark className="absolute -right-10 -bottom-14 w-56 h-56 opacity-[0.06]" imageClassName="brightness-0 invert" />
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-white">Stay ahead of the <br/><span className="text-blue-400">risk curve.</span></h2>
