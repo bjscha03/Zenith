@@ -16,7 +16,7 @@ const Speakers: React.FC = () => {
   };
 
   const scrollToApplication = () => {
-    document.getElementById('speaker-application')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('speaker-application')?.scrollIntoView({ block: 'start' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
