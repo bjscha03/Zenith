@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Home: React.FC = () => {
   return (
@@ -10,7 +11,7 @@ const Home: React.FC = () => {
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://res.cloudinary.com/dtrxl120u/image/upload/v1767912842/download_zcreqi.webp')" }}
+          style={{ backgroundImage: `url('${ZENITH_PEAK_IMAGE}')` }}
         ></div>
         {/* Blue Overlay */}
         <div className="absolute inset-0 bg-zenith-navy/85"></div>

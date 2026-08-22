@@ -97,9 +97,9 @@ const ReimaginingHealthInsurance: React.FC = () => {
       await new Promise((r) => setTimeout(r, 150));
 
       const opt = {
-        margin: [0.75, 0.75, 0.75, 0.75],
+        margin: [0.75, 0.75, 0.75, 0.75] as [number, number, number, number],
         filename: 'Zenith-Reimagining-Health-Insurance.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
+        image: { type: 'jpeg' as const, quality: 0.98 },
         html2canvas: { scale: 2, useCORS: true, logging: false },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' as const },
         pagebreak: { mode: ['avoid-all', 'css', 'legacy'] },

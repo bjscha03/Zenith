@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import ContentGrid from '../components/content/ContentGrid';
 
 const Events: React.FC = () => {
   const [expandedCity, setExpandedCity] = useState<string | null>(null);
@@ -72,6 +73,18 @@ const Events: React.FC = () => {
           </div>
         </div>
       </nav>
+
+      {/* MANAGED EVENT ARCHIVE */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12">
+            <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.35em] mb-4 block">Event Archive</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy tracking-tight mb-4">Recaps, galleries, and event conversations</h2>
+            <p className="text-lg text-slate-600 max-w-3xl leading-relaxed">Revisit past gatherings through curated photography, video, and practical takeaways.</p>
+          </div>
+          <ContentGrid section="event" />
+        </div>
+      </section>
 
 
       {/* SECTION 2: BUILT FOR DECISION-MAKERS */}

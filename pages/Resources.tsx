@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import ContentGrid from '../components/content/ContentGrid';
 
 const Resources: React.FC = () => {
   const [nlEmail, setNlEmail] = useState('');
@@ -27,43 +28,6 @@ const Resources: React.FC = () => {
     }
   };
 
-  const leadMagnets = [
-    {
-      type: 'Checklist',
-      title: 'RFP Submission Checklist',
-      desc: 'The definitive list of data points and documents required to secure the most competitive firm terms in the current market.',
-      downloadUrl: '/brochures/submission-checklist.pdf',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-        </svg>
-      )
-    },
-    {
-      type: 'Guide',
-      title: 'Captive vs Traditional Stop Loss Employer Guide',
-      desc: 'A structural comparison designed for CFOs and HR Directors evaluating the transition to a captive risk-sharing model.',
-      downloadUrl: '/brochures/captive-vs-traditional-stoploss.pptx',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      )
-    },
-    {
-      type: 'Report',
-      title: '2025 Risk Trend Report',
-      desc: 'Our annual analysis of emerging clinical cost drivers, pharmacy trends, and stop-loss market volatility projections.',
-      downloadUrl: '/brochures/2025-risk-trend-report.pdf',
-      comingSoon: true,
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-        </svg>
-      )
-    }
-  ];
-
   return (
     <div className="w-full">
       {/* Hero Section - Blue with Image Underlay */}
@@ -90,108 +54,15 @@ const Resources: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Resources (Lead Magnets) */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Featured Assets</h2>
-            <h3 className="text-3xl font-bold text-zenith-navy">Technical Guides & Checklists</h3>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {leadMagnets.map((item, idx) => (
-              <div key={idx} className="group p-10 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full">
-                <div className="w-14 h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  {item.icon}
-                </div>
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4 block">{item.type}</span>
-                <h4 className="text-xl font-bold text-zenith-navy mb-4 leading-snug group-hover:text-blue-600 transition-colors">{item.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed font-light mb-10 flex-grow">
-                  {item.desc}
-                </p>
-                <div className="pt-6 border-t border-slate-200/50">
-                  {item.comingSoon ? (
-                    <span className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                      Coming Soon
-                    </span>
-                  ) : (
-                    <a 
-                      href={item.downloadUrl} 
-                      download 
-                      className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy hover:text-blue-600 transition-colors"
-                    >
-                      Download Resource
-                      <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" />
-                      </svg>
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* White Papers Section */}
+      {/* Managed Resource Library */}
       <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-16">
-            <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Industry Research</h2>
-            <h3 className="text-3xl font-bold text-zenith-navy">White Papers</h3>
+            <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Resource Library</h2>
+            <h3 className="text-3xl font-bold text-zenith-navy mb-4">Guides, research, and downloads</h3>
+            <p className="text-slate-500 text-lg leading-relaxed font-light max-w-2xl">Browse practical resources for brokers, employers, and healthcare risk professionals.</p>
           </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Reimagining Health Insurance',
-                desc: 'A forward-looking analysis of how innovative risk structures are reshaping the health insurance landscape for self-funded employers.',
-                url: '/brochures/reimagining-health-insurance.pdf',
-              },
-              {
-                title: 'Stop Loss Captives',
-                desc: 'An in-depth exploration of stop loss captive structures, their strategic advantages, and implementation considerations for employers and advisors.',
-                url: '/brochures/stop-loss-captives.pdf',
-              },
-              {
-                title: 'Cost Containment & Stop Loss Pricing Impact',
-                desc: 'Examining the relationship between clinical cost containment strategies and their measurable impact on stop loss pricing outcomes.',
-                url: '/brochures/cost-containment-stop-loss.pdf',
-              },
-              {
-                title: 'Mechanics of Apollo LF Captive Program',
-                desc: 'A comprehensive overview of the Apollo LF Captive Program, outlining how the structure works, including key mechanics, risk strategy, and implementation approach.',
-                url: '/brochures/mechanics-of-apollo-lf-captive-program.pptx',
-              },
-            ].map((paper) => (
-              <a
-                key={paper.url}
-                href={paper.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-10 bg-white border border-slate-100 rounded-2xl hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full no-underline"
-              >
-                <div className="w-14 h-14 bg-slate-50 rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4 block">White Paper</span>
-                <h4 className="text-xl font-bold text-zenith-navy mb-4 leading-snug group-hover:text-blue-600 transition-colors">{paper.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed font-light mb-10 flex-grow">
-                  {paper.desc}
-                </p>
-                <div className="pt-6 border-t border-slate-200/50">
-                  <span className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy group-hover:text-blue-600 transition-colors">
-                    View White Paper
-                    <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </span>
-                </div>
-              </a>
-            ))}
-          </div>
+          <ContentGrid section="resource" showFilters />
         </div>
       </section>
 

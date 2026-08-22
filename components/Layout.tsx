@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isInsightsOpen, setIsInsightsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -12,6 +13,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setIsServicesOpen(false);
+    setIsInsightsOpen(false);
   }, [location.pathname]);
 
   // Handle scroll for header styling
@@ -38,9 +40,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const secondaryLinks = [
     { name: 'For Brokers', path: '/for-brokers' },
     { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' },
+  ];
+
+  const insightsLinks = [
+    { name: 'Media', path: '/media' },
     { name: 'Events', path: '/events' },
     { name: 'Resources', path: '/resources' },
-    { name: 'Contact', path: '/contact' },
   ];
 
   const LOGO_URL = "https://res.cloudinary.com/dtrxl120u/image/upload/v1766602212/Zenith_Primary_Logo-1_teruwz_urxbr0.webp";
@@ -116,6 +122,28 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 </div>
               </div>
 
+              {/* Media, Events & Resources Dropdown */}
+              <div
+                className="relative group h-full flex items-center"
+                onMouseEnter={() => setIsInsightsOpen(true)}
+                onMouseLeave={() => setIsInsightsOpen(false)}
+              >
+                <button
+                  type="button"
+                  aria-expanded={isInsightsOpen}
+                  onClick={() => setIsInsightsOpen(!isInsightsOpen)}
+                  className={`flex items-center text-[11px] font-bold tracking-[0.2em] uppercase transition-colors py-2 ${
+                    ['/media', '/events', '/resources'].some((path) => location.pathname.startsWith(path)) ? 'text-zenith-blue' : 'text-slate-500 hover:text-zenith-blue'
+                  }`}
+                >
+                  Media
+                  <svg className={`ml-1 w-3 h-3 transition-transform duration-200 ${isInsightsOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div className={`absolute top-full left-1/2 -translate-x-1/2 w-56 bg-white shadow-2xl border border-slate-100 py-4 rounded-b-xl transition-all duration-200 origin-top ${isInsightsOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible'}`}>
+                  {insightsLinks.map((link) => <Link key={link.path} to={link.path} className="block px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-slate-500 hover:bg-slate-50 hover:text-zenith-blue transition-colors">{link.name}</Link>)}
+                </div>
+              </div>
+
               {secondaryLinks.map((link) => (
                 <Link
                   key={link.path}
@@ -177,6 +205,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 >
                   {link.name}
                 </Link>
+              ))}
+            </div>
+
+            <div className="space-y-4">
+              <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Media & Insights</p>
+              {insightsLinks.map((link) => (
+                <Link key={link.path} to={link.path} className="block text-sm font-semibold text-slate-600 hover:text-zenith-blue pl-4">{link.name}</Link>
               ))}
             </div>
 
@@ -265,9 +300,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
           <div className="mt-20 pt-10 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold space-y-4 md:space-y-0">
             <p>&copy; {new Date().getFullYear()} Zenith Risk Strategies. Precision Engineering for Healthcare Risk.</p>
-            <div className="flex space-x-10">
+            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
               <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
               <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+              <Link to="/admin" className="hover:text-white transition-colors border border-slate-700 rounded px-3 py-1 -my-1">Admin Login</Link>
             </div>
           </div>
         </div>
