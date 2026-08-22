@@ -55,6 +55,7 @@ const ContentDetail: React.FC<{ section: ContentSection }> = ({ section }) => {
   const isSpeakerHero = entry.section === 'media' && entry.contentType === 'video' && Boolean(speakerPortrait);
   const isEventHero = entry.section === 'event' && Boolean(cover);
   const download = entry.document;
+  const hasCaptiveTrainingDeck = entry.section === 'resource' && entry.slug === 'captive-vs-traditional-stop-loss-employer-guide';
 
   return (
     <article className="w-full">
@@ -142,7 +143,22 @@ const ContentDetail: React.FC<{ section: ContentSection }> = ({ section }) => {
               <p className="text-xl text-slate-600 leading-relaxed font-light mb-8">{entry.description}</p>
               {entry.body && entry.body.split(/\n{2,}/).map((paragraph, index) => <p key={index} className="text-slate-600 leading-8 mb-6">{paragraph}</p>)}
               {(entry.author || entry.source) && <p className="text-sm text-slate-500 border-l-2 border-blue-300 pl-4 my-8">{entry.author && <>By {entry.author}</>}{entry.author && entry.source && <span> · </span>}{entry.source}</p>}
-              {download && <a href={download.url} target="_blank" rel="noopener noreferrer" download className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-4">{entry.ctaLabel || 'Download resource'}</a>}
+              {download && (
+                <div className="flex flex-wrap gap-3 mt-4">
+                  <a href={download.url} target="_blank" rel="noopener noreferrer" download className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded transition-colors hover:bg-blue-700">
+                    {hasCaptiveTrainingDeck ? 'Download PDF Guide' : entry.ctaLabel || 'Download resource'}
+                  </a>
+                  {hasCaptiveTrainingDeck && (
+                    <a
+                      href="/brochures/captive-vs-traditional-stoploss.pptx"
+                      download="Zenith_Medical_Stop_Loss_Captives_Training.pptx"
+                      className="inline-flex items-center px-8 py-4 border-2 border-zenith-navy text-zenith-navy font-black text-[10px] uppercase tracking-[0.2em] rounded transition-colors hover:bg-zenith-navy hover:text-white"
+                    >
+                      Download PowerPoint
+                    </a>
+                  )}
+                </div>
+              )}
               {!download && entry.externalUrl && entry.contentType !== 'video' && <a href={entry.externalUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-8 py-4 bg-zenith-blue text-white font-black text-[10px] uppercase tracking-[0.2em] rounded mt-4">{entry.ctaLabel || 'Visit source'}</a>}
             </div>
           </>

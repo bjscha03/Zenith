@@ -19,12 +19,6 @@
   force = true
 
 [[redirects]]
-  from = "/brochures/captive-vs-traditional-stoploss.pptx"
-  to = "/api/cms/assets/8b3a6acb-f6c7-48bb-b0e2-d1dca499c97c?download=1"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/brochures/mechanics-of-apollo-lf-captive-program.pptx"
   to = "/brochures/mechanics-of-apollo-lf-captive-program.pdf"
   status = 301

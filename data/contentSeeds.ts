@@ -71,7 +71,7 @@ const resources: ContentEntry[] = [
     date: '2026-03-01',
     category: 'Guides',
     gallery: [],
-    document: { id: '8b3a6acb-f6c7-48bb-b0e2-d1dca499c97c', kind: 'document', url: assetUrl('8b3a6acb-f6c7-48bb-b0e2-d1dca499c97c'), filename: 'captive-vs-traditional-stoploss.pdf', mimeType: 'application/pdf' },
+    document: { id: 'static-captive-guide', kind: 'document', url: '/brochures/captive-vs-traditional-stoploss.pdf', filename: 'captive-vs-traditional-stoploss.pdf', mimeType: 'application/pdf' },
     ctaLabel: 'Download guide',
     displayOrder: 10,
     featured: true,

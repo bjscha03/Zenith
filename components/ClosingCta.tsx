@@ -20,8 +20,8 @@ type ClosingCtaProps = {
 
 const Action: React.FC<{ action: ClosingCtaAction; secondary?: boolean }> = ({ action, secondary = false }) => {
   const className = secondary
-    ? 'closing-cta-secondary'
-    : 'closing-cta-primary';
+    ? 'closing-cta-secondary group'
+    : 'closing-cta-primary group';
   const content = (
     <>
       <span>{action.label}</span>

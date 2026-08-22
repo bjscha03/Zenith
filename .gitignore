@@ -1,4 +1,7 @@
 node_modules/
+public/brochures/captive-vs-traditional-stoploss.pdf
+public/brochures/captive-vs-traditional-stoploss.pptx
+public/brochures/peak-performance-risk-control-zenith-branded.pdf
 .netlify/
 .env
 .env.*
