@@ -49,9 +49,9 @@ const Events: React.FC = () => {
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop')" }}></div>
         <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover object-center opacity-[0.2] mix-blend-screen" />
         <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/95 via-zenith-navy/90 to-zenith-navy/[0.58]"></div>
-        <div aria-hidden="true" className="absolute -right-20 -top-28 w-[430px] h-[430px] rounded-full border border-blue-300/15">
-          <div className="absolute inset-14 rounded-full border border-blue-300/15" />
-          <div className="absolute inset-28 rounded-full border border-blue-300/15" />
+        <div aria-hidden="true" className="absolute -right-20 -top-28 w-[430px] h-[430px] rounded-full border border-blue-300/[0.15]">
+          <div className="absolute inset-14 rounded-full border border-blue-300/[0.15]" />
+          <div className="absolute inset-28 rounded-full border border-blue-300/[0.15]" />
           <div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.08]"><img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" /></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -81,7 +81,7 @@ const Events: React.FC = () => {
       </nav>
 
       {/* FEATURED RECAP + AUDIENCE */}
-      <section className="relative overflow-hidden py-20 bg-gradient-to-b from-slate-50 via-white to-blue-50/50">
+      <section className="relative overflow-hidden py-20 bg-gradient-to-b from-slate-50 via-white to-blue-50/[0.50]">
         <div aria-hidden="true" className="absolute -right-52 top-12 w-[520px] h-[520px] rounded-full border border-blue-200/[0.35]"><div className="absolute inset-20 rounded-full border border-blue-200/[0.35]" /><div className="absolute inset-40 rounded-full border border-blue-200/[0.35]" /></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[1.18fr_0.82fr] gap-8 items-stretch">
@@ -96,7 +96,7 @@ const Events: React.FC = () => {
 
             <aside className="relative overflow-hidden rounded-[2rem] bg-zenith-navy p-8 md:p-10 text-white shadow-[0_28px_70px_-42px_rgba(15,35,68,0.75)]">
               <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover object-center opacity-30" />
-              <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/72 via-zenith-navy/88 to-zenith-navy/98" />
+              <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/[0.72] via-zenith-navy/[0.88] to-zenith-navy/[0.98]" />
               <div aria-hidden="true" className="absolute -right-20 -bottom-24 w-64 h-64 rounded-full border border-blue-300/20"><div className="absolute inset-10 rounded-full border border-blue-300/20" /><div className="absolute inset-20 rounded-full border border-blue-300/20" /></div>
               <div className="relative z-10">
                 <span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-4 block">Who Is In The Room</span>

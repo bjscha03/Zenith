@@ -93,7 +93,7 @@ const Speakers: React.FC = () => {
         <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749927/Screenshot_2026-03-05_at_5.32.02_PM_ppusgl.png" alt="Zenith Conference speakers on stage" className="absolute inset-0 w-full h-full object-cover object-[center_20%] opacity-70" />
         <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute left-0 inset-y-0 w-[58%] h-full object-cover object-center opacity-25 mix-blend-screen" />
         <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.96] via-zenith-navy/[0.83] to-zenith-navy/[0.35]" />
-        <div aria-hidden="true" className="absolute -right-20 -top-24 w-[430px] h-[430px] rounded-full border border-blue-300/18"><div className="absolute inset-14 rounded-full border border-blue-300/18" /><div className="absolute inset-28 rounded-full border border-blue-300/18" /><div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.1]"><img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" /></div></div>
+        <div aria-hidden="true" className="absolute -right-20 -top-24 w-[430px] h-[430px] rounded-full border border-blue-300/[0.18]"><div className="absolute inset-14 rounded-full border border-blue-300/[0.18]" /><div className="absolute inset-28 rounded-full border border-blue-300/[0.18]" /><div className="absolute inset-[7.25rem] overflow-hidden rounded-full opacity-[0.1]"><img src={ZENITH_LOGO_IMAGE} alt="" className="h-full w-auto max-w-none" /></div></div>
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-24 relative z-10">
           <div className="max-w-3xl">
             <span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.4em] mb-6 block">Zenith Conference Voices</span>
@@ -116,13 +116,13 @@ const Speakers: React.FC = () => {
       </nav>
 
       {/* SECTION 2: WHO SHOULD APPLY */}
-      <section className="relative overflow-hidden py-20 bg-gradient-to-b from-slate-50 via-white to-blue-50/50">
+      <section className="relative overflow-hidden py-20 bg-gradient-to-b from-slate-50 via-white to-blue-50/[0.50]">
         <div aria-hidden="true" className="absolute -left-48 -bottom-64 w-[520px] h-[520px] rounded-full border border-blue-200/[0.35]"><div className="absolute inset-20 rounded-full border border-blue-200/[0.35]" /><div className="absolute inset-40 rounded-full border border-blue-200/[0.35]" /></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr] rounded-[2rem] overflow-hidden border border-slate-200 bg-white shadow-[0_30px_80px_-48px_rgba(15,35,68,0.55)]">
             <div className="relative overflow-hidden bg-zenith-navy p-9 md:p-12 text-white">
               <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-[0.45]" />
-              <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/55 via-zenith-navy/80 to-zenith-navy/97" />
+              <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/[0.55] via-zenith-navy/80 to-zenith-navy/[0.97]" />
               <div className="relative z-10 flex flex-col justify-between h-full min-h-[330px]">
                 <div><span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-5 block">The Right Perspective</span><h2 className="text-3xl md:text-4xl font-bold tracking-tight">Who should apply?</h2></div>
                 <p className="text-slate-300 leading-relaxed max-w-sm">We select practitioners with useful experience, a clear point of view, and the confidence to engage without a sales pitch.</p>
@@ -152,7 +152,7 @@ const Speakers: React.FC = () => {
           <div className="text-center mb-12"><span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-4 block">What The Room Expects</span><h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Speaker expectations</h2></div>
           <div className="space-y-4">
             {accordionItems.map((item, i) => (
-              <div key={i} className={`border rounded-2xl overflow-hidden backdrop-blur-sm transition-all ${openAccordion === i ? 'border-blue-300/45 bg-white/[0.09]' : 'border-white/15 bg-white/[0.045] hover:bg-white/[0.07]'}`}>
+              <div key={i} className={`border rounded-2xl overflow-hidden backdrop-blur-sm transition-all ${openAccordion === i ? 'border-blue-300/[0.45] bg-white/[0.09]' : 'border-white/[0.15] bg-white/[0.045] hover:bg-white/[0.07]'}`}>
                 <button
                   onClick={() => toggleAccordion(i)}
                   className="w-full flex items-center justify-between gap-5 px-6 md:px-8 py-6 text-left"
@@ -181,10 +181,10 @@ const Speakers: React.FC = () => {
               <article key={i} className={`group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_24px_60px_-42px_rgba(15,35,68,0.55)] hover:-translate-y-1.5 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 sm:col-span-1 lg:col-span-2 ${i === 3 ? 'lg:col-start-2' : ''}`}>
                 <div className="relative aspect-[4/5] overflow-hidden bg-slate-200">
                   <img src={sp.image} alt={sp.name} className="w-full h-full object-cover object-center group-hover:scale-[1.025] transition-transform duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zenith-navy/55 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zenith-navy/[0.55] via-transparent to-transparent" />
                   <span className="absolute left-5 bottom-4 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200">Zenith Speaker</span>
                 </div>
-                <div className="relative overflow-hidden p-6 min-h-[132px] bg-gradient-to-br from-white to-blue-50/55">
+                <div className="relative overflow-hidden p-6 min-h-[132px] bg-gradient-to-br from-white to-blue-50/[0.55]">
                   <div className="relative z-10"><h3 className="text-xl font-bold text-zenith-navy mb-2">{sp.name}</h3><p className="text-slate-500 text-sm leading-relaxed">{sp.title}</p></div>
                   <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute -right-10 bottom-0 w-52 opacity-[0.045] grayscale" />
                   <div aria-hidden="true" className="absolute -right-12 -bottom-16 w-36 h-36 rounded-full border border-blue-200/60"><div className="absolute inset-7 rounded-full border border-blue-200/60" /></div>
@@ -209,7 +209,7 @@ const Speakers: React.FC = () => {
             </div>
 
             {/* RIGHT: Form */}
-            <div className="p-8 md:p-10 lg:p-12 bg-gradient-to-br from-white via-white to-blue-50/45">
+            <div className="p-8 md:p-10 lg:p-12 bg-gradient-to-br from-white via-white to-blue-50/[0.45]">
               <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.35em] mb-4 block">Speaker Application</span>
               <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy tracking-tight mb-4">Show what actually works</h2>
               <p className="text-slate-600 leading-relaxed mb-8">Zenith invites practitioners and operators, not marketers, to contribute real-world insight to our conference series.</p>
