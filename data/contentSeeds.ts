@@ -71,7 +71,7 @@ const resources: ContentEntry[] = [
     date: '2026-03-01',
     category: 'Guides',
     gallery: [],
-    document: { id: 'static-captive-guide', kind: 'document', url: '/brochures/captive-vs-traditional-stoploss.pptx', filename: 'captive-vs-traditional-stoploss.pptx' },
+    document: { id: '8b3a6acb-f6c7-48bb-b0e2-d1dca499c97c', kind: 'document', url: assetUrl('8b3a6acb-f6c7-48bb-b0e2-d1dca499c97c'), filename: 'captive-vs-traditional-stoploss.pdf', mimeType: 'application/pdf' },
     ctaLabel: 'Download guide',
     displayOrder: 10,
     featured: true,
@@ -83,7 +83,7 @@ const resources: ContentEntry[] = [
     ['reimagining-health-insurance', 'Reimagining Health Insurance', 'A forward-looking analysis of how innovative risk structures are reshaping the health insurance landscape for self-funded employers.', '/brochures/reimagining-health-insurance.pdf'],
     ['stop-loss-captives', 'Stop Loss Captives', 'An in-depth exploration of stop loss captive structures, their strategic advantages, and implementation considerations for employers and advisors.', '/brochures/stop-loss-captives.pdf'],
     ['cost-containment-stop-loss-pricing-impact', 'Cost Containment & Stop Loss Pricing Impact', 'Examining the relationship between clinical cost containment strategies and their measurable impact on stop loss pricing outcomes.', '/brochures/cost-containment-stop-loss.pdf'],
-    ['mechanics-of-apollo-lf-captive-program', 'Mechanics of Apollo LF Captive Program', 'A comprehensive overview of the Apollo LF Captive Program, including key mechanics, risk strategy, and implementation approach.', '/brochures/mechanics-of-apollo-lf-captive-program.pptx'],
+    ['mechanics-of-apollo-lf-captive-program', 'Mechanics of Apollo LF Captive Program', 'A comprehensive overview of the Apollo LF Captive Program, including key mechanics, risk strategy, and implementation approach.', '/brochures/mechanics-of-apollo-lf-captive-program.pdf'],
   ].map(([slug, title, description, url], index): ContentEntry => ({
     id: `resource-${slug}`,
     slug,

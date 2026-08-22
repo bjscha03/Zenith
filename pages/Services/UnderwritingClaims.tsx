@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import CompassMark from '../../components/brand/CompassMark';
+import ClosingCta from '../../components/ClosingCta';
 import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
 
 const UnderwritingClaims: React.FC = () => {
@@ -158,26 +158,12 @@ const UnderwritingClaims: React.FC = () => {
         </div>
       </section>
 
-      {/* 4. CTA */}
-      <section className="premium-cta py-24 relative overflow-hidden">
-        <CompassMark className="absolute -right-10 -bottom-16 w-72 h-72 opacity-[0.07]" imageClassName="brightness-0 invert" />
-        <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">Ready to optimize your plan?</h2>
-          
-          <div className="flex justify-center">
-            <Link 
-              to="/contact" 
-              className="group relative inline-flex items-center justify-center px-12 py-6 font-black text-[11px] uppercase tracking-[0.3em] text-white transition-all duration-300"
-            >
-              <span className="absolute inset-0 bg-zenith-blue transform skew-x-[-12deg] group-hover:bg-blue-600 group-hover:scale-105 transition-all"></span>
-              <span className="relative z-10">Submit a Group</span>
-              <svg className="relative z-10 ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ClosingCta
+        eyebrow="Underwriting partnership"
+        title="Ready to optimize your plan?"
+        description="Share the group profile and let Zenith connect pricing discipline with practical clinical oversight."
+        primary={{ label: 'Submit a group', to: '/contact' }}
+      />
     </div>
   );
 };

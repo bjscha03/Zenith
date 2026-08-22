@@ -256,8 +256,8 @@ const Contact: React.FC = () => {
                 Download our executive overview deck for a comprehensive look at Zenith Risk Strategies.
               </p>
               <a
-                href="/brochures/strategy-brochure.pdf"
-                download
+                href="/api/cms/assets/dda15b75-e7c7-4ecd-bf55-9201d2a520cb?download=1"
+                download="Peak_Performance_Risk_Control_Zenith_Branded.pdf"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-blue-400 text-blue-400 font-black text-[10px] uppercase tracking-widest rounded hover:bg-blue-400 hover:text-zenith-navy transition-all group"
               >
                 Download Deck

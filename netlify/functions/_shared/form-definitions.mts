@@ -203,7 +203,7 @@ export const brochureRequestDefinition: FormDefinition<BrochureRequest> = {
     VALUES (${data.firstName}, ${data.lastName}, ${data.email}, ${data.company}, ${data.brochureType})
   `,
   buildMessages: (data, config, timestamp) => {
-    const brochureUrl = `${config.siteUrl}/brochures/mechanics-of-apollo-lf-captive-program.pptx`;
+    const brochureUrl = `${config.siteUrl}/brochures/mechanics-of-apollo-lf-captive-program.pdf`;
     return [
       buildInternalNotification({
         to: config.notificationTo,

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import CompassMark from './brand/CompassMark';
 import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
@@ -9,7 +9,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isInsightsOpen, setIsInsightsOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuTop, setMobileMenuTop] = useState(0);
+  const headerRef = useRef<HTMLElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLDivElement>(null);
+  const wasMobileMenuOpen = useRef(false);
   const location = useLocation();
+  const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   // Close menus on route change
   useEffect(() => {
@@ -26,6 +32,94 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Keep the drawer aligned to the real rendered header height, including tablet widths.
+  useEffect(() => {
+    const updateMenuTop = () => {
+      const bottom = headerRef.current?.getBoundingClientRect().bottom;
+      if (typeof bottom === 'number') setMobileMenuTop(Math.max(0, Math.round(bottom)));
+    };
+    updateMenuTop();
+    const resizeObserver = typeof ResizeObserver !== 'undefined' && headerRef.current
+      ? new ResizeObserver(updateMenuTop)
+      : null;
+    if (headerRef.current && resizeObserver) resizeObserver.observe(headerRef.current);
+    window.addEventListener('resize', updateMenuTop);
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener('resize', updateMenuTop);
+    };
+  }, [isScrolled]);
+
+  // Closing the mobile layout during a rotation/resize must also release the body scroll lock.
+  useEffect(() => {
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
+    const closeAtDesktop = (event: MediaQueryListEvent | MediaQueryList) => {
+      if (event.matches) closeMobileMenu();
+    };
+    closeAtDesktop(desktopQuery);
+    desktopQuery.addEventListener('change', closeAtDesktop);
+    return () => desktopQuery.removeEventListener('change', closeAtDesktop);
+  }, []);
+
+  // Treat the open drawer as a true modal navigation surface for touch and keyboard users.
+  useEffect(() => {
+    const main = document.querySelector('main');
+    const footer = document.querySelector('footer');
+    document.body.classList.toggle('mobile-menu-open', isMobileMenuOpen);
+
+    if (!isMobileMenuOpen) {
+      main?.removeAttribute('inert');
+      footer?.removeAttribute('inert');
+      if (wasMobileMenuOpen.current) mobileMenuButtonRef.current?.focus();
+      wasMobileMenuOpen.current = false;
+      return;
+    }
+
+    wasMobileMenuOpen.current = true;
+    main?.setAttribute('inert', '');
+    footer?.setAttribute('inert', '');
+
+    const focusableElements = (): HTMLElement[] => {
+      const elements = mobileNavRef.current?.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      const focusable: HTMLElement[] = [];
+      elements?.forEach((element: HTMLElement) => {
+        if (!element.hasAttribute('disabled')) focusable.push(element);
+      });
+      return focusable;
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeMobileMenu();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = focusableElements();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    const focusFrame = window.requestAnimationFrame(() => focusableElements()[0]?.focus());
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      document.body.classList.remove('mobile-menu-open');
+      main?.removeAttribute('inert');
+      footer?.removeAttribute('inert');
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -56,7 +150,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen font-sans">
       {/* Top Navigation */}
-      <header 
+      <header
+        ref={headerRef}
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           isScrolled ? 'bg-white/95 backdrop-blur-xl shadow-[0_18px_45px_-35px_rgba(15,23,42,0.65)] py-2' : 'bg-white/95 backdrop-blur-lg py-4'
         } border-b border-slate-200/80`}
@@ -165,8 +260,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <div className="flex items-center lg:hidden">
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-slate-600 p-2 hover:bg-slate-100 rounded-md transition-colors"
-                aria-label="Toggle Menu"
+                ref={mobileMenuButtonRef}
+                className="text-slate-600 p-2 min-w-11 min-h-11 inline-flex items-center justify-center hover:bg-slate-100 rounded-md transition-colors"
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 {isMobileMenuOpen ? (
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,137 +279,135 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </div>
           </div>
         </nav>
+      </header>
 
-        {/* Mobile Menu Overlay */}
-        <div className={`lg:hidden fixed inset-0 z-40 bg-white transform transition-transform duration-300 ease-in-out ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`} style={{ top: '64px' }}>
-          <div className="flex flex-col p-6 space-y-6 overflow-y-auto max-h-[calc(100vh-64px)]">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-lg font-bold text-zenith-navy uppercase tracking-widest border-b border-slate-50 pb-2"
-              >
-                {link.name}
-              </Link>
-            ))}
-            
-            <div className="space-y-4">
-              <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Our Services</p>
-              {servicesLinks.map((link) => (
+      {/* Keep the drawer outside the backdrop-filtered sticky header so it is fixed to the viewport. */}
+      <div
+        ref={mobileNavRef}
+        id="mobile-navigation"
+        role="dialog"
+        aria-modal={isMobileMenuOpen}
+        aria-label="Mobile navigation"
+        aria-hidden={!isMobileMenuOpen}
+        className={`mobile-nav-drawer lg:hidden ${isMobileMenuOpen ? 'mobile-nav-drawer--open' : ''}`}
+        style={{ top: `${mobileMenuTop}px` }}
+      >
+        <div className="mobile-nav-scroll">
+          <div className="max-w-lg mx-auto px-6 pt-7 pb-[calc(2rem+env(safe-area-inset-bottom))]">
+            <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.32em] mb-4">Navigation</p>
+            <div className="grid grid-cols-2 border-y border-slate-200 mb-7">
+              {[...navLinks, ...secondaryLinks].map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="block text-sm font-semibold text-slate-600 hover:text-zenith-blue pl-4"
+                  onClick={closeMobileMenu}
+                  className="py-4 pr-3 text-[12px] font-black text-zenith-navy uppercase tracking-[0.13em] border-b border-slate-100 last:border-b-0"
                 >
                   {link.name}
                 </Link>
               ))}
             </div>
 
-            <div className="space-y-4">
-              <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.3em]">Media & Insights</p>
-              {insightsLinks.map((link) => (
-                <Link key={link.path} to={link.path} className="block text-sm font-semibold text-slate-600 hover:text-zenith-blue pl-4">{link.name}</Link>
-              ))}
+            <div className="grid grid-cols-2 gap-7 mb-8">
+              <div>
+                <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.25em] mb-3">Expertise</p>
+                <div className="space-y-1">
+                  {servicesLinks.map((link) => (
+                    <Link key={link.path} to={link.path} onClick={closeMobileMenu} className="block py-2.5 text-sm font-semibold leading-snug text-slate-600 hover:text-zenith-blue">
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-[10px] font-black text-blue-600 uppercase tracking-[0.25em] mb-3">Media & Insights</p>
+                <div className="space-y-1">
+                  {insightsLinks.map((link) => (
+                    <Link key={link.path} to={link.path} onClick={closeMobileMenu} className="block py-2.5 text-sm font-semibold text-slate-600 hover:text-zenith-blue">{link.name}</Link>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {secondaryLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-lg font-bold text-zenith-navy uppercase tracking-widest border-b border-slate-50 pb-2"
-              >
-                {link.name}
-              </Link>
-            ))}
-            
-            <div className="pt-8">
-              <Link 
-                to="/contact" 
-                className="block w-full text-center py-4 bg-zenith-blue text-white font-bold rounded uppercase tracking-[0.2em] text-xs"
-              >
-                Start a Conversation
-              </Link>
-            </div>
+            <Link
+              to="/contact"
+              onClick={closeMobileMenu}
+              className="flex items-center justify-between w-full px-5 py-4 bg-zenith-blue text-white font-black rounded-lg uppercase tracking-[0.18em] text-[11px] shadow-lg shadow-blue-950/10"
+            >
+              <span>Start a Conversation</span>
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </Link>
           </div>
         </div>
-      </header>
+      </div>
 
       <main className="flex-grow">
         {children}
       </main>
 
-      {/* Footer */}
-      <footer className="premium-dark-section text-white py-20 relative overflow-hidden">
-        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute left-0 bottom-0 w-[46%] h-full object-cover object-center opacity-[0.07] mix-blend-screen" />
-        <CompassMark className="absolute -right-10 -bottom-16 w-80 h-80 opacity-[0.05]" imageClassName="brightness-0 invert" />
+      <footer className="site-footer text-white relative overflow-hidden">
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute left-0 bottom-0 w-[44%] h-full object-cover object-center opacity-[0.055] mix-blend-screen" />
+        <CompassMark className="absolute -right-12 -bottom-20 w-72 h-72 opacity-[0.04]" imageClassName="brightness-0 invert" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8">
-            <div className="md:col-span-5">
-              <Link to="/" className="inline-block mb-8">
-                <img 
-                  src={LOGO_URL} 
-                  alt="Zenith Risk Strategies" 
-                  className="h-16 w-auto brightness-0 invert"
-                />
+          <div className="py-14 lg:py-16 grid lg:grid-cols-12 gap-10 lg:gap-12">
+            <div className="lg:col-span-5">
+              <Link to="/" className="inline-block mb-5">
+                <img src={LOGO_URL} alt="Zenith Risk Strategies" className="h-12 w-auto brightness-0 invert" />
               </Link>
-              <p className="text-slate-400 max-w-sm leading-relaxed text-sm font-light">
-                Engineering alignment in healthcare risk. A modern Medical Stop-Loss MGU built on underwriting discipline, clinical stewardship, and transparent performance.
+              <p className="text-slate-400 max-w-lg leading-relaxed text-sm">
+                Engineering alignment in healthcare risk through underwriting discipline, clinical stewardship, and transparent performance.
               </p>
-              <address className="mt-6 text-slate-400 text-sm leading-relaxed font-light not-italic">
-                5004 Bee Creek Rd, Suite 620<br />
-                Spicewood, TX 78669
-              </address>
-              <div className="mt-6">
-                <a
-                  href="https://www.linkedin.com/company/zenith-risk-strategies-llc/posts/?feedView=all"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Follow Zenith Risk Strategies on LinkedIn"
-                  className="inline-block text-slate-400 hover:text-white transition-colors"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>
+              <div className="mt-6 flex flex-col sm:flex-row sm:items-end gap-5 sm:gap-8">
+                <address className="text-slate-400 text-xs leading-relaxed not-italic">
+                  5004 Bee Creek Rd, Suite 620<br />Spicewood, TX 78669
+                </address>
+                <div className="flex items-center gap-5 text-[10px] font-black uppercase tracking-[0.18em]">
+                  <Link to="/contact" className="text-blue-300 hover:text-white transition-colors">Contact Zenith</Link>
+                  <a href="https://www.linkedin.com/company/zenith-risk-strategies-llc/posts/?feedView=all" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">LinkedIn</a>
+                </div>
               </div>
             </div>
 
-            <div className="md:col-span-3">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-10">Quick Navigation</h3>
-              <ul className="space-y-5">
-                <li><Link to="/why-zenith" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Why Zenith</Link></li>
-                <li><Link to="/for-brokers" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Broker Portal</Link></li>
-                <li><Link to="/about" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Our Story</Link></li>
-                <li><Link to="/resources" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Knowledge Base</Link></li>
-                <li><Link to="/careers" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Careers</Link></li>
-              </ul>
-            </div>
-
-            <div className="md:col-span-4">
-              <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400 mb-10">Strategic Expertise</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <ul className="space-y-5">
-                  <li><Link to="/services/underwriting-claims" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Underwriting</Link></li>
-                  <li><Link to="/services/captive-integration" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Captives</Link></li>
+            <div className="lg:col-span-7 grid sm:grid-cols-3 gap-8">
+              <div>
+                <h3 className="footer-heading">Company</h3>
+                <ul className="footer-links">
+                  <li><Link to="/why-zenith">Why Zenith</Link></li>
+                  <li><Link to="/about">Our Story</Link></li>
+                  <li><Link to="/for-brokers">For Brokers</Link></li>
+                  <li><Link to="/careers">Careers</Link></li>
+                  <li><Link to="/contact">Contact</Link></li>
                 </ul>
-                <ul className="space-y-5">
-                  <li><Link to="/services/apollo-health-plan" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Apollo Plan</Link></li>
-                  <li><Link to="/services/consulting-strategy" className="text-slate-400 hover:text-white transition-colors text-[10px] font-bold uppercase tracking-widest">Consulting</Link></li>
+              </div>
+              <div>
+                <h3 className="footer-heading">Media & Insights</h3>
+                <ul className="footer-links">
+                  <li><Link to="/media">Media</Link></li>
+                  <li><Link to="/events">Events</Link></li>
+                  <li><Link to="/resources">Resources</Link></li>
+                  <li><Link to="/conference-series">Conference Series</Link></li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="footer-heading">Expertise</h3>
+                <ul className="footer-links">
+                  <li><Link to="/services/underwriting-claims">Underwriting</Link></li>
+                  <li><Link to="/services/captive-integration">Captives</Link></li>
+                  <li><Link to="/services/apollo-health-plan">Apollo Plan</Link></li>
+                  <li><Link to="/services/consulting-strategy">Consulting</Link></li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div className="mt-20 pt-10 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold space-y-4 md:space-y-0">
+          <div className="py-6 border-t border-white/10 flex flex-col md:flex-row gap-4 md:items-center md:justify-between text-[9px] text-slate-500 uppercase tracking-[0.17em] font-bold">
             <p>&copy; {new Date().getFullYear()} Zenith Risk Strategies. Precision Engineering for Healthcare Risk.</p>
-            <div className="flex flex-wrap justify-center gap-x-6 gap-y-3">
-              <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-              <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
-              <Link to="/admin" className="hover:text-white transition-colors border border-slate-700 rounded px-3 py-1 -my-1">Admin Login</Link>
+            <div className="flex flex-wrap gap-x-5 gap-y-3">
+              <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+              <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
+              <Link to="/admin" className="hover:text-white transition-colors border border-white/15 rounded-md px-3 py-1.5 -my-1.5">Admin Login</Link>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import CompassMark from '../../components/brand/CompassMark';
+import ClosingCta from '../../components/ClosingCta';
 import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
 
 const CaptiveIntegration: React.FC = () => {
@@ -307,27 +307,12 @@ const CaptiveIntegration: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section - White Background */}
-      <section className="premium-cta py-24 border-t border-slate-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight leading-tight">
-            Ready to integrate your <br/>captive strategy?
-          </h2>
-          
-          <div className="flex justify-center">
-            <Link 
-              to="/contact" 
-              className="group relative inline-flex items-center justify-center px-12 py-6 font-black text-[11px] uppercase tracking-[0.3em] text-white transition-all duration-300"
-            >
-              <span className="absolute inset-0 bg-blue-600 transform skew-x-[-12deg] group-hover:bg-blue-700 group-hover:scale-105 transition-all"></span>
-              <span className="relative z-10">Discuss Captive Options</span>
-              <svg className="relative z-10 ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ClosingCta
+        eyebrow="Captive integration"
+        title="Ready to integrate your captive strategy?"
+        description="Evaluate the structure, risk layers, and operating model with a team built to coordinate the full program."
+        primary={{ label: 'Discuss captive options', to: '/contact' }}
+      />
     </div>
   );
 };

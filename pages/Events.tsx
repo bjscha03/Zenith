@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CompassMark from '../components/brand/CompassMark';
+import ClosingCta from '../components/ClosingCta';
 import ContentGrid from '../components/content/ContentGrid';
 import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
@@ -198,20 +199,13 @@ const Events: React.FC = () => {
         </div>
       </section>
 
-      {/* SECTION 6: REGISTER */}
-      <section id="register" className="premium-cta py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-4 block">Reserve Your Seat</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-6">Register for the 2026 Summit</h2>
-            <p className="text-lg text-slate-400 leading-relaxed mb-10">Seats are limited to ensure quality interaction. Reserve your place at the table.</p>
-            <a href="https://www.eventbrite.com/o/zenith-risk-strategies-120923310117" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-10 py-5 bg-zenith-blue text-white font-black text-[11px] uppercase tracking-[0.3em] rounded hover:bg-blue-600 transition-all">
-              Register Now
-              <svg className="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-            </a>
-          </div>
-        </div>
-      </section>
+      <ClosingCta
+        id="register"
+        eyebrow="Reserve your seat"
+        title="Register for the 2026 Summit"
+        description="Seats are limited to keep the room focused, candid, and highly interactive."
+        primary={{ label: 'Register now', href: 'https://www.eventbrite.com/o/zenith-risk-strategies-120923310117', external: true }}
+      />
 
       {/* SPEAKER APPLICATION */}
       <section id="speaker" className="premium-light-section py-24">

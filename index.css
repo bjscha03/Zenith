@@ -19,6 +19,39 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+body.mobile-menu-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.mobile-nav-drawer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 45;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  background: #ffffff;
+  box-shadow: 0 28px 70px -30px rgba(15, 23, 42, 0.55);
+  transform: translate3d(100%, 0, 0);
+  transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), visibility 280ms;
+}
+
+.mobile-nav-drawer--open {
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate3d(0, 0, 0);
+}
+
+.mobile-nav-scroll {
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
 ::selection {
   background: #bfdbfe;
   color: var(--zenith-navy);
@@ -99,6 +132,51 @@ body {
   mask-image: linear-gradient(90deg, transparent, #000 35%, #000 65%, transparent);
 }
 
+.site-footer {
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 78% -10%, rgba(59, 130, 246, 0.13), transparent 30rem),
+    linear-gradient(150deg, #050c18, #0b1629 54%, #102440);
+}
+
+.site-footer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.1;
+  background-image: linear-gradient(90deg, transparent 49.8%, rgba(255, 255, 255, 0.04) 50%, transparent 50.2%);
+  background-size: 5rem 100%;
+  mask-image: linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent);
+}
+
+.footer-heading {
+  margin-bottom: 1.15rem;
+  color: #60a5fa;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.footer-links {
+  display: grid;
+  gap: 0.72rem;
+}
+
+.footer-links a {
+  color: #94a3b8;
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
+.footer-links a:hover {
+  color: #ffffff;
+}
+
 .premium-card {
   position: relative;
   isolation: isolate;
@@ -161,6 +239,80 @@ body {
   pointer-events: none;
 }
 
+.closing-cta {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 1px solid rgba(148, 163, 184, 0.24);
+  border-bottom: 1px solid rgba(22, 54, 93, 0.12);
+  background:
+    radial-gradient(circle at 88% 28%, rgba(59, 130, 246, 0.13), transparent 24rem),
+    linear-gradient(105deg, #ffffff 0%, #f8fbff 58%, #eaf2fb 100%);
+}
+
+.closing-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, #16365d, #60a5fa);
+}
+
+.closing-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -1;
+  width: min(44rem, 55vw);
+  opacity: 0.075;
+  background: url('https://res.cloudinary.com/dtrxl120u/image/upload/v1767912842/download_zcreqi.webp') center 42% / cover no-repeat;
+  mask-image: linear-gradient(90deg, transparent, #000 42%);
+}
+
+.closing-cta-primary,
+.closing-cta-secondary {
+  min-height: 3.25rem;
+  padding: 0.9rem 1.35rem;
+  border-radius: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.67rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  transition: transform 200ms ease, background-color 200ms ease, border-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+}
+
+.closing-cta-primary {
+  color: #ffffff;
+  background: #16365d;
+  border: 1px solid #16365d;
+  box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.72);
+}
+
+.closing-cta-primary:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 22px 44px -24px rgba(37, 99, 235, 0.7);
+}
+
+.closing-cta-secondary {
+  color: #16365d;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(22, 54, 93, 0.28);
+}
+
+.closing-cta-secondary:hover {
+  color: #0f172a;
+  background: #ffffff;
+  border-color: #16365d;
+  transform: translateY(-2px);
+}
+
 .premium-rule {
   height: 1px;
   background: linear-gradient(90deg, rgba(22,54,93,0), rgba(22,54,93,0.36), rgba(96,165,250,0.72), rgba(22,54,93,0));
@@ -173,6 +325,12 @@ body {
 
   .premium-cta::after {
     inset: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-nav-drawer {
+    display: none !important;
   }
 }
 

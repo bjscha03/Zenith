@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import CompassMark from '../../components/brand/CompassMark';
+import ClosingCta from '../../components/ClosingCta';
 import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
 
-// TODO: Place the strategy brochure PDF at public/brochures/strategy-brochure.pdf
 const STRATEGY_BROCHURE_URL = '/brochures/strategy-brochure.pdf';
 
 const ConsultingStrategy: React.FC = () => {
@@ -154,23 +153,12 @@ const ConsultingStrategy: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA Section */}
-      <section className="premium-cta py-24 relative overflow-hidden">
-        <CompassMark className="absolute -right-10 -bottom-16 w-72 h-72 opacity-[0.07]" imageClassName="brightness-0 invert" />
-        <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">Engineer your risk strategy.</h2>
-          
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-            <Link 
-              to="/contact" 
-              className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-white transition-all duration-300 w-full sm:w-auto"
-            >
-              <span className="absolute inset-0 bg-zenith-blue transform skew-x-[-12deg] group-hover:bg-blue-600 group-hover:scale-105 transition-all"></span>
-              <span className="relative z-10">Schedule Strategy Call</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ClosingCta
+        eyebrow="Strategy and execution"
+        title="Engineer your risk strategy."
+        description="Move from annual procurement to a coordinated, multi-year operating plan."
+        primary={{ label: 'Schedule a strategy call', to: '/contact' }}
+      />
     </div>
   );
 };

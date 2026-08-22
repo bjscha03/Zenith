@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CompassMark from '../components/brand/CompassMark';
+import ClosingCta from '../components/ClosingCta';
 import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Home: React.FC = () => {
@@ -296,21 +297,13 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. CTA */}
-      <section className="premium-cta py-32 text-white text-center relative overflow-hidden">
-        <CompassMark className="absolute -right-10 -bottom-20 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
-        <div className="max-w-4xl mx-auto px-4 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold mb-10 tracking-tight leading-tight">Ready to engineer alignment <br/>in your health plan?</h2>
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <Link to="/contact" className="px-12 py-5 bg-white text-zenith-blue font-black rounded shadow-2xl hover:bg-slate-50 transition-all uppercase tracking-widest text-[11px]">
-              Start a Conversation
-            </Link>
-            <Link to="/for-brokers" className="px-12 py-5 bg-transparent border border-white text-white font-black rounded hover:bg-white/10 transition-all uppercase tracking-widest text-[11px]">
-              Submission Requirements
-            </Link>
-          </div>
-        </div>
-      </section>
+      <ClosingCta
+        eyebrow="Build the next renewal"
+        title="Ready to engineer alignment in your health plan?"
+        description="Bring underwriting, clinical strategy, and plan execution into one coordinated risk model."
+        primary={{ label: 'Start a conversation', to: '/contact' }}
+        secondary={{ label: 'Submission requirements', to: '/for-brokers' }}
+      />
     </div>
   );
 };

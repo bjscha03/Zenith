@@ -112,6 +112,8 @@ const Admin: React.FC = () => {
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('all');
+  const [pendingDelete, setPendingDelete] = useState<ContentEntry | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -208,11 +210,36 @@ const Admin: React.FC = () => {
     } finally { setSaving(false); }
   };
 
-  const remove = async (entry: ContentEntry) => {
-    if (!window.confirm(`Delete “${entry.title}”? This cannot be undone.`)) return;
+  useEffect(() => {
+    if (!pendingDelete) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && !deleting) setPendingDelete(null);
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [pendingDelete, deleting]);
+
+  const remove = (entry: ContentEntry) => setPendingDelete(entry);
+
+  const confirmRemove = async () => {
+    if (!pendingDelete || deleting) return;
+    const entry = pendingDelete;
+    setDeleting(true);
     setError('');
-    try { await deleteContentEntry(entry.id); if (draft?.id === entry.id) setDraft(null); setNotice('Content deleted.'); await refresh(); }
+    try {
+      await deleteContentEntry(entry.id);
+      if (draft?.id === entry.id) setDraft(null);
+      setPendingDelete(null);
+      setNotice('Content deleted.');
+      await refresh();
+    }
     catch (reason) { setError(reason instanceof Error ? reason.message : 'Unable to delete content.'); }
+    finally { setDeleting(false); }
   };
 
   if (authLoading) return <div className="min-h-[70vh] flex items-center justify-center"><div className="w-10 h-10 border-4 border-slate-200 border-t-blue-600 rounded-full animate-spin" /></div>;
@@ -265,6 +292,44 @@ const Admin: React.FC = () => {
           </form>
         )}
       </div>
+
+      {pendingDelete && (
+        <div
+          className="fixed inset-0 z-[70] bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="delete-content-title"
+          onMouseDown={(event) => { if (event.currentTarget === event.target && !deleting) setPendingDelete(null); }}
+        >
+          <div className="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl border border-slate-200">
+            <div className="h-1.5 bg-gradient-to-r from-red-700 via-red-500 to-amber-400" />
+            <div className="p-7 md:p-8">
+              <span className="block mb-3 text-[10px] font-black uppercase tracking-[0.28em] text-red-700">Permanent action</span>
+              <h2 id="delete-content-title" className="text-2xl font-bold leading-tight text-zenith-navy">Delete “{pendingDelete.title}”?</h2>
+              <p className="mt-3 text-sm leading-relaxed text-slate-600">This permanently removes the entry from the content manager and cannot be undone. If the content may be useful again, cancel and change its status to Draft instead.</p>
+              <div className="mt-7 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
+                <button
+                  type="button"
+                  autoFocus
+                  disabled={deleting}
+                  onClick={() => setPendingDelete(null)}
+                  className="px-5 py-3 rounded-lg border border-slate-300 text-sm font-bold text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+                >
+                  Keep content
+                </button>
+                <button
+                  type="button"
+                  disabled={deleting}
+                  onClick={confirmRemove}
+                  className="px-5 py-3 rounded-lg bg-red-700 text-sm font-bold text-white hover:bg-red-800 disabled:opacity-50"
+                >
+                  {deleting ? 'Deleting…' : 'Delete permanently'}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

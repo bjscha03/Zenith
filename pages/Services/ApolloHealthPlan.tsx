@@ -1,6 +1,7 @@
 
 import React, { useRef, useState } from 'react';
 import CompassMark from '../../components/brand/CompassMark';
+import ClosingCta from '../../components/ClosingCta';
 import SpamTrap from '../../components/forms/SpamTrap';
 import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
 import { submitWebsiteForm } from '../../lib/formSubmission';
@@ -8,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 // Apollo external URL
 const APOLLO_URL = "https://www.apollohealthplan.com";
-const APOLLO_BROCHURE_URL = '/brochures/mechanics-of-apollo-lf-captive-program.pptx';
+const APOLLO_BROCHURE_URL = '/brochures/mechanics-of-apollo-lf-captive-program.pdf';
 
 const ApolloHealthPlan: React.FC = () => {
   const [showBrochureModal, setShowBrochureModal] = useState(false);
@@ -309,39 +310,13 @@ const ApolloHealthPlan: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA Section - Alternating: Light */}
-      <section className="premium-cta py-20 border-t border-slate-800 relative overflow-hidden">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">See how Apollo re-engineers the <br/>health plan experience.</h2>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            {/* Primary CTA - Request it */}
-            <button 
-              onClick={() => setShowBrochureModal(true)}
-              className="group relative inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-white transition-all duration-300"
-            >
-              <span className="absolute inset-0 bg-zenith-blue transform skew-x-[-12deg] group-hover:bg-blue-600 group-hover:scale-105 transition-all"></span>
-              <span className="relative z-10">Request it</span>
-              <svg className="relative z-10 ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-            </button>
-
-            {/* Secondary CTA - Explore */}
-            <a 
-              href={APOLLO_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-white border-2 border-white/50 hover:bg-white hover:text-zenith-blue transition-all duration-300 rounded-sm"
-            >
-              <span>Explore</span>
-              <svg className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </section>
+      <ClosingCta
+        eyebrow="Apollo health plan"
+        title="See how Apollo re-engineers the health plan experience."
+        description="Request the program guide or explore Apollo's full model and member experience."
+        primary={{ label: 'Request the guide', onClick: () => setShowBrochureModal(true) }}
+        secondary={{ label: 'Explore Apollo', href: APOLLO_URL, external: true }}
+      />
 
     </div>
   );
