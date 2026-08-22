@@ -52,6 +52,7 @@ const ContentDetail: React.FC<{ section: ContentSection }> = ({ section }) => {
   const cover = entry.featuredImage || entry.videoPoster || entry.gallery[0];
   const speakerPortrait = entry.videoPoster || entry.featuredImage;
   const isSpeakerHero = entry.section === 'media' && entry.contentType === 'video' && Boolean(speakerPortrait);
+  const isEventHero = entry.section === 'event' && Boolean(cover);
   const download = entry.document;
 
   return (
@@ -79,8 +80,13 @@ const ContentDetail: React.FC<{ section: ContentSection }> = ({ section }) => {
           </>
         ) : (
           <>
-            {cover && <img src={imageUrl(cover.url, 2000, 1100)} alt="" className="absolute inset-0 w-full h-full object-cover opacity-25" />}
-            <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy via-zenith-navy/95 to-zenith-navy/70" />
+            {cover && <img src={imageUrl(cover.url, 2000, 1100)} alt="" className={`absolute inset-0 w-full h-full object-cover ${isEventHero ? 'opacity-80 object-[center_38%]' : 'opacity-25'}`} />}
+            {isEventHero ? (
+              <>
+                <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/95 via-zenith-navy/65 to-zenith-navy/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-zenith-navy/35 via-transparent to-zenith-navy/10" />
+              </>
+            ) : <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy via-zenith-navy/95 to-zenith-navy/70" />}
           </>
         )}
         <div className={`${isSpeakerHero ? 'max-w-7xl min-h-[520px] md:min-h-[640px] flex flex-col justify-center' : 'max-w-5xl'} mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 relative z-10`}>
