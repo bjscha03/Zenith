@@ -1,9 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import CompassMark from '../../components/brand/CompassMark';
+import SpamTrap from '../../components/forms/SpamTrap';
+import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
+import { submitWebsiteForm } from '../../lib/formSubmission';
 import { Link } from 'react-router-dom';
 
 // Apollo external URL
 const APOLLO_URL = "https://www.apollohealthplan.com";
+const APOLLO_BROCHURE_URL = '/brochures/mechanics-of-apollo-lf-captive-program.pptx';
 
 const ApolloHealthPlan: React.FC = () => {
   const [showBrochureModal, setShowBrochureModal] = useState(false);
@@ -11,30 +16,31 @@ const ApolloHealthPlan: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [confirmationSent, setConfirmationSent] = useState(true);
+  const [website, setWebsite] = useState('');
+  const submissionInFlight = useRef(false);
 
   const handleBrochureSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submissionInFlight.current) return;
+    submissionInFlight.current = true;
     setIsSubmitting(true);
     setSubmitError('');
 
     try {
-      const response = await fetch('/.netlify/functions/brochure-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          brochureType: 'apollo',
-          timestamp: new Date().toISOString()
-        })
+      const result = await submitWebsiteForm('/api/brochure-request', {
+        ...formData,
+        brochureType: 'apollo',
+        _website: website,
       });
-
-      if (!response.ok) throw new Error('Submission failed');
-      
+      setConfirmationSent(result.confirmationSent !== false);
       setSubmitSuccess(true);
       setFormData({ firstName: '', lastName: '', email: '', company: '' });
-    } catch (err) {
-      setSubmitError('Something went wrong. Please try again or contact us directly.');
+      setWebsite('');
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Something went wrong. Please try again or contact us directly.');
     } finally {
+      submissionInFlight.current = false;
       setIsSubmitting(false);
     }
   };
@@ -46,7 +52,7 @@ const ApolloHealthPlan: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
             <button 
-              onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); setSubmitError(''); }}
+              onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); setSubmitError(''); setConfirmationSent(true); }}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,9 +68,16 @@ const ApolloHealthPlan: React.FC = () => {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-zenith-navy mb-4">Thanks!</h3>
-                <p className="text-slate-600">The brochure link has been sent to your email.</p>
+                {confirmationSent ? (
+                  <p className="text-slate-600">The brochure link has been sent to your email.</p>
+                ) : (
+                  <div>
+                    <p className="text-slate-600">We received your request, but the email could not be delivered. You can download the brochure now.</p>
+                    <a href={APOLLO_BROCHURE_URL} download className="mt-4 inline-block font-bold text-blue-600 hover:underline">Download brochure</a>
+                  </div>
+                )}
                 <button 
-                  onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); }}
+                  onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); setConfirmationSent(true); }}
                   className="mt-6 px-6 py-3 bg-zenith-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
                 >
                   Close
@@ -82,6 +95,7 @@ const ApolloHealthPlan: React.FC = () => {
                 )}
 
                 <form onSubmit={handleBrochureSubmit} className="space-y-4">
+                  <SpamTrap value={website} onChange={setWebsite} />
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">First Name</label>
@@ -139,17 +153,19 @@ const ApolloHealthPlan: React.FC = () => {
       )}
 
       {/* Hero Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Healthcare/technology theme */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="premium-hero-image absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=2070&auto=format&fit=crop')" }}
         ></div>
         {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover opacity-[0.18] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.97] via-zenith-navy/[0.9] to-zenith-navy/[0.52]"></div>
+        <CompassMark className="absolute -right-10 -top-12 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Proprietary Platform</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               A Transparent, Level-Funded Health Platform Built for Employer Control & Risk Alignment
@@ -160,7 +176,7 @@ const ApolloHealthPlan: React.FC = () => {
       </section>
 
       {/* The Problem Section - Alternating: Light */}
-      <section className="py-20 bg-slate-50">
+      <section className="premium-light-section py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -188,7 +204,7 @@ const ApolloHealthPlan: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-slate-50 p-12 rounded-3xl border border-slate-100 relative">
+            <div className="premium-card p-12 rounded-3xl relative">
               <div className="absolute top-10 right-10 opacity-10">
                 <svg className="w-20 h-20 text-zenith-blue" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21L14.017 18C14.017 16.8954 13.1216 16 12.017 16L9.01703 16C7.91246 16 7.01703 16.8954 7.01703 18L7.01703 21L4.01703 21L4.01703 18C4.01703 15.2386 6.2556 13 9.01703 13L12.017 13C14.7785 13 17.017 15.2386 17.017 18L17.017 21L14.017 21ZM10.517 11C8.30789 11 6.51703 9.20914 6.51703 7C6.51703 4.79086 8.30789 3 10.517 3C12.7262 3 14.517 4.79086 14.517 7C14.517 9.20914 12.7262 11 10.517 11Z" />
@@ -207,7 +223,7 @@ const ApolloHealthPlan: React.FC = () => {
       </section>
 
       {/* Core Components Section - Alternating: Dark */}
-      <section className="py-20 bg-zenith-navy text-white overflow-hidden relative">
+      <section className="premium-dark-section py-20 text-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-[11px] font-black text-blue-400 uppercase tracking-[0.5em] mb-6">Structural Integrity</h2>
@@ -221,7 +237,7 @@ const ApolloHealthPlan: React.FC = () => {
               { title: "Embedded Cost-Containment", desc: "Built directly into the care pathway to mitigate waste." },
               { title: "100% Surplus Return", desc: "Clients keep 100% of their unused claim dollars + captive surplus sharing." }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all group">
+              <div key={idx} className="premium-card-dark p-8 rounded-2xl hover:bg-white/10 transition-all group">
                 <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mb-5 text-white font-bold text-sm group-hover:scale-110 transition-transform">✓</div>
                 <h4 className="text-lg font-bold mb-3 uppercase tracking-wider">{item.title}</h4>
                 <p className="text-slate-400 leading-relaxed font-light text-sm">{item.desc}</p>
@@ -235,7 +251,7 @@ const ApolloHealthPlan: React.FC = () => {
               { title: "Turnkey Implementation", desc: "High value partners + pre-built plan designs (plug and play)." },
               { title: "Optimized Scale", desc: "Expertly designed for 10 – 250 employee life groups." }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition-all group">
+              <div key={idx} className="premium-card-dark p-8 rounded-2xl hover:bg-white/10 transition-all group">
                 <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center mb-5 text-white font-bold text-sm group-hover:scale-110 transition-transform">✓</div>
                 <h4 className="text-lg font-bold mb-3 uppercase tracking-wider">{item.title}</h4>
                 <p className="text-slate-400 leading-relaxed font-light text-sm">{item.desc}</p>
@@ -246,7 +262,7 @@ const ApolloHealthPlan: React.FC = () => {
       </section>
 
       {/* Positioning Statement */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="premium-light-section py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="max-w-5xl mx-auto mb-20">
             <span className="text-[11px] font-black text-slate-400 uppercase tracking-[0.4em] mb-12 block">Strategic Positioning</span>
@@ -294,9 +310,9 @@ const ApolloHealthPlan: React.FC = () => {
       </section>
 
       {/* Final CTA Section - Alternating: Light */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200 relative overflow-hidden">
+      <section className="premium-cta py-20 border-t border-slate-800 relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy mb-10">See how Apollo re-engineers the <br/>health plan experience.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-10">See how Apollo re-engineers the <br/>health plan experience.</h2>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             {/* Primary CTA - Request it */}
@@ -316,7 +332,7 @@ const ApolloHealthPlan: React.FC = () => {
               href={APOLLO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-zenith-blue border-2 border-zenith-blue hover:bg-zenith-blue hover:text-white transition-all duration-300 rounded-sm"
+              className="group inline-flex items-center justify-center px-10 py-5 font-black text-[11px] uppercase tracking-[0.3em] text-white border-2 border-white/50 hover:bg-white hover:text-zenith-blue transition-all duration-300 rounded-sm"
             >
               <span>Explore</span>
               <svg className="ml-3 w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

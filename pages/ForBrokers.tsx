@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CompassMark from '../components/brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const ForBrokers: React.FC = () => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -26,17 +28,19 @@ const ForBrokers: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Navigation/direction theme */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="premium-hero-image absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop')" }}
         ></div>
         {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover opacity-[0.18] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.97] via-zenith-navy/[0.9] to-zenith-navy/[0.52]"></div>
+        <CompassMark className="absolute -right-10 -top-12 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Broker Partnership</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               Built for Brokers Who Want to <br/>
@@ -50,11 +54,12 @@ const ForBrokers: React.FC = () => {
       </section>
 
       {/* Submission Requirements Section - White */}
-      <section className="py-20 bg-white">
+      <section className="premium-light-section py-20 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-stretch">
             {/* Left Column - Submission Requirements */}
-            <div className="bg-zenith-navy p-10 lg:p-12 rounded-2xl text-white relative overflow-hidden flex flex-col">
+            <div className="premium-card-dark bg-zenith-navy p-10 lg:p-12 rounded-[1.75rem] text-white relative overflow-hidden flex flex-col shadow-[0_30px_80px_-42px_rgba(15,35,68,0.75)]">
+              <CompassMark className="absolute -right-10 -bottom-12 w-56 h-56 opacity-[0.06]" imageClassName="brightness-0 invert" />
               <div className="absolute top-0 right-0 p-6 opacity-10">
                 <svg className="w-14 h-14" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V7h2v9zm4 0h-2V7h2v9z" />
@@ -95,15 +100,15 @@ const ForBrokers: React.FC = () => {
               </p>
               
               <div className="flex flex-col gap-4 flex-grow">
-                <div className="p-5 border-l-4 border-blue-500 bg-slate-50 rounded-r-lg">
+                <div className="premium-card p-5 border-l-4 border-l-blue-500 rounded-r-2xl">
                   <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-1">Funding Status</h4>
                   <p className="text-slate-500 text-sm leading-relaxed">Self-funded, level-funded, or fully insured groups positioned to transition into the right structure.</p>
                 </div>
-                <div className="p-5 border-l-4 border-blue-500 bg-slate-50 rounded-r-lg">
+                <div className="premium-card p-5 border-l-4 border-l-blue-500 rounded-r-2xl">
                   <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-1">Strategic Outlook</h4>
                   <p className="text-slate-500 text-sm leading-relaxed">Employers aligned with a multi-year strategy focused on stability, captive readiness, and proactive risk management.</p>
                 </div>
-                <div className="p-5 border-l-4 border-blue-500 bg-slate-50 rounded-r-lg">
+                <div className="premium-card p-5 border-l-4 border-l-blue-500 rounded-r-2xl">
                   <h4 className="font-bold text-zenith-navy text-sm uppercase tracking-wider mb-1">Group Size</h4>
                   <p className="text-slate-500 text-sm leading-relaxed">10 to 500+ employee lives.</p>
                 </div>
@@ -114,11 +119,11 @@ const ForBrokers: React.FC = () => {
       </section>
 
       {/* Benefits & Support Grid - Blue */}
-      <section className="py-24 bg-zenith-navy relative overflow-hidden">
+      <section className="premium-dark-section py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="p-10 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+            <div className="premium-card-dark p-10 rounded-2xl">
               <h3 className="text-xl font-bold text-white mb-6 flex items-center">
                 <span className="w-10 h-10 bg-white/10 text-blue-400 rounded flex items-center justify-center mr-4 border border-white/20">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -145,7 +150,7 @@ const ForBrokers: React.FC = () => {
               </ul>
             </div>
 
-            <div className="p-10 bg-white rounded-2xl shadow-xl">
+            <div className="premium-card p-10 rounded-2xl shadow-xl">
               <h3 className="text-xl font-bold text-zenith-navy mb-6 flex items-center">
                 <span className="w-10 h-10 bg-blue-50 text-blue-600 rounded flex items-center justify-center mr-4">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
@@ -167,7 +172,7 @@ const ForBrokers: React.FC = () => {
       </section>
 
       {/* FAQ Section - White */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Common Questions</h2>
@@ -176,10 +181,10 @@ const ForBrokers: React.FC = () => {
           
           <div className="space-y-4">
             {faqs.map((faq, idx) => (
-              <div key={idx} className="border border-slate-100 rounded-xl overflow-hidden">
+              <div key={idx} className="premium-card rounded-2xl overflow-hidden">
                 <button 
                   onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full flex justify-between items-center p-6 text-left bg-slate-50 hover:bg-slate-100 transition-colors"
+                  className="w-full flex justify-between items-center p-6 text-left bg-white/80 hover:bg-blue-50/70 transition-colors"
                 >
                   <span className="font-bold text-zenith-navy text-sm uppercase tracking-wide">{faq.question}</span>
                   <svg className={`w-5 h-5 text-blue-500 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -198,7 +203,7 @@ const ForBrokers: React.FC = () => {
       </section>
 
       {/* Industries Section - Dark Navy */}
-      <section className="py-20 bg-zenith-navy">
+      <section className="premium-dark-section py-20 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-[11px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Industry Experience</h2>
@@ -209,7 +214,7 @@ const ForBrokers: React.FC = () => {
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:border-blue-400/50 transition-all">
+            <div className="premium-card-dark p-8 rounded-2xl text-center hover:border-blue-400/50 transition-all">
               <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
@@ -219,7 +224,7 @@ const ForBrokers: React.FC = () => {
               <p className="text-slate-300 text-sm">Complex workforce dynamics and occupational health considerations.</p>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:border-blue-400/50 transition-all">
+            <div className="premium-card-dark p-8 rounded-2xl text-center hover:border-blue-400/50 transition-all">
               <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
@@ -229,7 +234,7 @@ const ForBrokers: React.FC = () => {
               <p className="text-slate-300 text-sm">Distributed teams with regulatory and compliance-driven benefit needs.</p>
             </div>
             
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 text-center hover:border-blue-400/50 transition-all">
+            <div className="premium-card-dark p-8 rounded-2xl text-center hover:border-blue-400/50 transition-all">
               <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mx-auto mb-4">
                 <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -243,10 +248,10 @@ const ForBrokers: React.FC = () => {
       </section>
 
       {/* Final CTA Section - White */}
-      <section className="py-24 bg-white border-t border-slate-100">
+      <section className="premium-cta py-24 border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy mb-6 tracking-tight">Ready to become a risk strategist?</h2>
-          <p className="text-slate-600 text-lg mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">Ready to become a risk strategist?</h2>
+          <p className="text-slate-300 text-lg mb-12 max-w-2xl mx-auto">
             Partner with Zenith to move beyond transactional renewals and deliver lasting value to your clients.
           </p>
           

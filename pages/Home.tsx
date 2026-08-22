@@ -1,22 +1,25 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CompassMark from '../components/brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Home: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. Hero */}
-      <section className="relative text-white py-24 md:py-44 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-44 overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('https://res.cloudinary.com/dtrxl120u/image/upload/v1767912842/download_zcreqi.webp')" }}
+          className="premium-hero-image absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${ZENITH_PEAK_IMAGE}')` }}
         ></div>
         {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.97] via-zenith-navy/[0.86] to-zenith-navy/[0.48]"></div>
+        <CompassMark className="absolute -right-10 -top-12 w-[26rem] h-[26rem] opacity-[0.07]" imageClassName="brightness-0 invert" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <h1 className="text-4xl md:text-[84px] font-bold leading-[1.05] tracking-tight mb-8">
               Optimizing <span className="text-blue-400 font-normal italic decoration-2 underline underline-offset-8">your</span> Risk to Peak Performance
             </h1>
@@ -36,7 +39,8 @@ const Home: React.FC = () => {
       </section>
 
       {/* 2. Core Value Pillars */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24 relative overflow-hidden">
+        <CompassMark className="absolute -right-16 top-20 w-80 h-80 opacity-[0.025]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-4">Our Expertise</h2>
@@ -44,22 +48,22 @@ const Home: React.FC = () => {
             <div className="w-12 h-1 bg-zenith-blue mx-auto mt-6"></div>
           </div>
           <div className="grid md:grid-cols-3 gap-12">
-            <div className="p-10 bg-slate-50 border border-slate-100 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all group">
-              <div className="w-12 h-12 bg-zenith-blue text-white flex items-center justify-center rounded mb-8">
+            <div className="premium-card p-10 rounded-2xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-zenith-blue to-blue-600 text-white flex items-center justify-center rounded-xl mb-8 shadow-lg shadow-blue-950/15">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
               </div>
               <h3 className="text-lg font-bold text-zenith-navy mb-4 uppercase tracking-wider">Underwriting Intelligence</h3>
               <p className="text-slate-600 leading-relaxed text-sm">Discipline-led analysis that prioritizes long-term program stability over short-term premium shifts.</p>
             </div>
-            <div className="p-10 bg-slate-50 border border-slate-100 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all group">
-              <div className="w-12 h-12 bg-zenith-blue text-white flex items-center justify-center rounded mb-8">
+            <div className="premium-card p-10 rounded-2xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-zenith-blue to-blue-600 text-white flex items-center justify-center rounded-xl mb-8 shadow-lg shadow-blue-950/15">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04M12 21.48V22" /></svg>
               </div>
               <h3 className="text-lg font-bold text-zenith-navy mb-4 uppercase tracking-wider">Claims Oversight</h3>
               <p className="text-slate-600 leading-relaxed text-sm">Proactive clinical oversight and claims intervention that mitigates escalation before it impacts your bottom line.</p>
             </div>
-            <div className="p-10 bg-slate-50 border border-slate-100 rounded-lg hover:shadow-2xl hover:-translate-y-1 transition-all group">
-              <div className="w-12 h-12 bg-zenith-blue text-white flex items-center justify-center rounded mb-8">
+            <div className="premium-card p-10 rounded-2xl hover:-translate-y-1 transition-all duration-500 group">
+              <div className="w-12 h-12 bg-gradient-to-br from-zenith-blue to-blue-600 text-white flex items-center justify-center rounded-xl mb-8 shadow-lg shadow-blue-950/15">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
               </div>
               <h3 className="text-lg font-bold text-zenith-navy mb-4 uppercase tracking-wider">Captive Integration</h3>
@@ -268,10 +272,11 @@ const Home: React.FC = () => {
       </section>
 
       {/* 4. Who We Serve */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-20 items-center">
-            <div>
+            <div className="relative">
+              <CompassMark className="absolute -left-14 -top-16 w-52 h-52 opacity-[0.025]" />
               <h2 className="text-4xl font-bold text-zenith-navy mb-8 tracking-tight">Built for the <br/><span className="text-zenith-blue">Self-Funded</span> Ecosystem</h2>
               <p className="text-lg text-slate-600 mb-10 leading-relaxed">We partner with stakeholders who value precision and transparency in healthcare risk management.</p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-12">
@@ -283,17 +288,17 @@ const Home: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-slate-50 rounded-lg -z-10 transform -rotate-1"></div>
-              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" alt="Professional collaboration" className="rounded shadow-2xl grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-1000" />
+            <div className="relative p-3 rounded-[2rem] bg-white border border-slate-200 shadow-[0_35px_90px_-45px_rgba(15,35,68,0.65)]">
+              <div className="absolute -left-3 top-12 bottom-12 w-1 bg-gradient-to-b from-transparent via-blue-500 to-transparent" />
+              <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" alt="Professional collaboration" className="rounded-[1.35rem] shadow-inner grayscale-[0.35] contrast-110 hover:grayscale-0 transition-all duration-1000" />
             </div>
           </div>
         </div>
       </section>
 
       {/* 5. CTA */}
-      <section className="py-32 bg-zenith-blue text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900 opacity-20"></div>
+      <section className="premium-cta py-32 text-white text-center relative overflow-hidden">
+        <CompassMark className="absolute -right-10 -bottom-20 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
         <div className="max-w-4xl mx-auto px-4 relative z-10">
           <h2 className="text-3xl md:text-5xl font-bold mb-10 tracking-tight leading-tight">Ready to engineer alignment <br/>in your health plan?</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-6">

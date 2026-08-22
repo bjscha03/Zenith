@@ -1,4 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import CompassMark from '../components/brand/CompassMark';
+import SpamTrap from '../components/forms/SpamTrap';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { submitWebsiteForm } from '../lib/formSubmission';
 
 const Speakers: React.FC = () => {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
@@ -9,9 +13,16 @@ const Speakers: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [website, setWebsite] = useState('');
+  const submissionInFlight = useRef(false);
 
   const toggleAccordion = (index: number) => {
     setOpenAccordion(openAccordion === index ? null : index);
+  };
+
+  const scrollToApplication = () => {
+    document.getElementById('speaker-application')?.scrollIntoView({ block: 'start' });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -20,23 +31,18 @@ const Speakers: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submissionInFlight.current) return;
+    submissionInFlight.current = true;
     setSubmitting(true);
+    setSubmitError('');
     try {
-      const res = await fetch('/.netlify/functions/speaker-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        console.log('Form data:', formData);
-        setSubmitted(true);
-      }
-    } catch {
-      console.log('Form data:', formData);
+      await submitWebsiteForm('/api/speaker-application', { ...formData, _website: website });
       setSubmitted(true);
+      setWebsite('');
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      submissionInFlight.current = false;
       setSubmitting(false);
     }
   };
@@ -88,9 +94,20 @@ const Speakers: React.FC = () => {
     <div className="w-full">
 
       {/* SECTION 1: HERO */}
-      <div className="w-full max-h-[500px] overflow-hidden">
-        <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749927/Screenshot_2026-03-05_at_5.32.02_PM_ppusgl.png" alt="Zenith Conference" className="w-full h-[500px] object-cover object-[center_20%]" />
-      </div>
+      <section className="premium-hero relative min-h-[520px] flex items-center overflow-hidden bg-zenith-navy text-white">
+        <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749927/Screenshot_2026-03-05_at_5.32.02_PM_ppusgl.png" alt="Zenith Conference speakers on stage" className="absolute inset-0 w-full h-full object-cover object-[center_20%] opacity-70" />
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute left-0 inset-y-0 w-[58%] h-full object-cover object-center opacity-25 mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.96] via-zenith-navy/[0.83] to-zenith-navy/[0.35]" />
+        <CompassMark className="absolute -right-8 -top-10 w-80 h-80 opacity-[0.09]" imageClassName="brightness-0 invert" />
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-24 relative z-10">
+          <div className="premium-hero-copy max-w-3xl">
+            <span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.4em] mb-6 block">Zenith Conference Voices</span>
+            <h1 className="text-4xl md:text-6xl font-bold leading-[1.05] tracking-tight mb-7">Insight earned in the field. Shared from the stage.</h1>
+            <p className="text-xl text-slate-300 leading-relaxed font-light max-w-2xl mb-9">Zenith brings together operators, advisors, and healthcare leaders ready to move the conversation beyond theory.</p>
+            <button type="button" onClick={scrollToApplication} className="inline-flex items-center px-8 py-4 bg-blue-500 text-white font-black text-[10px] uppercase tracking-[0.25em] rounded shadow-xl shadow-blue-950/30 hover:bg-blue-400 transition-colors">Apply to speak <span className="ml-3 text-base">→</span></button>
+          </div>
+        </div>
+      </section>
 
 
       {/* EVENTS SUB-NAVIGATION */}
@@ -104,35 +121,54 @@ const Speakers: React.FC = () => {
       </nav>
 
       {/* SECTION 2: WHO SHOULD APPLY */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-12">WHO SHOULD APPLY?</h2>
-          <ul className="text-left max-w-2xl mx-auto space-y-6 text-lg text-slate-600">
-            <li className="flex items-start gap-3"><span className="text-zenith-blue mt-1 font-bold">•</span>Healthcare operators and solution leaders with hands-on experience</li>
-            <li className="flex items-start gap-3"><span className="text-zenith-blue mt-1 font-bold">•</span>Executives working directly with brokers, TPAs, or employers</li>
-            <li className="flex items-start gap-3"><span className="text-zenith-blue mt-1 font-bold">•</span>Speakers comfortable with unscripted discussion and real examples</li>
-          </ul>
+      <section className="premium-light-section relative overflow-hidden py-20">
+        <CompassMark className="absolute -left-20 -bottom-24 w-96 h-96 opacity-[0.035]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid lg:grid-cols-[0.8fr_1.2fr] rounded-[2rem] overflow-hidden border border-slate-200 bg-white shadow-[0_30px_80px_-48px_rgba(15,35,68,0.55)]">
+            <div className="relative overflow-hidden bg-zenith-navy p-9 md:p-12 text-white">
+              <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover opacity-[0.45]" />
+              <div className="absolute inset-0 bg-gradient-to-b from-zenith-navy/[0.55] via-zenith-navy/80 to-zenith-navy/[0.97]" />
+              <div className="relative z-10 flex flex-col justify-between h-full min-h-[330px]">
+                <div><span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-5 block">The Right Perspective</span><h2 className="text-3xl md:text-4xl font-bold tracking-tight">Who should apply?</h2></div>
+                <p className="text-slate-300 leading-relaxed max-w-sm">We select practitioners with useful experience, a clear point of view, and the confidence to engage without a sales pitch.</p>
+              </div>
+            </div>
+            <div className="p-7 md:p-10 lg:p-12 grid gap-4 content-center">
+              {[
+                { number: '01', title: 'Hands-on operators', text: 'Healthcare operators and solution leaders with implementation experience.' },
+                { number: '02', title: 'Connected executives', text: 'Leaders working directly with brokers, TPAs, employers, and plan sponsors.' },
+                { number: '03', title: 'Candid communicators', text: 'Speakers comfortable with unscripted discussion, real examples, and useful debate.' },
+              ].map((item) => (
+                <div key={item.number} className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-blue-50/60 p-5 md:p-6 hover:border-blue-300 hover:shadow-lg transition-all">
+                  <div className="relative z-10 flex gap-5"><span className="text-[10px] font-black text-blue-600 pt-1">{item.number}</span><div><h3 className="text-lg font-bold text-zenith-navy mb-1.5">{item.title}</h3><p className="text-sm leading-relaxed text-slate-600">{item.text}</p></div></div>
+                  <CompassMark className="absolute -right-6 -bottom-7 w-24 h-24 opacity-[0.055]" />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* SECTION 3: SPEAKER EXPECTATIONS */}
-      <section className="py-24 bg-zenith-navy">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-12 text-center">SPEAKER EXPECTATIONS</h2>
+      <section className="premium-dark-section relative overflow-hidden py-24">
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[55%] h-full object-cover opacity-[0.16]" />
+        <CompassMark className="absolute -right-8 -top-14 w-80 h-80 opacity-[0.055]" imageClassName="brightness-0 invert" />
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12"><span className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em] mb-4 block">What The Room Expects</span><h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">Speaker expectations</h2></div>
           <div className="space-y-4">
             {accordionItems.map((item, i) => (
-              <div key={i} className="border border-white/20 rounded-lg overflow-hidden">
+              <div key={i} className={`border rounded-2xl overflow-hidden backdrop-blur-sm transition-all ${openAccordion === i ? 'border-blue-300/[0.45] bg-white/[0.09]' : 'border-white/[0.15] bg-white/[0.045] hover:bg-white/[0.07]'}`}>
                 <button
                   onClick={() => toggleAccordion(i)}
-                  className="w-full flex items-center justify-between px-6 py-5 text-left"
+                  className="w-full flex items-center justify-between gap-5 px-6 md:px-8 py-6 text-left"
                 >
-                  <span className="text-[11px] font-black text-white uppercase tracking-[0.3em]">{item.title}</span>
+                  <span className="flex items-center gap-5"><span className="text-[10px] font-black text-blue-300">0{i + 1}</span><span className="text-[11px] font-black text-white uppercase tracking-[0.3em]">{item.title}</span></span>
                   <svg className={`w-5 h-5 text-white transition-transform duration-300 ${openAccordion === i ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </button>
                 <div className={`transition-all duration-300 overflow-hidden ${openAccordion === i ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <p className="px-6 pb-5 text-slate-300 leading-relaxed">{item.content}</p>
+                  <p className="px-6 md:px-8 pb-6 pl-[4.25rem] md:pl-[5.25rem] text-slate-300 leading-relaxed">{item.content}</p>
                 </div>
               </div>
             ))}
@@ -141,37 +177,46 @@ const Speakers: React.FC = () => {
       </section>
 
       {/* SECTION 4: OUR SPEAKERS */}
-      <section className="py-24 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-16 text-center">OUR SPEAKERS</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <section className="premium-light-section relative overflow-hidden py-24">
+        <CompassMark className="absolute -right-24 top-20 w-96 h-96 opacity-[0.035]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16"><span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.35em] mb-4 block">Voices From The Summit</span><h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-5">Our speakers</h2><p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">Experienced leaders bringing real work, real decisions, and real outcomes to the conversation.</p></div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-7">
             {speakers.map((sp, i) => (
-              <div key={i} className="flex items-center gap-6">
-                <div className="w-24 h-24 rounded-lg bg-slate-200 flex-shrink-0 overflow-hidden">
-                  <img src={sp.image} alt={sp.name} className="w-full h-full object-cover" />
+              <article key={i} className={`group relative overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-[0_24px_60px_-42px_rgba(15,35,68,0.55)] hover:-translate-y-1.5 hover:shadow-2xl hover:border-blue-200 transition-all duration-300 sm:col-span-1 lg:col-span-2 ${i === 3 ? 'lg:col-start-2' : ''}`}>
+                <div className="relative aspect-[4/5] overflow-hidden bg-slate-200">
+                  <img src={sp.image} alt={sp.name} className="w-full h-full object-cover object-center group-hover:scale-[1.025] transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zenith-navy/[0.55] via-transparent to-transparent" />
+                  <span className="absolute left-5 bottom-4 text-[9px] font-black uppercase tracking-[0.28em] text-blue-200">Zenith Speaker</span>
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-zenith-navy">{sp.name}</h3>
-                  <p className="text-slate-500 text-sm">{sp.title}</p>
+                <div className="relative overflow-hidden p-6 min-h-[132px] bg-gradient-to-br from-white to-blue-50/[0.55]">
+                  <div className="relative z-10"><h3 className="text-xl font-bold text-zenith-navy mb-2">{sp.name}</h3><p className="text-slate-500 text-sm leading-relaxed">{sp.title}</p></div>
+                  <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute -right-10 bottom-0 w-52 opacity-[0.045] grayscale" />
+                  <CompassMark className="absolute -right-7 -bottom-9 w-28 h-28 opacity-[0.06]" />
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
       {/* SECTION 5: APPLICATION FORM */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      <section id="speaker-application" className="premium-light-section relative overflow-hidden py-24 scroll-mt-20">
+        <CompassMark className="absolute -left-20 top-24 w-96 h-96 opacity-[0.03]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch rounded-[2rem] overflow-hidden border border-slate-200 bg-white shadow-[0_35px_90px_-50px_rgba(15,35,68,0.62)]">
             {/* LEFT: Image */}
-            <div className="rounded-2xl overflow-hidden shadow-lg">
-              <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749571/Screenshot_2026-03-05_at_5.26.08_PM_fmurq6.png" alt="Speaker presenting" className="w-full h-[500px] object-cover" />
+            <div className="relative overflow-hidden min-h-[430px] lg:min-h-full bg-zenith-navy">
+              <img src="https://res.cloudinary.com/dtrxl120u/image/upload/v1772749571/Screenshot_2026-03-05_at_5.26.08_PM_fmurq6.png" alt="Speaker presenting" className="absolute inset-0 w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-zenith-navy/[0.92] via-zenith-navy/[0.12] to-transparent" />
+              <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute inset-x-0 bottom-0 w-full h-[52%] object-cover object-top opacity-30 mix-blend-screen" />
+              <div className="absolute left-8 right-8 bottom-8 z-10"><span className="text-[9px] font-black text-blue-200 uppercase tracking-[0.35em] mb-3 block">Bring The Work To The Room</span><p className="text-2xl font-bold text-white max-w-md">Useful ideas become more powerful when they are challenged, refined, and shared.</p></div>
             </div>
 
             {/* RIGHT: Form */}
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy tracking-tight mb-4">SHOW WHAT ACTUALLY WORKS</h2>
+            <div className="p-8 md:p-10 lg:p-12 bg-gradient-to-br from-white via-white to-blue-50/[0.45]">
+              <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.35em] mb-4 block">Speaker Application</span>
+              <h2 className="text-3xl md:text-4xl font-bold text-zenith-navy tracking-tight mb-4">Show what actually works</h2>
               <p className="text-slate-600 leading-relaxed mb-8">Zenith invites practitioners and operators, not marketers, to contribute real-world insight to our conference series.</p>
               {submitted ? (
                 <div className="bg-green-50 border border-green-200 rounded-lg p-8 text-center">
@@ -179,6 +224,12 @@ const Speakers: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <SpamTrap value={website} onChange={setWebsite} />
+                  {submitError && (
+                    <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+                      {submitError}
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
                       type="text"

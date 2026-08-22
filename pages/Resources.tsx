@@ -1,83 +1,55 @@
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
+import CompassMark from '../components/brand/CompassMark';
+import ContentGrid from '../components/content/ContentGrid';
+import SpamTrap from '../components/forms/SpamTrap';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { submitWebsiteForm } from '../lib/formSubmission';
 
 const Resources: React.FC = () => {
   const [nlEmail, setNlEmail] = useState('');
   const [nlSubmitting, setNlSubmitting] = useState(false);
   const [nlSuccess, setNlSuccess] = useState(false);
   const [nlError, setNlError] = useState('');
+  const [nlWebsite, setNlWebsite] = useState('');
+  const newsletterInFlight = useRef(false);
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (newsletterInFlight.current) return;
+    newsletterInFlight.current = true;
     setNlSubmitting(true);
     setNlError('');
     try {
-      const res = await fetch('/.netlify/functions/newsletter-subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: nlEmail })
-      });
-      if (!res.ok) throw new Error('Failed');
+      await submitWebsiteForm('/api/newsletter-subscribe', { email: nlEmail, _website: nlWebsite });
       setNlSuccess(true);
       setNlEmail('');
-    } catch {
-      setNlError('Something went wrong. Please try again.');
+      setNlWebsite('');
+    } catch (error) {
+      setNlError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      newsletterInFlight.current = false;
       setNlSubmitting(false);
     }
   };
 
-  const leadMagnets = [
-    {
-      type: 'Checklist',
-      title: 'RFP Submission Checklist',
-      desc: 'The definitive list of data points and documents required to secure the most competitive firm terms in the current market.',
-      downloadUrl: '/brochures/submission-checklist.pdf',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-        </svg>
-      )
-    },
-    {
-      type: 'Guide',
-      title: 'Captive vs Traditional Stop Loss Employer Guide',
-      desc: 'A structural comparison designed for CFOs and HR Directors evaluating the transition to a captive risk-sharing model.',
-      downloadUrl: '/brochures/captive-vs-traditional-stoploss.pptx',
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      )
-    },
-    {
-      type: 'Report',
-      title: '2025 Risk Trend Report',
-      desc: 'Our annual analysis of emerging clinical cost drivers, pharmacy trends, and stop-loss market volatility projections.',
-      downloadUrl: '/brochures/2025-risk-trend-report.pdf',
-      comingSoon: true,
-      icon: (
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
-        </svg>
-      )
-    }
-  ];
-
   return (
     <div className="w-full">
       {/* Hero Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Knowledge/library theme */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2090&auto=format&fit=crop')" }}
         ></div>
-        {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[56%] h-full object-cover object-center opacity-[0.24] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/95 via-zenith-navy/90 to-zenith-navy/58"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_45%,rgba(96,165,250,0.15),transparent_35%)]" />
+        <CompassMark className="absolute -right-8 -top-10 w-80 h-80 opacity-[0.08]" imageClassName="brightness-0 invert" />
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-300/70 to-transparent" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Knowledge Base</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               Technical Resources for the <br/>
@@ -90,108 +62,25 @@ const Resources: React.FC = () => {
         </div>
       </section>
 
-      {/* Featured Resources (Lead Magnets) */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Featured Assets</h2>
-            <h3 className="text-3xl font-bold text-zenith-navy">Technical Guides & Checklists</h3>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {leadMagnets.map((item, idx) => (
-              <div key={idx} className="group p-10 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full">
-                <div className="w-14 h-14 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  {item.icon}
-                </div>
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4 block">{item.type}</span>
-                <h4 className="text-xl font-bold text-zenith-navy mb-4 leading-snug group-hover:text-blue-600 transition-colors">{item.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed font-light mb-10 flex-grow">
-                  {item.desc}
-                </p>
-                <div className="pt-6 border-t border-slate-200/50">
-                  {item.comingSoon ? (
-                    <span className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
-                      Coming Soon
-                    </span>
-                  ) : (
-                    <a 
-                      href={item.downloadUrl} 
-                      download 
-                      className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy hover:text-blue-600 transition-colors"
-                    >
-                      Download Resource
-                      <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a2 2 0 002 2h12a2 2 0 002-2v-1M7 10l5 5 5-5M12 15V3" />
-                      </svg>
-                    </a>
-                  )}
-                </div>
+      {/* Managed Resource Library */}
+      <section className="premium-light-section relative overflow-hidden py-24">
+        <CompassMark className="absolute -right-24 top-32 w-96 h-96 opacity-[0.035]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="relative overflow-hidden rounded-[2rem] bg-zenith-navy px-8 py-10 sm:px-10 md:px-14 md:py-14 mb-12 shadow-[0_30px_80px_-45px_rgba(15,35,68,0.7)]">
+            <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[62%] h-full object-cover object-center opacity-35" />
+            <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy via-zenith-navy/92 to-zenith-navy/42" />
+            <CompassMark className="absolute -right-12 -bottom-20 w-72 h-72 opacity-[0.08]" imageClassName="brightness-0 invert" />
+            <div aria-hidden="true" className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-300 via-blue-500 to-transparent" />
+            <div className="relative z-10 max-w-3xl">
+              <div className="flex items-center gap-3 mb-5">
+                <span className="w-2 h-2 rounded-full bg-blue-300 shadow-[0_0_0_5px_rgba(147,197,253,0.12)]" />
+                <h2 className="text-[10px] font-black text-blue-300 uppercase tracking-[0.35em]">Resource Library</h2>
               </div>
-            ))}
+              <h3 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">Guides, research, and strategic intelligence</h3>
+              <p className="text-slate-300 text-lg leading-relaxed font-light max-w-2xl">Practical knowledge for brokers, employers, and healthcare risk professionals—organized to help you move from insight to action.</p>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* White Papers Section */}
-      <section className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-16">
-            <h2 className="text-[12px] font-black text-slate-400 uppercase tracking-[0.3em] mb-4">Industry Research</h2>
-            <h3 className="text-3xl font-bold text-zenith-navy">White Papers</h3>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: 'Reimagining Health Insurance',
-                desc: 'A forward-looking analysis of how innovative risk structures are reshaping the health insurance landscape for self-funded employers.',
-                url: '/brochures/reimagining-health-insurance.pdf',
-              },
-              {
-                title: 'Stop Loss Captives',
-                desc: 'An in-depth exploration of stop loss captive structures, their strategic advantages, and implementation considerations for employers and advisors.',
-                url: '/brochures/stop-loss-captives.pdf',
-              },
-              {
-                title: 'Cost Containment & Stop Loss Pricing Impact',
-                desc: 'Examining the relationship between clinical cost containment strategies and their measurable impact on stop loss pricing outcomes.',
-                url: '/brochures/cost-containment-stop-loss.pdf',
-              },
-              {
-                title: 'Mechanics of Apollo LF Captive Program',
-                desc: 'A comprehensive overview of the Apollo LF Captive Program, outlining how the structure works, including key mechanics, risk strategy, and implementation approach.',
-                url: '/brochures/mechanics-of-apollo-lf-captive-program.pptx',
-              },
-            ].map((paper) => (
-              <a
-                key={paper.url}
-                href={paper.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group p-10 bg-white border border-slate-100 rounded-2xl hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full no-underline"
-              >
-                <div className="w-14 h-14 bg-slate-50 rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-8 text-blue-600 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                </div>
-                <span className="text-[10px] font-black text-blue-600 uppercase tracking-[0.2em] mb-4 block">White Paper</span>
-                <h4 className="text-xl font-bold text-zenith-navy mb-4 leading-snug group-hover:text-blue-600 transition-colors">{paper.title}</h4>
-                <p className="text-slate-500 text-sm leading-relaxed font-light mb-10 flex-grow">
-                  {paper.desc}
-                </p>
-                <div className="pt-6 border-t border-slate-200/50">
-                  <span className="flex items-center text-[10px] font-black uppercase tracking-[0.2em] text-zenith-navy group-hover:text-blue-600 transition-colors">
-                    View White Paper
-                    <svg className="ml-3 w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </span>
-                </div>
-              </a>
-            ))}
-          </div>
+          <ContentGrid section="resource" showFilters />
         </div>
       </section>
 
@@ -257,7 +146,7 @@ const Resources: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Visit ${partner.name} website`}
-                className="group p-10 bg-slate-50 border border-slate-100 rounded-2xl hover:bg-white hover:shadow-2xl hover:border-blue-200 transition-all duration-500 flex flex-col h-full no-underline"
+                className="premium-card group p-10 rounded-2xl hover:-translate-y-1 transition-all duration-500 flex flex-col h-full no-underline"
               >
                 <div className="w-full h-16 flex items-center justify-start mb-8 group-hover:scale-105 transition-transform duration-300">
                   <img
@@ -286,9 +175,10 @@ const Resources: React.FC = () => {
       </section>
 
       {/* Subscription Section */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="premium-light-section py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto bg-zenith-navy p-10 md:p-16 rounded-3xl">
+          <div className="premium-card-dark max-w-5xl mx-auto bg-zenith-navy p-10 md:p-16 rounded-3xl relative overflow-hidden">
+            <CompassMark className="absolute -right-10 -bottom-14 w-56 h-56 opacity-[0.06]" imageClassName="brightness-0 invert" />
             <div className="grid lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight text-white">Stay ahead of the <br/><span className="text-blue-400">risk curve.</span></h2>
@@ -304,6 +194,7 @@ const Resources: React.FC = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleNewsletterSubmit}>
+                    <SpamTrap value={nlWebsite} onChange={setNlWebsite} />
                     {nlError && <div className="text-red-400 text-sm mb-3">{nlError}</div>}
                     <div className="flex flex-col sm:flex-row gap-4">
                       <input 

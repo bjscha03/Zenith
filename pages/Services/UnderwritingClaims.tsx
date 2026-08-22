@@ -1,21 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CompassMark from '../../components/brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
 
 const UnderwritingClaims: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Data/analytics theme */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="premium-hero-image absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop')" }}
         ></div>
         {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover opacity-[0.18] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.97] via-zenith-navy/[0.9] to-zenith-navy/[0.52]"></div>
+        <CompassMark className="absolute -right-10 -top-12 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Precision Engineering</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               Underwriting That Sees the Risk <br/>
@@ -29,7 +33,7 @@ const UnderwritingClaims: React.FC = () => {
       </section>
 
       {/* 1. Approach & Methodology */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -58,7 +62,7 @@ const UnderwritingClaims: React.FC = () => {
             
             <div className="relative group">
               <div className="absolute -inset-4 bg-slate-50 rounded-2xl -z-10 group-hover:scale-105 transition-transform duration-500"></div>
-              <div className="bg-zenith-navy p-10 md:p-12 rounded-xl shadow-2xl relative overflow-hidden">
+              <div className="premium-card-dark bg-zenith-navy p-10 md:p-12 rounded-[1.75rem] shadow-2xl relative overflow-hidden">
                 <div className="absolute bottom-[-10%] right-[-10%] w-40 h-40 opacity-[0.05] pointer-events-none">
                   <svg viewBox="0 0 100 100" className="w-full h-full fill-white">
                     <path d="M50 0 L60 40 L100 50 L60 60 L50 100 L40 60 L0 50 L40 40 Z" />
@@ -85,7 +89,7 @@ const UnderwritingClaims: React.FC = () => {
       </section>
 
       {/* 2. Clinical Review Workflow */}
-      <section className="py-24 bg-zenith-navy">
+      <section className="premium-dark-section py-24 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-[12px] font-black text-blue-400 uppercase tracking-[0.3em] mb-4">Intervention Workflow</h2>
@@ -100,7 +104,7 @@ const UnderwritingClaims: React.FC = () => {
               { step: '03', title: 'Medical Review', desc: 'Doctor-led clinical oversight ensures claims are reviewed with the appropriate clinical expertise.' },
               { step: '04', title: 'Cost Containment', desc: 'Consultation and recommended strategies to reduce costs while preserving quality care.' }
             ].map((item, idx) => (
-              <div key={idx} className="bg-white/10 backdrop-blur-sm p-8 rounded border border-white/20 shadow-sm relative group hover:border-blue-400/50 transition-all">
+              <div key={idx} className="premium-card-dark p-8 rounded-2xl relative group hover:border-blue-400/50 transition-all">
                 <span className="absolute top-4 right-4 text-3xl font-black text-white/30 group-hover:text-blue-400 transition-colors">{item.step}</span>
                 <h4 className="text-blue-400 font-bold uppercase tracking-widest text-xs mb-3 relative z-10">{item.title}</h4>
                 <p className="text-slate-300 text-sm leading-relaxed relative z-10">{item.desc}</p>
@@ -111,7 +115,7 @@ const UnderwritingClaims: React.FC = () => {
       </section>
 
       {/* 3. Economics & Renewal */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -126,7 +130,7 @@ const UnderwritingClaims: React.FC = () => {
               <p className="text-slate-600 leading-relaxed mb-8">
                 Alignment only exists when incentives are shared. Our economic model is designed for transparency, ensuring that when a plan performs well, the benefits flow back to the sponsor—not the carrier.
               </p>
-              <div className="p-8 border border-slate-100 bg-slate-50 rounded-lg">
+              <div className="premium-card p-8 rounded-2xl">
                 <h4 className="font-bold uppercase tracking-widest text-[10px] mb-4 text-blue-600">Our Commitment</h4>
                 <ul className="space-y-4">
                   <li className="flex items-start text-sm">
@@ -155,8 +159,8 @@ const UnderwritingClaims: React.FC = () => {
       </section>
 
       {/* 4. CTA */}
-      <section className="py-24 bg-zenith-navy relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+      <section className="premium-cta py-24 relative overflow-hidden">
+        <CompassMark className="absolute -right-10 -bottom-16 w-72 h-72 opacity-[0.07]" imageClassName="brightness-0 invert" />
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">Ready to optimize your plan?</h2>
           

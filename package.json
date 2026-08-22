@@ -5,11 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "node scripts/assemble-pdfs.mjs && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "node --experimental-strip-types --test tests/*.test.mts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
+    "@netlify/blobs": "^11.0.1",
+    "@netlify/functions": "^6.0.0",
+    "@netlify/identity": "^2.0.0",
     "html2pdf.js": "^0.14.0",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

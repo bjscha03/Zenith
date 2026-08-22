@@ -1,53 +1,58 @@
-import React, { useState } from 'react';
-
+import React, { useRef, useState } from 'react';
+import CompassMark from '../components/brand/CompassMark';
+import SpamTrap from '../components/forms/SpamTrap';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { submitWebsiteForm } from '../lib/formSubmission';
 
 const Contact: React.FC = () => {
   const [inquiryData, setInquiryData] = useState({ firstName: '', lastName: '', email: '', role: '', message: '' });
   const [inquirySubmitting, setInquirySubmitting] = useState(false);
   const [inquirySuccess, setInquirySuccess] = useState(false);
   const [inquiryError, setInquiryError] = useState('');
+  const [inquiryWebsite, setInquiryWebsite] = useState('');
+  const inquiryInFlight = useRef(false);
 
   const [scheduleData, setScheduleData] = useState({ name: '', companyName: '', whoYouAre: '', phone: '', email: '', companySize: '' });
   const [scheduleSubmitting, setScheduleSubmitting] = useState(false);
   const [scheduleSuccess, setScheduleSuccess] = useState(false);
   const [scheduleError, setScheduleError] = useState('');
+  const [scheduleWebsite, setScheduleWebsite] = useState('');
+  const scheduleInFlight = useRef(false);
 
   const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (inquiryInFlight.current) return;
+    inquiryInFlight.current = true;
     setInquirySubmitting(true);
     setInquiryError('');
     try {
-      const res = await fetch('/.netlify/functions/contact-inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(inquiryData)
-      });
-      if (!res.ok) throw new Error('Failed');
+      await submitWebsiteForm('/api/contact-inquiry', { ...inquiryData, _website: inquiryWebsite });
       setInquirySuccess(true);
       setInquiryData({ firstName: '', lastName: '', email: '', role: '', message: '' });
-    } catch {
-      setInquiryError('Something went wrong. Please try again.');
+      setInquiryWebsite('');
+    } catch (error) {
+      setInquiryError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      inquiryInFlight.current = false;
       setInquirySubmitting(false);
     }
   };
 
   const handleScheduleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (scheduleInFlight.current) return;
+    scheduleInFlight.current = true;
     setScheduleSubmitting(true);
     setScheduleError('');
     try {
-      const res = await fetch('/.netlify/functions/schedule-call', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(scheduleData)
-      });
-      if (!res.ok) throw new Error('Failed');
+      await submitWebsiteForm('/api/schedule-call', { ...scheduleData, _website: scheduleWebsite });
       setScheduleSuccess(true);
       setScheduleData({ name: '', companyName: '', whoYouAre: '', phone: '', email: '', companySize: '' });
-    } catch {
-      setScheduleError('Something went wrong. Please try again.');
+      setScheduleWebsite('');
+    } catch (error) {
+      setScheduleError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      scheduleInFlight.current = false;
       setScheduleSubmitting(false);
     }
   };
@@ -55,17 +60,19 @@ const Contact: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Strategic planning/compass theme */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="premium-hero-image absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1553484771-371a605b060b?q=80&w=2070&auto=format&fit=crop')" }}
         ></div>
         {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover opacity-[0.2] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.97] via-zenith-navy/[0.9] to-zenith-navy/[0.52]"></div>
+        <CompassMark className="absolute -right-10 -top-12 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-3xl">
+          <div className="premium-hero-copy max-w-3xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Engagement</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               Let's Talk <span className="text-blue-400 italic">Strategy</span>.
@@ -78,11 +85,11 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Main Contact Section - White */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-20">
             {/* Form Section */}
-            <div className="bg-white p-10 md:p-12 rounded-3xl border border-slate-100 shadow-2xl relative">
+            <div className="premium-card p-10 md:p-12 rounded-3xl shadow-2xl relative">
               <h2 className="text-[12px] font-black text-blue-600 uppercase tracking-[0.3em] mb-10">Inquiry Form</h2>
               {inquirySuccess ? (
                 <div className="text-center py-8">
@@ -95,6 +102,7 @@ const Contact: React.FC = () => {
                 </div>
               ) : (
               <form onSubmit={handleInquirySubmit} className="space-y-6">
+                <SpamTrap value={inquiryWebsite} onChange={setInquiryWebsite} />
                 {inquiryError && <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">{inquiryError}</div>}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -146,6 +154,13 @@ const Contact: React.FC = () => {
                   <p className="text-slate-500 text-sm leading-relaxed mb-2 font-light">Questions or partnership discussions:</p>
                   <a href="mailto:info@zenithriskstrategies.com" className="text-blue-600 font-bold hover:underline decoration-2">info@zenithriskstrategies.com</a>
                 </div>
+                <div>
+                  <h3 className="text-xl font-bold text-zenith-navy mb-4 uppercase tracking-wider">Office</h3>
+                  <address className="text-slate-600 text-sm leading-relaxed font-light not-italic">
+                    5004 Bee Creek Rd, Suite 620<br />
+                    Spicewood, TX 78669
+                  </address>
+                </div>
                 <div className="pt-8 border-t border-slate-100">
                   <div className="flex items-center space-x-6">
                     <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600">
@@ -164,12 +179,12 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Tier-2 Engagement Section - Blue */}
-      <section className="py-24 bg-zenith-navy relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+      <section className="premium-dark-section py-24 relative overflow-hidden">
+        <CompassMark className="absolute -right-10 -top-16 w-80 h-80 opacity-[0.055]" imageClassName="brightness-0 invert" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Schedule a Call - Email Form */}
-            <div className="bg-white/10 backdrop-blur-sm p-10 rounded-2xl border border-white/20">
+            <div className="premium-card-dark p-10 rounded-2xl">
               <div className="w-16 h-16 bg-white/10 text-white rounded-full flex items-center justify-center mb-8 border border-white/20 mx-auto">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
               </div>
@@ -188,6 +203,7 @@ const Contact: React.FC = () => {
                 </div>
               ) : (
               <form onSubmit={handleScheduleSubmit} className="space-y-4">
+                <SpamTrap value={scheduleWebsite} onChange={setScheduleWebsite} />
                 {scheduleError && <div className="p-3 bg-red-500/20 border border-red-400/30 rounded-lg text-red-300 text-sm">{scheduleError}</div>}
                 <div>
                   <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Name</label>
@@ -231,7 +247,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Overview Deck Download */}
-            <div className="bg-white/10 backdrop-blur-sm p-10 rounded-2xl border border-white/20 flex flex-col justify-center text-center">
+            <div className="premium-card-dark p-10 rounded-2xl flex flex-col justify-center text-center">
               <div className="w-16 h-16 bg-white/10 text-white rounded-full flex items-center justify-center mb-8 mx-auto border border-white/20">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
               </div>

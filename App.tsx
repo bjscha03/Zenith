@@ -2,6 +2,8 @@
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import AuthBootstrap from './components/AuthBootstrap';
+import GoogleAnalytics from './components/GoogleAnalytics';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import WhyZenith from './pages/WhyZenith';
@@ -20,13 +22,19 @@ import Events from './pages/Events';
 import ConferenceSeries from './pages/ConferenceSeries';
 import Careers from './pages/Careers';
 import Speakers from './pages/Speakers';
+import Media from './pages/Media';
+import ContentDetail from './pages/ContentDetail';
+import Admin from './pages/Admin';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <ScrollToTop />
-      <Layout>
-        <Routes>
+    <>
+      <AuthBootstrap />
+      <Router>
+        <GoogleAnalytics />
+        <ScrollToTop />
+        <Layout>
+          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/why-zenith" element={<WhyZenith />} />
           <Route path="/services" element={<ServicesOverview />} />
@@ -36,17 +44,23 @@ const App: React.FC = () => {
           <Route path="/services/consulting-strategy" element={<ConsultingStrategy />} />
           <Route path="/for-brokers" element={<ForBrokers />} />
           <Route path="/about" element={<About />} />
+          <Route path="/media" element={<Media />} />
+          <Route path="/media/:slug" element={<ContentDetail section="media" />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/resources/:slug" element={<ContentDetail section="resource" />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/events/:slug" element={<ContentDetail section="event" />} />
           <Route path="/conference-series" element={<ConferenceSeries />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/events/speakers" element={<Speakers />} />
           <Route path="/careers" element={<Careers />} />
-        </Routes>
-      </Layout>
-    </Router>
+          <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </>
   );
 };
 

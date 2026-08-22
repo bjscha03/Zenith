@@ -1,21 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CompassMark from '../components/brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const WhyZenith: React.FC = () => {
   return (
     <div className="w-full">
       {/* 1. Impactful Headline Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-36 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-36 overflow-hidden">
         {/* Background Image - Direction/navigation theme */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="premium-hero-image absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop')" }}
         ></div>
         {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover object-center opacity-[0.2] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.97] via-zenith-navy/[0.9] to-zenith-navy/[0.48]"></div>
+        <CompassMark className="absolute -right-10 -top-10 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">The Differentiator</span>
             <h1 className="text-4xl md:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-10">
               The Stop-Loss Model is outdated. <br/>
@@ -29,11 +33,12 @@ const WhyZenith: React.FC = () => {
       </section>
 
       {/* 2. Problem & Solution Comparison */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24 relative overflow-hidden">
+        <CompassMark className="absolute -left-24 top-20 w-96 h-96 opacity-[0.025]" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 md:gap-24 mb-24 items-start">
             {/* The Problem Column */}
-            <div className="space-y-12">
+            <div className="premium-card space-y-12 p-8 md:p-10 rounded-[1.75rem]">
               <div>
                 <h2 className="text-[12px] font-black text-slate-900 uppercase tracking-[0.3em] mb-8 flex items-center">
                   <span className="w-8 h-px bg-slate-900 mr-4"></span>
@@ -41,7 +46,7 @@ const WhyZenith: React.FC = () => {
                 </h2>
                 
                 {/* CARRIER MISALIGNMENT - Highly Prominent */}
-                <div className="mb-10 p-6 bg-red-50 border-l-4 border-red-500 rounded-r-lg">
+                <div className="mb-10 p-6 bg-gradient-to-br from-red-50 to-white border border-red-100 border-l-4 border-l-red-500 rounded-2xl shadow-sm">
                   <h3 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
                     Carrier Misalignment
                   </h3>
@@ -77,7 +82,8 @@ const WhyZenith: React.FC = () => {
             <div className="relative">
               <div className="absolute -left-8 top-0 bottom-0 w-1 bg-zenith-blue opacity-10 hidden lg:block"></div>
               
-              <div className="bg-zenith-navy text-white p-10 md:p-16 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] relative overflow-hidden border border-slate-800">
+              <div className="premium-card-dark bg-zenith-navy text-white p-10 md:p-16 rounded-[1.75rem] shadow-[0_28px_80px_-36px_rgba(0,0,0,0.65)] relative overflow-hidden">
+                <CompassMark className="absolute -right-12 -bottom-14 w-56 h-56 opacity-[0.06]" imageClassName="brightness-0 invert" />
                 
                 <h2 className="text-[12px] font-black text-blue-400 uppercase tracking-[0.3em] mb-12 flex items-center">
                   <span className="w-8 h-px bg-blue-900/50 mr-4"></span>
@@ -125,7 +131,7 @@ const WhyZenith: React.FC = () => {
       </section>
 
       {/* 3. WHY CHOOSE ZENITH? Section - Dark Premium */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-slate-900 to-zenith-navy">
+      <section className="premium-dark-section py-20 md:py-28 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16 md:mb-20">
@@ -141,7 +147,7 @@ const WhyZenith: React.FC = () => {
           {/* Benefits Grid - 4 Cards */}
           <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             {/* Card 1: Industry-Leading Expertise */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
+            <div className="premium-card-dark rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
               <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/30 transition-colors">
                 <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
@@ -156,7 +162,7 @@ const WhyZenith: React.FC = () => {
             </div>
 
             {/* Card 2: Tailored Solutions */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
+            <div className="premium-card-dark rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
               <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/30 transition-colors">
                 <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
@@ -171,7 +177,7 @@ const WhyZenith: React.FC = () => {
             </div>
 
             {/* Card 3: Transparency + Risk Control */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
+            <div className="premium-card-dark rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
               <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/30 transition-colors">
                 <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -187,7 +193,7 @@ const WhyZenith: React.FC = () => {
             </div>
 
             {/* Card 4: Compliance + Long-Term Strategy */}
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
+            <div className="premium-card-dark rounded-2xl p-8 md:p-10 hover:bg-white/10 transition-all duration-300 group">
               <div className="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-500/30 transition-colors">
                 <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -205,9 +211,10 @@ const WhyZenith: React.FC = () => {
       </section>
 
       {/* 4. Positioning Statement & CTA */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-slate-50 border border-slate-100 p-16 md:p-24 rounded-3xl text-center relative overflow-hidden">
+          <div className="premium-card p-16 md:p-24 rounded-[2rem] text-center relative overflow-hidden">
+            <CompassMark className="absolute -right-10 -bottom-12 w-64 h-64 opacity-[0.04]" />
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30"></div>
             <span className="text-[11px] font-black text-blue-600 uppercase tracking-[0.5em] mb-10 block">Positioning Statement</span>
             <blockquote className="text-3xl md:text-6xl font-bold text-zenith-navy leading-[1.1] tracking-tight max-w-5xl mx-auto mb-16">

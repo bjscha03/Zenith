@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import CompassMark from '../components/brand/CompassMark';
 
 const EVENTBRITE = 'https://www.eventbrite.com/o/zenith-risk-strategies-120923310117';
 
@@ -21,21 +22,23 @@ const ConferenceSeries: React.FC = () => {
   return (
     <div className="w-full">
       {/* PAGE HEADER */}
-      <div className="bg-white py-16 text-center">
+      <div className="premium-light-section relative overflow-hidden py-16 text-center">
+        <CompassMark className="absolute -right-10 -top-16 w-64 h-64 opacity-[0.03]" />
         <h1 className="text-4xl md:text-6xl font-bold text-zenith-navy tracking-tight">2026 ZENITH CONFERENCE SERIES</h1>
       </div>
 
       {/* SECTION 1: DALLAS */}
       <section ref={(el) => { sectionRefs.current[0] = el; }} className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1545194445-dddb8f4487c6?q=80&w=2070&auto=format&fit=crop')" }}></div>
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/80 via-black/45 to-zenith-navy/70"></div>
         {scrollTo && (
           <>
             {0 > 0 && <ArrowButton direction="left" onClick={() => scrollTo(0)} />}
             <ArrowButton direction="right" onClick={() => scrollTo(1)} />
           </>
         )}
-        <div className="relative z-10 w-[90%] max-w-4xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-14 overflow-y-auto max-h-[85vh]">
+        <div className="premium-card relative z-10 w-[90%] max-w-4xl mx-auto bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl p-8 md:p-14 overflow-y-auto max-h-[85vh]">
+          <CompassMark className="absolute -right-8 -bottom-10 w-48 h-48 opacity-[0.035]" />
           <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-2 text-center">BUCA VS BLUEBONNETS</h2>
           <p className="text-center text-slate-500 font-medium mb-10">April 23, 2026 | Dallas, TX</p>
 
@@ -97,10 +100,11 @@ const ConferenceSeries: React.FC = () => {
       {/* SECTION 2: HILTON HEAD */}
       <section ref={(el) => { sectionRefs.current[1] = el; }} className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?q=80&w=2070&auto=format&fit=crop')" }}></div>
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/80 via-black/45 to-zenith-navy/70"></div>
         <ArrowButton direction="left" onClick={() => scrollTo(0)} />
         <ArrowButton direction="right" onClick={() => scrollTo(2)} />
-        <div className="relative z-10 w-[90%] max-w-4xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-14 overflow-y-auto max-h-[85vh]">
+        <div className="premium-card relative z-10 w-[90%] max-w-4xl mx-auto bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl p-8 md:p-14 overflow-y-auto max-h-[85vh]">
+          <CompassMark className="absolute -right-8 -bottom-10 w-48 h-48 opacity-[0.035]" />
           <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-2 text-center">LOWCOUNTRY LOGIC</h2>
           <p className="text-center text-slate-500 font-medium mb-10">May 2026 | Hilton Head, SC</p>
           <h3 className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6">Who This Summit Is For</h3>
@@ -135,9 +139,10 @@ const ConferenceSeries: React.FC = () => {
       {/* SECTION 3: DENVER */}
       <section ref={(el) => { sectionRefs.current[2] = el; }} className="relative min-h-screen flex items-center justify-center">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1546156929-a4c0ac411f47?q=80&w=2070&auto=format&fit=crop')" }}></div>
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/80 via-black/45 to-zenith-navy/70"></div>
         <ArrowButton direction="left" onClick={() => scrollTo(1)} />
-        <div className="relative z-10 w-[90%] max-w-4xl mx-auto bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 md:p-14">
+        <div className="premium-card relative z-10 w-[90%] max-w-4xl mx-auto bg-white/95 backdrop-blur-xl rounded-[2rem] shadow-2xl p-8 md:p-14">
+          <CompassMark className="absolute -right-8 -bottom-10 w-48 h-48 opacity-[0.035]" />
           <h2 className="text-3xl md:text-5xl font-bold text-zenith-navy tracking-tight mb-2 text-center">REACHING BENEFITS HEIGHTS</h2>
           <p className="text-center text-slate-500 font-medium mb-10">August 2026 | Denver, CO</p>
           <p className="text-slate-600 leading-relaxed text-center mb-10">Long-range planning, sustainability, and systems that hold at altitude.</p>

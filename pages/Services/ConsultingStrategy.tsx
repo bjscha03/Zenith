@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CompassMark from '../../components/brand/CompassMark';
+import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
 
 // TODO: Place the strategy brochure PDF at public/brochures/strategy-brochure.pdf
 const STRATEGY_BROCHURE_URL = '/brochures/strategy-brochure.pdf';
@@ -31,17 +33,19 @@ const ConsultingStrategy: React.FC = () => {
   return (
     <div className="w-full">
       {/* Hero Section - Blue with Image Underlay */}
-      <section className="relative text-white py-24 md:py-32 overflow-hidden">
+      <section className="premium-hero relative text-white py-24 md:py-32 overflow-hidden">
         {/* Background Image - Strategy/planning theme */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="premium-hero-image absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop')" }}
         ></div>
         {/* Blue Overlay */}
-        <div className="absolute inset-0 bg-zenith-navy/90"></div>
+        <img src={ZENITH_PEAK_IMAGE} alt="" aria-hidden="true" className="absolute right-0 inset-y-0 w-[58%] h-full object-cover opacity-[0.18] mix-blend-screen" />
+        <div className="absolute inset-0 bg-gradient-to-r from-zenith-navy/[0.97] via-zenith-navy/[0.9] to-zenith-navy/[0.52]"></div>
+        <CompassMark className="absolute -right-10 -top-12 w-80 h-80 opacity-[0.07]" imageClassName="brightness-0 invert" />
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl">
+          <div className="premium-hero-copy max-w-4xl">
             <span className="text-[11px] font-black text-blue-400 uppercase tracking-[0.4em] mb-6 block">Execution Excellence</span>
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight tracking-tight mb-8">
               Captive Feasibility, Risk Strategy & Program Management from Concept to Execution
@@ -54,12 +58,12 @@ const ConsultingStrategy: React.FC = () => {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-white">
+      <section className="premium-light-section py-24 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Top row - 3 cards */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
             {serviceAreas.slice(0, 3).map((service, idx) => (
-              <div key={idx} className="group p-8 bg-white border border-slate-100 rounded-xl hover:shadow-2xl hover:border-blue-200 transition-all duration-300">
+              <div key={idx} className="premium-card group p-8 rounded-2xl hover:-translate-y-1 transition-all duration-500">
                 <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded flex items-center justify-center mb-6 group-hover:bg-zenith-blue group-hover:text-white transition-colors">
                   <span className="text-xs font-black uppercase tracking-widest">{String(idx + 1).padStart(2, '0')}</span>
                 </div>
@@ -74,7 +78,7 @@ const ConsultingStrategy: React.FC = () => {
           {/* Bottom row - 2 cards centered */}
           <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
             {serviceAreas.slice(3, 5).map((service, idx) => (
-              <div key={idx} className="group p-8 bg-white border border-slate-100 rounded-xl hover:shadow-2xl hover:border-blue-200 transition-all duration-300">
+              <div key={idx} className="premium-card group p-8 rounded-2xl hover:-translate-y-1 transition-all duration-500">
                 <div className="w-10 h-10 bg-slate-50 border border-slate-100 rounded flex items-center justify-center mb-6 group-hover:bg-zenith-blue group-hover:text-white transition-colors">
                   <span className="text-xs font-black uppercase tracking-widest">{String(idx + 4).padStart(2, '0')}</span>
                 </div>
@@ -89,7 +93,7 @@ const ConsultingStrategy: React.FC = () => {
       </section>
 
       {/* Strategy Narrative Section */}
-      <section className="py-24 bg-slate-50 border-y border-slate-200">
+      <section className="premium-light-section py-24 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -113,7 +117,7 @@ const ConsultingStrategy: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-white p-12 rounded-2xl shadow-xl border border-slate-200">
+              <div className="premium-card p-12 rounded-2xl shadow-xl">
                 <blockquote className="text-2xl font-light text-slate-800 leading-relaxed italic">
                   "Our integrated strategy and execution model is the engine room of Zenith. It's where we translate complex risk data into actionable, multi-year results."
                 </blockquote>
@@ -151,8 +155,8 @@ const ConsultingStrategy: React.FC = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="py-24 bg-zenith-navy relative overflow-hidden">
-        <div className="absolute inset-0 bg-blue-900 opacity-10"></div>
+      <section className="premium-cta py-24 relative overflow-hidden">
+        <CompassMark className="absolute -right-10 -bottom-16 w-72 h-72 opacity-[0.07]" imageClassName="brightness-0 invert" />
         <div className="max-w-4xl mx-auto px-4 relative z-10 text-center">
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-12 tracking-tight">Engineer your risk strategy.</h2>
           
