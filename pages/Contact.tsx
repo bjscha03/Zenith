@@ -1,54 +1,58 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import CompassMark from '../components/brand/CompassMark';
+import SpamTrap from '../components/forms/SpamTrap';
 import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { submitWebsiteForm } from '../lib/formSubmission';
 
 const Contact: React.FC = () => {
   const [inquiryData, setInquiryData] = useState({ firstName: '', lastName: '', email: '', role: '', message: '' });
   const [inquirySubmitting, setInquirySubmitting] = useState(false);
   const [inquirySuccess, setInquirySuccess] = useState(false);
   const [inquiryError, setInquiryError] = useState('');
+  const [inquiryWebsite, setInquiryWebsite] = useState('');
+  const inquiryInFlight = useRef(false);
 
   const [scheduleData, setScheduleData] = useState({ name: '', companyName: '', whoYouAre: '', phone: '', email: '', companySize: '' });
   const [scheduleSubmitting, setScheduleSubmitting] = useState(false);
   const [scheduleSuccess, setScheduleSuccess] = useState(false);
   const [scheduleError, setScheduleError] = useState('');
+  const [scheduleWebsite, setScheduleWebsite] = useState('');
+  const scheduleInFlight = useRef(false);
 
   const handleInquirySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (inquiryInFlight.current) return;
+    inquiryInFlight.current = true;
     setInquirySubmitting(true);
     setInquiryError('');
     try {
-      const res = await fetch('/.netlify/functions/contact-inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(inquiryData)
-      });
-      if (!res.ok) throw new Error('Failed');
+      await submitWebsiteForm('/api/contact-inquiry', { ...inquiryData, _website: inquiryWebsite });
       setInquirySuccess(true);
       setInquiryData({ firstName: '', lastName: '', email: '', role: '', message: '' });
-    } catch {
-      setInquiryError('Something went wrong. Please try again.');
+      setInquiryWebsite('');
+    } catch (error) {
+      setInquiryError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      inquiryInFlight.current = false;
       setInquirySubmitting(false);
     }
   };
 
   const handleScheduleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (scheduleInFlight.current) return;
+    scheduleInFlight.current = true;
     setScheduleSubmitting(true);
     setScheduleError('');
     try {
-      const res = await fetch('/.netlify/functions/schedule-call', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(scheduleData)
-      });
-      if (!res.ok) throw new Error('Failed');
+      await submitWebsiteForm('/api/schedule-call', { ...scheduleData, _website: scheduleWebsite });
       setScheduleSuccess(true);
       setScheduleData({ name: '', companyName: '', whoYouAre: '', phone: '', email: '', companySize: '' });
-    } catch {
-      setScheduleError('Something went wrong. Please try again.');
+      setScheduleWebsite('');
+    } catch (error) {
+      setScheduleError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      scheduleInFlight.current = false;
       setScheduleSubmitting(false);
     }
   };
@@ -98,6 +102,7 @@ const Contact: React.FC = () => {
                 </div>
               ) : (
               <form onSubmit={handleInquirySubmit} className="space-y-6">
+                <SpamTrap value={inquiryWebsite} onChange={setInquiryWebsite} />
                 {inquiryError && <div className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">{inquiryError}</div>}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -198,6 +203,7 @@ const Contact: React.FC = () => {
                 </div>
               ) : (
               <form onSubmit={handleScheduleSubmit} className="space-y-4">
+                <SpamTrap value={scheduleWebsite} onChange={setScheduleWebsite} />
                 {scheduleError && <div className="p-3 bg-red-500/20 border border-red-400/30 rounded-lg text-red-300 text-sm">{scheduleError}</div>}
                 <div>
                   <label className="block text-[10px] font-black text-slate-300 uppercase tracking-widest mb-2">Name</label>

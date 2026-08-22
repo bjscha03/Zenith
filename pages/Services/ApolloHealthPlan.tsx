@@ -1,11 +1,14 @@
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import CompassMark from '../../components/brand/CompassMark';
+import SpamTrap from '../../components/forms/SpamTrap';
 import { ZENITH_PEAK_IMAGE } from '../../lib/brandAssets';
+import { submitWebsiteForm } from '../../lib/formSubmission';
 import { Link } from 'react-router-dom';
 
 // Apollo external URL
 const APOLLO_URL = "https://www.apollohealthplan.com";
+const APOLLO_BROCHURE_URL = '/brochures/mechanics-of-apollo-lf-captive-program.pptx';
 
 const ApolloHealthPlan: React.FC = () => {
   const [showBrochureModal, setShowBrochureModal] = useState(false);
@@ -13,30 +16,31 @@ const ApolloHealthPlan: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [confirmationSent, setConfirmationSent] = useState(true);
+  const [website, setWebsite] = useState('');
+  const submissionInFlight = useRef(false);
 
   const handleBrochureSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submissionInFlight.current) return;
+    submissionInFlight.current = true;
     setIsSubmitting(true);
     setSubmitError('');
 
     try {
-      const response = await fetch('/.netlify/functions/brochure-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          brochureType: 'apollo',
-          timestamp: new Date().toISOString()
-        })
+      const result = await submitWebsiteForm('/api/brochure-request', {
+        ...formData,
+        brochureType: 'apollo',
+        _website: website,
       });
-
-      if (!response.ok) throw new Error('Submission failed');
-      
+      setConfirmationSent(result.confirmationSent !== false);
       setSubmitSuccess(true);
       setFormData({ firstName: '', lastName: '', email: '', company: '' });
-    } catch (err) {
-      setSubmitError('Something went wrong. Please try again or contact us directly.');
+      setWebsite('');
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Something went wrong. Please try again or contact us directly.');
     } finally {
+      submissionInFlight.current = false;
       setIsSubmitting(false);
     }
   };
@@ -48,7 +52,7 @@ const ApolloHealthPlan: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
             <button 
-              onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); setSubmitError(''); }}
+              onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); setSubmitError(''); setConfirmationSent(true); }}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -64,9 +68,16 @@ const ApolloHealthPlan: React.FC = () => {
                   </svg>
                 </div>
                 <h3 className="text-2xl font-bold text-zenith-navy mb-4">Thanks!</h3>
-                <p className="text-slate-600">The brochure link has been sent to your email.</p>
+                {confirmationSent ? (
+                  <p className="text-slate-600">The brochure link has been sent to your email.</p>
+                ) : (
+                  <div>
+                    <p className="text-slate-600">We received your request, but the email could not be delivered. You can download the brochure now.</p>
+                    <a href={APOLLO_BROCHURE_URL} download className="mt-4 inline-block font-bold text-blue-600 hover:underline">Download brochure</a>
+                  </div>
+                )}
                 <button 
-                  onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); }}
+                  onClick={() => { setShowBrochureModal(false); setSubmitSuccess(false); setConfirmationSent(true); }}
                   className="mt-6 px-6 py-3 bg-zenith-blue text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors"
                 >
                   Close
@@ -84,6 +95,7 @@ const ApolloHealthPlan: React.FC = () => {
                 )}
 
                 <form onSubmit={handleBrochureSubmit} className="space-y-4">
+                  <SpamTrap value={website} onChange={setWebsite} />
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">First Name</label>

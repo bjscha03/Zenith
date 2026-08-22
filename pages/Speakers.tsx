@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import CompassMark from '../components/brand/CompassMark';
+import SpamTrap from '../components/forms/SpamTrap';
 import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { submitWebsiteForm } from '../lib/formSubmission';
 
 const Speakers: React.FC = () => {
   const [openAccordion, setOpenAccordion] = useState<number | null>(null);
@@ -11,6 +13,9 @@ const Speakers: React.FC = () => {
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [website, setWebsite] = useState('');
+  const submissionInFlight = useRef(false);
 
   const toggleAccordion = (index: number) => {
     setOpenAccordion(openAccordion === index ? null : index);
@@ -26,23 +31,18 @@ const Speakers: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submissionInFlight.current) return;
+    submissionInFlight.current = true;
     setSubmitting(true);
+    setSubmitError('');
     try {
-      const res = await fetch('/.netlify/functions/speaker-application', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        console.log('Form data:', formData);
-        setSubmitted(true);
-      }
-    } catch {
-      console.log('Form data:', formData);
+      await submitWebsiteForm('/api/speaker-application', { ...formData, _website: website });
       setSubmitted(true);
+      setWebsite('');
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      submissionInFlight.current = false;
       setSubmitting(false);
     }
   };
@@ -224,6 +224,12 @@ const Speakers: React.FC = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <SpamTrap value={website} onChange={setWebsite} />
+                  {submitError && (
+                    <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700" role="alert">
+                      {submitError}
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <input
                       type="text"

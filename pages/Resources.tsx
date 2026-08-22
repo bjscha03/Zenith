@@ -1,31 +1,34 @@
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import CompassMark from '../components/brand/CompassMark';
 import ContentGrid from '../components/content/ContentGrid';
+import SpamTrap from '../components/forms/SpamTrap';
 import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
+import { submitWebsiteForm } from '../lib/formSubmission';
 
 const Resources: React.FC = () => {
   const [nlEmail, setNlEmail] = useState('');
   const [nlSubmitting, setNlSubmitting] = useState(false);
   const [nlSuccess, setNlSuccess] = useState(false);
   const [nlError, setNlError] = useState('');
+  const [nlWebsite, setNlWebsite] = useState('');
+  const newsletterInFlight = useRef(false);
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (newsletterInFlight.current) return;
+    newsletterInFlight.current = true;
     setNlSubmitting(true);
     setNlError('');
     try {
-      const res = await fetch('/.netlify/functions/newsletter-subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: nlEmail })
-      });
-      if (!res.ok) throw new Error('Failed');
+      await submitWebsiteForm('/api/newsletter-subscribe', { email: nlEmail, _website: nlWebsite });
       setNlSuccess(true);
       setNlEmail('');
-    } catch {
-      setNlError('Something went wrong. Please try again.');
+      setNlWebsite('');
+    } catch (error) {
+      setNlError(error instanceof Error ? error.message : 'Something went wrong. Please try again.');
     } finally {
+      newsletterInFlight.current = false;
       setNlSubmitting(false);
     }
   };
@@ -191,6 +194,7 @@ const Resources: React.FC = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleNewsletterSubmit}>
+                    <SpamTrap value={nlWebsite} onChange={setNlWebsite} />
                     {nlError && <div className="text-red-400 text-sm mb-3">{nlError}</div>}
                     <div className="flex flex-col sm:flex-row gap-4">
                       <input 
