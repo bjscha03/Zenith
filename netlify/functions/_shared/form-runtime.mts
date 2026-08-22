@@ -156,7 +156,7 @@ const deliverWithResend = async (
   return { acceptedKinds, failedKinds, messageIds };
 };
 
-const successBody = (delivery: DeliveryResult, duplicate = false) => ({
+const successBody = (delivery: DeliveryResult, duplicate = false, includeMessageIds = false) => ({
   success: true,
   duplicate,
   notificationSent: delivery.acceptedKinds.includes('internal'),
@@ -168,6 +168,7 @@ const successBody = (delivery: DeliveryResult, duplicate = false) => ({
       : delivery.acceptedKinds.length > 0
         ? 'partial'
         : 'failed',
+  ...(includeMessageIds ? { messageIds: delivery.messageIds } : {}),
 });
 
 export const createFormHandler = <T,>(
@@ -180,6 +181,8 @@ export const createFormHandler = <T,>(
   try {
     if (request.method !== 'POST') return jsonResponse({ error: 'Method not allowed.' }, 405);
     assertSameOrigin(request);
+    const includeMessageIds = new URL(request.url).hostname.startsWith('deploy-preview-')
+      && request.headers.get('X-Zenith-Email-Diagnostics') === 'preview';
     const input = await readJsonObject(request);
 
     if (isHoneypotFilled(input)) {
@@ -221,7 +224,7 @@ export const createFormHandler = <T,>(
       messageIds: delivery.messageIds,
       timestamp: timestamp.toISOString(),
     }));
-    return jsonResponse(successBody(delivery));
+    return jsonResponse(successBody(delivery, false, includeMessageIds));
   } catch (error) {
     if (error instanceof PublicFormError) {
       logger.warn('Zenith form validation rejected', {
