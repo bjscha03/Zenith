@@ -138,6 +138,11 @@ const deliverWithResend = async (
       if (result.error || !result.data?.id) throw result.error || new Error('missing_message_id');
       acceptedKinds.push(message.kind);
       messageIds.push(result.data.id);
+      console.info('Zenith email delivery accepted', JSON.stringify({
+        formType,
+        messageKind: message.kind,
+        messageId: result.data.id,
+      }));
     } catch (error) {
       failedKinds.push(message.kind);
       console.warn('Zenith email delivery failed', {
@@ -209,13 +214,13 @@ export const createFormHandler = <T,>(
       });
     }
 
-    logger.info('Zenith form submission completed', {
+    logger.info('Zenith form submission completed', JSON.stringify({
       formType: definition.formType,
       requestId,
       emailStatus: successBody(delivery).emailStatus,
       messageIds: delivery.messageIds,
       timestamp: timestamp.toISOString(),
-    });
+    }));
     return jsonResponse(successBody(delivery));
   } catch (error) {
     if (error instanceof PublicFormError) {
