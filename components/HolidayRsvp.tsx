@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { submitWebsiteForm } from '../lib/formSubmission';
-
-const HOLIDAY_INVITE = 'https://res.cloudinary.com/dtrxl120u/image/upload/v1788531590/zenith-holiday-invite-2026.jpg';
+import { HOLIDAY_INVITE_SRC } from './holidayInviteImage';
 
 const options = [
   {
@@ -85,7 +84,7 @@ const HolidayRsvp: React.FC = () => {
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
           <div className="rounded-[1.5rem] overflow-hidden border border-[#d8c6a9] bg-white shadow-[0_26px_70px_-45px_rgba(15,23,42,0.5)]">
             <img
-              src={HOLIDAY_INVITE}
+              src={HOLIDAY_INVITE_SRC}
               alt="Zenith Holiday Celebration invitation"
               className="block w-full h-auto"
             />
