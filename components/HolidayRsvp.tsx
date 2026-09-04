@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { submitWebsiteForm } from '../lib/formSubmission';
-import { HOLIDAY_INVITE_SRC } from './holidayInviteImage';
+
+const HOLIDAY_INVITE_SRC = '/images/zenith-holiday-invite-2026.webp';
 
 const options = [
   {
@@ -87,6 +88,10 @@ const HolidayRsvp: React.FC = () => {
               src={HOLIDAY_INVITE_SRC}
               alt="Zenith Holiday Celebration invitation"
               className="block w-full h-auto"
+              width={1060}
+              height={1484}
+              loading="eager"
+              decoding="async"
             />
           </div>
 
