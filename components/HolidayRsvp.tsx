@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { submitWebsiteForm } from '../lib/formSubmission';
 
-const HOLIDAY_INVITE_SRC = '/images/zenith-holiday-invite-2026.webp';
+const HOLIDAY_INVITE_SRC = 'https://res.cloudinary.com/dtrxl120u/image/upload/v1788538095/eb5df887-278e-4b4f-9e4d-54dfb4b25105_wtoyn7.png';
 
 const options = [
   {
