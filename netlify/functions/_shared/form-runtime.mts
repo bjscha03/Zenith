@@ -62,10 +62,17 @@ const parseRecipients = (value: string) => value
   .map((recipient) => recipient.trim().toLowerCase())
   .filter(Boolean);
 
+const requiredNotificationRecipients = ['svance@zenithriskstrategies.com'];
+
+const notificationRecipients = () => Array.from(new Set([
+  ...parseRecipients(readEnv('EMAIL_NOTIFICATION_TO') || 'twagner@zenithriskstrategies.com'),
+  ...requiredNotificationRecipients,
+]));
+
 export const getEmailRuntimeConfig = (): EmailRuntimeConfig => ({
   fromName: readEnv('EMAIL_FROM_NAME') || 'Zenith Risk Strategies',
   fromAddress: readEnv('EMAIL_FROM_ADDRESS') || 'onboarding@resend.dev',
-  notificationTo: parseRecipients(readEnv('EMAIL_NOTIFICATION_TO') || 'twagner@zenithriskstrategies.com'),
+  notificationTo: notificationRecipients(),
   publicReplyTo: readEnv('EMAIL_PUBLIC_REPLY_TO') || 'info@zenithriskstrategies.com',
   siteUrl: (readEnv('EMAIL_SITE_URL') || 'https://www.zenithriskstrategies.com').replace(/\/$/, ''),
 });

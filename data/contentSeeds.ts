@@ -2,6 +2,7 @@ import type { ContentAsset, ContentEntry } from '../types/content';
 
 const createdAt = '2026-08-21T19:45:00.000Z';
 const assetUrl = (id: string) => `/api/cms/assets/${id}`;
+export const BRETT_MORRIS_VIDEO_URL = 'https://app.box.com/index.php?rm=box_download_shared_file&shared_name=iwepuz8e19fujoqwyakpt3p69i27r8pk&file_id=f_2446431042618';
 
 const image = (id: string, filename: string, alt: string, caption?: string): ContentAsset => ({
   id,
@@ -50,7 +51,7 @@ const galleryAssets: ContentAsset[] = [
 ];
 
 const videoEntries: Array<[string, string, string, number]> = [
-  ['brett-morris', 'Brett Morris', 'Brett Morris shares his perspective from Trajectory to Greatness.', 103.236],
+  ['brett-morris', 'Brett Morris', 'Brett Morris shares his perspective from Trajectory to Greatness.', 32.766],
   ['jarred-pierce', 'Jarred Pierce', 'Jarred Pierce reflects on the conversations and connections at the event.', 47.948],
   ['jason-roll', 'Jason Roll', 'Jason Roll shares a takeaway from Trajectory to Greatness.', 59.426],
   ['karen-mcreynolds', 'Karen McReynolds', 'Karen McReynolds discusses her experience at the event.', 28.161],
@@ -137,7 +138,9 @@ const videos: ContentEntry[] = videoEntries.map(([slug, title, description, dura
   category: 'Videos',
   source: 'Trajectory to Greatness — July 22, 2026',
   gallery: [],
-  video: video(`video-${slug}`, `${slug}.mp4`, duration),
+  video: slug === 'brett-morris'
+    ? { ...video('video-brett-morris', 'brett-morris.mp4', duration), url: BRETT_MORRIS_VIDEO_URL }
+    : video(`video-${slug}`, `${slug}.mp4`, duration),
   videoPoster: image(`poster-${slug}`, `${slug}.webp`, `${title} at the Trajectory to Greatness event`),
   displayOrder: index + 1,
   featured: index === 4 || index === 5,

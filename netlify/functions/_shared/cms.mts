@@ -1,7 +1,7 @@
 import { getStore, type Store } from '@netlify/blobs';
 import { getUser, type User } from '@netlify/identity';
 import type { Context } from '@netlify/functions';
-import { seedEntries } from '../../../data/contentSeeds.ts';
+import { BRETT_MORRIS_VIDEO_URL, seedEntries } from '../../../data/contentSeeds.ts';
 import type { ContentDraft, ContentEntry, ContentSection } from '../../../types/content';
 
 declare const Netlify: { env: { get: (key: string) => string | undefined } };
@@ -29,9 +29,23 @@ export const getReadableAssetStores = (context: Context): Store[] => (
   [strongStore(isProduction(context) ? ASSET_STORE : PREVIEW_ASSET_STORE)]
 );
 
+const applyRequiredContentOverrides = (entries: ContentEntry[]): ContentEntry[] => entries.map((entry) => {
+  if (entry.id !== 'media-brett-morris' || !entry.video) return entry;
+  return {
+    ...entry,
+    video: {
+      ...entry.video,
+      url: BRETT_MORRIS_VIDEO_URL,
+      filename: 'brett-morris.mp4',
+      mimeType: 'video/mp4',
+      duration: 32.766,
+    },
+  };
+});
+
 export const loadEntries = async (context: Context): Promise<ContentEntry[]> => {
   const stored = await getContentStore(context).get(CONTENT_KEY, { type: 'json' });
-  return Array.isArray(stored) ? stored as ContentEntry[] : cloneSeeds();
+  return applyRequiredContentOverrides(Array.isArray(stored) ? stored as ContentEntry[] : cloneSeeds());
 };
 
 export const saveEntries = async (context: Context, entries: ContentEntry[]) => {
