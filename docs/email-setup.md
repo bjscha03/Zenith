@@ -18,7 +18,7 @@ Admin login and CMS editing forms are application controls and do not send trans
 
 - `DATABASE_URL` — existing secret used only by server-side functions.
 - `RESEND_API_KEY` — existing secret used only by server-side functions.
-- `EMAIL_NOTIFICATION_TO` — internal notification recipient; currently `twagner@zenithriskstrategies.com`.
+- `EMAIL_NOTIFICATION_TO` — internal notification recipients; currently `twagner@zenithriskstrategies.com,svance@zenithriskstrategies.com`. Stacy is also enforced in the runtime so event and website-form notifications cannot omit her accidentally.
 - `EMAIL_FROM_NAME` — display name; `Zenith Risk Strategies`.
 - `EMAIL_FROM_ADDRESS` — use `onboarding@resend.dev` only for pre-verification testing.
 - `EMAIL_PUBLIC_REPLY_TO` — address used when a visitor replies to a confirmation.
