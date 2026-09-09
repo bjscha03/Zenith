@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import HolidayRsvp from '../components/HolidayRsvp';
 
-export default function HolidayInvitation() {
+export default function HolidayInvitation({ invitationKey }: { invitationKey?: string } = {}) {
   const { search } = useLocation();
-  const invitation = new URLSearchParams(search).get('invitation') || '';
+  const invitation = invitationKey ?? new URLSearchParams(search).get('invitation') ?? '';
   const [verifiedKey, setVerifiedKey] = useState('');
   const [error, setError] = useState('');
   useEffect(() => {

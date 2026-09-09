@@ -5,6 +5,7 @@ import { holidayRsvpDefinition } from '../netlify/functions/holiday-rsvp.mts';
 import { createFormHandler } from '../netlify/functions/_shared/form-runtime.mts';
 import access from '../netlify/functions/holiday-access.mts';
 const valid = process.env.TEST_HOLIDAY_INVITATION;
+const shortKey = process.env.TEST_SHORT_INVITATION;
 const origin = 'https://www.zenithriskstrategies.com';
 const req = (invitation: unknown) => new Request(origin + '/api/holiday-access', { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: origin }, body: JSON.stringify({ invitation }) });
 test('invitation endpoint rejects absent and forged keys', async () => {
@@ -27,4 +28,10 @@ test('issued invitation permits each response and preserves guest validation', {
     assert.equal(result.guestName, response === 'attend-with-guest' ? 'Guest' : '');
   }
   assert.throws(() => holidayRsvpDefinition.normalize({ invitation: valid, response: 'attend-with-guest' }), /guest/);
+});
+
+test('short invitation verifies and authorizes RSVP; forged short key is rejected', { skip: !shortKey }, async () => {
+  assert.equal((await access(req(shortKey))).status, 200);
+  assert.equal((await access(req('a'.repeat(12)))).status, 403);
+  assert.equal(holidayRsvpDefinition.normalize({ invitation: shortKey, name: 'Test', email: 'test@example.com', response: 'attend' }).response, 'attend');
 });
