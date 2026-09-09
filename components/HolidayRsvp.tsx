@@ -29,7 +29,7 @@ const options = [
 
 type RsvpResponse = typeof options[number]['value'];
 
-const HolidayRsvp: React.FC = () => {
+const HolidayRsvp: React.FC<{ invitation: string }> = ({ invitation }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -61,6 +61,7 @@ const HolidayRsvp: React.FC = () => {
       const result = await submitWebsiteForm('/api/holiday-rsvp', {
         ...formData,
         response,
+        invitation,
         _website: website,
       });
       const answer = response === 'attend-with-guest'
@@ -84,15 +85,12 @@ const HolidayRsvp: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
           <div className="rounded-[1.5rem] overflow-hidden border border-[#d8c6a9] bg-white shadow-[0_26px_70px_-45px_rgba(15,23,42,0.5)]">
-            <img
-              src={HOLIDAY_INVITE_SRC}
-              alt="Zenith Holiday Celebration invitation"
-              className="block w-full h-auto"
-              width={1060}
-              height={1484}
-              loading="eager"
-              decoding="async"
-            />
+            <div className="holiday-invite-brand">
+              <img src="/images/zenith-original-logo.webp" alt="Zenith Risk Strategies" width={1500} height={478} />
+            </div>
+            <div className="holiday-invite-artwork">
+              <img src={HOLIDAY_INVITE_SRC} alt="Save the date: Zenith Holiday Celebration. Friday, December 11, 2026, evening, Austin, Texas; time and location to be announced. Kindly reply by September 15, 2026." width={1060} height={1484} loading="eager" decoding="async" />
+            </div>
           </div>
 
           <div className="rounded-[2rem] bg-white border border-[#dfd2bd] p-6 sm:p-8 md:p-10 shadow-[0_26px_70px_-45px_rgba(15,23,42,0.5)]">

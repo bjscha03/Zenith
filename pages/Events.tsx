@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import CompassMark from '../components/brand/CompassMark';
 import ClosingCta from '../components/ClosingCta';
 import ContentGrid from '../components/content/ContentGrid';
-import HolidayRsvp from '../components/HolidayRsvp';
 import { ZENITH_PEAK_IMAGE } from '../lib/brandAssets';
 
 const Events: React.FC = () => {
@@ -79,7 +78,6 @@ const Events: React.FC = () => {
         </div>
       </nav>
 
-      <HolidayRsvp />
 
       {/* FEATURED RECAP + AUDIENCE */}
       <section className="premium-light-section relative overflow-hidden py-20">

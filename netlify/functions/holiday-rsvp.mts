@@ -3,6 +3,8 @@ import { buildInternalNotification, buildVisitorConfirmation } from './_shared/e
 import { cleanChoice, cleanEmail, cleanText, PublicFormError } from './_shared/form-security.mts';
 import { createFormHandler, type FormDefinition } from './_shared/form-runtime.mts';
 
+import { assertHolidayAccess } from './_shared/holiday-access.mts';
+
 const RSVP_OPTIONS = ['attend', 'attend-with-guest', 'decline'] as const;
 
 type RsvpResponse = typeof RSVP_OPTIONS[number];
@@ -31,9 +33,10 @@ const formatTimestamp = (date: Date) => new Intl.DateTimeFormat('en-US', {
   timeZoneName: 'short',
 }).format(date);
 
-const holidayRsvpDefinition: FormDefinition<HolidayRsvp> = {
+export const holidayRsvpDefinition: FormDefinition<HolidayRsvp> = {
   formType: 'holiday-rsvp',
   normalize: (input) => {
+    assertHolidayAccess(input.invitation);
     const response = cleanChoice(input.response, 'RSVP option', RSVP_OPTIONS, true) as RsvpResponse;
     const guestName = cleanText(input.guestName, 'your guest name', { max: 160 });
 
