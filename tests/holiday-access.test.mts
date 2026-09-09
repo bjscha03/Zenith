@@ -35,3 +35,9 @@ test('short invitation verifies and authorizes RSVP; forged short key is rejecte
   assert.equal((await access(req('a'.repeat(12)))).status, 403);
   assert.equal(holidayRsvpDefinition.normalize({ invitation: shortKey, name: 'Test', email: 'test@example.com', response: 'attend' }).response, 'attend');
 });
+
+test('clean unlisted event entry opens without exposing a random key', async () => {
+  assert.equal((await access(req('holiday-celebration'))).status, 200);
+  assert.equal(holidayRsvpDefinition.normalize({ invitation: 'holiday-celebration', name: 'Test', email: 'test@example.com', response: 'attend' }).response, 'attend');
+  assert.equal((await access(req('holiday'))).status, 403);
+});

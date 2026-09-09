@@ -7,7 +7,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      if (!window.location.hash.startsWith('#/holiday-invitation') && !/^\/invite(?:\/|$)/.test(window.location.pathname)) {
+      if (!window.location.hash.startsWith('#/holiday-invitation') && !/^\/(?:invite|holiday-celebration)(?:\/|$)/.test(window.location.pathname)) {
         const analytics = document.createElement('script');
         analytics.async = true;
         analytics.src = 'https://www.googletagmanager.com/gtag/js?id=G-0D35TZEK9C';
