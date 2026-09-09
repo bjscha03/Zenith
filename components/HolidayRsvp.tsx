@@ -86,7 +86,7 @@ const HolidayRsvp: React.FC<{ invitation: string }> = ({ invitation }) => {
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 lg:gap-12 items-start">
           <div className="rounded-[1.5rem] overflow-hidden border border-[#d8c6a9] bg-white shadow-[0_26px_70px_-45px_rgba(15,23,42,0.5)]">
             <div className="holiday-invite-brand">
-              <img src="/images/zenith-original-logo.webp" alt="Zenith Risk Strategies" width={1500} height={478} />
+              <img src="/images/zenith-original-logo.webp" alt="Zenith Risk Strategies" width={1500} height={470} />
             </div>
             <div className="holiday-invite-artwork">
               <img src={HOLIDAY_INVITE_SRC} alt="Save the date: Zenith Holiday Celebration. Friday, December 11, 2026, evening, Austin, Texas; time and location to be announced. Kindly reply by September 15, 2026." width={1060} height={1484} loading="eager" decoding="async" />
