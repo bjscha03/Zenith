@@ -28,6 +28,18 @@ import Admin from './pages/Admin';
 import HolidayInvitation from './pages/HolidayInvitation';
 
 const App: React.FC = () => {
+  // A standalone entry keeps the invitation URL clean and avoids analytics.
+  if (window.location.pathname === '/invite' || window.location.pathname.startsWith('/invite/')) {
+    const invitationKey = window.location.pathname.match(/^\/invite\/([A-Za-z0-9_-]+)\/?$/)?.[1] || '';
+    return <Router>
+      <header className="bg-white border-b border-slate-200 px-6 py-6">
+        <a href="/" aria-label="Zenith Risk Strategies home" className="block max-w-7xl mx-auto">
+          <img src="/images/zenith-original-logo.webp" alt="Zenith Risk Strategies" width={1500} height={470} style={{ width: 180, height: 'auto' }} />
+        </a>
+      </header>
+      <main><HolidayInvitation invitationKey={invitationKey} /></main>
+    </Router>;
+  }
   return (
     <>
       <AuthBootstrap />
