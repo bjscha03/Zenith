@@ -12,6 +12,7 @@ const GoogleAnalytics: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    if (location.pathname === '/holiday-invitation') return;
     if (typeof window.gtag !== 'function') return;
 
     window.gtag('event', 'page_view', {

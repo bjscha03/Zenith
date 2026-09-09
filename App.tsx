@@ -25,6 +25,7 @@ import Speakers from './pages/Speakers';
 import Media from './pages/Media';
 import ContentDetail from './pages/ContentDetail';
 import Admin from './pages/Admin';
+import HolidayInvitation from './pages/HolidayInvitation';
 
 const App: React.FC = () => {
   return (
@@ -49,6 +50,7 @@ const App: React.FC = () => {
           <Route path="/resources" element={<Resources />} />
           <Route path="/resources/:slug" element={<ContentDetail section="resource" />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/holiday-invitation" element={<HolidayInvitation />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<ContentDetail section="event" />} />
           <Route path="/conference-series" element={<ConferenceSeries />} />

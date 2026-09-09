@@ -342,3 +342,10 @@ body.mobile-menu-open {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* The supplied poster's logo is distorted. Render the untouched brand asset
+   separately and display the poster from below its old logo (300 / 1060). */
+.holiday-invite-brand { background: #f3e8d5; padding: 7% 12% 5%; border-bottom: 1px solid #d8c6a9; }
+.holiday-invite-brand img { display: block; width: 100%; height: auto; object-fit: contain; }
+.holiday-invite-artwork { overflow: hidden; }
+.holiday-invite-artwork img { display: block; width: 100%; height: auto; margin-top: -28.3018868%; }
