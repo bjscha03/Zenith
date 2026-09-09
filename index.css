@@ -343,9 +343,8 @@ body.mobile-menu-open {
   }
 }
 
-/* The supplied poster's logo is distorted. Render the untouched brand asset
-   separately and display the poster from below its old logo (300 / 1060). */
-.holiday-invite-brand { background: #f3e8d5; padding: 7% 12% 5%; border-bottom: 1px solid #d8c6a9; }
-.holiday-invite-brand img { display: block; width: 100%; height: auto; object-fit: contain; }
-.holiday-invite-artwork { overflow: hidden; }
-.holiday-invite-artwork img { display: block; width: 100%; height: auto; margin-top: -28.3018868%; }
+/* Restore the complete holiday artwork and integrate the untouched logo directly
+   into the parchment, preserving its native aspect ratio at every screen size. */
+.holiday-invite-composition { position: relative; }
+.holiday-invite-background { display: block; width: 100%; height: auto; }
+.holiday-invite-logo { position: absolute; display: block; width: 60%; height: auto; left: 20%; top: 6.3%; object-fit: contain; }
