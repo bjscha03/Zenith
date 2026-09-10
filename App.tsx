@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import AuthBootstrap from './components/AuthBootstrap';
 import GoogleAnalytics from './components/GoogleAnalytics';
@@ -19,7 +19,6 @@ import Contact from './pages/Contact';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfUse from './pages/TermsOfUse';
 import Events from './pages/Events';
-import ConferenceSeries from './pages/ConferenceSeries';
 import Careers from './pages/Careers';
 import Speakers from './pages/Speakers';
 import Media from './pages/Media';
@@ -65,7 +64,7 @@ const App: React.FC = () => {
           <Route path="/holiday-invitation" element={<HolidayInvitation />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:slug" element={<ContentDetail section="event" />} />
-          <Route path="/conference-series" element={<ConferenceSeries />} />
+          <Route path="/conference-series" element={<Navigate to="/events" replace />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/terms" element={<TermsOfUse />} />
           <Route path="/events/speakers" element={<Speakers />} />

@@ -387,7 +387,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                   <li><Link to="/media">Media</Link></li>
                   <li><Link to="/events">Events</Link></li>
                   <li><Link to="/resources">Resources</Link></li>
-                  <li><Link to="/conference-series">Conference Series</Link></li>
                 </ul>
               </div>
               <div>
