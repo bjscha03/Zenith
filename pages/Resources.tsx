@@ -139,6 +139,12 @@ const Resources: React.FC = () => {
                 url: 'https://samaritanfundprogram.com/',
                 logo: 'https://github.com/user-attachments/assets/8e11bae0-c1b4-4bde-bb80-fc3eac1f8782',
               },
+              {
+                name: 'Mending',
+                desc: 'Direct primary care access and integrated benefits solutions for employers and health plans',
+                url: 'https://www.mending.com/',
+                logo: '/images/mending-logo.png',
+              },
             ].map((partner) => (
               <a
                 key={partner.name}
